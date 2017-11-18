@@ -1,0 +1,136 @@
+2017-11-17 08:37:59  [ main:0 ] - [ INFO ]  0CFF3E27运行模式:1-0000001000000000
+2017-11-17 08:37:59  [ main:11 ] - [ INFO ]  18FF02F3电池电压:221.2-A408007DF6FFAFAF
+2017-11-17 08:37:59  [ main:12 ] - [ INFO ]  18FF02F3电池电流:0.0-A408007DF6FFAFAF
+2017-11-17 08:37:59  [ main:12 ] - [ INFO ]  18FF02F3绝缘阻值:6552.6-A408007DF6FFAFAF
+2017-11-17 08:37:59  [ main:13 ] - [ INFO ]  0C0A28D0钥匙状态:0-000000000000FF00
+2017-11-17 08:37:59  [ main:13 ] - [ INFO ]  0C0A28D0急停开关状态:0-000000000000FF00
+2017-11-17 08:37:59  [ main:13 ] - [ INFO ]  0C0A28D0后舱门信号:0-000000000000FF00
+2017-11-17 08:37:59  [ main:14 ] - [ INFO ]  0C0A28D0系统就绪Ready:0-000000000000FF00
+2017-11-17 08:37:59  [ main:15 ] - [ INFO ]  0C0A28D0主接触器状态:0-000000000000FF00
+2017-11-17 08:37:59  [ main:16 ] - [ INFO ]  0C0A28D0预充接触器状态:0-000000000000FF00
+2017-11-17 08:37:59  [ main:16 ] - [ INFO ]  0C0A28D0高压互锁:0-000000000000FF00
+2017-11-17 08:37:59  [ main:16 ] - [ INFO ]  0C0A28D0DC/AC故障:0-000000000000FF00
+2017-11-17 08:37:59  [ main:17 ] - [ INFO ]  0C0A28D0DC/DC故障:0-000000000000FF00
+2017-11-17 08:37:59  [ main:17 ] - [ INFO ]  0C0A28D0总线电流:520-000000000000FF00
+2017-11-17 08:37:59  [ main:17 ] - [ INFO ]  0C0A28D0总线电压:0.0-000000000000FF00
+2017-11-17 08:37:59  [ main:19 ] - [ INFO ]  18FF01F3SOC:42.8-6BD70CCA0C3D3A80
+2017-11-17 08:37:59  [ main:20 ] - [ INFO ]  18FF01F3单体最高电压:3.287-6BD70CCA0C3D3A80
+2017-11-17 08:37:59  [ main:20 ] - [ INFO ]  18FF01F3单体最低电压:3.274-6BD70CCA0C3D3A80
+2017-11-17 08:37:59  [ main:21 ] - [ INFO ]  18FF01F3模组最高温度:21-6BD70CCA0C3D3A80
+2017-11-17 08:37:59  [ main:21 ] - [ INFO ]  18FF01F3模组最低温度:18-6BD70CCA0C3D3A80
+2017-11-17 08:37:59  [ main:22 ] - [ INFO ]  18FF01F3BMS状态:8-6BD70CCA0C3D3A80
+2017-11-17 08:37:59  [ main:22 ] - [ INFO ]  18FF01F3BMS Pos Switch State:0-6BD70CCA0C3D3A80
+2017-11-17 08:37:59  [ main:23 ] - [ INFO ]  18FF01F3BMS初始化就绪:0-6BD70CCA0C3D3A80
+2017-11-17 08:37:59  [ main:23 ] - [ INFO ]  0CFF3F27制动开关:0-11007D000029FD00
+2017-11-17 08:37:59  [ main:24 ] - [ INFO ]  0CFF3F27驻车制动开关:1-11007D000029FD00
+2017-11-17 08:37:59  [ main:24 ] - [ INFO ]  0CFF3F27加速踏板:1-11007D000029FD00
+2017-11-17 08:37:59  [ main:25 ] - [ INFO ]  0CFF3F27油门踏板位置:0.0-11007D000029FD00
+2017-11-17 08:37:59  [ main:25 ] - [ INFO ]  0CFF3F27制动踏板位置:0-11007D000029FD00
+2017-11-17 08:37:59  [ main:26 ] - [ INFO ]  0CFF3F27启动信号:0-11007D000029FD00
+2017-11-17 08:37:59  [ main:26 ] - [ INFO ]  0CFF3F27档位请求:2-11007D000029FD00
+2017-11-17 08:37:59  [ main:27 ] - [ INFO ]  0C2030EF转向助力指令:0-F000000000000000
+2017-11-17 08:37:59  [ main:27 ] - [ INFO ]  0C2030EF钥匙状态:0-F000000000000000
+2017-11-17 08:41:35  [ main:0 ] - [ INFO ]  0CFF3F27制动开关:0-11007D000029FD00
+2017-11-17 08:41:35  [ main:9 ] - [ INFO ]  0CFF3F27驻车制动开关:1-11007D000029FD00
+2017-11-17 08:41:35  [ main:9 ] - [ INFO ]  0CFF3F27加速踏板:1-11007D000029FD00
+2017-11-17 08:41:35  [ main:15 ] - [ INFO ]  0CFF3F27油门踏板位置:0.0-11007D000029FD00
+2017-11-17 08:41:35  [ main:15 ] - [ INFO ]  0CFF3F27制动踏板位置:0-11007D000029FD00
+2017-11-17 08:41:35  [ main:16 ] - [ INFO ]  0CFF3F27启动信号:0-11007D000029FD00
+2017-11-17 08:41:35  [ main:16 ] - [ INFO ]  0CFF3F27档位请求:2-11007D000029FD00
+2017-11-17 08:41:35  [ main:17 ] - [ INFO ]  18FF02F3电池电压:221.2-A408007DF6FFAFAF
+2017-11-17 08:41:35  [ main:18 ] - [ INFO ]  18FF02F3电池电流:0.0-A408007DF6FFAFAF
+2017-11-17 08:41:35  [ main:19 ] - [ INFO ]  18FF02F3绝缘阻值:6552.6-A408007DF6FFAFAF
+2017-11-17 08:41:35  [ main:20 ] - [ INFO ]  18FF01F3SOC:42.8-6BD70CCA0C3D3A80
+2017-11-17 08:41:35  [ main:21 ] - [ INFO ]  18FF01F3单体最高电压:3.287-6BD70CCA0C3D3A80
+2017-11-17 08:41:35  [ main:23 ] - [ INFO ]  18FF01F3单体最低电压:3.274-6BD70CCA0C3D3A80
+2017-11-17 08:41:35  [ main:23 ] - [ INFO ]  18FF01F3模组最高温度:21-6BD70CCA0C3D3A80
+2017-11-17 08:41:35  [ main:24 ] - [ INFO ]  18FF01F3模组最低温度:18-6BD70CCA0C3D3A80
+2017-11-17 08:41:35  [ main:24 ] - [ INFO ]  18FF01F3BMS状态:8-6BD70CCA0C3D3A80
+2017-11-17 08:41:35  [ main:25 ] - [ INFO ]  18FF01F3BMS Pos Switch State:0-6BD70CCA0C3D3A80
+2017-11-17 08:41:35  [ main:26 ] - [ INFO ]  18FF01F3BMS初始化就绪:0-6BD70CCA0C3D3A80
+2017-11-17 08:41:35  [ main:26 ] - [ INFO ]  0CFF3E27运行模式:1-0000001000000000
+2017-11-17 08:41:35  [ main:27 ] - [ INFO ]  0C0A28D0钥匙状态:0-000000000000FF00
+2017-11-17 08:41:35  [ main:28 ] - [ INFO ]  0C0A28D0急停开关状态:0-000000000000FF00
+2017-11-17 08:41:35  [ main:28 ] - [ INFO ]  0C0A28D0后舱门信号:0-000000000000FF00
+2017-11-17 08:41:35  [ main:29 ] - [ INFO ]  0C0A28D0系统就绪Ready:0-000000000000FF00
+2017-11-17 08:41:35  [ main:29 ] - [ INFO ]  0C0A28D0主接触器状态:0-000000000000FF00
+2017-11-17 08:41:35  [ main:30 ] - [ INFO ]  0C0A28D0预充接触器状态:0-000000000000FF00
+2017-11-17 08:41:35  [ main:31 ] - [ INFO ]  0C0A28D0高压互锁:0-000000000000FF00
+2017-11-17 08:41:35  [ main:32 ] - [ INFO ]  0C0A28D0DC/AC故障:0-000000000000FF00
+2017-11-17 08:41:35  [ main:32 ] - [ INFO ]  0C0A28D0DC/DC故障:0-000000000000FF00
+2017-11-17 08:41:35  [ main:33 ] - [ INFO ]  0C0A28D0总线电流:520-000000000000FF00
+2017-11-17 08:41:35  [ main:33 ] - [ INFO ]  0C0A28D0总线电压:0.0-000000000000FF00
+2017-11-17 08:41:35  [ main:34 ] - [ INFO ]  0C2030EF转向助力指令:0-F000000000000000
+2017-11-17 08:41:35  [ main:35 ] - [ INFO ]  0C2030EF钥匙状态:0-F000000000000000
+2017-11-17 16:00:41  [ main:1 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"qu1aq1i","alias":"null","title":"MCU自检状态","value":"-1","inx":13,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":46,"length":3,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.StringIndexOutOfBoundsException: String index out of range: 9
+	at java.lang.String.substring(String.java:1963)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:53)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:00:41  [ main:11 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:48)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:14:03  [ main:1 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"qu1aq1i","alias":"null","title":"MCU自检状态","value":"-1","inx":13,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":46,"length":3,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.StringIndexOutOfBoundsException: String index out of range: 9
+	at java.lang.String.substring(String.java:1963)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:14:03  [ main:5 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:51)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:17:26  [ main:1 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:51)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:26:10  [ main:1 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"huaz9tk","alias":"null","title":"电机欠压报警","value":"-1","inx":25,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":55,"length":1,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:59)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:26:10  [ main:7 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:59)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:32:18  [ main:6 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:57)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)

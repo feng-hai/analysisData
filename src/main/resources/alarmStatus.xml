@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<status name="alarm">
+		<value id="ilqsiph" title="紧急报警" alias="" start="0" length="1" />
+		<value id="ilqsiph" title="超速报警" alias="" start="1" length="1" />
+		<value id="ilqsiph" title="疲劳驾驶" alias="" start="2" length="1" />
+		<value id="ilqsiph" title="危险预警" alias="" start="3" length="1" />
+		<value id="ilqsiph" title="GNSS 模块发生故障" alias="" start="4"
+			length="1" />
+		<value id="ilqsiph" title="GNSS 天线未接或被剪断" alias="" start="5"
+			length="1" />
+		<value id="ilqsiph" title="GNSS 天线短路" alias="" start="6" length="1" />
+		<value id="ilqsiph" title="终端主电源欠压" alias="" start="7" length="1" />
+		<value id="ilqsiph" title="终端主电源掉电" alias="" start="8" length="1" />
+		<value id="ilqsiph" title="终端 LCD 或显示器故障" alias="" start="9"
+			length="1" />
+		<value id="ilqsiph" title="TTS 模块故障" alias="" start="10" length="1" />
+		<value id="ilqsiph" title="摄像头故障" alias="" start="11" length="1" />
+		<value id="ilqsiph" title="道路运输证 IC 卡模块故" alias="" start="12"
+			length="1" />
+		<value id="ilqsiph" title="超速预警" alias="" start="13" length="1" />
+		<value id="ilqsiph" title="疲劳驾驶预警" alias="" start="14" length="1" />
+		<value id="ilqsiph" title="当天累计驾驶超时" alias="" start="18" length="1" />
+		<value id="ilqsiph" title="超时停车" alias="" start="19" length="1" />
+		<value id="ilqsiph" title="进出区域" alias="" start="20" length="1" />
+		<value id="ilqsiph" title="进出路线" alias="" start="21" length="1" />
+		<value id="ilqsiph" title="路段行驶时间不足/过长" alias="" start="22"
+			length="1" />
+		<value id="ilqsiph" title="路线偏离报警" alias="" start="23" length="1" />
+		<value id="ilqsiph" title="车辆 VSS 故障" alias="" start="24"
+			length="1" />
+		<value id="ilqsiph" title="车辆油量异常" alias="" start="25" length="1" />
+		<value id="ilqsiph" title="车辆被盗(通过车辆防盗器)" alias="" start="26"
+			length="1" />
+		<value id="ilqsiph" title="车辆非法点火" alias="" start="27" length="1" />
+		<value id="ilqsiph" title="车辆非法位移 " alias="" start="28" length="1" />
+		<value id="ilqsiph" title="碰撞预警" alias="" start="29" length="1" />
+		<value id="ilqsiph" title="侧翻预警" alias="" start="30" length="1" />
+		<value id="ilqsiph" title="非法开门报警" alias="" start="31" length="1" />
+	</status>
+	<status name="status">
+		<value id="ilqsiph" title="0：ACC 关；1： ACC 开" alias="" start="0"
+			length="1" />
+		<value id="ilqsiph" title="0：未定位；1：定位" alias="" start="1"
+			length="1" />
+		<value id="ilqsiph" title="0：北纬；1：南纬" alias="" start="2" length="1" />
+		<value id="ilqsiph" title="0：东经；1：西经" alias="" start="3" length="1" />
+		<value id="ilqsiph" title="0：运营状态；1：停运状态" alias="" start="4"
+			length="1" />
+		<value id="ilqsiph" title="0：经纬度未经保密插件加密；1：经纬度已经保密插件加密" alias=""
+			start="5" length="1" />
+		<value id="ilqsiph" title="00：空车；01：半载；10：保留；11：满载" alias=""
+			start="8" length="2" />
+		<value id="ilqsiph" title="0：车辆油路正常；1：车辆油路断开" alias="" start="10"
+			length="1" />
+		<value id="ilqsiph" title="0：车辆电路正常；1：车辆电路断开" alias="" start="11"
+			length="1" />
+		<value id="ilqsiph" title="0：车门解锁；1：车门加锁" alias="" start="12"
+			length="1" />
+		<value id="ilqsiph" title="0：门 1 关；1：门 1 开（前门）" alias="" start="13"
+			length="1" />
+		<value id="ilqsiph" title="0：门 2 关；1：门 2 开（中门）" alias="" start="14"
+			length="1" />
+		<value id="ilqsiph" title="0：门 3 关；1：门 3 开（后门）" alias="" start="15"
+			length="1" />
+		<value id="ilqsiph" title="0：门 4 关；1：门 4 开（驾驶席门）" alias=""
+			start="16" length="1" />
+		<value id="ilqsiph" title="0：门 5 关；1：门 5 开（自定义）" alias="" start="17"
+			length="1" />
+		<value id="ilqsiph" title="0：未使用 GPS 卫星进行定位；1：使用 GPS 卫星进行定位"
+			alias="" start="18" length="1" />
+		<value id="ilqsiph" title="0：未使用北斗卫星进行定位；1：使用北斗卫星进行定位" alias=""
+			start="19" length="1" />
+		<value id="ilqsiph" title="0：未使用 GLONASS 卫星进行定位；1：使用 GLONASS 卫星进行定位"
+			alias="" start="20" length="1" />
+		<value id="ilqsiph" title="0：未使用 Galileo 卫星进行定位；1：使用 Galileo 卫星进行定位"
+			alias="" start="21" length="1" />
+	</status>
+
+	<status name="extraStatus">
+		<value id="1" title="近光灯信号" alias="" start="0" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="远光灯信号" alias="" start="1" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="右转向灯信号" alias="" start="2" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="左转向灯信号" alias="" start="3" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="制动信号" alias="" start="4" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="倒档信号" alias="" start="5" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="雾灯信号" alias="" start="6" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="示廓灯" alias="" start="7" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="喇叭信号" alias="" start="8" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="空调状态" alias="" start="9" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="空挡信号" alias="" start="10" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="缓速器工作" alias="" start="11" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="ABS 工作" alias="" start="12" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="加热器工作" alias="" start="13" length="1"
+			resolving="1">
+		</value>
+		<value id="1" title="离合器状态" alias="" start="14" length="1"
+			resolving="1">
+		</value>
+	</status>
+</config>

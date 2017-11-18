@@ -1,0 +1,1500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+	<!-- explugin 增程插电式 -->
+	<!-- tp4 TP$ -->
+	<!-- amt.explugin AMT插电式 -->
+	<!-- amt.pureElectric AMT纯电动 -->
+	<!-- csrzic 串联插电式+能耗 -->
+	<analyzeType type="6CAAFB8B6F334BA0865197DD7C539A63" name="串联插电式">
+		<can name="1E9FFF18">
+			<value id="SOC" title="SOC" alias="SOC" start="32" length="8" offset="0" resolving="0.4" dataType="%f"/>	
+		</can>
+		<can name="F303FF18">
+			<value id="ilqsiph" title="总充电量" alias="" start="0" length="24" offset="0" resolving="0.1" dataType="%f"/>
+			<value id="nclqo5p" title="总放电量" alias=""  start="24" length="24" offset="0" resolving="0.1" dataType="%f"/>
+			<value id="ogiqz4p" title="剩余电量" alias="" start="48" length="16" offset="0" resolving="0.1" dataType="%f"/>
+		</can>
+		<can name="F301FF18">
+			<value id="rpm" title="电池单体电压最高值" alias="ENGINE_RPM" start="8" length="16" offset="0" resolving="0.001" dataType="%f"/>
+			<value id="engineWaterTemp" title="电池单体电压最低值" alias="CELL_ENGINE" start="24" length="16" offset="0" resolving="0.001" dataType="%f"/>
+			<value id="engineLoadRate" title="最高温度值" alias="ENGINE_LOAD_RATE" start="40" length="8" offset="40" resolving="1" dataType="%f"/>
+			<value id="ureaLiquidLevel" title="最低温度值" alias="UREA_TANK_LEVEL" start="48" length="8" offset="40" resolving="1" dataType="%f"/>
+			<value id="targetThrottle" title="充电状态" alias="ENGINE_TARGET_THROTTLE" start="56" length="4" offset="0" resolving="1" dataType="%d"/>
+			<value id="actualThrottle" title="BMS主回路继电器状态" alias="ACTUAL_ENGINE_THROTTLE" start="60" length="2" offset="0" resolving="1" dataType="%d"/>
+			<value id="vehicleCtrlLife" title="BMS初始化就绪" alias="" start="62" length="2" offset="0" resolving="1" dataType="%d"/>
+		</can>
+		<can name="0C06A1A7">
+			<value id="tractionPedalPercent" title="牵引踏板百分比" alias="PERCENTAGE_TRACTION_PEDAL"/>
+			<value id="brakePedalPercent" title="制动踏板百分比" alias="BRAKE_PEDAL_PERCENTAGE"/>
+			<value id="engineOilPress" title="发动机机油压力" alias="ENGINE_OIL_PRESSURE"/>
+			<value id="engineAirTemp" title="发动机进气温度" alias="ENGINE_INLET_TEMPERATURE"/>
+			<value id="engineTotalOilConsump" title="发动机累计油气消耗量" alias="ENGINE_OIL_CONSUMPTION"/>
+		</can>
+		<can name="0C079AA7">
+			<value id="dcdcStartOrder" title="DC/DC启动指令" alias="STARTCOMMAND"/>
+			<value id="dcacSteerStartOrder" title="DC/AC助理转向启动指令" alias="POWER_STEERING_INSTRUCTION"/>
+			<value id="dcacSteerWorkMode" title="DC/AC助理转向工作模式" alias="POWER_STEER_MODE"/>
+			<value id="dcacAirPumpStartOrder" title="DC/AC空压机启动指令" alias="COMPRESSOR_START_INSTRUCTION"/>
+		</can>
+		<can name="1801A79C">
+			<value id="param1" title="参数1"  alias="ENGINE_RPM" start="8" length="16" offset="0" resolving="0.001"></value>
+			<value id="param2" title="参数2" alias="PARAM2"></value>
+			<value id="param3" title="参数3" alias="PARAM3"></value>
+			<value id="param4" title="参数4" alias="PARAM4"></value>
+			<value id="param5" title="参数5" alias="PARAM5"></value>
+			<value id="param6" title="参数6" alias="PARAM6"></value>
+			<value id="param7" title="参数7" alias="PARAM7"></value>
+			<value id="param8" title="参数8" alias="PARAM8"></value>
+		</can>
+		<can name="0C07F2A7">
+			<value id="d1" title="发电机目标转矩 /发电机目标转速" alias=""/>
+			<value id="d2" title="发电机控制器最高限制电压" alias=""/>
+			<value id="d3" title="发电机控制器直流侧限制电流" alias=""/>
+			<value id="d3" title="发电机控制器直流侧限制电流" alias=""/>
+			<value id="d4" title="待机" alias=""/>
+			<value id="d5" title="空转" alias=""/>
+			<value id="d6" title="驱动" alias=""/>
+			<value id="d7" title="制动" alias=""/>
+			<value id="d8" title="反转" alias=""/>
+			<value id="d9" title="主接触器合" alias=""/>
+			<value id="d10" title="模式" alias=""/>
+			<value id="d11" title="整车控制器Life" alias="VCU_LIFE"/>
+		</can>
+		<can name="0C08A1A7">
+			<value id="programVersion" title="程序版本号" alias="PROGRAM_VERSION_NUMBER"/>
+			<value id="instantFuel" title="瞬时油(气)耗" alias="INS_FUEL_CONSUMPTION"/>
+			<value id="twowayDCDCFaultCode" title="双向DCDC故障码" alias="BIDIRECTIONAL_STATE_CODE"/>
+			<value id="dCDCFaultCode" title="DCDC故障码" alias="STATUS_CODE"/>
+			<value id="pumpPowerDCDCFaultCode" title="油泵电源DCAC故障码" alias="OIL_DCAC_STATUS_CODE"/>
+			<value id="airPumpPowerDCACFaultCode" title="气泵电源DCAC故障码" alias="AIR_DCAC_STATUS_CODE"/>
+		</can>
+		<can name="0C08A79A">
+			<value id="outPutVoltage_DCDC" title="DCDC输出电压" alias="OUTPUT_VOLTAGE"/>
+			<value id="outPutElectric_DCDC" title="DCDC输出电流" alias="OUTPUT_CURRENT"/>
+			<value id="inPutVoltage_DCDC" title="DCDC输入电压" alias="INPUT_VOLTAGE"/>
+			<value id="coolingTemperature_DCDC" title="散热器温度" alias="RADIATOR_TEMPERATURE"/>
+			<value id="faultCode_DCDC" title="故障代码" alias="FAULT_CODE"/>
+		</can>
+		<can name="0C08A7F0">
+			<value id="b1" title="电机转矩" alias="" />
+			<value id="b2" title="电机转速" alias="" />
+			<!-- <value id="b3" title="电机控制器输入电流" alias="" /> -->
+			<value id="b4" title="停机" alias="MOTOR_CTRL_SHUTDOWN_STATUS" />
+			<value id="b5" title="驱动" alias="MOTOR_CTRL_SHUDOWN_STATE" />
+			<value id="b6" title="制动" alias="BRAKE_MOTOR_CTRL_STATE" />
+			<value id="b7" title="向后" alias="MOTOR_CTRL_SHUTDOWN" />
+			<value id="b8" title="向前" alias="MOTOR_CTRL_STOP_FORWARD" />
+			<value id="b9" title="0转矩模式 1转速模式" alias="MOTOR_CTRL_SHUDOWN_MODE" />
+			<value id="b10" title="故障" alias="MOTOR_CTRL_FAILURE_STATE" />
+			<value id="b11" title="Ready" alias="MOTOR_CTRL_SHUTDOWN_STATE" />
+			<value id="b12" title="电机控制器LIFE" alias="" />
+		</can>
+		<can name="0C09A79B">
+			<value id="oil_DC_AC_W_OutputElec" title="油泵DC/AC_W输出电流" alias="OP_OUTPUT_CURRENT_W" />
+			<value id="oil_DC_AC_V_OutputElec" title="油泵DC/AC_V输出电流" alias="OP_OUTPUT_CURRENT_V" />
+			<value id="oil_DC_AC_U_OutputElec" title="油泵DC/AC_U输出电流" alias="OP_OUTPUT_CURRENT_U" />
+			<value id="coolingTemperature_DC_AC" title="DC/AC散热温度" alias="COOLING_TEMPERATURE_C" />
+			<value id="faultCode_DC_AC_YB" title="油泵DC/AC 故障代码" alias="" />
+		</can>
+		<can name="0C09A7F0">
+			<value id="c1" title="整流电压" alias=""></value>
+			<value id="c2" title="电机温度" alias=""></value>
+			<!-- <value id="c3" title="电机控制器温度" alias="CON_TEMP"></value> -->
+			<value id="c4" title="整流电流" alias=""></value>
+			<value id="c5" title="主接触器闭合" alias=""></value>
+			<value id="c6" title="充电接触器闭合" alias=""></value>
+			<value id="c7" title="电机驱动系统故障代码" alias="MOTOR_DRI_SYS_FAULT_CODE"></value>
+		</can>
+		<can name="0C0AA79D">
+			<value id="pump_DC_AC_W_OutputElec" title="气泵DC/AC_W输出电流" alias="PUMP_OUTPUT_CURRENT_W"></value>
+			<value id="pump_DC_AC_V_OutputElec" title="气泵DC/AC_V输出电流" alias="PUMP_OUTPUT_CURRENT_V"></value>
+			<value id="pump_DC_AC_U_OutputElec" title="气泵DC/AC_U输出电流" alias="PUMP_OUTPUT_CURRENT_U"></value>
+			<value id="coolingTemperature_DC_AC" title="散热温度" alias="COOLING_TEMPERATURE_C"></value>
+			<value id="faultCode_DC_AC_QB" title="气泵DC/AC故障代码" alias=""></value>
+		</can>
+		<can name="0C0AA7F2">
+			<value id="e1" title="发电机转矩" alias="GENERATOR_TORQUE" />
+			<value id="e2" title="发电机转速" alias="GENERATOR_E" />
+			<value id="e3" title="发电机控制器输入电流" alias="" />
+			<value id="e4" title="1启机  0停机" alias="GENERATOR_CTRL_START" />
+			<value id="e5" title="1怠机 0:无效" alias="GENERATOR_CTRL_STANDBY" />
+			<value id="e6" title="1向前 0向后" alias="GENERATOR_CTRL_FORWARD" />
+			<value id="e7" title="1驱动 0制动" alias="GENERATOR_CONTROLLER_DRIVER_STATUS" />
+			<value id="e8" title="1故障 0无效" alias="GENERATOR_CTRL_FAULT_STATUS" />
+			<value id="e8" title="1故障 0无效" alias="GENERATOR_CTRL_FAULT_STATUS" />
+			<value id="e9" title="1电机控制器工作正常  0无效" alias="GENERATOR_CTRL_STATUS" />
+			<value id="e10" title="1转矩模式  2转速模式" alias="GENERATOR_CTRL_MODE" />
+			<value id="e11" title="发电机控制器LIFE" alias="GENERATOR_CTRL" />
+		</can>
+		<can name="0C0BA7F2">
+			<value id="f1" title="发电机控制器接触器前端电压" alias="GENERATOR_CTRL_FRONT_VOLTAGE" />
+			<value id="f2" title="发电机温度" alias="" />
+			<value id="f3" title="发电机控制器温度" alias="" />
+			<value id="f4" title="发电机控制器接触器后端电压" alias="GENERATOR_CTRL_CONTACTOR_BACK_VOLTAGE" />
+			<value id="f5" title="主接触器状态" alias="MAIN_CONTACTOR_STATE" />
+			<value id="f6" title="辅助接触器状态" alias="AUXILIARY_CONTACTOR_STATE" />
+			<value id="f7" title="电机控制器模式" alias="MOTOR_CTRL_NOT_CTRL_MODE" />
+			<value id="f8" title="发电机故障代码" alias="GENERATOR_FAULT_CODE" />
+		</can>
+		<can name="0C19A7A1">
+			<value id="vehicleAirPressSignal" title="整车气压状态" alias="VEHICLE_PRESSURE_STATE" />
+			<value id="drivingSignal" title="车辆状态(驻车/行驶中)" alias="DRI_SIGNAL" />
+			<value id="rearDoorSignal" title="后舱门状态" alias="OPEN_REAR_DOOR" />
+			<value id="frontDoorSignal" title="前门状态" alias="FRONT_DOOR_SIGNAL" />
+			<value id="backDoorSignal" title="后门状态" alias="BACK_DOOR_SIGNAL" />
+			<value id="keySignal" title="钥匙2档" alias="DEY_SIGNAL" />
+			<value id="keySignalOne" title="钥匙1档" alias="" />
+			<value id="afterLogIndicator" title="车灯信号后雾灯状态" alias="REAR_FOG_INDICATOR" />
+			<value id="nearLightIndicator" title="车灯信号近光指示状态" alias="NEAR_LIGHT_INDICATOR" />
+			<value id="enginePreheating" title="车灯信号 发动机预热状态" alias="ENG_PRE" />
+			<value id="oilAlarm" title="车灯信号 油量报警状态" alias="OIL_ALARM" />
+			<value id="rightSteeringIndicator" title="车灯信号右转向指示" alias="RIGHT_TURN_IND" />
+			<value id="frontLogIndicator" title="车灯信号前雾指示状态" alias="FRONT_FOG_INDICATOR" />
+			<value id="farLightIndicator" title="车灯信号远光指示状态" alias="BEAMINDICATOR" />
+			<value id="leftSteeringIndicator" title="车灯信号左转向指示" alias="LEFT_TURE_INDICATOR" />
+			<value id="speed" title="车速" alias="SPEED" />
+			<value id="leftSideAirPressure" title="左侧气囊气压" alias="AIR_PRESSURE1" />
+			<value id="rightSideAirPressure" title="右侧气囊气压" alias="AIR_PRESSURE2" />
+		</can>
+		<can name="0C19F0A7">
+			<value id="a1" title="电机目标输出转矩/目标转速" alias="" />
+			<value id="a2" title="电机控制器直流限制电压" alias="" />
+			<value id="a3" title="" alias="" />
+			<value id="a4" title="停机" alias="" />
+			<value id="a5" title="驱动" alias="" />
+			<value id="a6" title="制动" alias="" />
+			<value id="a7" title="向后" alias="" />
+			<value id="a8" title="向前" alias="" />
+			<value id="a9" title="0转矩模式  1转速模式" alias="" />
+			<value id="a10" title="Ready" alias="" />
+			<value id="a11" title="整车控制器Life" alias="" />
+		</can>
+		<can name="180128F3">
+			<value id="boxNumber2" title="箱号" alias="" />
+			<value id="monomerVoltage5" title="单体电压5" alias="" />
+			<value id="monomerVoltage6" title="单体电压6" alias="" />
+			<value id="monomerVoltage7" title="单体电压7" alias="" />
+			<value id="monomerVoltage8" title="单体电压8" alias="" />
+		</can>
+		<can name="1801A4A7">
+			<value id="g1" title="" alias="" />
+			<value id="g2" title="电池向电容充电状态" alias="" />
+			<value id="g3" title="电容向电池充电状态" alias="" />
+			<value id="g4" title="目标功率" alias="TARGE_POWER" />
+			<value id="g5" title="Life值" alias="LIFE_VALUE" />
+			<value id="g6" title="超级电容目标端电压" alias="" />
+			<value id="g7" title="电池目标端电压" alias="" />
+		</can>
+		<can name="180228F3">
+			<value id="singleVoltage9" title="单体电压9" alias="" />
+			<value id="boxNumber3" title="箱号—高四位" alias="" />
+			<value id="singleVoltage10" title="单体电压10" alias="" />
+			<value id="singleVoltage11" title="单体电压11" alias="" />
+			<value id="singleVoltage12" title="单体电压12" alias="" />
+		</can>
+		<can name="1802A7A4">
+			<value id="h1" title="双向DCDC正常/无效" alias="" />
+			<value id="h2" title="双向DCDC电池向电容充电 /无效" alias="" />
+			<value id="h3" title="双向DCDC电容向电池充电/无效" alias="" />
+			<value id="h4" title="双向DCDC故障/无效" alias="" />
+			<value id="h5" title="双向DCD待机/无效" alias="" />
+			<value id="h6" title="电池端电流" alias="" />
+			<value id="h7" title="电容端电流" alias="" />
+			<value id="h8" title="电池端电压" alias="" />
+			<value id="h9" title="故障状态" alias="" />
+		</can>
+		<can name="180328F3">
+			<value id="singleVoltage13" title="单体电压13" alias="" />
+			<value id="boxNumber4" title="箱号—高四位" alias="" />
+			<value id="singleVoltage14" title="单体电压14" alias="" />
+			<value id="singleVoltage15" title="单体电压15" alias="" />
+		</can>
+		<can name="1818A1A4">
+			<value id="batteryModuleNumber" title="电池模块编号" alias="BATTERY_MODULE_NUMBER" />
+			<value id="smokeDetectionAlarm" title="烟雾检测报警 " alias="SMOKE_DETECTION_ALARM" />
+			<value id="moduleInsulationAlarm" title="模块绝缘报警 " alias="MODULE_INSULATION_ALARM" />
+			<value id="moduleOvervoltageAlarm" title="模块过压报警 " alias="MODULE_OVERVOLTAGE_ALARM" />
+			<value id="batteryModuleTemp" title="电池模块温度 " alias="" />
+			<value id="batteryModuleVoltage" title="电池模块电压 " alias="" />
+			<value id="superCapacitorTotalVoltage" title="超级电容总电压 " alias="TOTAL_CAPACITANCE_VOLTAGE" />
+			<value id="superCapacitorTotalCurrent" title="超级电容总电流 " alias="SUPER_CAPACITOR_CURRENT" />
+		</can>
+		<can name="1818D0F3">
+			<value id="totalBatteryVoltage" title="电池总电压" alias="BMS_VOL"></value>
+			<value id="chargeCurrent" title="充放电电流" alias="BMS_CUR"></value>
+			<value id="soc" title="SOC" alias="SOC"></value>
+			<value id="statusFlag1" title="" alias=""></value>
+			<value id="statusFlag2" title="" alias=""></value>
+			<value id="statusFlag3" title="" alias=""></value>
+		</can>
+		<can name="1819A1A4">
+			<value id="posInsuRes" title="正端绝缘电阻" alias="POSITIVE_END_INSULATION_RESISTANCE"></value>
+			<value id="negInsuRes" title="负端绝缘电阻" alias="NEGATIVE_END_INSULATION_RESISTANCE"></value>
+			<value id="faultLevel" title="故障等级" alias="FAULT_LEVEL"></value>
+			<value id="lifeVal" title="LIFE值" alias="LIFE_VALUE"></value>
+			<value id="leakageAlarm" title="整车漏电报警" alias="VEHICLE_LEAKAGE_ALARM"></value>
+		</can>
+		<can name="1819D0F3">
+			<value id="sysMaxCV" title="电池最高单体电压" alias="MAXIMUM_MONOMER_VOLTAGE"/>
+			<value id="sysMaxBMU" title="最高单体所在电池箱号" alias="HIGHEST_MONOMER_NUMBER"/>
+			<value id="sysMaxBatteryNum" title="最高单体所在箱内位置" alias="MAXIMUM_MONOMER_VOLTAGE_POSITION"/>
+			<value id="sysSenMaxT" title="电池最高温度" alias="MAXIMUM_BATTERY_TEMPERATURE"/>
+			<value id="maxTSensorNum" title="最大温度所在箱号" alias="MAXTSENSORNUM"/>
+			<value id="maxTBMU" title="最大温度所在箱内位置" alias="MAXIMUM_TEMPERATURE_POSITION"/>
+			<value id="sysMinCV" title="最低单体电压" alias="MINIMUM_MONOMER_VOLTAGE"/>
+			<value id="sysMinBMU" title="最低单体所在电池箱号" alias="MINIMUM_MONOMER_NUMBER"/>
+			<value id="sysMinBatteryNum" title="最低单体所在箱内位置" alias="MINIMUM_MONOMER_VOLTAGE_POSITION"/>
+		</can>
+		<can name="18XX28F3">
+			<value id="i1" title="箱号" alias=""/>
+			<value id="i2" title="电压" alias=""/>
+		</can>
+		<!-- zff -->
+		<can name="0C1AA7A1">
+			<value id="totalDistance1" title="里程" alias="MILEAGE"/>
+		</can>
+	</analyzeType>
+	<!-- electric 纯电动 -->
+	<analyzeType type="1" name="纯电动">
+		<can name="0C03A1A7">
+			<value id="i1" title="电机输入电压" alias="MOTOR_VOL"/>
+			<value id="i2" title="电机输入电流" alias="MOTOR_CUR"/>
+			<value id="i3" title="电机转速" alias="MOTOR_RPM"/>
+			<!-- 原来的电机转速alias:motorRpm -->
+			<value id="i4" title="电机温度" alias="MOTOR_TEMP"/>
+			<value id="i5" title="控制器温度" alias="CON_TEMP"/>
+		</can>
+		<can name="0C04A1A7">
+			<value id="j1" title="程序版本号" alias="PROGRAM_VERSION_NUMBER"/>
+			<value id="j2" title="故障代码" alias="SYSTEM_CODE"/>
+			<value id="j3" title="故障等级" alias="FAULT_LEVEL"/>
+			<value id="j4" title="整车模式" alias="VEHICLE_MODEL"/>
+			<value id="j5" title="整车控制器LIFE" alias="VCU_LIFE"/>
+		</can>
+		<can name="0C05A1A7">
+			<value id="k1" title="能量主接触器K1" alias="ENERGY_MAIN_CONTACTOR"/>
+			<value id="k2" title="能量预充电K2" alias="ENERGY_PRECHARGE"/>
+			<value id="k3" title="能量内部接触器Kt+" alias="INTERNAL_ENERGY_CONTACTOR_ADD"/>
+			<value id="k4" title="能量内部接触器Kt-" alias="INTERNAL_ENERGY_CONTACTOR_REDUCE"/>
+			<value id="k5" title="快充K3" alias="FAST_CHARGE3"/>
+			<value id="k6" title="快充K4" alias="FAST_CHARGE4"/>
+			<value id="k7" title="功率主接触器K5" alias="POWER_MAIN_CONTACTOR"/>
+			<value id="k8" title="功率预充电接触器K6" alias="POWER_PRECHARGE_CONTACTOR"/>
+			<value id="k9" title="功率内部接触器" alias="POWER_INTERNAL_CONTACTOR"/>
+			<value id="k10" title="电除霜接触器" alias="ELECTRIC_DEFROST_CONTACTOR"/>
+			<value id="k11" title="电加热接触器" alias=""/>
+			<value id="k12" title="电制动" alias="ELECTRIC_BRAKING"/>
+			<value id="k13" title="Ready" alias="READY"/>
+			<value id="k14" title="DC/DC散热器温度" alias="DC_RADIATOR_TEMPERATURE"/>
+			<value id="k15" title="DC/DC故障代码" alias="STATUS_CODE"/>
+			<value id="k16" title="DC/AC1散热器温度" alias="AC1_RADIATOR_TEMPERATURE"/>
+			<value id="k17" title="DC/AC1故障代码" alias="AC1_STATUS_CODE"/>
+			<value id="k18" title="DC/AC2散热器温度" alias="AC2_RADIATOR_TEMPERATURE"/>
+			<value id="k19" title="DC/AC2故障代码 " alias="AC2_STATUS_CODE"/>
+		</can>
+		<can name="0C06A1A7">
+			<!-- <value id="l1" title="一档开关" alias="FIRST_SWITCH"/>
+			<value id="l2" title="二档钥匙" alias="TWO_KEY"/> -->
+			<value id="l3" title="前进" alias="FILE"/>
+			<value id="l4" title="后退" alias="REVERSE"/>
+			<value id="l5" title="空档" alias="NEUTRAL_GEAR"/>
+			<value id="l6" title="诊断开关" alias="DIAGNOSTIC_SWITCH"/>
+			<value id="l7" title="ST1高温开关" alias="HIGH_TEMPERATURE_SWITCH"/>
+			<value id="l8" title="ST2限低温开关" alias="LOW_TEMPERATURE_SWITCH"/>
+			<value id="l9" title="爬坡开关" alias="CLIMBING_SWITCH"/>
+			<value id="l10" title="空调开关" alias="AIR_SWITCH"/>
+			<value id="l11" title="熄火开关" alias="L_SWITCH"/>
+			<value id="l12" title="手刹信号" alias="HAND"/>
+			<value id="l13" title="电加热开关" alias="ELECTRIC_HEAT_SWITCH"/>
+			<value id="l14" title="电除霜开关" alias="ELECTRIC_DEFROSTING_SWITCH"/>
+			<value id="l15" title="整车气压低报警" alias="VEHICLE_AIR_PRESSURE_LOW_ALARM"/>
+			<value id="l16" title="高压检修开关" alias="HIGH_VOLTAGE_SWITCH"/>
+			<value id="l17" title="快充充电确认" alias="QUICK_CHARGE_CONFIRMATION"/>
+			<value id="l18" title="车载充电确认" alias="VEHICLE_CHARG_CONFIRMATION"/>
+			<value id="l19" title="加速踏板1" alias="PERCENTAGE_TRACTION_PEDAL"/>
+			<value id="l20" title="加速踏板2" alias="PERCENTAGE_TRACTION_PEDAL2"/>
+			<value id="l21" title="制动踏板1" alias="BRAKE_PEDAL_PERCENTAGE"/>
+			<value id="l22" title="制动踏板2" alias="BRAKE_PEDAL_PERCENTAGE2"/>
+		</can>
+		<can name="0C07A1A7">
+			<value id="m1" title="端对地绝缘电阻" alias="POSITIVE_END_INSULATION_RESISTANCE"/>
+			<value id="m2" title="负端对地绝缘电阻" alias="NEGATIVE_END_INSULATION_RESISTANCE"/>
+			<value id="m3" title="整车绝缘报警" alias="VEHICLE_INSULATION_ALARM"/>
+			<value id="m4" title="风扇#1" alias="FAN1"/>
+			<value id="m5" title="风扇#2" alias="FAN2"/>
+			<value id="m6" title="风扇#3" alias="FAN3"/>
+			<value id="m7" title="风扇#4" alias="FAN4"/>
+			<value id="m8" title="风扇#5" alias="FAN5"/>
+			<value id="m9" title="风扇#6" alias="FAN6"/>
+			<value id="m10" title="风扇#7" alias="FAN7"/>
+			<value id="m11" title="风扇#8" alias="FAN8"/>
+			<value id="m12" title="配电#1" alias="DISTRIBUTION1"/>
+			<value id="m13" title="配电#2" alias="DISTRIBUTION2"/>
+			<value id="m14" title="配电#3" alias="DISTRIBUTION3"/>
+			<value id="m15" title="配电#4" alias="DISTRIBUTION4"/>
+			<value id="m16" title="配电#5" alias="DISTRIBUTION5"/>
+			<value id="m17" title="配电#6" alias="DISTRIBUTION6"/>
+			<value id="m18" title="配电#7" alias="DISTRIBUTION7"/>
+			<value id="m19" title="配电#8" alias="DISTRIBUTION8"/>
+			<value id="m20" title="电池管理配电" alias="BATTERY_MANAGEMENT_DISTRIBUTION"/>
+			<value id="m21" title="整车配电" alias="VEHICLE_DISTRIBUTION"/>
+			<value id="m22" title="水泵#1配电" alias="PUMP_DISTRIBUTION1"/>
+			<value id="m23" title="水泵#2配电" alias="PUMP_DISTRIBUTION2"/>
+		</can>
+		<can name="0C19A7A1">
+			<value id="n1" title="整车气压低报警" alias=""/>
+			<value id="n2" title="驻车信号" alias="DRI_SIGNAL"/>
+			<value id="n3" title="后舱门开启" alias="OPEN_REAR_DOOR"/>
+			<value id="n4" title="前门开信号" alias="FRONT_DOOR_SIGNAL"/>
+			<value id="n5" title="后门开信号" alias="BACK_DOOR_SIGNAL"/>
+			<value id="n6" title="二档信号" alias="TWO_SIGNAL"/>
+			<value id="n7" title="一档信号" alias="FIRST_SIGNAL"/>
+			<value id="n8" title="后雾指示" alias="REAR_FOG_INDICATOR"/>
+			<value id="n9" title="近光指示" alias="NEAR_LIGHT_INDICATOR"/>
+			<value id="n10" title="发动机预热" alias="ENG_PRE"/>
+			<value id="n11" title="油量报警" alias="OIL_ALARM"/>
+			<value id="n12" title="右转向指示" alias="RIGHT_TURN_IND"/>
+			<value id="n13" title="前雾指示" alias="FRONT_FOG_INDICATOR"/>
+			<value id="n14" title="远光指示" alias="BEAMINDICATOR"/>
+			<value id="n15" title="左转向指示" alias="LEFT_TURE_INDICATOR"/>
+			<value id="n16" title="自检时的散热配置" alias="COOLING_CONFIGURATION"/>
+			<value id="n17" title="整车车速" alias="SPEED"/>
+			<value id="n18" title="左侧气囊气压" alias="AIR_PRESSURE1"/>
+			<value id="n19" title="右侧气囊气压" alias="AIR_PRESSURE2"/>
+		</can>
+		<can name="1818D0F3">
+			<value id="o1" title="电池总电压" alias="BMS_VOL"/>
+			<value id="o2" title="充放电电流" alias="BMS_CUR"/>
+			<value id="o3" title="SOC" alias="SOC"/>
+			<value id="o4" title="单体模块电压过高" alias="SINGLE_MODULE_VOLTAGE_HIGH"/>
+			<value id="o5" title="单体模块电压过低" alias="SINGLE_MODULE_VOLTAGE_LOW"/>
+			<value id="o6" title="SOC过高" alias="SOC_HIGH"/>
+			<value id="o7" title="SOC过低" alias="SOC_LOW"/>
+			<value id="o8" title="内部通讯失败" alias="INTERNAL_COMMUNICATION_FAILURE"/>
+			<value id="o9" title="总电压欠压" alias="TOTAL_VOLTAGE_UNDER_VOLTAGE"/>
+			<value id="o10" title="总电压过压" alias="TOTAL_OVERVOLTAGE"/>
+			<value id="o11" title="不均衡" alias="UNBALANCED"/>
+			<value id="o12" title="电池温升过快" alias="BATTERY_TEMPERATURE_RISE_FAST"/>
+			<value id="o13" title="烟雾传感器报警" alias="CMOKE_SENSOR_ALARM"/>
+			<value id="o14" title="绝缘报警" alias="INSULATION_ALARM"/>
+			<value id="o15" title="放电电流过大" alias="DISCHARGE_CURRENT_LARGE"/>
+			<value id="o16" title="充电电流过大" alias="CHARG_CURRENT_LARGE"/>
+			<value id="o17" title="温度过高" alias="TEMPERATURE_HIGH"/>
+			<value id="o18" title="温升极差大" alias="LARGE_TEMPERATURE_RISE"/>
+			<value id="o19" title="温度差过大" alias="TEMPERATURE_DIFFERENCE_LARGE"/>
+			<value id="o20" title="散热系统运行" alias="COOL_SYS_OPERATION"/>
+			<value id="o21" title="内部接触器信号" alias="INTERNAL_CONTACT_SIGNAL"/>
+			<value id="o22" title="有内阻偏大电池" alias="LARGE_BATTER_INTERNAL_RESISTANCE"/>
+			<value id="o23" title="有容量偏小电池" alias="SMALL_CAPACITY_BATTERY"/>
+			<value id="o24" title="与充电机存在通讯" alias="COMMUNICATION_CHARGER"/>
+			<value id="o25" title="充电连接确认信号" alias="CHARG_CONNECTION_ACKNOWLEDGE_SIGNAL"/>
+			<value id="o26" title="当前充电状态" alias="CURRENT_CHARG_STATUS"/>
+			<value id="o27" title="熔断器" alias="FUSE"/>
+		</can>
+		<can name="1819D0F3">
+			<value id="p1" title="当前最大允许充电电流" alias="MAX_ALLOWABLE_CURRENT"/>
+			<value id="p2" title="当前最大允许放电电流" alias="MAX_PER_DIS_CUR"/>
+			<value id="p3" title="锂电池系统故障等级" alias="FAULT_LEVEL_LITHIUM_SYS"/>
+			<value id="p4" title="单体平均电压" alias="AVERAGE_MONOMER_VOLTAGE"/>
+			<value id="p5" title="单体最高温度" alias="MAXIMUM_BATTERY_TEMPERATURE"/>
+		</can>
+
+		<can name="181AD0F3">
+			<value id="q1" title="总正绝缘电阻值" alias="RESISTANCE_Q1"/>
+			<value id="q2" title="总负绝缘电阻值" alias="RESISTANCE_Q2"/>
+			<value id="q3" title="单体最高电压" alias="MONOMER_MAXIMUM_VOLTAGE"/>
+			<value id="q4" title="单体最低电压" alias="MONOMER_MINIMUM_VOLTAGE"/>
+		</can>
+		<can name="18XX28F3">
+			<value id="r1" title="单体编号" alias=""/>
+			<value id="r2" title="单体电压" alias=""/>
+		</can>
+		<can name="18XX28F4">
+			<value id="s1" title="采样点 编号" alias=""/>
+		</can>
+		<can name="0C1AA7A1">
+			<value id="eledistance1" title="里程" alias="MILEAGE"/> 
+			<value id="totalDistance1" title="里程" alias="MILEAGE"/>
+		</can>
+	</analyzeType>
+	<!-- amt.pureElectric AMT纯电动 -->
+	<analyzeType type="2" name="AMT纯电动">
+		<can name="0C01A203">
+			<value id="at1" title="档位控制指令" alias=""/>
+			<value id="at2" title="AMT状态信息" alias="STATUS_INFORMATION"/>
+			<value id="at3" title="AMT档位信息" alias="STALL_INFORMATION"/>
+			<value id="at4" title="AMT控制器故障代码" alias="CTRL_FAULT_CODE"/>
+			<value id="at5" title="故障、手刹与坡度" alias="HAND"/>
+			<!-- <value id="at6" title="车速" alias="speed"/> -->
+			<value id="at7" title="起始档位与离合控制" alias="STAR_GEAR_CLUTCH_CTRL"/>
+			<value id="at8" title="AMT控制器LIFE" alias="CTRL"/>
+		</can>
+		<can name="0C01F4A7">
+			<value id="au1" title="空调工作负荷" alias="AIR_CON_LOAD"/>
+			<value id="au2" title="通风" alias="AERATION"/>
+			<value id="au3" title="LIFE值" alias=""/>
+		</can>
+		<can name="0C03A1A7">
+			<value id="av1" title="控制器前端电压" alias="MOTOR_VOL"/>
+			<value id="av2" title="控制器后端电压" alias="CTRL_BACK_VOLTAGE"/>
+			<value id="av3" title="电机控制器电流" alias="MOTOR_CUR"/>
+			<value id="av4" title="电机转速" alias="MOTOR_RPM"/>
+		</can>
+		<can name="0C04A1A7">
+			<value id="aw1" title="电机温度" alias="MOTOR_TEMP"/>
+			<value id="aw2" title="控制器温度" alias="CON_TEMP"/>
+			<value id="aw3" title="电池温度 " alias="BATTERY_TEMPERATURE"/>
+			<value id="aw4" title="电池SOC " alias="BATTERY"/>
+			<value id="aw5" title="离合器分离 " alias="CLUTCH_SEPARATION"/>
+			<value id="aw6" title="空挡 " alias="NEUTRAL_GEAR"/>
+			<value id="aw7" title="倒档 " alias="REVERSE"/>
+			<value id="aw8" title="1档 " alias="FILES1"/>
+			<value id="aw9" title="2档 " alias="FILES2"/>
+			<value id="aw10" title="3档 " alias="FILES3"/>
+			<value id="aw11" title="4档 " alias="FILES4"/>
+			<value id="aw12" title="调试开关有效" alias="DEBUT_SWITCH_ACTIVE"/>
+			<value id="aw13" title="动力开关有效 " alias="POWER_SWITCH_EFFECTIVE"/>
+			<value id="aw14" title="空调开关有效 " alias="AIR_CONDITION_SWITCH_EFFECTIVE"/>
+			<value id="aw15" title="Out1 " alias="OUT1"/>
+			<value id="aw16" title="Out2 " alias="OUT2"/>
+			<value id="aw17" title="Out3 " alias="OUT3"/>
+			<value id="aw18" title="Out4 " alias="OUT4"/>
+			<value id="aw19" title="系统代码 " alias="SYSTEM_CODE"/>
+		</can>
+		<can name="0C05A1A7">
+			<value id="ax1" title="司机加速踏板" alias="PERCENTAGE_TRACTION_PEDAL"/>
+			<value id="ax2" title="加速踏板IVS信号" alias="ACCELERATOR_PEDAL_SIGNAL"/>
+			<value id="ax3" title="司机制动踏板" alias="BRAKE_PEDAL_PERCENTAGE"/>
+			<value id="ax4" title="储能系统电流" alias="CURRENT_ENERGY_STORAGE_SYS"/>
+			<value id="ax5" title="程序版本号" alias="PROGRAM_VERSION_NUMBER"/>
+		</can>
+		<can name="0C08A7F4">
+			<value id="ay1" title="空调实际工作负荷" alias="ACTUAL_WORK_LOAD_AIR_CON"/>
+			<value id="ay2" title="设定温度" alias="SETT_TEMPERATURE"/>
+			<value id="ay3" title="车外实际温度" alias="ACTUAL_OUTSIDE_TEMPERATURE"/>
+			<value id="ay4" title="车内实际温度" alias="ACTUAL_VEHICLE_TEMPERATURE"/>
+			<value id="ay5" title="直流侧电流" alias="DC_SIDE_CURRENT"/>
+			<value id="ay6" title="空压机启动" alias="AIR_COMPRESSOR_STAR"/>
+			<value id="ay7" title="AC开关" alias="AC_SWITCH"/>
+			<value id="ay8" title="空调故障" alias="AIR-CONDITIONING_FAULT"/>
+			<value id="ay9" title="Ready" alias="READY"/>
+			<value id="ay10" title="LIFE值" alias="LIFE_VALUE"/>
+		</can>
+		<can name="0C19A7A1">
+			<value id="az1" title="整车气压低报警" alias="VEHICLE_AIR_PRESSURE_LOW_ALARM"/>
+			<value id="az2" title="驻车信号" alias="DRI_SIGNAL"/>
+			<value id="az3" title="后舱门开启" alias="OPEN_REAR_DOOR"/>
+			<value id="az4" title="整车气压低报警" alias="FRONT_DOOR_SIGNAL"/>
+			<value id="az5" title="后门开信号" alias="BACK_DOOR_SIGNAL"/>
+			<value id="az6" title="二档信号" alias="TWO_SIGNAL"/>
+			<value id="az7" title="一档信号" alias="FIRST_SIGNAL"/>
+			<value id="az8" title="后雾指示" alias="REAR_FOG_INDICATOR"/>
+			<value id="az9" title="近光指示" alias="NEAR_LIGHT_INDICATOR"/>
+			<value id="az10" title="发动机预热" alias="ENG_PRE"/>
+			<value id="az11" title="油量报警" alias="OIL_ALARM"/>
+			<value id="az12" title="右转向指示" alias="RIGHT_TURN_IND"/>
+			<value id="az13" title="前雾指示" alias="FRONT_FOG_INDICATOR"/>
+			<value id="az14" title="远光指示" alias="BEAMINDICATOR"/>
+			<value id="az15" title="左转向指示" alias="LEFT_TURE_INDICATOR"/>
+			<value id="az16" title="左侧气囊气压" alias="AIR_PRESSURE1"/>
+			<value id="az17" title="右侧气囊气压" alias="AIR_PRESSURE2"/>
+			<value id="az18" title="车速" alias="SPEED"/>
+		</can>
+		<can name="0C1AA7A1">
+			<value id="ba1" title="里程" alias="MILEAGE"/>
+		</can>
+		<can name="10262B27">
+			<value id="bb1" title="停机" alias="CTRL_WORK_ORDER"/>
+			<value id="bb2" title="控制系统生命信号Life" alias=""/>
+		</can>
+		<can name="180028F3">
+			<value id="bc1" title="单体1编号" alias=""/>
+			<value id="bc2" title="单体1电压" alias=""/>
+			<value id="bc3" title="单体2编号" alias=""/>
+			<value id="bc4" title="单体2电压" alias=""/>
+		</can>
+		<can name="180028F4">
+			<value id="bd1" title="采样点1编号" alias="SAMPLING_POINT1"/>
+			<value id="bd2" title="采样点1温度" alias="SAMPLING_POINT_TEMPERATURE1"/>
+			<value id="bd3" title="采样点2 编号" alias="SAMPLING_POINT2"/>
+			<value id="bd4" title="采样点2 温度" alias="SAMPLING_POINT_TEMPERATURE2"/>
+			<value id="bd5" title="采样点3 编号" alias="SAMPLING_POINT3"/>
+			<value id="bd6" title="采样点3 温度" alias="SAMPLING_POINT_TEMPERATURE3"/>
+			<value id="bd7" title="采样点4 编号" alias="SAMPLING_POINT4"/>
+			<value id="bd8" title="采样点4 温度" alias="SAMPLING_POINT_TEMPERATURE4"/>
+		</can>
+		<can name="18019888">
+			<value id="be1" title="输出电压" alias="PUMP_OUT_VOLTAGE"/>
+			<value id="be2" title="输出电流" alias="OIL_PUMP_OUTPUT_CURRENT"/>
+			<value id="be3" title="散热器温度" alias="OIL_PUMP_RADIATOR_TEMPERATURE"/>
+			<value id="be4" title="输入欠压" alias="OIL_PUMP_INPUT_UNDERVOLTAGE"/>
+			<value id="be5" title="输入过压" alias="OIL_OVERVOLTAGE"/>
+			<value id="be6" title="驱动电源" alias="OIL_PUMP_POWER_SUPPLY"/>
+			<value id="be7" title="CAN中断" alias="OIL_PUMP_INTERRUPT"/>
+			<value id="be8" title="过热" alias="OIL_PUMP_OVERHEATING"/>
+			<value id="be9" title="短路" alias="OIL_PUMP_SHORT"/>
+			<value id="be10" title="过载" alias="PUMP_OVERLOAD"/>
+			<value id="be11" title="缺相" alias="LACK_OIL_PUMP"/>
+		</can>
+		<can name="1805A89C">
+			<value id="bf1" title="输入电压" alias="PUMP_INPUT_VOLTAGE"/>
+			<value id="bf2" title="输出电压" alias="PUMP_OUTPUT_VOLTAGE"/>
+			<value id="bf3" title="输出电流" alias="PUMP_OUTPUT_CURRENT"/>
+			<value id="bf4" title="散热器温度" alias="PUMP_RADIATOR_TEMPERATURE"/>
+			<value id="bf5" title="输入欠压" alias="PUMP_INPUT_UNDERVOLTAGE"/>
+			<value id="bf6" title="输入过压" alias="PUMP_INPUT_OVERVOLTAGE"/>
+			<value id="bf7" title="驱动电源" alias="PUMP_DRIVE_POWER"/>
+			<value id="bf8" title="CAN中断" alias="PUMP_INTERRUPT"/>
+			<value id="bf9" title="过热" alias="PUMP_OVERHEATING"/>
+			<value id="bf10" title="短路" alias="PUMP_CIRCUIT"/>
+			<value id="bf11" title="过载" alias="PUMP_OVERLOAD"/>
+			<value id="bf12" title="缺相" alias="PUMP_PHASE"/>
+		</can>
+		<can name="180A8898">
+			<value id="bg1" title="频率和电压" alias="OIL_PUMP_FREQUENCY_VOLTAGE"/>
+			<value id="bg2" title="生命信号" alias="OIL_PUMP_LIFE_SIGNAL"/>
+		</can>
+		<can name="180B808D">
+			<!-- <value id="bh1" title="空挡标志" alias="NEUTRAL_SIGN"/>
+			<value id="bh2" title="前进挡标志" alias="FORWARD_STOP_MARK"/>
+			<value id="bh3" title="倒档标志" alias="REVERSE_SIGN"/>
+			<value id="bh4" title="手动挡标志" alias="MANUAL_STOP_SIGN"/>
+			<value id="bh5" title="加档标志" alias="FILE_MARK"/>
+			<value id="bh6" title="减档标志" alias="DOWNSHIFT_MARK"/> -->
+			<value id="bh7" title="操作面板控制器LIFE" alias="OPERATION_PANEL_CTRL"/>
+			<!-- <value id="bh8" title="档位面板代码" alias="GEAR_PANEL_CODE"/> -->
+		</can>
+		<can name="180F8D80">
+			<!-- <value id="bi1" title="R档允许标志" alias="ALLOW_FLAG_R"/>
+			<value id="bi2" title="M档允许标志" alias="ALLOW_FLAG"/> -->
+			<!-- <value id="bi3" title="当前档位值" alias="CURRENT_GEAR"/> -->
+			<!-- <value id="bi4" title="车速值" alias="SPEED"/> -->
+		</can>
+		<can name="18149CA8">
+			<value id="bj1" title="频率和电压" alias="PUMP_FRE_VOL"/>
+			<value id="bj2" title="生命信号" alias="PUMP_LIFE_SIGNAL"/>
+		</can>
+		<can name="1818D0F3">
+
+			<value id="bk1" title="电池总电压" alias="BMS_VOL_K"/>
+			<value id="bk2" title="充放电电流" alias="BMS_CUR"/>
+			<value id="bk3" title="SOC（电池模块SOC）" alias="SOC"/>
+			<value id="bk4" title="单体模块电压过高" alias="SINGLE_MODULE_VOLTAGE_HIGH"/>
+			<value id="bk5" title="单体模块电压过低" alias="SINGLE_MODULE_VOLTAGE_LOW"/>
+			<value id="bk6" title="SOC过高" alias="SOC_HIGH"/>
+			<value id="bk7" title="SOC过低" alias="SOC_LOW"/>
+			<value id="bk8" title="内部通讯失败" alias="INTERNAL_COMMUNICATION_FAILURE"/>
+			<value id="bk9" title="总电压欠压" alias="TOTAL_VOLTAGE_UNDER_VOLTAGE"/>
+			<value id="bk10" title="总电压过压" alias="TOTAL_OVERVOLTAGE"/>
+			<value id="bk11" title="不均衡" alias="UNBALANCED"/>
+			<value id="bk12" title="电池温升过快" alias="BATTERY_TEMPERATURE_RISE_FAST"/>
+			<value id="bk13" title="烟雾传感器报警" alias="CMOKE_SENSOR_ALARM"/>
+			<value id="bk14" title="绝缘报警" alias="INSULATION_ALARM"/>
+			<value id="bk15" title="放电电流过大" alias="DISCHARGE_CURRENT_LARGE"/>
+			<value id="bk16" title="充电电流过大" alias="CHARG_CURRENT_LARGE"/>
+			<value id="bk17" title="温度过高" alias="TEMPERATURE_HIGH"/>
+			<value id="bk18" title="温升极差大" alias="LARGE_TEMPERATURE_RISE"/>
+			<value id="bk19" title="温度差过大" alias="TEMPERATURE_DIFFERENCE_LARGE"/>
+			<value id="bk20" title="散热系统运行" alias="COOL_SYS_OPERATION"/>
+			<value id="bk21" title="内部接触器信号" alias="INTERNAL_CONTACT_SIGNAL"/>
+			<value id="bk22" title="有内阻偏大电池" alias="LARGE_BATTER_INTERNAL_RESISTANCE"/>
+			<value id="bk23" title="有容量偏小电池" alias="SMALL_CAPACITY_BATTERY"/>
+			<value id="bk24" title="车载充电确认信号" alias="COMMUNICATION_CHARGER"/>
+			<value id="bk25" title="充电连接确认信号" alias="CHARG_CONNECTION_ACKNOWLEDGE_SIGNAL"/>
+			<value id="bk26" title="当前充电状态" alias="CURRENT_CHARG_STATUS"/>
+			<value id="bk27" title="熔断器" alias="FUSE"/>
+		</can>
+		<can name="1819A1A4">
+			<value id="bl1" title="正端对地绝缘电阻" alias="POSINSURES"/>
+			<value id="bl2" title="负端对地绝缘电阻" alias="NEG_INSULATION_RESISTANCE"/>
+			<value id="bl3" title="故障等级" alias="FAULT_LEVEL"/>
+			<value id="bl4" title="Life" alias="life"/>
+			<value id="bl5" title="整车漏电报警" alias="VEHICLE_LEAKAGE_ALARM"/>
+		</can>
+
+		<can name="1819D0F3">
+			<value id="bm1" title="当前最大允许充电电流" alias="MAX_ALLOWABLE_CURRENT"/>
+			<value id="bm2" title="当前最大允许放电电流" alias="MAX_PER_DIS_CUR"/>
+			<value id="bm3" title="锂电池系统故障等级" alias="FAULT_LEVEL_LITHIUM_SYS"/>
+			<value id="bm4" title="单体平均电压" alias="AVERAGE_MONOMER_VOLTAGE"/>
+			<value id="bm5" title="单体最高温度" alias="MAXIMUM_BATTERY_TEMPERATURE"/>
+		</can>
+		<can name="181AD0F3">
+			<value id="bn1" title="总正绝缘电阻值" alias="TOTAL_POSITIVE"/>
+			<value id="bn2" title="总负绝缘电阻值" alias="TOTAL_NEGATIVE_INSULATION_RESISTANCE"/>
+			<value id="bn3" title="单体最高电压" alias="MONOMER_MAXIMUM_VOLTAGE"/>
+			<value id="bn4" title="单体最低电压" alias="MONOMER_MINIMUM_VOLTAGE"/>
+		</can>
+
+		<can name="18FF12F7">
+			<value id="bo1" title="输出电压" alias="OUT_VOLTAGE"/>
+			<value id="bo2" title="输出电流" alias="DC_OUTPUT_CURRENT"/>
+			<value id="bo3" title="停机：00；    充电中：01 充电完成：10；保留：11；" alias="WORK_CONDITION"/>
+			<value id="bo4" title="输入欠压" alias="INPUT_UNDERVOLTAGE"/>
+			<value id="bo5" title="输入过压" alias="DC_INPUT_OVERCURRENT"/>
+			<value id="bo6" title="输出过压" alias="OUTPUT_OVERVOLTAGE"/>
+			<value id="bo7" title="限流" alias="CURRENT_LIMIE"/>
+			<value id="bo8" title="过流" alias="FLOW"/>
+			<value id="bo9" title="短路" alias="SHORT_CIRCUIT"/>
+			<value id="bo10" title="过热" alias="OVERHEATED"/>
+			<value id="bo11" title="CAN中断" alias="INTERRUPT"/>
+		</can>
+	</analyzeType>
+
+	<!-- amt.explugin AMT插电式 -->
+	<analyzeType type="3" name="AMT插电式">
+		<can name="0C01A2A7">
+			<value id="ci1" title="电机目标输出转矩" alias="MOTOR_TARGE_OUT_TORQUE"></value>
+			<value id="ci2" title="电机转矩低" alias="MOTOR_CJ"></value>
+			<value id="ci3" title="司机期望转矩" alias="TORQUE_CJ"></value>
+		</can>
+		<can name="0C02A2A7">
+			<value id="cj1" title="累计油耗量" alias="CUMULATIVE_FUEL_CONSUMPTION"/>
+			<value id="cj2" title="工作模式" alias="MOTOR_OPERAT_MODE"/>
+			<value id="cj3" title="故障等级" alias="FAULT_LEVEL"/>
+			<value id="cj4" title="工作状态" alias="WORK_CON"/>
+			<value id="cj5" title="电机驱动系统故障代码" alias="MOTOR_DRI_SYS_FAULT_CODE"/>
+			<value id="cj6" title="电机控制器LIFE" alias="GENERATOR_CTRL"/>
+		</can>
+		<can name="0C03A1A7">
+			<value id="ca1 " title="电机输入电压" alias="MOTOR_VOL"/>
+			<value id="ca2" title="电机输入电流" alias="MOTOR_CUR"/>
+			<value id="ca3" title="电机转速" alias="MOTOR_RPM"/>
+			<value id="ca4" title="电机温度" alias="MOTOR_TEMP"/>
+			<value id="ca5" title="控制器温度" alias="CON_TEMP"/>
+		</can>
+		<can name="0C04A1A7">
+			<value id="cb1" title="TCU发送的发动机目标模式" alias="ENGINE_TARGE_MODE"/>
+			<value id="cb2" title="TCU发送的发动机目标转速" alias="ENG_TARGET_SPEED"/>
+			<value id="cb3" title="TCU发送的发动机目标扭矩" alias="ENG_TORQUE"/>
+			<value id="cb4" title="发动机目标油门" alias="ENGINE_TARGET_THROTTLE"/>
+			<value id="cb5" title="发动机转速" alias="ENGINE_RPM"/>
+			<value id="cb6" title="发动机实际扭矩百分比" alias="ACTUAL_ENG_TOR_PER"/>
+		</can>
+		<can name="0C05A1A7">
+			<value id="cc1" title="发动机油耗率" alias="ENGINE_OIL"/>
+			<value id="cc2" title="发动机水温" alias="CELL_ENGINE"/>
+			<value id="cc3" title="发动机负荷率" alias="ENGINE_LOAD_RATE"/>
+			<value id="cc4" title="尿素罐液位" alias="UREA_TANK_LEVEL"/>
+			<value id="cc5" title="发动机实际油门" alias="ACTUAL_ENGINE_THROTTLE"/>
+			<value id="cc6" title="发动机机油压力" alias="ENGINE_OIL_PRESSURE"/>
+			<value id="cc7" title="发电机进气温度" alias="ENG_INLET_TEM"/>
+		</can>
+		<can name="0C06A1A7">
+			<!-- <value id="cd1" title="需求档位" alias="CD1"/>
+			<value id="cd2" title="离合目标位置" alias="CLUTCH_TARGET_POSITION"/>
+			<value id="cd3" title="当前档位" alias="CURRENT_GEAR"/> -->
+			<value id="cd4" title="离合器实际位置" alias="CLU_ACT_POSI"/>
+			<value id="cd5" title="变速箱故障检修" alias="GEA_CD"/>
+			<value id="cd6" title="停车故障" alias="STOP_CD"/>
+			<value id="cd7" title="适合档位" alias="SUITABLE_GEAR"/>
+			<value id="cd8" title="变速箱输出轴转速" alias="GEARBOX_OUT_SHAFT_SPEED"/>
+			<value id="cd9" title="整车模式" alias="VEHICLE_MODEL"/>
+			<value id="cd10" title="故障代码" alias="FAULT_CD"/>
+			<value id="cd11" title="故障等级" alias="FAULT_LEVEL_CD"/>
+		</can>
+		<can name="0C079AA7">
+			<value id="cp1" title="DC/DC启动指令" alias="STARTCOMMAND"/>
+			<value id="cp2" title="DC/AC（助力转向）启动指令" alias="SATRT_INSTRUCTION_POWST"/>
+			<value id="cp3" title="DC/AC（助力转向）工作模拟式" alias="WORK_SIM_POWST"/>
+			<value id="cp4" title="DC/AC（空压机）启动指令" alias="SATRT_INSTRUCTION_AIRCOM"/>
+		</can>
+		<can name="0C07A1A7">
+			<value id="ce1" title="一档电源" alias="POWER_SOURE"/>
+			<value id="ce2" title="二挡钥匙" alias="TWO_KEY"/>
+			<value id="ce3" title="诊断停机开关" alias="DIA_SHW"/>
+			<value id="ce4" title="动力模式" alias="DYNAMIC_MODEL"/>
+			<value id="ce5" title="空调模式" alias="AIR_SWITCH"/>
+			<value id="ce6" title="插电模式" alias="PLUG_MODE"/>
+			<value id="ce7" title="纯电动模式" alias="PURE_ELE_MODE"/>
+			<value id="ce8" title="传统模式" alias="TRADITIONAL_MODE"/>
+			<value id="ce9" title="前进挡" alias="FILE"/>
+			<value id="ce10" title="倒车档" alias="REVERSE"/>
+			<value id="ce11" title="空挡" alias="NEUTRAL_GEAR"/>
+			<value id="ce12" title="后舱门信号" alias="REAR_DOOR_SIGNAL"/>
+			<value id="ce13" title="检修开关" alias="MAINTENANCE_SWITCH"/>
+			<value id="ce14" title="直流充电确认" alias="CHARG_CON"/>
+			<value id="ce15" title="手刹信号" alias="HAND"/>
+			<value id="ce16" title="整车气压低报警" alias="VEHICLE_AIR_PRESSURE_LOW_ALARM"/>
+			<value id="ce17" title="电池预充电接触器" alias="BATTERY_PRECHARGE_CONTACTOR"/>
+			<value id="ce18" title="电池主接触器" alias="BA_MAIN_CON"/>
+			<value id="ce19" title="控制器低压上电" alias="LOW_VOCON"/>
+			<value id="ce20" title="延迟断电" alias="DELAY_POWER-OFF"/>
+			<value id="ce21" title="发动机唤醒" alias="ENGINE_WAKE"/>
+			<value id="ce22" title="电机使能" alias="MOTOR_ENABLE"/>
+			<value id="ce23" title="电机放电" alias="MOTOR_DISCHARGE"/>
+			<value id="ce24" title="电制动" alias="ELECTRIC_BRAKING"/>
+			<value id="ce25" title="电机风扇" alias="MOTOR_FAN"/>
+			<value id="ce26" title="电机水泵" alias="MOTOR_PUMP"/>
+			<value id="ce27" title="启动马达" alias="START_MOTOR"/>
+			<value id="ce28" title="电池仓风扇" alias="BATTERY_FAN"/>
+			<value id="ce29" title="加速踏板" alias="PERCENTAGE_TRACTION_PEDAL"/>
+			<value id="ce30" title="制动踏板" alias="BRAKE_PEDAL_PERCENTAGE"/>
+			<value id="ce31" title="目标功率" alias="CE31"/>
+		</can>
+		<can name="0C08A1A7">
+			<value id="cf1" title="程序版本号" alias="PROGRAM_VERSION_NUMBER"/>
+			<value id="cf2" title="SPN" alias="SPN"/>
+			<value id="cf3" title="FMI" alias="FMI"/>
+			<value id="cf4" title="整车控制器" alias="VCU_LIFE"/>
+		</can>
+
+		<can name="0C09A79B">
+			<value id="cq1" title="油泵DC/AC W相输出电流" alias="OIL_PUMP_PHASE_OUT_CURRENT"/>
+			<value id="cq2" title="油泵DC/AC V相输出电流" alias="OIL_PUMP_OUT_CURRENT_V"/>
+			<value id="cq3" title="油泵DC/AC U相输出电流" alias="OIL_PUMP_OUT_CURRENT_U"/>
+			<value id="cq4" title="散热温度" alias="COOLING_TEMPERATURE"/>
+			<value id="cq5" title="输入过流" alias="INPUT_OVERCURRENT"/>
+			<value id="cq6" title="整机过热" alias="MACHINE_OVER"/>
+			<value id="cq7" title="输入欠压" alias="PUT_UNDERVOLTAGE"/>
+			<value id="cq8" title="输入过压" alias="PUT_OVERVOLTAGE"/>
+			<value id="cq9" title="输出过流" alias="OUT_OVERCURRENT"/>
+			<value id="cq10" title="缺相保护" alias="PH_PRO"/>
+			<value id="cq11" title="门极过流" alias="GATE_CUR"/>
+			<value id="cq12" title="状态 1运行 0 停机" alias="STATE"/>
+		</can>
+		<can name="0C19A7A1">
+			<value id="cg1" title="整车气压低报警" alias="VEHICLE_AIR_PRESSURE_LOW_ALARM" />
+			<value id="cg2" title="驻车信号" alias="DRI_SIGNAL" />
+			<value id="cg3" title="后舱门开启信号" alias="OPEN_REAR_DOOR" />
+			<value id="cg4" title="前门开信号" alias="FRONT_DOOR_SIGNAL" />
+			<value id="cg5" title="后门开信号" alias="BACK_DOOR_SIGNAL" />
+			<value id="cg6" title="钥匙二挡信号" alias="TWOKEYSIGNAL" />
+			<value id="cg7" title="钥匙一档信号" alias="KEY_SIGNAL" />
+			<value id="cg8" title="后雾指示" alias="REAR_FOG_INDICATOR" />
+			<value id="cg9" title="近光指示" alias="NEAR_LIGHT_INDICATOR" />
+			<value id="cg10" title="发动机预热" alias="ENG_PRE" />
+			<value id="cg11" title="油量报警" alias="OIL_ALARM" />
+			<value id="cg12" title="右转向指示" alias="RIGHT_TURN_IND" />
+			<value id="cg13" title="前雾指示" alias="FRONT_FOG_INDICATOR" />
+			<value id="cg14" title="远光指示" alias="BEAMINDICATOR" />
+			<value id="cg15" title="左转向指示" alias="LEFT_TURE_INDICATOR" />
+			<value id="cg16" title="整车车速" alias="SPEED" />
+			<value id="cg17" title="左侧气囊气压" alias="AIR_PRESSURE1" />
+			<value id="cg18" title="右侧气囊气压" alias="AIR_PRESSURE2" />
+		</can>
+		<can name="0C1AA7A1">
+			<value id="ch1" title="仪表累计里程" alias="MILEAGE"/>
+		</can>
+		<can name="180028F3">
+			<value id="cn1" title="单体1编号" alias=" "/>
+			<value id="cn2" title="单体1电压" alias=" "/>
+			<value id="cn3" title="单体2编号" alias=" "/>
+			<value id="cn4" title="单体2电压" alias=" "/>
+		</can>
+		<can name="180028F4">
+			<value id="co1" title="采样点1编号" alias="SAMPLING_POINT1"/>
+			<value id="co2" title="采样点1温度" alias="SAMPLING_POINT_TEMPERATURE1"/>
+			<value id="co3" title="采样点2编号" alias="SAMPLING_POINT2"/>
+			<value id="co4" title="采样点2温度" alias="SAMPLING_POINT_TEMPERATURE2"/>
+			<value id="co5" title="采样点3编号" alias="SAMPLING_POINT3"/>
+			<value id="co6" title="采样点3温度" alias="SAMPLING_POINT_TEMPERATURE3"/>
+			<value id="co7" title="采样点4编号" alias="SAMPLING_POINT4"/>
+			<value id="co8" title="采样点4温度" alias="SAMPLING_POINT_TEMPERATURE4"/>
+		</can>
+		<can name="18019EA7">
+			<value id="cr1" title="模式控制指令" alias="MODE_CTRL_INSTRUCTION"/>
+			<value id="cr2" title="LIFE值" alias="LIFE_VALUE"/>
+		</can>
+		<can name="1818D0F3">
+			<value id="ck1" title="电池总电压" alias="BMS_VOL"/>
+			<value id="ck2" title="充放电电流" alias="BMS_CUR"/>
+			<value id="ck3" title="SOC" alias="SOC"/>
+			<value id="ck4" title="单体模块电压过高" alias="SINGLE_MODULE_VOLTAGE_HIGH"/>
+			<value id="ck5" title="单体模块电压过低" alias="SINGLE_MODULE_VOLTAGE_LOW"/>
+			<value id="ck6" title="SOC过高" alias="SOC_HIGH"/>
+			<value id="ck7" title="SOC过低" alias="SOC_LOW"/>
+			<value id="ck8" title="内部通讯失败" alias="INTERNAL_COMMUNICATION_FAILURE"/>
+			<value id="ck9" title="总电压欠压" alias="TOTAL_VOLTAGE_UNDER_VOLTAGE"/>
+			<value id="ck10" title="总电压过压" alias="TOTAL_OVERVOLTAGE"/>
+			<value id="ck11" title="不均衡" alias="UNBALANCED"/>
+			<value id="ck12" title="电池热失控" alias="BATT_THE_RUNAWAY"/>
+			<value id="ck13" title="DCDC故障报警" alias="FAULT_ALARM"/>
+			<value id="ck14" title="绝缘报警" alias="INSULATION_ALARM"/>
+			<value id="ck15" title="放电电流过大" alias="DISCHARGE_CURRENT_LARGE"/>
+			<value id="ck16" title="充电电流过大" alias="CHARG_CURRENT_LARGE"/>
+			<value id="ck17" title="温度过高" alias="TEMPERATURE_HIGH"/>
+			<value id="ck18" title="温度报警" alias="TEM_ALARM"/>
+			<value id="ck19" title="温度差过大" alias="TEMPERATURE_DIFFERENCE_LARGE"/>
+			<value id="ck20" title="散热系统运行" alias="COOL_SYS_OPERATION"/>
+			<value id="ck21" title="内部接触器信号" alias="INTERNAL_CONTACT_SIGNAL"/>
+			<value id="ck22" title="有内阻偏大电池" alias="LARGE_BATTER_INTERNAL_RESISTANCE"/>
+			<value id="ck23" title="有容量偏小电池" alias="SMALL_CAPACITY_BATTERY"/>
+			<value id="ck24" title="与充电机存在通讯" alias="COMMUNICATION_CHARGER"/>
+			<value id="ck25" title="充电连接确认信号" alias="CHARG_CONNECTION_ACKNOWLEDGE_SIGNAL"/>
+			<value id="ck26" title="当前充电状态" alias="CURRENT_CHARG_STATUS"/>
+		</can>
+		<can name="1819D0F3">
+			<value id="cl1" title="当前最大允许充电电流" alias="MAX_ALLOWABLE_CURRENT"/>
+			<value id="cl2" title="当前最大允许放电电流" alias="MAX_PER_DIS_CUR"/>
+			<value id="cl3" title="系统故障等级" alias="FAULT_LEVEL_LITHIUM_SYS"/>
+			<value id="cl4" title="单体平均电压" alias="AVERAGE_MONOMER_VOLTAGE"/>
+			<value id="cl5" title="最高温度" alias="MAXIMUM_BATTERY_TEMPERATURE"/>
+		</can>
+		<can name="181AD0F3">
+			<value id="cm1" title="电池总正绝缘电阻值 1KΩ/bit" alias="TOTAL_POSITIVE"/>
+			<value id="cm2" title="电池总负绝缘电阻值 1KΩ/bit" alias="TOTAL_NE_INS_RESIS"/>
+			<value id="cm3" title="单体最高电压 0.01V/ bit" alias="MONOMER_MAXIMUM_VOLTAGE"/>
+			<value id="cm4" title="单体最低电压 0.01V/ bit" alias="MONOMER_MINIMUM_VOLTAGE"/>
+		</can>
+		<can name="18FFC09E">
+			<value id="cs1" title="回风传感器断路" alias="RETURN_AIR_SENSOR_CIRCUIT"/>
+			<value id="cs2" title="车外传感器断路" alias="OPEN_CIR_BREAKER"/>
+			<value id="cs3" title="蒸发器传感器1断路" alias="EVAPORATOR_SENSOR1"/>
+			<value id="cs4" title="蒸发器传感器2断路" alias="EVAPORATOR_SENSOR2"/>
+			<value id="cs5" title="空调电源过压" alias="AIR_CONDITIONING_OVERVOLTAGE"/>
+			<value id="cs6" title="空调电源欠压" alias="AIR_CONDITIONING_UNDERVOLTAGE"/>
+			<value id="cs7" title="空调压力1故障" alias="AIR_CON_PRE_FAULT1"/>
+			<value id="cs8" title="空调压力2故障" alias="AIR_CON_PRE_FAULT2"/>
+			<value id="cs9" title="开机" alias="BOOT"/>
+			<value id="cs10" title="中速" alias="中速"/>
+			<value id="cs11" title="高速" alias="高速"/>
+			<value id="cs12" title="加热" alias="HEATING"/>
+			<value id="cs13" title="制冷1化霜" alias="REFRIGERATION_DEFROSTING"/>
+			<value id="cs14" title="新风" alias="FRESHAIR"/>
+			<value id="cs15" title="杀菌" alias="STERILIZATION"/>
+			<value id="cs16" title="制冷2化霜" alias="REFRI_DEF2"/>
+			<value id="cs17" title="制冷2" alias="REFRIGERATION2"/>
+			<value id="cs18" title="制冷1" alias="REFRI1"/>
+			<value id="cs19" title="车内实际温度 0.5℃/bit" alias="ACTUAL_VEHICLE_TEMPERATURE"/>
+			<value id="cs20" title="车外实际温度 0.5℃/bit" alias="ACTUAL_OUTSIDE_TEMPERATURE"/>
+			<value id="cs21" title="面板设置温度 0.5℃/bit" alias="PANEL_SET_TEM"/>
+			<value id="cs22" title="制冷请求" alias="REFRIGERATION_REQUEST"/>
+			<value id="cs23" title="LIFE值" alias=" "/>
+		</can>
+
+	</analyzeType>
+	<!-- tp4 TP$ -->
+	<analyzeType type="4" name="TP4串联插电式">
+		<can name="0C01A7B7">
+			<value id="el1" title="一档开关" alias="FIRST_SWITCH"></value>
+			<value id="el10" title="空调开关" alias="AIR_SWITCH"></value>
+			<value id="el11" title="熄火开关" alias=""></value>
+			<value id="el12" title="手刹信号" alias=""></value>
+			<value id="el13" title="电加热开关" alias="ELECTRIC_HEAT_SWITCH"></value>
+			<value id="el14" title="电除霜开关" alias="ELECTRIC_DEFROSTING_SWITCH"></value>
+			<value id="el15" title="整车气压低报警" alias=""></value>
+			<value id="el16" title="高压检修开关" alias="HIGH_VOLTAGE_SWITCH"></value>
+			<value id="el17" title="混动模式" alias=""></value>
+			<value id="el18" title="纯电模式" alias=""></value>
+			<value id="el19" title="升弓信号" alias=""></value>
+			<value id="el2" title="二档钥匙" alias="TWO_KEY"></value>
+			<value id="el20" title="钥匙Start信号" alias=""></value>
+			<value id="el21" title="舱灯信号" alias=""></value>
+			<value id="el22" title="加速踏板 0.4%/bit，正常取值0-250" alias="PERCENTAGE_TRACTION_PEDAL"></value>
+			<value id="el23" title="制动踏板 0.4%/bit，正常取值0-250" alias="BRAKE_PEDAL_PERCENTAGE"></value>
+			<value id="el24" title="数据采集异常状态" alias=""></value>
+			<value id="el3" title="前进" alias="FILE"></value>
+			<value id="el4" title="后退" alias="REVERSE"></value>
+			<value id="el5" title="空档" alias="NEUTRAL_GEAR"></value>
+			<value id="el6" title="诊断开关" alias="DIAGNOSTIC_SWITCH"></value>
+			<value id="el7" title="ST1高温开关" alias="HIGH_TEMPERATURE_SWITCH"></value>
+			<value id="el8" title="ST2限低温开关" alias="LOW_TEMPERATURE_SWITCH"></value>
+			<value id="el9" title="爬坡开关" alias="CLIMBING_SWITCH"></value>
+		</can>
+		<can name="0C03A1A7">
+			<value id="da1" title="动力总成控制器输入电压 0.1V/bit；偏移量：-0000,范围: 0V ~ 999V" alias="MOTOR_VOL"/>
+			<value id="da2" title="动力总成控制器输入电流 0.1A/bit；偏移量：-10000,范围: -999A ~ 999A" alias="MOTOR_CUR"/>
+			<value id="da3" title="驱动电机转矩 1NM/bit；偏移量：-32000,范围：-3000~3000Nm" alias="DRI_MOTOR_TOR"/>
+			<value id="da4" title="电机转速 0.5 rpm /bit；偏移量：0,范围：0 ~ 9999" alias="MOTOR_RPM"/>
+		</can>
+		<can name="0C04A1A7">
+			<value id="db1" title="驱动电机温度 1 ℃/bit,偏移量：-40℃" alias="MOTOR_TEMP"/>
+			<value id="db10" title="车型模式 0:纯电动模式，1:混动模式，2:插电模式" alias="VEHICLE_MO"/>
+			<value id="db11" title="高压维修开关 1：有效,0：无效" alias="HIGH_VOSWI"/>
+			<value id="db12" title="主接触器 1：有效,0：无效" alias="MAIN_CONTACTOR_STATE"/>
+			<value id="db13" title="预充电接触器 1：有效,0：无效" alias="PRECHARGE_CONTACTOR"/>
+			<value id="db14" title="AC空调信号 1：有效,0：无效" alias="AIR_SIGNAL"/>
+			<value id="db15" title="充电检测信号 1：有效,0：无效" alias="CHARGE_DETECTION_SIGNAL"/>
+			<value id="db16" title="发动机启动信号 1：有效,0：无效" alias="GENERATORWORKSWITCH"/>
+			<value id="db17" title="电制动有效 1：有效,0：无效" alias="ELECTRICBRAKESWITCH"/>
+			<value id="db18" title="电机工作状态 待机：0驱动：1，发电：2，故障：3" alias="NOTOR_WORK_STATE"/>
+			<value id="db19" title="发电机工作状态 待机：0驱动：1，发电：2，故障：3" alias="GENERATOR_WORK_STATE"/>
+			<value id="db2" title="驱动电机控制器温度 1 ℃/bit,偏移量：-40℃" alias="CON_TEMP"/>
+			<value id="db20" title="整车控制系统工作状态 正常：0，限功：1，跛行：2，紧急：3" alias="VEHICLE_CTRL_STATUS"/>
+			<value id="db21" title="系统代码 系统代码分辨率1/bit,偏移量：0,范围：0~1023" alias="SYSTEM_CODE"/>
+			<value id="db3" title="发电机温度 1 ℃/bit,偏移量：-40℃" alias="GENERATOR_TEMPERATURE"/>
+			<value id="db4" title="发电机控制器温度 1 ℃/bit,偏移量：-40℃" alias="CENERATOR_DB"/>
+			<value id="db5" title="控制器上电指示 1：有效,0：无效" alias="CTRLPOWER"/>
+			<!-- <value id="db6" title="空挡 1：有效,0：无效" alias="NEUTRAL_GEAR"/>
+			<value id="db7" title="倒档 1：有效,0：无效" alias="REVERSE"/>
+			<value id="db8" title="D档 1：有效,0：无效" alias="FILE"/> -->
+			<value id="db9" title="爬坡模式 1：有效,0：无效" alias="CLIMODE"/>
+		</can>
+		<can name="0C05A1A7">
+			<value id="dc1" title="发动机转速 0.125rpm/bit，偏移量：0,范围: 0rpm ~ 8031.875rpm" alias="ENGINE_RPM"></value>
+			<value id="dc2" title="发动机水温 1℃/bit，-40℃" alias="CELL_ENGINE"></value>
+			<value id="dc3" title="发动机负荷率 1%/bit，0" alias="ENGINE_LOAD_RATE"></value>
+			<value id="dc4" title="尿素罐液位 0.4%/bit, 偏移 0，0~ 100%" alias="UREA_TANK_LEVEL"></value>
+			<value id="dc5" title="发动机目标油门 0.4%/bit, 偏移 0，0~ 100%" alias="ENGINE_TARGET_THROTTLE"></value>
+			<value id="dc6" title="发动机实际油门 0.4%/bit, 偏移 0，0~ 100%" alias="ACTUAL_ENGINE_THROTTLE"></value>
+			<value id="dc7" title="整车控制器Life 1/bit 偏移量：0 范围：0 ~ 255" alias="VCU_LIFE"></value>
+		</can>
+		<can name="0C06A1A7">
+			<value id="dd1" title="牵引踏板百分比 0.4%/bit, 偏移 0，0~ 100%" alias="PERCENTAGE_TRACTION_PEDAL"></value>
+			<value id="dd2" title="制动踏板百分比 0.4%/bit, 偏移 0，0~ 100%" alias="BRAKE_PEDAL_PERCENTAGE"></value>
+			<value id="dd3" title="发动机机油压力 4kPa/bit，偏移 0" alias="ENGINE_OIL_PRESSURE"></value>
+			<value id="dd4" title="发动机进气温度 1 ℃/bit；偏移量：-40℃；范围: -40~ 210℃" alias="ENGINE_INLET_TEMPERATURE"></value>
+			<value id="dd5" title="发动机累计油(气)耗量 0.5L/bit；偏移量：0" alias="ENGINE_OIL_CONSUMPTION"></value>
+		</can>
+		<can name="0C079AA7">
+			<value id="eh1" title="DC/DC启动指令 0x55：启动，0xAA：关闭" alias=""></value>
+			<value id="eh2" title="DC/AC（助力转向）启动指令 0x55：启动，0xAA：关闭" alias="SATRT_INSTRUCTION_POWST"></value>
+			<value id="eh3" title="DC/AC（助力转向）工作模拟式 0x55：正常运行，0xAA：待机" alias="WORK_SIM_POWST"></value>
+			<value id="eh4" title="DC/AC（空压机）启动指令 0x55：启动，0xAA：关闭" alias="SATRT_INSTRUCTION_AIRCOM"></value>
+		</can>
+		<can name="0C07A1A7">
+			<value id="de1" title="调试参数1 显示二进制" alias="PARAM1"></value>
+			<value id="de2" title="调试参数2 显示二进制" alias="PARAM2"></value>
+			<value id="de3" title="调试参数3 显示二进制" alias="PARAM3"></value>
+			<value id="de4" title="调试参数4 显示十进制" alias="PARAM4"></value>
+			<value id="de5" title="调试参数5 显示十进制" alias="PARAM5"></value>
+			<value id="de6" title="调试参数6 显示十进制" alias="PARAM6"></value>
+			<value id="de7" title="调试参数7 显示十进制" alias="PARAM7"></value>
+			<value id="de8" title="调试参数8 显示十进制" alias="PARAM8"></value>
+		</can>
+		<can name="0C07F2A7">
+			<value id="ed1" title="发电机目标转矩/发电机目标转速 发电机目标转矩:1NM/bit，-32000 发电机目标转速:0.5RPM/bit" alias=""></value>
+			<value id="ed10" title="模式 0:转矩控制模式 1:转速控制模式" alias=""></value>
+			<value id="ed11" title="整车控制器Life" alias=""></value>
+			<value id="ed2" title="发电机控制器最高限制电压 0.1V/bit，-10000" alias=""></value>
+			<value id="ed3" title="发电机控制器直流侧限制电流 0.1A/bit,-10000" alias=""></value>
+			<value id="ed4" title="待机 1：要求电机控制器停止励磁；0：电机控制器正常工作" alias=""></value>
+			<value id="ed5" title="空转 0:无效 1:有效" alias=""></value>
+			<value id="ed6" title="驱动 0:无效 1:有效" alias=""></value>
+			<value id="ed7" title="制动 0:无效 1:有效" alias=""></value>
+			<value id="ed8" title="反转 0:无效 1:有效" alias=""></value>
+			<value id="ed9" title="下电请求 0:无效 1:有效" alias=""></value>
+		</can>
+		<can name="0C08A1A7">
+			<value id="dr1" title="瞬时油(气)耗 0.5L/h/位，偏移量0" alias="INSTANTFUEL"></value>
+			<value id="dr2" title="车辆小计百公里油耗 0.01L/bit，便宜量0,范围：0-100.00L/100km" alias="TOVEFUEL"></value>
+			<value id="dr3" title="车辆总计百公里油耗 0.01L/bit，便宜量0,范围：0-100.00L/100km" alias="VEFUCONPER"></value>
+			<value id="dr4" title="驱动电机目标转矩 1Nm/bit，偏移量-32000" alias=""></value>
+			<value id="dr5" title="发动机目标转速 10rpm/bit，偏移量0" alias=""></value>
+		</can>
+		<can name="0C08A79A">
+			<value id="ei1" title="输出电压 分辨率0.1V/bit，偏移量-10000" alias=""></value>
+			<value id="ei10" title="门极过流" alias=""></value>
+			<value id="ei11" title="状态 1运行 0 停机" alias=""></value>
+			<value id="ei2" title="输出电流 分辨率0.1A/bit，偏移量-10000" alias=""></value>
+			<value id="ei3" title="输入电压 分辨率0.1V/bit，偏移量-10000" alias=""></value>
+			<value id="ei4" title="散热器温度 分辨率1℃/bit，偏移量-40" alias=""></value>
+			<value id="ei5" title="输出过流" alias=""></value>
+			<value id="ei6" title="输出过压" alias=""></value>
+			<value id="ei7" title="整机过热" alias=""></value>
+			<value id="ei8" title="输入欠压" alias=""></value>
+			<value id="ei9" title="输入过压" alias=""></value>
+		</can>
+		<can name="0C08A7F0">
+			<value id="eb1" title="驱动电机转矩 1NM/bit，-32000" alias=""></value>
+			<value id="eb10" title="允许下电 0:无效 1:有效" alias=""></value>
+			<value id="eb11" title="Ready 0:无效 1:有效" alias=""></value>
+			<value id="eb12" title="整车控制器Life 0－255" alias=""></value>
+			<value id="eb2" title="驱动电机转速 0.5RPM/bit" alias=""></value>
+			<value id="eb3" title="动力总成控制器输入电流 0.1A/bit,-10000" alias=""></value>
+			<value id="eb4" title="停机 0:无效 1:有效" alias=""></value>
+			<value id="eb5" title="驱动 0:无效 1:有效" alias=""></value>
+			<value id="eb6" title="制动 0:无效 1:有效" alias=""></value>
+			<value id="eb7" title="向后 0:无效 1:有效" alias=""></value>
+			<value id="eb8" title="向前 0:无效 1:有效" alias=""></value>
+			<value id="eb9" title="转矩/转速模式 0:转矩模式 1:转速模式" alias=""></value>
+		</can>
+		<can name="0C09A79B">
+			<value id="dh1" title="油泵DC/AC W相输出电流 分辨率0.1A/bit，偏移量-10000" alias="OIL_PUMP_PHASE_OUT_CURRENT"></value>
+			<value id="dh10" title="缺相保护 1表示有效，0表示无效" alias=""></value>
+			<value id="dh11" title="门极过流 1表示有效，0表示无效" alias="GATE_CUR"></value>
+			<value id="dh12" title="状态 1运行,0 停机" alias="STATE"></value>
+			<value id="dh2" title="油泵DC/AC V相输出电流 分辨率0.1A/bit，偏移量-10000" alias="OIL_PUMP_OUT_CURRENT_V"></value>
+			<value id="dh3" title="油泵DC/AC U相输出电流 分辨率0.1A/bit，偏移量-10000" alias="OIL_PUMP_OUT_CURRENT_U"></value>
+			<value id="dh4" title="散热温度 分辨率1℃/bit，偏移量-40" alias="COOLING_TEMPERATURE"></value>
+			<value id="dh5" title="输入过流 1表示有效，0表示无效" alias="INPUT_OVERCURRENT"></value>
+			<value id="dh6" title="整机过热 1表示有效，0表示无效" alias="MACHINE_OVER"></value>
+			<value id="dh7" title="输入欠压 1表示有效，0表示无效" alias="PUT_UNDERVOLTAGE"></value>
+			<value id="dh8" title="输入过压 1表示有效，0表示无效" alias="PUT_OVERVOLTAGE"></value>
+			<value id="dh9" title="输出过流 1表示有效，0表示无效" alias="OUT_OVERCURRENT"></value>
+		</can>
+		<can name="0C09A7F0">
+			<value id="ec1" title="动力总成控制器总电压 0.1V/bit，-10000" alias=""></value>
+			<value id="ec2" title="电机温度 1℃/bit，-40" alias=""></value>
+			<value id="ec3" title="电机控制器温度 1℃/bit，-40" alias=""></value>
+			<value id="ec4" title="电机驱动系统故障代码 0正常，1-99表示故障码" alias="MOTOR_DRI_SYS_FAULT_CODE"></value>
+		</can>
+		<can name="0C0AA79D">
+			<value id="ej1" title="气泵DC/AC W相输出电流 分辨率0.1A/bit，偏移量-10000" alias=""></value>
+			<value id="ej10" title="缺相保护" alias="PH_PRO"></value>
+			<value id="ej11" title="门极过流" alias=""></value>
+			<value id="ej12" title="状态1运行 0 停机" alias=""></value>
+			<value id="ej2" title="气泵DC/AC V相输出电流 分辨率0.1A/bit，偏移量-10000" alias=""></value>
+			<value id="ej3" title="气泵DC/AC U相输出电流 分辨率0.1A/bit，偏移量-10000" alias=""></value>
+			<value id="ej4" title="散热温度 分辨率1℃/bit，偏移量-40" alias=""></value>
+			<value id="ej5" title="输入过流" alias=""></value>
+			<value id="ej6" title="整机过热" alias=""></value>
+			<value id="ej7" title="输入欠压" alias=""></value>
+			<value id="ej8" title="输入过压" alias=""></value>
+			<value id="ej9" title="输出过流" alias=""></value>
+		</can>
+		<can name="0C0AA7F0">
+			<value id="df1" title="软件版本号（控制器类型信息）" alias="SOFTWARE_VE_NUMBER_CTRLIN"></value>
+			<value id="df2" title="软件版本号（控制器版本号）" alias="SOFTWARE_VE_NUMBER_CTRL"></value>
+			<value id="df3" title="软件版本号（电机版本号）" alias="SOFTWARE_VE_NUMBER_ELECT"></value>
+			<value id="df4" title="软件版本号（附加信息）" alias="SOFTWARE_VE_NUMBER_INFOR"></value>
+			<value id="df5" title="软件版本号（主版本信息）" alias="SOFTWARE_VE_NUMBER_MAIN"></value>
+			<value id="df6" title="软件版本号（子版本信息）" alias="SOFTWARE_VE_NUMBER_SON"></value>
+		</can>
+		<can name="0C0AA79D">
+			<value id="ej1" title="气泵DC/AC W相输出电流 分辨率0.1A/bit，偏移量-10000" alias=""></value>
+			<value id="ej10" title="缺相保护" alias="PH_PRO"></value>
+			<value id="ej11" title="门极过流" alias=""></value>
+			<value id="ej12" title="状态1运行 0 停机" alias=""></value>
+			<value id="ej2" title="气泵DC/AC V相输出电流 分辨率0.1A/bit，偏移量-10000" alias=""></value>
+			<value id="ej3" title="气泵DC/AC U相输出电流 分辨率0.1A/bit，偏移量-10000" alias=""></value>
+			<value id="ej4" title="散热温度 分辨率1℃/bit，偏移量-40" alias=""></value>
+			<value id="ej5" title="输入过流" alias=""></value>
+			<value id="ej6" title="整机过热" alias=""></value>
+			<value id="ej7" title="输入欠压" alias=""></value>
+			<value id="ej8" title="输入过压" alias=""></value>
+			<value id="ej9" title="输出过流" alias=""></value>
+		</can>
+		<can name="0C0AA7F0">
+			<value id="df1" title="软件版本号（控制器类型信息）" alias=""></value>
+			<value id="df2" title="软件版本号（控制器版本号）" alias=""></value>
+			<value id="df3" title="软件版本号（电机版本号）" alias=""></value>
+			<value id="df4" title="软件版本号（附加信息）" alias=""></value>
+			<value id="df5" title="软件版本号（主版本信息）" alias=""></value>
+			<value id="df6" title="软件版本号（子版本信息）" alias=""></value>
+		</can>
+		<can name="0C0AA7F2">
+			<value id="ee1" title="发电机转矩 1NM/bit，-32000" alias=""></value>
+			<value id="ee10" title="允许下电 1:有效 0:无效" alias=""></value>
+			<value id="ee11" title="模式 0:转矩模式 1:转速模式" alias=""></value>
+			<value id="ee12" title="发电机控制器LIFE" alias="GENERATOR_CTRL"></value>
+			<value id="ee2" title="发电机转速 0.5RPM/bit" alias=""></value>
+			<value id="ee3" title="发电机控制器估算电流 0.1A/bit,-10000" alias=""></value>
+			<value id="ee4" title="启机/停机 1:启机 0:停机" alias=""></value>
+			<value id="ee5" title="怠机 1:有效 0:无效" alias=""></value>
+			<value id="ee6" title="向前/向后 1:向前 0:向后" alias=""></value>
+			<value id="ee7" title="驱动/制动 1:驱动 0:制动" alias=""></value>
+			<value id="ee8" title="故障 1:有效 0:无效" alias=""></value>
+			<value id="ee9" title="Ready 1:有效 0:无效" alias=""></value>
+		</can>
+		<can name="0C0BA7F2">
+			<value id="ef1" title="发电机温度 1℃/bit，-40" alias=""></value>
+			<value id="ef2" title="发电机控制器温度 1℃/bit，-40" alias=""></value>
+			<value id="ef3" title="发电机故障代码 0正常，1～99为故障" alias="GENERATOR_FAULT_CODE"></value>
+		</can>
+		<can name="0C0CA7F2">
+			<value id="eg1" title="软件版本号（控制器类型信息）" alias=""></value>
+			<value id="eg2" title="软件版本号（控制器版本号）" alias=""></value>
+			<value id="eg3" title="软件版本号（电机版本号）" alias=""></value>
+			<value id="eg4" title="软件版本号（附加信息）" alias=""></value>
+			<value id="eg5" title="软件版本号（主版本信息）" alias=""></value>
+			<value id="eg6" title="软件版本号（子版本信息）" alias=""></value>
+		</can>
+		<can name="0C17A709">
+			<value id="fm1" title="锂电池输入总电能 分辨率0.01kWh/bit，偏移量0" alias=""></value>
+			<value id="fm2" title="锂电池输出总电能 分辨率0.01kWh/bit，偏移量0" alias=""></value>
+		</can>
+		<can name="0C19A7A1">
+			<value id="di1" title="整车气压低报警 1有效，0无效" alias="VEHICLE_AIR_PRESSURE_LOW_ALARM"></value>
+			<value id="di10" title="发动机预热 1有效，0无效" alias="ENG_PRE"></value>
+			<value id="di11" title="油量报警 1有效，0无效" alias="OIL_ALARM"></value>
+			<value id="di12" title="右转向指示 1有效，0无效" alias="RIGHT_TURN_IND"></value>
+			<value id="di13" title="前雾指示 1有效，0无效" alias="FRONT_FOG_INDICATOR"></value>
+			<value id="di14" title="远光指示 1有效，0无效" alias="BEAMINDICATOR"></value>
+			<value id="di15" title="左转向指示 1有效，0无效" alias="LEFT_TURE_INDICATOR"></value>
+			<value id="di16" title="整车车速 (0.5km/h)/bit,0" alias="SPEED"></value>
+			<value id="di17" title="左侧气囊气压 0.1kpa/bit,0" alias="AIR_PRESSURE1"></value>
+			<value id="di18" title="右侧气囊气压 0.1kpa/bit,0" alias="AIR_PRESSURE2"></value>
+			<value id="di2" title="驻车信号 1有效，0无效" alias="HAND"></value>
+			<value id="di3" title="后舱门开启信号 1有效，0无效" alias="OPEN_REAR_DOOR"></value>
+			<value id="di4" title="前门开信号 1有效，0无效" alias="FRONT_DOOR_SIGNAL"></value>
+			<value id="di5" title="后门开信号 1有效，0无效" alias="BACK_DOOR_SIGNAL"></value>
+			<value id="di6" title="钥匙二档信号 1有效，0无效" alias="TWOKEYSIGNAL"></value>
+			<value id="di7" title="钥匙一档信号 1有效，0无效" alias="KEY_SIGNAL"></value>
+			<value id="di8" title="后雾指示 1有效，0无效" alias="REAR_FOG_INDICATOR"></value>
+			<value id="di9" title="近光指示 1有效，0无效" alias="NEAR_LIGHT_INDICATOR"></value>
+		</can>
+		<can name="0C19F0A7">
+			<value id="ea1" title="驱动电机目标输出转矩/目标转速 1NM/bit，-32000 0.5rpm/bit，0" alias=""></value>
+			<value id="ea10" title="下电请求 0:无效 1:有效" alias=""></value>
+			<value id="ea11" title="Ready 0:无效 1:有效" alias=""></value>
+			<value id="ea12" title="整车控制器Life 0－255" alias=""></value>
+			<value id="ea2" title="驱动电机控制器直流限制电压 0.1V/bit，-10000" alias=""></value>
+			<value id="ea3" title="驱动电机控制器直流侧限制电流 0.1A/bit,-10000" alias=""></value>
+			<value id="ea4" title="停机 0:无效 1:有效" alias=""></value>
+			<value id="ea5" title="驱动 0:无效 1:有效" alias=""></value>
+			<value id="ea6" title="制动 0:无效 1:有效" alias=""></value>
+			<value id="ea7" title="向后 0:无效 1:有效" alias=""></value>
+			<value id="ea8" title="向前 0:无效 1:有效" alias=""></value>
+			<value id="ea9" title="电机工作模式 0:转矩模式 1:转速模式" alias=""></value>
+		</can>
+		<can name="0C1AA7A1">
+			<value id="ek1" title="仪表累计里程 0.1km/bit" alias="MILEAGE"></value>
+		</can>
+		<can name="0CFEA719">
+			<value id="dn1" title="电池温控器开启指令 85：启动，170：关闭" alias="BATTERY_TEM_CTRL"></value>
+			<value id="dn10" title="水泵工作状态 85：启动，170：关闭" alias="PUMP_WORK_STATE"></value>
+			<value id="dn11" title="VCU LIFE 分辨率1/bit，偏移量0，范围0-255" alias="vcu-life"></value>
+			<!-- <value id="dn2" title="1档" alias="FILES1"></value>
+			<value id="dn3" title="2档" alias="FILES2"></value>
+			<value id="dn4" title="3档" alias="FILES3"></value>
+			<value id="dn5" title="4档" alias="FILES4"></value>
+			<value id="dn6" title="5档" alias="FILES5"></value>
+			<value id="dn7" title="6档" alias="FILES6"></value>
+			<value id="dn8" title="7档" alias="FILES7"></value>
+			<value id="dn9" title="8档" alias="FILES8"></value> -->
+		</can>
+		<can name="0CFF13F4">
+			<value id="do1" title="压缩机转速 1rpm/bit，无偏移" alias="COM_SPEED"></value>
+			<value id="do10" title="系统压力故障" alias="SYS_PRESS_FAULT"></value>
+			<value id="do11" title="冷凝风机PWM占空比 1%/bit,无偏移" alias="CON_FAN_DUTY_CYC"></value>
+			<value id="do12" title="水冷板温度 1度/bit,偏移-40" alias="WATER_PLATE_TEM"></value>
+			<value id="do13" title="状态0 0，表示关机，1表示运转，3表示故障" alias="STATE0"></value>
+			<value id="do14" title="状态0 0，表示关机，1表示运转，3表示故障" alias="STATE1"></value>
+			<value id="do15" title="LIFE值 发送计数值" alias="LIFE_VALUE"></value>
+			<value id="do2" title="过流" alias="FLOW"></value>
+			<value id="do3" title="运行过压" alias="OPERA_OVER"></value>
+			<value id="do4" title="运行欠压" alias="RUN_UNDER_PRESSURE"></value>
+			<value id="do5" title="待机过压" alias="OVER_DO"></value>
+			<value id="do6" title="待机欠压" alias="OVER_UNDER_DO"></value>
+			<value id="do7" title="通讯故障" alias="FAULT_DO"></value>
+			<value id="do8" title="过流降频" alias="FLOW_DO"></value>
+			<value id="do9" title="速度异常" alias="VELOCITY_AN"></value>
+		</can>
+		<can name="0CFFF3A7">
+			<value id="dj1" title="电池接触器断开允许标识 1:允许电池接触器断开,0:禁止电池接触器无故断开" alias="BATTERY_CON_DIS"></value>
+			<value id="dj2" title="电池接触器断开允许标识 1:表示车辆即将进行充电,0:表示车辆无充电请求" alias="BATTERY_CHARGE_INDICATOR"></value>
+		</can>
+		<can name="18019EA7">
+			<value id="dp1" title="模式控制 1，为制冷模式,0，为通风模式，" alias="MODE_CTRL"></value>
+			<value id="dp2" title="低速 1，允许空调风机低速运行" alias="LOW_SPEED"></value>
+			<value id="dp3" title="中速 1，允许空调风机中速运行" alias="MEDIUM_SPEED"></value>
+			<value id="dp4" title="高速 1，允许空调风机高速运行" alias="HIGH_SPEED"></value>
+			<value id="dp5" title="空调面板最低允许设定温度下限 0.5℃/bit，偏移量-30" alias="MIN_ALLOW_TEMP"></value>
+			<value id="dp6" title="网络生命值Life 0-255变化" alias="NETWORK_LIFE_VALUE"></value>
+		</can>
+		<can name="1818D0F3">
+			<value id="dcl14" title="绝缘报警 电池绝缘检测到绝缘电阻小于10K时，置1。" alias=""></value>
+			<value id="dl1" title="电池总电压 0.1V/bit偏移量：-10000范围: 0V ~ 999V" alias="BMS_VOL"></value>
+			<value id="dl10" title="总电压过压" alias="TOTAL_OVERVOLTAGE"></value>
+			<value id="dl11" title="不均衡" alias="UNBALANCED"></value>
+			<value id="dl12" title="电池温升过快" alias="BATTERY_TEMPERATURE_RISE_FAST"></value>
+			<value id="dl13" title="烟感报报警" alias="SMOKE_ALARM"></value>
+			<value id="dl15" title="放电电流过大" alias="DISCHARGE_CURRENT_LARGE"></value>
+			<value id="dl16" title="充电电流过大" alias="CHARG_CURRENT_LARGE"></value>
+			<value id="dl17" title="温度过高" alias="TEMPERATURE_HIGH"></value>
+			<value id="dl18" title="温升极差大" alias="LARGE_TEMPERATURE_RISE"></value>
+			<value id="dl19" title="温度差过大" alias="TEMPERATURE_DIFFERENCE_LARGE"></value>
+			<value id="dl2" title="充放电电流 0.1A/bit,偏移量：-10000范围: -999A ~ 999A" alias="BMS_CUR"></value>
+			<value id="dl20" title="散热系统运行" alias="COOL_SYS_OPERATION"></value>
+			<value id="dl21" title="内部接触器信号" alias="INTERNAL_CONTACT_SIGNAL"></value>
+			<value id="dl22" title="有内阻偏大电池" alias="LARGE_BATTER_INTERNAL_RESISTANCE"></value>
+			<value id="dl23" title="有容量偏小电池" alias="SMALL_CAPACITY_BATTERY"></value>
+			<value id="dl24" title="与充电机存在通讯" alias="COMMUNICATION_CHARGER"></value>
+			<value id="dl25" title="充电机连接状态" alias="CHARGE_CON_STATUS"></value>
+			<value id="dl3" title="SOC 0.4%/bit" alias="SOC"></value>
+			<value id="dl4" title="单体模块电压过高" alias="SINGLE_MODULE_VOLTAGE_HIGH"></value>
+			<value id="dl5" title="单体模块电压过低" alias="SINGLE_MODULE_VOLTAGE_LOW"></value>
+			<value id="dl6" title="SOC过高" alias="SOC_HIGH"></value>
+			<value id="dl7" title="SOC过低" alias="SOC_LOW"></value>
+			<value id="dl8" title="内部通讯失败" alias="INTERNAL_COMMUNICATION_FAILURE"></value>
+			<value id="dl9" title="总电压欠压" alias="TOTAL_VOLTAGE_UNDER_VOLTAGE"></value>
+		</can>
+		<can name="1819A1A4">
+			<value id="dg1" title="正端对地绝缘电阻 1KΩ/ bit" alias="POSINSURES"></value>
+			<value id="dg2" title="负端对地绝缘电阻 1KΩ/ bit" alias="NEG_INSULATION_RESISTANCE"></value>
+			<value id="dg3" title="故障等级 0：无故障、1：一级故障、2：二级故障" alias="FAULT_LEVEL"></value>
+			<value id="dg4" title="Life 1/bit，0-255" alias="life"></value>
+			<value id="dg5" title="整车漏电报警 输出标识码(170：合格，85:不合格)" alias="VEHICLE_LEAKAGE_ALARM"></value>
+		</can>
+		<can name="1819D0F3">
+			<value id="dk1" title="电池最高单体电压 0.01V/ bit" alias="MAX_BATTERY_VOLTAGE"></value>
+			<value id="dk2" title="电池最高单体箱号" alias="HITH_NUMBER"></value>
+			<value id="dk3" title="所在箱内位置 1/bit，偏移：0，范围：1~255" alias="LOCATION_HIGH_VOLTAGE"></value>
+			<value id="dk4" title="电池最高温度 1℃/bit，-40" alias="MAXIMUM_BATTERY_TEMPERATURE"></value>
+			<value id="dk5" title="最高温度所在箱号 1/bit，偏移：0，范围：0~16" alias="MAXTSENSORNUM"></value>
+			<value id="dk6" title="所在箱内位置 1/bit，偏移：0，范围：0~16" alias="MAX_TEMP_BOX"></value>
+			<value id="dk7" title="电池最低单体电压 0.01V/ bit" alias="SYSMINCV"></value>
+			<value id="dk8" title="电池最低单体箱号" alias="SYSMINBMU"></value>
+			<value id="dk9" title="所在箱内位置 1/bit，偏移：0，范围：1~255" alias="LOCATION_MIN_CELL"></value>
+		</can>
+		<can name="181FD0F3">
+			<value id="dm1" title="当前最大允许充电电流 0.1A/bit,-10000" alias="MAX_ALLOWABLE_CURRENT"></value>
+			<value id="dm2" title="当前最大允许放电电流 0.1A/bit,-10000" alias="MAX_PER_DIS_CUR"></value>
+			<value id="dm3" title="锂电池系统故障等级 1:严重故障;2:中等故障" alias="FAULT_LEVEL_LITHIUM_SYS"></value>
+			<value id="dm4" title="锂电池最低温度 分辨率1℃/bit，偏移量-40" alias="MINTEMP_LITHBATT"></value>
+			<value id="dm5" title="锂电池平均温度 分辨率1℃/bit，偏移量-40" alias="LITHIUM_BATTERY_INLET"></value>
+			<value id="dm6" title="电池接触器请求断开标识 1:请求电池接触器断开,0:无请求" alias="BATTCON_REDIS"></value>
+		</can>
+		<can name="18FFC09E">
+			<value id="dq1" title="回风传感器断路" alias="RETURN_AIR_SENSOR_CIRCUIT"></value>
+			<value id="dq10" title="中速 当中速为1时，表示空调系统蒸发风机中速运行； 当高、中速都为0时，表示空调系统蒸发风机低速运行" alias="MEDIUM_SPEED"></value>
+			<value id="dq11" title="高速 当高速为1时，表示空调系统蒸发风机高速运行 当高、中速都为0时，表示空调系统蒸发风机低速运行" alias="HIGH_SPEED"></value>
+			<value id="dq12" title="加热" alias="HEATING"></value>
+			<value id="dq13" title="制冷1化霜" alias="REFRIGERATION_DEFROSTING"></value>
+			<value id="dq14" title="新风" alias="FRESHAIR"></value>
+			<value id="dq15" title="杀菌" alias="STERILIZATION"></value>
+			<value id="dq16" title="制冷2化霜" alias="REFRI_DEF2"></value>
+			<value id="dq17" title="制冷2" alias="REFRIGERATION2"></value>
+			<value id="dq18" title="制冷1" alias="REFRI1"></value>
+			<value id="dq19" title="车内实际温度 0.5℃/bit，偏移量-30" alias="ACTUAL_VEHICLE_TEMPERATURE"></value>
+			<value id="dq2" title="车外传感器断路" alias="OPEN_CIR_BREAKER"></value>
+			<value id="dq20" title="车外实际温度 0.5℃/bit，偏移量-30" alias="ACTUAL_OUTSIDE_TEMPERATURE"></value>
+			<value id="dq21" title="空调面板设定温度 0.5℃/bit，偏移量-30" alias="SET_TEMP"></value>
+			<value id="dq22" title="制冷请求 1，表示空调系统请求制冷" alias="REFRIGERATION_REQUEST"></value>
+			<value id="dq23" title="网络LIFE 0-255" alias="NET_VALUE"></value>
+			<value id="dq3" title="蒸发器传感器1断路" alias="EVAPORATOR_SENSOR1"></value>
+			<value id="dq4" title="蒸发器传感器2断路" alias="EVAPORATOR_SENSOR2"></value>
+			<value id="dq5" title="空调系统电源过压" alias="AIR_CON_SYS_OVER"></value>
+			<value id="dq6" title="空调系统电源低压" alias="AIR_CON_SYS_LOW"></value>
+			<value id="dq7" title="空调压力1故障" alias="AIR_CON_PRE_FAULT1"></value>
+			<value id="dq8" title="空调压力2故障" alias="AIR_CON_PRE_FAULT2"></value>
+			<value id="dq9" title="低速 当低速为1时，空调系统处于开机状态； 当低速为0时，空调系统处于关机状态。" alias="LOW_SPEED"></value>
+		</can>
+	</analyzeType>
+
+	<!-- explugin 增程插电式 -->
+	<analyzeType type="5" name="增程插电式">
+		<can name="0C03A1A7">
+			<value id="fa1" title="电机控制器输入电压" alias="MOTOR_VOL"/>
+			<value id="fa2" title="电机目标扭矩" alias="MOTOR_TARGET_TORQUE"/>
+			<value id="fa3" title="电机控制器输入电流" alias="MOTOR_CUR"/>
+			<value id="fa4" title="电机转速" alias="MOTOR_RPM"/>
+		</can>
+		<can name="0C04A1A7">
+			<value id="fb1" title="驱动电机温度" alias="MOTOR_TEMP_F"/>
+			<value id="fb2" title="驱动电机控制器温度" alias="CON_TEMP"/>
+			<value id="fb3" title="发电机温度" alias="GENERATOR_TEMPERATURE"/>
+			<value id="fb4" title="发电机控制器温度" alias="GENERATORCTRLTEMP"/>
+			<value id="fb5" title="发动机风扇1" alias="ENGINE_FAN1"/>
+			<value id="fb6" title="发动机风扇2" alias="ENGINE_FAN2"/>
+			<value id="fb7" title="电机风机 " alias="MOTORFAN"/>
+			<value id="fb8" title="控制器风机" alias="CTRLFAN"/>
+			<value id="fb9" title="电机水泵" alias="MOTOR_PUMP"/>
+			<value id="fb10" title="控制器水泵" alias="CTRL_PUMP"/>
+			<value id="fb11" title="超级电容风扇" alias="SUPER_CAPAFAN"/>
+			<value id="fb12" title="ECU唤醒" alias="AWAKEN"/>
+			<value id="fb13" title="电容接触器信号" alias="CAPAC_CON_SIGNAL"/>
+			<value id="fb14" title="空挡" alias="NEUTRAL_GEAR"/>
+			<value id="fb15" title="倒档" alias="REVERSE"/>
+			<value id="fb16" title="前进" alias="FILE"/>
+			<value id="fb17" title="电池接触器信号 " alias="BATTERY_CON_SIGNAL"/>
+			<value id="fb18" title="电量保持模式 " alias="CHARGE-SUSTAINING MODE"/>
+			<value id="fb19" title="纯电动模式 " alias="PURE_ELE_MODE"/>
+			<value id="fb20" title="增程式模式 " alias="INCREMENTAL_MODE"/>
+			<value id="fb21" title="驱动系统" alias="DRIVE_SYS"/>
+			<value id="fb22" title="发电系统" alias="GENERATION_SYS"/>
+			<value id="fb23" title="整车控制系统" alias="VEHICLE_CTRL"/>
+			<value id="fb24" title="系统码" alias="SYSTEM_CODE"/>
+		</can>
+		<can name="0C05A1A7">
+			<value id="fc1" title="发动机转速 " alias="ENGINE_RPM"/>
+			<value id="fc2" title="发动机水温" alias="CELL_ENGINE"/>
+			<value id="fc3" title="发动机负荷率" alias="ENGINE_LOAD_RATE"/>
+			<value id="fc4" title="发动机运行信号 " alias="ENGIN_REUNSIGNAL"/>
+			<value id="fc5" title="故障部件代号" alias="FAULT_COMPONENT_CODE"/>
+			<value id="fc6" title="发电机电流 " alias="GENERATOR_CUR"/>
+			<value id="fc7" title="网络生命值" alias="NETWORK_VALUE"/>
+		</can>
+		<can name="0C06A1A7">
+			<value id="fd1" title="牵引踏板百分比1" alias="PERCENTAGE_TRACTION_PEDAL"/>
+			<value id="fd2" title="牵引踏板百分比2" alias="PERCENTAGE_TRACTION_PEDAL2"/>
+			<value id="fd3" title="制动踏板百分比 " alias="BRAKE_PEDAL_PERCENTAGE"/>
+			<value id="fd4" title="发动机目标油门 " alias="ENGINE_TARGET_THROTTLE"/>
+			<value id="fd5" title="发动机实际油门 " alias="ACTUAL_ENGINE_THROTTLE"/>
+			<value id="fd6" title="中冷进气温度 " alias="INLET_AIR_TEMP"/>
+		</can>
+		<can name="0C07A1A7">
+			<value id="fe1" title="调试参数1" alias="PARAM1"/>
+			<value id="fe2" title="调试参数2" alias="PARAM2"/>
+			<value id="fe3" title="调试参数3" alias="PARAM3"/>
+			<value id="fe4" title="调试参数4" alias="PARAM4"/>
+			<value id="fe5" title="调试参数5" alias="PARAM5"/>
+			<value id="fe6" title="调试参数6" alias="PARAM6"/>
+			<value id="fe7" title="调试参数7" alias="PARAM7"/>
+			<value id="fe8" title="调试参数8" alias="PARAM8"/>
+		</can>
+		<can name="0C19A7A1">
+			<value id="ff1" title="整车气压低报警" alias="VEHICLE_AIR_PRESSURE_LOW_ALARM"/>
+			<value id="ff2" title="驻车信号" alias="HAND"/>
+			<value id="ff3" title="后舱门开启信号" alias="OPEN_REAR_DOOR"/>
+			<value id="ff4" title="前门开信号" alias="FRONT_DOOR_SIGNA"/>
+			<value id="ff5" title="后门开信号 " alias="BACK_DOOR_SIGNAL"/>
+			<value id="ff6" title="钥匙二档信号  " alias="TWOKEYSIGNAL"/>
+			<value id="ff7" title="钥匙一档信号 " alias="KEY_SIGNAL"/>
+			<value id="ff8" title="小灯信号" alias="SIGNAL_LAMP"/>
+			<value id="ff9" title="前缸气压 " alias="FRONT_CYLINDER"/>
+			<value id="ff10" title="后缸气压" alias="CYLINDER_PRESSURE"/>
+			<value id="ff11" title="月 " alias="MONTH"/>
+			<value id="ff12" title="日" alias="DAY"/>
+			<value id="ff13" title="时" alias="TIME"/>
+			<value id="ff14" title="分" alias="BRANCH"/>
+			<value id="ff15" title="秒" alias="SECOND"/>
+			<value id="ff16" title="车速" alias="SPEED"/>
+		</can>
+		<can name="180028F4">
+			<value id="fl1" title="" alias=" "/>
+		</can>
+		<can name="1808E5F4">
+			<value id="fj1" title="电池最高单体电压  " alias="MAX_BATTERY_VOLTAGE"/>
+			<value id="fj2" title="电池最高单体电压箱号" alias="HIGH_NUMBER"/>
+			<value id="fj3" title="电池最高单体所在箱内位置 " alias="LOCATION_HIGH_VOLTAGE"/>
+			<value id="fj4" title="电池最高温度  " alias="MAXIMUM_BATTERY_TEMPERATURE"/>
+			<value id="fj5" title="电池最高温度单体所在箱内位置" alias="MAX_TEMP_BOX"/>
+			<value id="fj6" title="电池最高温度单体所在箱号 " alias="HIGH_TEMP"/>
+			<value id="fj7" title="电池最低单体电压 " alias="SYSMINCV"/>
+			<value id="fj8" title="电池最低单体箱号 " alias="MIN_NUMBER"/>
+			<value id="fj9" title="电池最低单体所在箱内位置" alias="LOCATION_MIN_CELL"/>
+		</can>
+		<can name="1818A1A4">
+			<value id="fg1" title="电池（电容）模块编号0-31 " alias="BATTERY_MODULE_NUMBER"/>
+			<value id="fg2" title="烟雾检测报警" alias="SMOKE_DETECTION_ALARM"/>
+			<value id="fg3" title="模块温度报警" alias="MODULE_TEMP_ALARM"/>
+			<value id="fg4" title="模块过压报警 " alias="MODULE_OVERVOLTAGE_ALARM"/>
+			<value id="fg5" title="电容模块温度" alias="CAPACITOR_MODULE_TEMP"/>
+			<value id="fg6" title="电容模块电压 " alias="CAPACITOR_VOLTAGE"/>
+			<value id="fg7" title="超级电容组总电压 " alias="SUPER_CAPACITOR_TOTAL_VOL"/>
+			<value id="fg8" title="超级电容组总电流  " alias="SUPER_CAPACITOR_TOTAL_CURR"/>
+		</can>
+		<can name="1818D0F3">
+			<value id="fh1" title="电池总电压低  " alias="BMS_VOL"/>
+			<value id="fh2" title="充放电电流 " alias="BMS_CUR"/>
+			<value id="fh3" title="SOC" alias="SOC"/>
+		</can>
+		<can name="1819D0F3">
+			<value id="fi1" title="容量偏小电池编号  " alias="SMALL_BATT_CAP"/>
+			<value id="fi2" title="内阻偏大电池编号 " alias="LARGE_NUMBER"/>
+			<value id="fi3" title="电池厂家代码 " alias="BATTERY_MAN_CODE"/>
+			<value id="fi4" title="模块电压过高 " alias="MODE_HIGH"/>
+			<value id="fi5" title="模块电压过低" alias="MODULE_LOW"/>
+			<value id="fi6" title="SOC过高 " alias="SOC_HIGH"/>
+			<value id="fi7" title="SOC过低" alias="SOC_LOW"/>
+			<value id="fi8" title="SOC低" alias="SOCLOW"/>
+			<value id="fi9" title="总电压欠压" alias="TOTAL_VOLTAGE_UNDER_VOLTAGE"/>
+			<value id="fi10" title="总电压过压 " alias="TOTAL_OVERVOLTAGE"/>
+			<value id="fi11" title="不均衡 " alias="UNBALANCED"/>
+			<value id="fi12" title="内部通讯失败" alias="INTERNAL_COMMUNICATION_FAILURE"/>
+			<value id="fi13" title="烟感报报警" alias="SMOKE_ALARM"/>
+			<value id="fi14" title="绝缘报警 " alias="MODULE_INSULATION_ALARM"/>
+			<value id="fi15" title="放电电流过大" alias="DISCHARGE_CURRENT_LARGE"/>
+			<value id="fi16" title="充电电流过大 " alias="CHARG_CURRENT_LARGE"/>
+			<value id="fi17" title="温度过高" alias="TEMPERATURE_HIGH"/>
+			<value id="fi18" title="温升极差大 " alias="LARGE_TEMPERATURE_RISE"/>
+			<value id="fi19" title="温度差过大" alias="TEMPERATURE_DIFFERENCE_LARGE"/>
+			<value id="fi20" title="电池散热系统运行 " alias="COOL_SYS_OPERATION"/>
+			<value id="fi21" title="电池内部接触器信号" alias="INTERNAL_CONTACT_SIGNAL"/>
+			<value id="fi22" title="有内阻偏大电池" alias="LARGE_BATTER_INTERNAL_RESISTANCE"/>
+			<value id="fi23" title="有容量偏小电池" alias="SMALL_CAPACITY_BATTERY"/>
+		</can>
+		<can name="18XX28F3">
+			<value id="fk1" title="箱号 " alias=" "/>
+			<value id="fk2" title="电压" alias=" "/>
+		</can>
+		<can name="0C1AA7A1">
+			<value id="expdistance1" title="里程" alias="MILEAGE"/>
+		</can>
+
+	</analyzeType>
+	<analyzeType type="-1" name="能耗">
+		<!-- <value>0C00A709</value> <value>0C01A709</value> <value>0C02A709</value>
+			<value>0C03A709</value> <value>0C04A709</value> <value>0C05A709</value> <value>0C06A709</value>
+			<value>0C07A709</value> <value>0C08A709</value> <value>0C09A709</value> <value>0C0AA709</value>
+			<value>0C0BA709</value> <value>0C0CA709</value> <value>0C0DA709</value> <value>0C0FA709</value>
+			<value>0C10A709</value> <value>0C11A709</value> -->
+		<can name="0C00A709">
+			<value id="ac1" title="整车控制器运行时间" alias="VCU_RUNTIME" />
+		</can>
+		<can name="0C01A709">
+			<value id="ad1" title="车辆运行总时间" alias="VEHICLE_RUNTIME" />
+			<!-- <value id="ad2" title="发动机怠速运行时间" alias="" /> -->
+		</can>
+		<can name="0C03A709">
+			<!-- <value id="af1" title="车辆运行总里程" alias="MILEAGE" /> -->
+			<!-- <value id="af2" title="发动机累计耗油" alias="" /> -->
+		</can>
+		<can name="0C04A709">
+			<value id="ag1" title="驱动电机总电耗" alias="POWER" />
+			<!-- <value id="ag2" title="驱动电机驱动电耗" alias="" /> <value id="ag3" title="驱动电机驱动机械能"
+				alias="" /> <value id="ag4" title="驱动电机制动机械能" alias="" /> -->
+		</can>
+		<!-- <can name="0C05A709"> <value id="ah1" title="驱动电机制动回收电能" alias=""></value>
+			<value id="ah2" title="发电机发电机械能" alias=""></value> <value id="ah3" title="发电机发电电能"
+			alias=""></value> <value id="ah4" title="发电机驱动机械能" alias=""></value> </can> -->
+		<can name="0C06A709">
+			<!-- <value id="ai1" title="发电机驱动电能" alias=""></value> <value id="ai2"
+				title="驱动电机驱动效率" alias=""></value> <value id="ai3" title="驱动电机制动效率" alias=""></value>
+				<value id="ai4" title="发电机发电效率" alias=""></value> <value id="ai5" title="发电机驱动效率"
+				alias=""></value> -->
+			<value id="ai6" title="超级电容输入能量" alias="CAPCINENERGY"></value>
+		</can>
+		<can name="0C07A709">
+			<!-- <value id="aj1" title="超级电容输出能量" alias=""></value> -->
+			<value id="aj2" title="锂电池输入能量" alias="LIBATTERYINENERGY"></value>
+			<value id="aj3" title="锂电池输出能量" alias="LIBATTERYONENERGY"></value>
+			<value id="aj4" title="制动回收进锂电池能量" alias="CAPACONENERGY"></value>
+		</can>
+		<can name="0C08A709">
+			<!-- <value id="ak1" title="发动机启停次数" alias=""></value> -->
+			<value id="ak2" title="车辆油耗" alias="OIL"></value>
+			<!-- <value id="ak3" title="车辆怠速耗油" alias=""></value> -->
+		</can>
+		<can name="0C09A709">
+			<!-- <value id="al1" title="纯电动模式锂电池输出能量" alias=""></value> <value id="al2"
+				title="纯电动模式锂电池回收能量" alias=""></value> <value id="al3" title="纯电动模式可续驶里程"
+				alias=""></value> -->
+			<value id="al4" title="空调系统耗能（kwh）" alias="HVACENERGY"></value>
+		</can>
+		<can name="0C0AA709">
+			<value id="am1" title="助力转向系统能耗（kwh）" alias="POWERSCONSENERGY"></value>
+			<value id="am2" title="打气泵系统能耗（kwh）" alias="KYPMCONSENERGY"></value>
+			<value id="am3" title="DC/DC系统能耗（kwh）" alias="DCDCENERGY"></value>
+		</can>
+		<can name="0C0BA709">
+			<!-- <value id="an1" title="空调工作时间" alias=""></value> -->
+			<value id="an2" title="地面充电输入能量（kwh）" alias="GCINENERGY"></value>
+		</can>
+
+		<can name="0C16A709">
+			<value id="ai6" title="超级电容输入能量" alias="CAPCINENERGY"></value>
+			<value id="aj4" title="超级电容输出总电能" alias="CAPACONENERGY"></value>
+		</can>
+
+		<can name="0C1BA709">
+			<value id="am3" title="DCDC系统消耗总电能（kwh）" alias="DCDCENERGY" >
+		</value>
+		</can>
+
+		<can name="0C17A709">
+			<value id="aj2" title="锂电池输入能量" alias="LIBATTERYINENERGY"></value>
+			<value id="aj3" title="锂电池输出能量" alias="LIBATTERYONENERGY"></value>
+		</can>
+		<can name="0C1BA709">
+			<value id="am2" title="打气泵系统能耗（kwh）" alias="KYPMCONSENERGY"></value>
+		</can>
+		<can name="0C1AA709">
+			<value id="am1" title="助力转向系统能耗（kwh）" alias="POWERSCONSENERGY"></value>
+		</can>
+		<can name="0C04A709">
+			<value id="ag1" title="驱动电机总电耗" alias="POWER" >
+		</value>
+		</can>
+		<can name="0C12A709">
+			<value id="ag2" title="驱动电机驱动电耗" alias="POWERP" >
+		</value>
+		</can>
+		<can name="0C05A709">
+			<value id="ah1" title="驱动电机制动回收电能" alias="DVBEE"></value>
+		</can>
+		<can name="0C13A709">
+			<value id="ag4" title="驱动电机制动总电能" alias="TBPM"></value>
+		</can>
+		<can name="0C15A709">
+			<value id="ai1" title="发电机驱动总电能" alias="TlEEGD"></value>
+		</can>
+		<can name="0C0BA709">
+			<value id="an2" title="地面充电输入能量（kwh）" alias="GCINENERGY"></value>
+		</can>
+	</analyzeType>
+</config>

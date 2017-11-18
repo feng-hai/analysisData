@@ -1,0 +1,72 @@
+2017-11-17 16:00:41  [ main:1 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"qu1aq1i","alias":"null","title":"MCU自检状态","value":"-1","inx":13,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":46,"length":3,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.StringIndexOutOfBoundsException: String index out of range: 9
+	at java.lang.String.substring(String.java:1963)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:53)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:00:41  [ main:11 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:48)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:14:03  [ main:1 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"qu1aq1i","alias":"null","title":"MCU自检状态","value":"-1","inx":13,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":46,"length":3,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.StringIndexOutOfBoundsException: String index out of range: 9
+	at java.lang.String.substring(String.java:1963)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:14:03  [ main:5 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:51)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:17:26  [ main:1 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:51)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:26:10  [ main:1 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"huaz9tk","alias":"null","title":"电机欠压报警","value":"-1","inx":25,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":55,"length":1,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:59)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:26:10  [ main:7 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:59)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+2017-11-17 16:32:18  [ main:6 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:57)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
