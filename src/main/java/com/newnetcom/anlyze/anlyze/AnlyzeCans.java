@@ -7,6 +7,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.newnetcom.anlyze.anlyze.arithmetic.A2LArithimetic;
+
 //import javax.swing.text.html.parser.Entity;
 //
 //import org.slf4j.Logger;
@@ -17,6 +19,7 @@ import com.newnetcom.anlyze.anlyze.arithmetic.ArithimeticFactory;
 //import com.newnetcom.anlyze.anlyze.db.interfaces.IDatabase;
 import com.newnetcom.anlyze.beans.Pair;
 import com.newnetcom.anlyze.beans.PairResult;
+import com.newnetcom.anlyze.beans.publicStaticMap;
 //import com.newnetcom.anlyze.beans.RuleBean;
 import com.newnetcom.anlyze.protocols.IProtocol;
 import com.newnetcom.anlyze.utils.ByteUtils;
@@ -71,25 +74,38 @@ public class AnlyzeCans implements IAnlyze {
 
 		// logger.info(JsonUtils.serialize(this.content));
 		List<PairResult> result = new ArrayList<>();
+//System.out.println("-------------------------------------------------");
 		for (byte[] key : content.keySet()) {
+
+			
+			
 			// 根据canid获取解析规则
 			List<Pair> rules = CanRules.getRuleBeanByCanId(this.protocol.getFiber(), key);
+		
 			// 遍历规则，根据规则查询数据值
 			for (Pair bean : rules) {
-				PairResult result2=new PairResult();
-				
+				//System.out.println(JsonUtils.serialize(bean));
+				PairResult result2 = new PairResult();
 				try {
 					result2.setAlias(bean.getAlias());
 					result2.setCode(bean.getCode());
 					result2.setTitle(bean.getTitle());
-					ArithimeticFactory.getArithimetic(bean).setPairValue(this.content.get(key));
+					if (publicStaticMap.getFibers().contains(this.protocol.getFiber())) {
+						String hx= Integer.toHexString(Integer.parseInt(bean.getPREREQUISITE_VALUE())).toUpperCase();
+						bean.setCode("0x"+hx);
+						
+					  new A2LArithimetic(bean).setPairValue(this.content.get(key));
+					} else {
+						ArithimeticFactory.getArithimetic(bean).setPairValue(this.content.get(key));
+					}
 					result2.setValue(bean.getValue());
-					//logger.info(result2.toString());
+					// logger.info(result2.toString());
 					result.add(result2);
 				} catch (Exception ex) {
-					logger.error("解析错误,数据字典id"+this.protocol.getFiber()+"解析规则"+JsonUtils.serialize(bean)+"内容项："+ByteUtils.byte2HexStr(this.content.get(key)), ex);
+					logger.error("解析错误,数据字典id" + this.protocol.getFiber() + "解析规则" + JsonUtils.serialize(bean) + "内容项："
+							+ ByteUtils.byte2HexStr(this.content.get(key)), ex);
 				}
-				
+
 			}
 		}
 		return result;

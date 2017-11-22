@@ -15,6 +15,9 @@ import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory;
+import com.newnetcom.anlyze.anlyze.db.interfaces.IDatabase;
+import com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L;
 import com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils;
 import com.newnetcom.anlyze.anlyze.db.mysql.utils.SingletonJDBC;
 import com.newnetcom.anlyze.beans.VehicleInfo;
@@ -66,9 +69,13 @@ public class MyTask extends TimerTask {
 	}
 
 	private void loadData() {
+		
+		Map<String,String> config=	PropertyResource.getInstance().getProperties();
+		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"A2L");//1获取配置文件的分析类
+		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"CAN");
 		// 重新加载配置文件中数据
 		PropertyResource.getInstance().reLoadProperty();
-		HashMap<String, String> config = PropertyResource.getInstance().getProperties();
+		
 		if (config.get("log.level").equals("INFO")) {
 			LogManager.getRootLogger().setLevel(Level.INFO);
 		} else if (config.get("log.level").equals("WARN")) {
@@ -87,7 +94,7 @@ public class MyTask extends TimerTask {
 		try {
 			jdbcUtils = SingletonJDBC.getJDBC();
 			logger.info("数据库初始化，正在加载数据中...");
-			String sql = "select vi.vin,vi.unid ,device.device_id ,device.cellphone ,pro.root_proto_unid ,device.ICCID,vi.fiber_unid"
+			String sql = "select vi.vin,vi.unid ,vi.domain_unid,device.device_id ,device.cellphone ,pro.root_proto_unid ,device.ICCID,vi.fiber_unid"
 					+ " from cube.BIG_VEHICLE vi "
 					+ " inner join cube.BIG_DEVICE_VEHICLE_MAP map on vi.unid=map.vehicle_unid   and vi.flag_del=0 and map.flag_ava=1"
 					+ " inner join cube.BIG_DEVICE device on device .unid=map.device_unid and device.flag_del=0"

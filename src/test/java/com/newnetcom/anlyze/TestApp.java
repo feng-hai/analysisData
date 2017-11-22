@@ -1,6 +1,7 @@
 package com.newnetcom.anlyze;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.Timer;
 
 //import org.slf4j.Logger;
@@ -10,50 +11,56 @@ import com.newnetcom.anlyze.thread.UpdateRedisTask;
 import com.newnetcom.anlyze.utils.ByteUtils;
 import com.newnetcom.anlyze.anlyze.AnlyzeCans;
 import com.newnetcom.anlyze.anlyze.AnlyzeMain;
+import com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory;
 import com.newnetcom.anlyze.beans.ProtocolBean;
+import com.newnetcom.anlyze.config.PropertyResource;
 import com.newnetcom.anlyze.thread.AnlyzeDataTask;
 import com.newnetcom.anlyze.thread.CheckCatchTask;
 import com.newnetcom.anlyze.thread.DataToKafKaTask;
+import com.newnetcom.anlyze.thread.MyTask;
 import com.newnetcom.anlyze.thread.RawDataMyTaskRun;
 
-
-
 public class TestApp {
-	//private static final Logger logger = LoggerFactory.getLogger(TestApp.class);
+	// private static final Logger logger =
+	// LoggerFactory.getLogger(TestApp.class);
 
 	public static void main(String[] args) {
-		//ByteUtils.toEscape(ByteUtils.hexStr2Bytes("7E00000000E802C001FE4342313039363902010000262D000028F03B07B2B43C0228002D004D01110B0E022F3400C01C00007B21FF18007E"));
+		// ByteUtils.toEscape(ByteUtils.hexStr2Bytes("7E00000000E802C001FE4342313039363902010000262D000028F03B07B2B43C0228002D004D01110B0E022F3400C01C00007B21FF18007E"));
 		// logger.error("tet");
 		// TODO Auto-generated method stub
-//		UpdateHbaseMyTask sendData = new UpdateHbaseMyTask();
-//		sendData.setDaemon(true);
-//		sendData.start();
-//		AnlyzeDataTask sendData1 = new AnlyzeDataTask();
-//		sendData1.setDaemon(true);
-//		sendData1.start();     
-//		UpdateRedisTask sendDataRedis = new UpdateRedisTask();
-//		sendDataRedis.setDaemon(true);
-//		sendDataRedis.start(); 
-//		
-//		RawDataMyTaskRun sendData2 = new RawDataMyTaskRun();
-//		sendData2.setDaemon(true);
-//		sendData2.start();
-//		
-//		DataToKafKaTask sendDataTask = new DataToKafKaTask();
-//		sendDataTask.setDaemon(true);
-//		sendDataTask.start();
-//
-//		Timer timer = new Timer();
-//		timer.schedule(new CheckCatchTask(), new Date(), 10000);
-		ProtocolBean protocol=new ProtocolBean ();
-		
-		 protocol.setFIBER_UNID("27A67D545CFF4AE3AD4DF45AB94A7C18");
-		 protocol.setRAW_OCTETS("7e00000000e802ed01920b42313135373202010000ae070000e1a8bd06fe555f020000fb030000110b1105362f00c01f00007b21ff1800011714102734b21600007b22ff1800000000000000000000007b24ff18004801460147015a6a00007b25ff1800474245620300000000007b29ff1800000852085201000000007ba9ff180000000000000000000000b216cc1300b2160000009d0000000091194c1000020210273400de0d000092194c1000420eb80b280a0000000093194c10005f00c409c409f000000097194c1000ff00000000000000000098194c10001a1a131313131a1a0000a4194c1000c80cc60cce0cc80c0000bd194c1000c30cc70cc80cc70c0000d6194c1000c90ccb0ccc0cc80c00002a1a4c1000cd0cca0ccb0ccc0c00005c1a4c1000cd0cd00cce0cd10c0000751a4c1000c90ccc0cc90c00000000821a4c1000cd0ccb0ccc0ccd0c0000081a4c10003b003b003c003b000000181a4c100038003800390039000000d0c9ff0c0000090000000000000000d0caff0c005555aa55000000000000d041f00c0010000000000000000000f001f518004b430602000900000000f002f518000000d007c800000000009da701180000cd002f01fa000000009ba701180000cb002e01fc000000009ca7011800010028827d011b01fb00001770fb1800000000004a45003800001771fb180000040060009c4905400e7e");
-		// protocol.setRAW_OCTETS("7E00000000E8026601F932423330353035020100002F260000EBEA3C0766C8DB0100000D003D00110B0803141500C0160000F302FF1800E4181A7D02E227AFAF0000F303FF180055450CA4F10716090000F300151C000EA6A6A6A6A6A5A60000F300161C000B404041414141410000A701FF18004B5A004B440500000000038FFF180095905A7FA7A7000F0000D0280A0C0082020000000083C60000038DFF1800400000167F7D017F7D01000030EF101800B818150100000000000028D139180000000000000000000000F301FF1800C5F90CF00C433F650000F3CAFE180000FFFFFFFF7FFFFF00001E9FFF1800DC96AFAFC5C783FD00000B01F0180000000000000000000000273FFF0C0000557D010000A4FE000000273EFF0C0000000010000000000000038EFF18004BC68300000000FF0000038CFF18006E8045816E80FE8000000390FF18004B5AFFFFFFFFFFFF0000EF30200C00F0000F0200000000000028D03818000000A4A402000000000028D13818000C0957223408000049157E");
-		 protocol.setProto_unid("CD039E17A8E84137AF6DE1CDC172C274");
-		 protocol.setUnid("276D8F32B73946BFA2D3CBEAC0C65EC0");
+		// UpdateHbaseMyTask sendData = new UpdateHbaseMyTask();
+		// sendData.setDaemon(true);
+		// sendData.start();
+		// AnlyzeDataTask sendData1 = new AnlyzeDataTask();
+		// sendData1.setDaemon(true);
+		// sendData1.start();
+		// UpdateRedisTask sendDataRedis = new UpdateRedisTask();
+		// sendDataRedis.setDaemon(true);
+		// sendDataRedis.start();
+		//
+		// RawDataMyTaskRun sendData2 = new RawDataMyTaskRun();
+		// sendData2.setDaemon(true);
+		// sendData2.start();
+		//
+		// DataToKafKaTask sendDataTask = new DataToKafKaTask();
+		// sendDataTask.setDaemon(true);
+		// sendDataTask.start();
+		//
+		// Timer timer = new Timer();
+		// timer.schedule(new CheckCatchTask(), new Date(), 10000);
+		Map<String,String> config=	PropertyResource.getInstance().getProperties();
+		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"A2L");//1获取配置文件的分析类
+		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"CAN");
+		ProtocolBean protocol = new ProtocolBean();
+		protocol.setFIBER_UNID("EF79482EEFBC42F084FE76A70A588E82");
+		protocol.setRAW_OCTETS(
+				"7e000000008e037501db1e4232303337380201000220e32d070e7be10161000c001701110b1406391a6f033600002e9101030000280c0101000027ae0100000027de0101000028110100000027df0100000028100100000027cc020a63000028d602021600002926020215000028d2021ce8000027b8021ccf000028de02001a000028e0020026000027a002135f0000277d020200040000279e0204ee000028d40204f10000279c0204ee0000280e0204ee000027aa0102000027e202000000002924015a000027b6020059000027960201f800002798020d05000027c6020001000027ca020000000027460101000028e8021ce8000028cf010000003164011c00003169012400003163014000003168010100003160010100003166012300002cf00200040000291f01000000274801010000274901010000272e0100000028d80200c30000292802ff31000028e602045b000028e301010000272c0101000028e201010000274701010000272d01010000273001000000272b01000000272f0100000028160204ea3c077e");
+		protocol.setProto_unid("CD039E17A8E84137AF6DE1CDC172C274");
+		//AF27DA9036174426A2E2F7C19A9A959C
+		//CD039E17A8E84137AF6DE1CDC172C274
+		protocol.setUnid("276D8F32B73946BFA2D3CBEAC0C65EC0");
+		protocol.setTIMESTAMP(String.valueOf(new Date().getTime()));
 		new AnlyzeMain(protocol).run();
-		
-   
+
 	}
 }

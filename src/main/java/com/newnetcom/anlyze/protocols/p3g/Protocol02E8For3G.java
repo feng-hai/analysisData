@@ -125,9 +125,12 @@ public class Protocol02E8For3G {
 		pattern = this.contents[26];
 		canNum = this.contents[27];
 		//timeInterval = ByteUtils.getShort(this.contents, 28);
+		//System.out.println(ByteUtils.bytesToHexString(this.contents));
 		for (int i = 0; i < canNum; i++) {
 			byte[] key = ByteUtils.getSubBytes(this.contents, i * 15+28+2, 4);
 			byte[] value = ByteUtils.getSubBytes(this.contents,i * 15+28+2+4+1,8);
+			
+		//	System.out.println(ByteUtils.byte2HexStr(key)+":"+ByteUtils.byte2HexStr(value));
 			cans.put(key, value);
 		}
 	}

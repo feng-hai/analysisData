@@ -15,15 +15,14 @@ import com.newnetcom.anlyze.beans.Pair;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.config.PropertyResource;
 import com.newnetcom.anlyze.utils.ByteUtils;
+import com.newnetcom.anlyze.utils.JsonUtils;
 
 public class CanRules {
 
 	//private static Map<String, List<Pair>> ruleListMap = new HashMap<>();
      private static final Logger logger=LoggerFactory.getLogger(CanRules.class);
 	static {
-	Map<String,String> config=	PropertyResource.getInstance().getProperties();
-		IDatabase db=DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")));//1获取配置文件的分析类
-		publicStaticMap.setCans(db.getRules());
+
 	}
 
 	/** 
@@ -37,7 +36,17 @@ public class CanRules {
 	*/
 	public static List<Pair> getRuleBeanByCanId(String dataSet,byte[] canId) {
 		//System.out.println(ByteUtils.byte2HexStr(canId));
-		List<Pair> rules = publicStaticMap.getCans().get(dataSet+"-"+ByteUtils.byte2HexStr(canId));
+		List<Pair> rules ;
+		if (publicStaticMap.getFibers().contains(dataSet)) {
+			int tempInt=ByteUtils.getIntForLarge(canId, 0)&0xffffffff;
+			//String temp =ByteUtils.byte2HexStr(canId);		
+			rules= publicStaticMap.getA2LValues().get(dataSet+"-"+tempInt);
+			//System.out.println(dataSet+"-"+tempInt);
+			//System.out.println(JsonUtils.serialize( publicStaticMap.getA2LValues()));
+		}else
+		{
+			rules= publicStaticMap.getCans().get(dataSet+"-"+ByteUtils.byte2HexStr(canId));
+		}
 		if (rules == null) {
 			logger.debug("错误：数据字典ID："+dataSet+"CanID:"+ByteUtils.byte2HexStr(canId));
 			rules = new ArrayList<>();

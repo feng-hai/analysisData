@@ -1,7 +1,11 @@
 package com.newnetcom.anlyze.main;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.Timer;
+
+import com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory;
+import com.newnetcom.anlyze.config.PropertyResource;
 import com.newnetcom.anlyze.thread.AnlyzeDataTask;
 import com.newnetcom.anlyze.thread.CheckCatchTask;
 import com.newnetcom.anlyze.thread.DataToKafKaTask;
@@ -15,9 +19,12 @@ public class AppMain {
 
 	public static void main(String[] args) {
 		
+		
+		Map<String,String> config=	PropertyResource.getInstance().getProperties();
+		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"A2L");//1获取配置文件的分析类
+		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"CAN");
 		Timer timer2 = new Timer();
 		timer2.schedule(new MyTask(), new Date(), 60000*60);
-		
 		// TODO Auto-generated method stub
 		RawDataMyTaskRun sendData2 = new RawDataMyTaskRun();
 		sendData2.setDaemon(true);

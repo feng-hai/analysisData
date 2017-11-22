@@ -84,7 +84,22 @@ public class ByteUtils {
 		c.set(year, month, date, hourOfDay, minute, second);
 		return c.getTime();
 	}
-	
+	public static Date BytesTodateForTwoByte(byte[] d, int startIndex) throws NullPointerException {
+		if (d == null) {
+			throw new NullPointerException("Null Date value.");
+		}
+		Calendar c = Calendar.getInstance();
+		int year = (int) d[startIndex] + 2000;
+		int month = (int) d[startIndex + 1]-1;
+		int date = (int) d[startIndex + 2];
+		int hourOfDay = (int) d[startIndex + 3] ;
+		int minute = (int) d[startIndex + 4];
+		int second = (int) d[startIndex + 5];
+		int ms = ByteUtils.getShort(d, 6);
+		c.setTimeInMillis(ms);
+		c.set(year, month, date, hourOfDay, minute, second);
+		return c.getTime();
+	}
 	public static Date BytesToTimeForHours(byte[]d,int startIndex)
 	{
 		Calendar c = Calendar.getInstance();

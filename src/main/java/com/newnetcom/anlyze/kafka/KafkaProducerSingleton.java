@@ -110,7 +110,7 @@ public final class KafkaProducerSingleton {
 		temPMessage.setTIMESTAMP(message.getDatetime());
 		
 		ProducerRecord<String, String> record = new ProducerRecord<String, String>(topic, message.getVehicleUnid(),
-				temPMessage.toString());
+				temPMessage.toString().replace("datime_RX", "DATIME_RX"));
 		// send方法是异步的,添加消息到缓存区等待发送,并立即返回，这使生产者通过批量发送消息来提高效率
 		// kafka生产者是线程安全的,可以单实例发送消息
 		kafkaProducer.send(record, new Callback() {

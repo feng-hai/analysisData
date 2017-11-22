@@ -20,6 +20,15 @@ import com.newnetcom.anlyze.utils.JsonUtils;
  * @date 2016年9月24日 下午4:18:53
  *
  */
+/**   
+*    
+* 项目名称：com.newnetcom.anlyze   
+* 类名称：Pair   
+* 类描述：   
+* 创建人：FH   
+* 创建时间：2017年11月21日 下午6:48:09   
+* @version        
+*/
 public class Pair implements Serializable, Comparable<Pair>,Cloneable  {
 
 	private static final long serialVersionUID = 8418206139459599885L;
@@ -30,6 +39,17 @@ public class Pair implements Serializable, Comparable<Pair>,Cloneable  {
 	private Integer inx;
 	private String canid;
 	private String protocolId;
+	
+	/** 
+	* @Fields PREREQUISITE_VALUE : 数据地址10进制
+	*/ 
+	private String PREREQUISITE_VALUE;
+	public String getPREREQUISITE_VALUE() {
+		return PREREQUISITE_VALUE;
+	}
+	public void setPREREQUISITE_VALUE(String pREREQUISITE_VALUE) {
+		PREREQUISITE_VALUE = pREREQUISITE_VALUE;
+	}
 	public Pair()
 	{}
 	public Pair(String code,String alias,String title ,String value)

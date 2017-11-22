@@ -4,6 +4,15 @@ public class VehicleInfo {
 	
 	private String UNID;
 	private String  ROOT_PROTO_UNID;
+	
+	private String DOMAIN_UNID;
+	
+	public String getDomain_unid() {
+		return DOMAIN_UNID;
+	}
+	public void setDomain_unid(String domain_unid) {
+		this.DOMAIN_UNID = domain_unid;
+	}
 	public String getROOT_PROTO_UNID() {
 		return ROOT_PROTO_UNID;
 	}

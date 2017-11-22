@@ -66,7 +66,7 @@ public class ProtocolGPSFor3G {
 	/**
 	 * @Fields sVesion : 软件版本2个字节
 	 */
-	private int sVersion;
+	private String sVersion;
 	/**
 	 * @Fields date : 日期 6个字节
 	 */
@@ -157,11 +157,11 @@ public class ProtocolGPSFor3G {
 		this.hVersion = hVesion;
 	}
 
-	public int getsVersion() {
+	public String getsVersion() {
 		return sVersion;
 	}
 
-	public void setsVersion(int sVersion) {
+	public void setsVersion(String sVersion) {
 		this.sVersion = sVersion;
 	}
 
@@ -222,7 +222,7 @@ public class ProtocolGPSFor3G {
 		direction = ByteUtils.getShort(this.contents, 13);
 		distance = (float) (ByteUtils.getInt(this.contents, 15) / 500.0);
 		hVersion = ByteUtils.getShort(this.contents, 19);
-		sVersion = ByteUtils.getShort(this.contents, 21);
+		sVersion = this.contents[21]+"."+this.contents[22]+"."+this.contents[23]+"."+this.contents[24];
 		date = ByteUtils.BytesTodateForSecond(this.contents, 25);
 		Byte tByte = this.contents[31];
 		String binaryStr = ByteUtils.byte2bits(tByte); // Integer.toBinaryString(tByte												// & 0xFF);

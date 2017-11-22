@@ -85,7 +85,7 @@ public class ResultBean implements Serializable {
 	/**
 	 * @Fields sVesion : 软件版本2个字节
 	 */
-	private int sVersion;
+	private String sVersion;
 
 	/**
 	 * @Fields acc :ACC状态 B0
@@ -124,11 +124,11 @@ public class ResultBean implements Serializable {
 		this.hVersion = hVersion;
 	}
 
-	public int getsVersion() {
+	public String getsVersion() {
 		return sVersion;
 	}
 
-	public void setsVersion(int sVersion) {
+	public void setsVersion(String sVersion) {
 		this.sVersion = sVersion;
 	}
 

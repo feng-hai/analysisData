@@ -76,6 +76,15 @@ public class publicStaticMap {
 		values=canIn;
 	}
 	
+	private static Map<String,List<Pair>> a2LValues=new ConcurrentHashMap <>();
+	
+	public static Map<String, List<Pair>> getA2LValues() {
+		return a2LValues;
+	}
+	public static void setA2LValues(Map<String, List<Pair>> a2lValues) {
+		a2LValues = a2lValues;
+	}
+
 	/** 
 	* @Fields alarmPair :808报警解析规则 
 	*/ 
@@ -88,6 +97,15 @@ public class publicStaticMap {
 		publicStaticMap.alarmPair = alarmPair;
 	}
 	
+	private static  Vector<String> fibers=new Vector<>();
+	
+	public static Vector<String> getFibers() {
+		return fibers;
+	}
+	public static void setFibers(Vector<String> fibers) {
+		publicStaticMap.fibers = fibers;
+	}
+
 	/** 
 	* @Fields statusPair : 808状态解析规则
 	*/ 

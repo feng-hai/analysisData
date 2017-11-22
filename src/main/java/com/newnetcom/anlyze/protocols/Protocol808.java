@@ -14,6 +14,7 @@ import com.newnetcom.anlyze.beans.ProtocolBean;
 import com.newnetcom.anlyze.beans.ResultBean;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.enums.ContentTypeEnum;
+import com.newnetcom.anlyze.protocols.p3g.Protocol038EFor3G;
 import com.newnetcom.anlyze.protocols.p808.Protocol0200For808;
 import com.newnetcom.anlyze.protocols.p808.Protocol0705For808;
 import com.newnetcom.anlyze.protocols.p808.ProtocolHeadFor808;
@@ -32,6 +33,7 @@ public class Protocol808 implements IProtocol {
 	private ProtocolHeadFor808 head;
 	private Protocol0705For808 body;
 	private Protocol0200For808 body0200;
+	private Protocol038EFor3G yueboContent;
 
 	public Protocol0200For808 getBody0200() {
 		return body0200;
@@ -62,11 +64,22 @@ public class Protocol808 implements IProtocol {
 				logger.error("808验证码错误" + ByteUtils.byte2HexStr(this.contents));
 			}
 			if ((short) 0x0705 == head.getCommondId() && head.getDataLength() > 0) {
-				body = new Protocol0705For808(
+				body = new Protocol0705For808(this.protocolBean,
 						ByteUtils.getSubBytes(this.contents, head.getHeadLength(), head.getDataLength()));
 			} else if ((short) 0x0200 == head.getCommondId() && head.getDataLength() > 0) {
 				body0200 = new Protocol0200For808(
 						ByteUtils.getSubBytes(this.contents, head.getHeadLength(), head.getDataLength()));
+			}else if ((int) 0x038E == head.getCommondId() && head.getDataLength() > 0) {
+				try {
+					
+						yueboContent = new Protocol038EFor3G(
+								ByteUtils.getSubBytes(this.contents, 20, head.getDataLength()));
+					
+				} catch (Exception ex) {
+					logger.error(
+							head.getDataLength() + "Protocol038e解析出错" + ByteUtils.byte2HexStr(protocolBean.getContent()),
+							ex);
+				}
 			}
 		} catch (Exception ex) {
 			logger.error("Protocol808错误", ex);
@@ -89,6 +102,17 @@ public class Protocol808 implements IProtocol {
 				// this.head.get
 				if (rb.getDatetime() != null) {
 					beanList.add(new PairResult("DATIME_CAN", "DATIME_CAN", "参数采集的时间", sdf.format(rb.getDatetime())));
+				}
+			}
+			if(this.yueboContent!=null)
+			{
+				rb.setDatetime(this.yueboContent.getStartTime());
+				rb.setLat(this.yueboContent.getLat());
+				rb.setLng(this.yueboContent.getLng());
+				rb.setDirection(this.yueboContent.getDirection());
+				if (rb.getDatetime() != null) {
+					beanList.add(new PairResult("DATIME_CAN", "DATIME_CAN", "参数采集的时间",
+							sdf.format(this.yueboContent.getStartTime())));
 				}
 			}
 			if (this.head != null) {

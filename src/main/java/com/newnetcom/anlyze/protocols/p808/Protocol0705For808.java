@@ -7,6 +7,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.newnetcom.anlyze.beans.ProtocolBean;
 import com.newnetcom.anlyze.protocols.p3g.Protocol02E8For3G;
 import com.newnetcom.anlyze.utils.ByteUtils;
 
@@ -23,14 +24,15 @@ public class Protocol0705For808 {
 	
 	private static final Logger logger = LoggerFactory.getLogger(Protocol02E8For3G.class);
 	private byte[] contents;
-
+	private ProtocolBean protocolBean;
 	/** 
 	* <p>Title: </p> 
 	* <p>Description: </p> 
 	* @param contents 
 	*/
-	public Protocol0705For808(byte[] contents) {
+	public Protocol0705For808(ProtocolBean protocolBean,byte[] contents) {
 		this.contents = contents;
+		this.protocolBean=protocolBean;
 		try {
 			this.anlyze();
 		} catch (Exception ex) {
@@ -91,7 +93,7 @@ public class Protocol0705For808 {
 	*/
 	private void anlyze() {
 		canNum = ByteUtils.getShortForLarge(this.contents, 0);
-		canTime=ByteUtils.BytesToTimeForHours(this.contents, 1);
+		canTime=new Date(Long.parseLong(this.protocolBean.getTIMESTAMP()));//ByteUtils.BytesToTimeForHours(this.contents, 1);
 		//timeInterval = ByteUtils.getShort(this.contents, 28);
 		for (int i = 0; i < canNum; i++) {
 			byte[] key =ByteUtils.endianChange( getKey(ByteUtils.getSubBytes(this.contents, i * 12+7,4)));

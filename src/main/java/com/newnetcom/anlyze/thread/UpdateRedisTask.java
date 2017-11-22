@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import com.newnetcom.anlyze.beans.Pair;
 import com.newnetcom.anlyze.beans.PairResult;
 import com.newnetcom.anlyze.beans.ResultBean;
+import com.newnetcom.anlyze.beans.VehicleInfo;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.redisUtils.RedisUtils;
 
@@ -19,12 +20,11 @@ public class UpdateRedisTask extends Thread {
 	private static final Logger logger = LoggerFactory.getLogger(UpdateRedisTask.class);
 	private RedisUtils redis;
 	private static final String pre = "BIG_VEHICLE:";
-	
-	private static final String snapshot="ANA_SNAPSHOT:";
+
+	private static final String snapshot = "ANA_SNAPSHOT:";
 	Map<String, Map<String, String>> contentsMap = new ConcurrentHashMap<>();
 	Map<String, Map<String, String>> contentsMapVehicle = new ConcurrentHashMap<>();
 	private long lastTime;
-
 	public UpdateRedisTask() {
 		redis = new RedisUtils();
 		lastTime = System.currentTimeMillis();
@@ -42,12 +42,16 @@ public class UpdateRedisTask extends Thread {
 				for (PairResult pair : pairs) {
 					pairsMap.put(pair.getAlias().isEmpty() || pair.getAlias().equals("null") ? pair.getCode()
 							: pair.getAlias(), pair.getValue());
-					if(pair.getAlias().equals("DATIME_RX")||pair.getAlias().equals("MILEAGE")||pair.getAlias().equals("LON")||pair.getAlias().equals("LAT")||pair.getAlias().equals("LON_D")||pair.getAlias().equals("LAT_D"))
-					{
+					if (pair.getAlias().equals("DATIME_RX") || pair.getAlias().equals("MILEAGE")
+							|| pair.getAlias().equals("LON") || pair.getAlias().equals("LAT")
+							|| pair.getAlias().equals("LON_D") || pair.getAlias().equals("LAT_D")) {
 						pairsMap2.put(pair.getAlias(), pair.getValue());
 					}
 				}
-				contentsMapVehicle.put(pre+results.getVehicleUnid(),pairsMap2);
+				VehicleInfo info=publicStaticMap.getVehicles().get(results.getVehicleUnid());
+				pairsMap2.put("domain_unid",info.getDomain_unid());
+				pairsMap2.put("fiber_unid",info.getFIBER_UNID());
+				contentsMapVehicle.put(pre + results.getVehicleUnid(), pairsMap2);
 				contentsMap.put(snapshot + results.getVehicleUnid(), pairsMap);
 				long current = System.currentTimeMillis();
 				if (contentsMap.size() > 5000 || current - lastTime > 10000) {

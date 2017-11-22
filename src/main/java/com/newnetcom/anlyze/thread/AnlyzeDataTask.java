@@ -135,7 +135,7 @@ public class AnlyzeDataTask extends Thread {
 		long time=	Long.parseLong(protocol.getTIMESTAMP());
 			Put put = new Put(RowKeyBean.makeRowKey(protocol.getUnid(), time));
 			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("DATIME_RX"), Bytes.toBytes(sdf.format(new Date(time))));
-			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"), Bytes.toBytes(protocol.getRAW_OCTETS()));
+			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"), Bytes.toBytes(protocol.getRAW_OCTETS().toUpperCase()));
 			puts.add(put);
 			Long curentTime = System.currentTimeMillis();
 			if (puts.size() > 5000 || curentTime - lastTime > 60000) {

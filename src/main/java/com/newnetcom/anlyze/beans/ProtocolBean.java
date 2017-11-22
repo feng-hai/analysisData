@@ -21,7 +21,17 @@ public class ProtocolBean implements Serializable {
 	private String IP4;// IPv4地址
 	private String flag_transmit = "false";// 转发标志
 	private String FIBER_UNID;
+	private String domain_unid;//分组标识
 	
+	
+	public String getDomain_unid() {
+		return domain_unid;
+	}
+
+	public void setDomain_unid(String domain_unid) {
+		this.domain_unid = domain_unid;
+	}
+
 	public byte[] getContent()
 	{
 		byte[] content = ByteUtils.hexStr2Bytes(this.getRAW_OCTETS());

@@ -18,6 +18,7 @@ import com.newnetcom.anlyze.beans.ResultBean;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.enums.ContentTypeEnum;
 import com.newnetcom.anlyze.protocols.p3g.Protocol02E8For3G;
+import com.newnetcom.anlyze.protocols.p3g.Protocol038EFor3G;
 import com.newnetcom.anlyze.protocols.p3g.ProtocolGPSFor3G;
 import com.newnetcom.anlyze.protocols.p3g.ProtocolHeadFor3G;
 import com.newnetcom.anlyze.utils.ByteUtils;
@@ -45,6 +46,8 @@ public class Protocol3G implements IProtocol {
 	private ProtocolHeadFor3G head;
 
 	private ProtocolGPSFor3G gpsInfo;
+	
+	private Protocol038EFor3G yueboContent;
 
 	private String fiber;
 	/**
@@ -77,13 +80,25 @@ public class Protocol3G implements IProtocol {
 							head.getCanLength() + "Protocol02E8解析出错" + ByteUtils.byte2HexStr(protocolBean.getContent()),
 							ex);
 				}
-			}
-			if ((int) 0x0181 == head.getTerminalCommandId() && head.getTerminalCommandLength() > 0) {
+			}else if ((int) 0x0181 == head.getTerminalCommandId() && head.getTerminalCommandLength() > 0) {
 				if (this.content.length > 20 + head.getTerminalCommandLength()) {
 					gpsInfo = new ProtocolGPSFor3G(
 							ByteUtils.getSubBytes(this.content, 20, head.getTerminalCommandLength()));
 				}else {
 					logger.debug("数据错误：指定长度和实际不符" + ByteUtils.byte2HexStr(this.content));
+				}
+			}else if ((int) 0x038E == head.getCanId() && head.getCanLength() > 0) {
+				try {
+					if (this.content.length > 20 + head.getCanLength()) {
+						yueboContent = new Protocol038EFor3G(
+								ByteUtils.getSubBytes(this.content, 20, head.getCanLength()));
+					} else {
+						logger.debug("数据错误：指定长度和实际不符" + ByteUtils.byte2HexStr(this.content));
+					}
+				} catch (Exception ex) {
+					logger.error(
+							head.getCanLength() + "Protocol02E8解析出错" + ByteUtils.byte2HexStr(protocolBean.getContent()),
+							ex);
 				}
 			}
 		} catch (Exception ex) {
@@ -116,7 +131,10 @@ public class Protocol3G implements IProtocol {
 
 		if (canContent != null) {
 			return canContent.getCans();
-		} else {
+		} else if(yueboContent!=null){
+			return yueboContent.getCans();
+			
+		}else {
 			return new HashMap<>();
 		}
 	}
@@ -152,6 +170,19 @@ public class Protocol3G implements IProtocol {
 			rb.setVehicleUnid(this.protocolBean.getUnid());
 			rb.setFiber_unid(this.protocolBean.getFIBER_UNID());
 			rb.setContent(this.protocolBean.getRAW_OCTETS());
+			if(this.yueboContent!=null)
+			{
+				rb.setDatetime(this.yueboContent.getStartTime());
+				rb.setLat(this.yueboContent.getLat());
+				rb.setLng(this.yueboContent.getLng());
+				rb.setDirection(this.yueboContent.getDirection());
+				if (rb.getDatetime() != null) {
+					beanList.add(new PairResult("DATIME_CAN", "DATIME_CAN", "参数采集的时间",
+							sdf.format(this.yueboContent.getStartTime())));
+				}
+			}
+			
+			
 			if (this.canContent != null) {
 
 				// Map<String, PairResult> rbs =
