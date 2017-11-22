@@ -2,15 +2,13 @@ package com.newnetcom.anlyze.anlyze.arithmetic;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 //
 //import com.newnetcom.anlyze.anlyze.AnlyzeCans;
 import com.newnetcom.anlyze.beans.Pair;
 import com.newnetcom.anlyze.utils.ByteUtils;
-import com.newnetcom.anlyze.utils.JsonUtils;
-import com.newnetcom.anlyze.utils.StrFormat;
+
 
 public class A2LArithimetic implements ILoadData {
 	private Pair bean;
@@ -19,7 +17,6 @@ public class A2LArithimetic implements ILoadData {
 	public A2LArithimetic(Pair inbean) {
 		this.bean = inbean;
 	}
-
 	@Override
 	public void setPairValue(byte[] content) {
 
