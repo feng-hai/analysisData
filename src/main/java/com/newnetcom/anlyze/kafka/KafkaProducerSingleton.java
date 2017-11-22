@@ -1,22 +1,16 @@
 package com.newnetcom.anlyze.kafka;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Properties;
-import java.util.Random;
-
 import org.apache.kafka.clients.producer.Callback;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.newnetcom.anlyze.beans.ObjectModelOfKafka;
 import com.newnetcom.anlyze.beans.ResultBean;
-import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.config.PropertyResource;
 
 public final class KafkaProducerSingleton {
@@ -25,7 +19,7 @@ public final class KafkaProducerSingleton {
 
 	private static KafkaProducer<String, String> kafkaProducer;
 
-	private Random random = new Random();
+//	private Random random = new Random();
 
 	private String topic;
 

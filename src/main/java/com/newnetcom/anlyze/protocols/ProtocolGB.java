@@ -2,8 +2,6 @@ package com.newnetcom.anlyze.protocols;
 
 import java.util.List;
 import java.util.Map;
-
-import com.newnetcom.anlyze.beans.Pair;
 import com.newnetcom.anlyze.beans.PairResult;
 import com.newnetcom.anlyze.beans.ResultBean;
 

@@ -1,25 +1,17 @@
 package com.newnetcom.anlyze.thread;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Properties;
-
-import org.apache.hadoop.hbase.client.Put;
-import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.newnetcom.anlyze.beans.ProtocolBean;
-import com.newnetcom.anlyze.beans.RowKeyBean;
 import com.newnetcom.anlyze.beans.VehicleInfo;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.config.PropertyResource;
 import com.newnetcom.anlyze.utils.JsonUtils;
-import cn.ngsoc.hbase.HBase;
 import cn.ngsoc.hbase.util.HBaseUtil;
 
 public class RawDataMyTaskRun extends Thread {

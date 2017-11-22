@@ -1,23 +1,17 @@
 package com.newnetcom.anlyze.thread;
 
-import java.io.File;
-import java.io.IOException;
+
 import java.util.ArrayList;
-import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
-
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
-import org.apache.log4j.PropertyConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory;
-import com.newnetcom.anlyze.anlyze.db.interfaces.IDatabase;
-import com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L;
 import com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils;
 import com.newnetcom.anlyze.anlyze.db.mysql.utils.SingletonJDBC;
 import com.newnetcom.anlyze.beans.VehicleInfo;

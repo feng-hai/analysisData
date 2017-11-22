@@ -5,16 +5,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.newnetcom.anlyze.beans.Pair;
 import com.newnetcom.anlyze.beans.PairResult;
 import com.newnetcom.anlyze.beans.ProtocolBean;
 import com.newnetcom.anlyze.beans.ResultBean;
-
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.enums.ContentTypeEnum;
 import com.newnetcom.anlyze.protocols.p3g.Protocol02E8For3G;
@@ -22,7 +17,6 @@ import com.newnetcom.anlyze.protocols.p3g.Protocol038EFor3G;
 import com.newnetcom.anlyze.protocols.p3g.ProtocolGPSFor3G;
 import com.newnetcom.anlyze.protocols.p3g.ProtocolHeadFor3G;
 import com.newnetcom.anlyze.utils.ByteUtils;
-import com.newnetcom.anlyze.utils.JsonUtils;
 import com.newnetcom.anlyze.utils.PointDouble;
 import com.newnetcom.anlyze.utils.Wars2Wgs;
 
@@ -46,7 +40,7 @@ public class Protocol3G implements IProtocol {
 	private ProtocolHeadFor3G head;
 
 	private ProtocolGPSFor3G gpsInfo;
-	
+
 	private Protocol038EFor3G yueboContent;
 
 	private String fiber;
@@ -80,14 +74,14 @@ public class Protocol3G implements IProtocol {
 							head.getCanLength() + "Protocol02E8解析出错" + ByteUtils.byte2HexStr(protocolBean.getContent()),
 							ex);
 				}
-			}else if ((int) 0x0181 == head.getTerminalCommandId() && head.getTerminalCommandLength() > 0) {
+			} else if ((int) 0x0181 == head.getTerminalCommandId() && head.getTerminalCommandLength() > 0) {
 				if (this.content.length > 20 + head.getTerminalCommandLength()) {
 					gpsInfo = new ProtocolGPSFor3G(
 							ByteUtils.getSubBytes(this.content, 20, head.getTerminalCommandLength()));
-				}else {
+				} else {
 					logger.debug("数据错误：指定长度和实际不符" + ByteUtils.byte2HexStr(this.content));
 				}
-			}else if ((int) 0x038E == head.getCanId() && head.getCanLength() > 0) {
+			} else if ((int) 0x038E == head.getCanId() && head.getCanLength() > 0) {
 				try {
 					if (this.content.length > 20 + head.getCanLength()) {
 						yueboContent = new Protocol038EFor3G(
@@ -131,10 +125,10 @@ public class Protocol3G implements IProtocol {
 
 		if (canContent != null) {
 			return canContent.getCans();
-		} else if(yueboContent!=null){
+		} else if (yueboContent != null) {
 			return yueboContent.getCans();
-			
-		}else {
+
+		} else {
 			return new HashMap<>();
 		}
 	}
@@ -160,6 +154,7 @@ public class Protocol3G implements IProtocol {
 	// private static Map<String, Map<String, PairResult>> vehilces = new
 	// ConcurrentHashMap<>();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 	@Override
 	public ResultBean toResult(List<PairResult> beanList) {
 
@@ -170,8 +165,7 @@ public class Protocol3G implements IProtocol {
 			rb.setVehicleUnid(this.protocolBean.getUnid());
 			rb.setFiber_unid(this.protocolBean.getFIBER_UNID());
 			rb.setContent(this.protocolBean.getRAW_OCTETS());
-			if(this.yueboContent!=null)
-			{
+			if (this.yueboContent != null) {
 				rb.setDatetime(this.yueboContent.getStartTime());
 				rb.setLat(this.yueboContent.getLat());
 				rb.setLng(this.yueboContent.getLng());
@@ -181,8 +175,7 @@ public class Protocol3G implements IProtocol {
 							sdf.format(this.yueboContent.getStartTime())));
 				}
 			}
-			
-			
+
 			if (this.canContent != null) {
 
 				// Map<String, PairResult> rbs =
@@ -226,7 +219,8 @@ public class Protocol3G implements IProtocol {
 				if (rb.getDatetime() != null) {
 					beanList.add(new PairResult("DATIME_GPS", "DATIME_GPS", "GPS时间", sdf.format(rb.getDatetime())));
 				}
-				beanList.add(new PairResult("SPEED_GPS", "SPEED_GPS", "GPS速度", String.valueOf(this.gpsInfo.getSpeed())));
+				beanList.add(
+						new PairResult("SPEED_GPS", "SPEED_GPS", "GPS速度", String.valueOf(this.gpsInfo.getSpeed())));
 				beanList.add(new PairResult("ALT", "ALT", "高度", String.valueOf(this.gpsInfo.getHeight())));
 				beanList.add(new PairResult("BEARING", "BEARING", "方向角", String.valueOf(this.gpsInfo.getDirection())));
 				beanList.add(new PairResult("VERSION_HW", "VERSION_HW", "硬件版本", String.valueOf(rb.gethVersion())));

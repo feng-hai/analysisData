@@ -2,23 +2,23 @@ package com.newnetcom.anlyze;
 
 import java.util.Date;
 import java.util.Map;
-import java.util.Timer;
+//import java.util.Timer;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
-import com.newnetcom.anlyze.thread.UpdateHbaseMyTask;
-import com.newnetcom.anlyze.thread.UpdateRedisTask;
-import com.newnetcom.anlyze.utils.ByteUtils;
-import com.newnetcom.anlyze.anlyze.AnlyzeCans;
+//import com.newnetcom.anlyze.thread.UpdateHbaseMyTask;
+//import com.newnetcom.anlyze.thread.UpdateRedisTask;
+//import com.newnetcom.anlyze.utils.ByteUtils;
+//import com.newnetcom.anlyze.anlyze.AnlyzeCans;
 import com.newnetcom.anlyze.anlyze.AnlyzeMain;
 import com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory;
 import com.newnetcom.anlyze.beans.ProtocolBean;
 import com.newnetcom.anlyze.config.PropertyResource;
-import com.newnetcom.anlyze.thread.AnlyzeDataTask;
-import com.newnetcom.anlyze.thread.CheckCatchTask;
-import com.newnetcom.anlyze.thread.DataToKafKaTask;
-import com.newnetcom.anlyze.thread.MyTask;
-import com.newnetcom.anlyze.thread.RawDataMyTaskRun;
+//import com.newnetcom.anlyze.thread.AnlyzeDataTask;
+//import com.newnetcom.anlyze.thread.CheckCatchTask;
+//import com.newnetcom.anlyze.thread.DataToKafKaTask;
+//import com.newnetcom.anlyze.thread.MyTask;
+//import com.newnetcom.anlyze.thread.RawDataMyTaskRun;
 
 public class TestApp {
 	// private static final Logger logger =
