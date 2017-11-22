@@ -3,19 +3,12 @@ package com.newnetcom.anlyze.anlyze;
 import java.util.ArrayList;
 //import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory;
-import com.newnetcom.anlyze.anlyze.db.interfaces.IDatabase;
 //import java.util.Map;
 import com.newnetcom.anlyze.beans.Pair;
 import com.newnetcom.anlyze.beans.publicStaticMap;
-import com.newnetcom.anlyze.config.PropertyResource;
 import com.newnetcom.anlyze.utils.ByteUtils;
-import com.newnetcom.anlyze.utils.JsonUtils;
 
 public class CanRules {
 

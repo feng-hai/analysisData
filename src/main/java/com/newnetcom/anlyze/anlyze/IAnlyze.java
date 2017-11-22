@@ -2,7 +2,6 @@ package com.newnetcom.anlyze.anlyze;
 
 import java.util.List;
 
-import com.newnetcom.anlyze.beans.Pair;
 //import com.newnetcom.anlyze.beans.RuleBean;
 import com.newnetcom.anlyze.beans.PairResult;
 
