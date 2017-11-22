@@ -69,7 +69,7 @@ public class MysqlDatabaseA2L implements IDatabase {
 		
 		
 		//所有协议项数据
-		String protocolSql = "select * from (SELECT p.PREREQUISITE_HEX , f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0)d  ";
+		String protocolSql = "select * from (SELECT p.PREREQUISITE_HEX , f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE ,f.ALGORITHM FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0)d  ";
 
 		List<Map<String, Object>> resultsProtocol = null;
 		try {
@@ -117,6 +117,10 @@ public class MysqlDatabaseA2L implements IDatabase {
 			if(entity.get("PREREQUISITE_VALUE")!=null&&!entity.get("PREREQUISITE_VALUE").toString().isEmpty())
 			{
 				pair.setPREREQUISITE_VALUE(entity.get("PREREQUISITE_VALUE").toString());
+			}
+			if(entity.get("ALGORITHM")!=null&&!entity.get("ALGORITHM").toString().isEmpty())
+			{
+				pair.setALGORITHM(entity.get("ALGORITHM").toString());
 			}
 			pair.setTitle(entity.get("TITLE").toString());
 			pair.setCanid(entity.get("PREREQUISITE_HEX").toString());

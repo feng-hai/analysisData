@@ -26,8 +26,8 @@ public class CheckCatchTask extends TimerTask {
 			publicStaticMap.reloadData=false;
 			System.out.println("重新加载规则开始"+sdf.format(new Date()));
 			Map<String,String> config=	PropertyResource.getInstance().getProperties();
-			IDatabase db=DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"A2L");//1获取配置文件的分析类
-			publicStaticMap.setCans(db.getRules());
+			DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"A2L");//1获取配置文件的分析类
+			DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"CAN");
 			System.out.println("重新加载规则结束"+sdf.format(new Date()));
 		}
 		

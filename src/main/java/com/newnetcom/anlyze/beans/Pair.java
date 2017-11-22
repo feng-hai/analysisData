@@ -40,6 +40,15 @@ public class Pair implements Serializable, Comparable<Pair>,Cloneable  {
 	private String canid;
 	private String protocolId;
 	
+	private String ALGORITHM;
+	
+	public String getALGORITHM() {
+		return ALGORITHM;
+	}
+	public void setALGORITHM(String aLGORITHM) {
+		ALGORITHM = aLGORITHM;
+	}
+
 	/** 
 	* @Fields PREREQUISITE_VALUE : 数据地址10进制
 	*/ 
