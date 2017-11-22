@@ -1,12 +1,10 @@
 package com.newnetcom.anlyze.anlyze.db.mysql;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.newnetcom.anlyze.anlyze.db.interfaces.IDatabase;
@@ -14,7 +12,6 @@ import com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils;
 import com.newnetcom.anlyze.anlyze.db.mysql.utils.SingletonJDBC;
 import com.newnetcom.anlyze.beans.Pair;
 import com.newnetcom.anlyze.beans.publicStaticMap;
-import com.newnetcom.anlyze.utils.ByteUtils;
 public class MysqlDatabaseA2L implements IDatabase {
 
 	private static final Logger logger = LoggerFactory.getLogger(MysqlDatabaseA2L.class);
