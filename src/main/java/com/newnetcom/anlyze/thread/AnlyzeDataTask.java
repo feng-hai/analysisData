@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 //import java.util.concurrent.ExecutorService;
 //import java.util.concurrent.Executors;
 import org.apache.hadoop.hbase.client.Put;
@@ -14,13 +17,15 @@ import com.newnetcom.anlyze.anlyze.AnlyzeMain;
 import com.newnetcom.anlyze.beans.ProtocolBean;
 import com.newnetcom.anlyze.beans.RowKeyBean;
 import com.newnetcom.anlyze.beans.publicStaticMap;
+import com.newnetcom.anlyze.config.PropertyResource;
+
 //import com.newnetcom.anlyze.config.PropertyResource;
 import cn.ngsoc.hbase.HBase;
 
 public class AnlyzeDataTask extends Thread {
 	private static final Logger logger = LoggerFactory.getLogger(AnlyzeDataTask.class);
-//	private int  threadNum=Integer.parseInt( PropertyResource.getInstance().getProperties().get("analyThreadNum"));
-	//private ExecutorService executor = Executors.newFixedThreadPool(threadNum);
+     private int  threadNum=Integer.parseInt( PropertyResource.getInstance().getProperties().get("analyThreadNum"));
+	private ExecutorService executor = Executors.newFixedThreadPool(threadNum);
 	private Long lastTime = System.currentTimeMillis();
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	@Override
@@ -29,7 +34,9 @@ public class AnlyzeDataTask extends Thread {
 			try {
 				ProtocolBean protocol = publicStaticMap.getRawDataQueue().take();
 				saveRaw(protocol);
+				long temp=System.currentTimeMillis();
 				new AnlyzeMain(protocol).run();
+				System.out.println("解析一条需要秒数："+(System.currentTimeMillis()-temp));
 				//executor.submit(new AnlyzeMain(protocol));
 			} catch (InterruptedException e) {
 				logger.error("解析错误-", e);
@@ -126,6 +133,7 @@ public class AnlyzeDataTask extends Thread {
 	}
 	
 	List<Put> puts = new ArrayList<>();
+	
 	private void saveRaw(ProtocolBean protocol) {
 		try {
 		long time=	Long.parseLong(protocol.getTIMESTAMP());

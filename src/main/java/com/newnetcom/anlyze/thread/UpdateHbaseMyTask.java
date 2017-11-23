@@ -61,7 +61,7 @@ public class UpdateHbaseMyTask extends Thread {
 						tempPuts.addAll(puts);
 						HBase.batchAsyncPut("CUBE_SENSOR", tempPuts, false);
 						puts.clear();
-						Thread.sleep(5);
+						Thread.sleep(1);
 					}
 				} catch (Exception ex) {
 					logger.error("更新hbase错误：", ex);

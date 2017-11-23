@@ -124,7 +124,7 @@ public class MysqlDatabase implements IDatabase {
 			}
 			pair.setResolving(entity.get("WEIGHT").toString());
 			if (!entity.get("BIT_OFFSET").toString().isEmpty()
-					&& entity.get("BIT_OFFSET").toString().matches("[0-9]+")) {
+					&& entity.get("BIT_OFFSET").toString().matches("-?\\d+")) {
 				pair.setStart(Integer.parseInt(entity.get("BIT_OFFSET").toString()));
 			}
 			pair.setTitle(entity.get("TITLE").toString());
@@ -155,10 +155,10 @@ public class MysqlDatabase implements IDatabase {
 					int inxTemp = 0;
 					String canId = pairs2.get(0).getCanid();
 					
-//					if(canId.equals("0CFF82EF"))
-//					{
-					//System.out.println(canId);
-					//}
+					if(canId.equals("18FF8F03"))
+					{
+						System.out.println(canId);
+					}
 					List<Pair> pairsTemp=new ArrayList<>(); 
 					for (Pair pair : pairs2) {
 						Pair temp=pair.clone();
