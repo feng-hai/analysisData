@@ -64,24 +64,24 @@ public class publicStaticMap {
 	public static BlockingQueue<ResultBean> getCmdQueue() {
 		return cmdQueue;
 	}
-	private static Map<String,List<Pair>> values=new ConcurrentHashMap <>();
+	private static Map<String,Map<String,List<Pair>>> values=new ConcurrentHashMap <>();
 	
 	
-	public  static  Map<String,List<Pair>> getCans()
+	public  static  Map<String,Map<String,List<Pair>>> getCans()
 	{
 		return values;
 	}
-	public static void setCans(Map<String,List<Pair>> canIn)
+	public static void setCans(Map<String,Map<String,List<Pair>>> canIn)
 	{
 		values=canIn;
 	}
 	
-	private static Map<String,List<Pair>> a2LValues=new ConcurrentHashMap <>();
+	private static Map<String,Map<String, List<Pair>>>  a2LValues=new ConcurrentHashMap <>();
 	
-	public static Map<String, List<Pair>> getA2LValues() {
+	public static Map<String,Map<String, List<Pair>>>  getA2LValues() {
 		return a2LValues;
 	}
-	public static void setA2LValues(Map<String, List<Pair>> a2lValues) {
+	public static void setA2LValues(Map<String,Map<String, List<Pair>>> a2lValues) {
 		a2LValues = a2lValues;
 	}
 

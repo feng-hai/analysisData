@@ -14,5 +14,5 @@ public interface IDatabase {
 	* @return Map<String,Pair>    返回类型 
 	* @throws 
 	*/
-     Map<String, List<Pair>> getRules();
+	Map<String,Map<String,List<Pair>>> getRules();
 }

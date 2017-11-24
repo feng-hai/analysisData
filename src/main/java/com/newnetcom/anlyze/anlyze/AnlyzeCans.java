@@ -1,6 +1,7 @@
 package com.newnetcom.anlyze.anlyze;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -71,18 +72,30 @@ public class AnlyzeCans implements IAnlyze {
 	 */
 	@Override
 	public List<PairResult> anlyzeContent() {
-
+		Boolean isYuebo=false;
+		
+		String fiberId=this.protocol.getFiber();
+		if (publicStaticMap.getFibers().contains(fiberId)) 
+		{
+			isYuebo=true;
+		}
+		Map<String,List<Pair>> res=new HashMap<>();
+		if(isYuebo)
+		{
+			res=publicStaticMap.getA2LValues().get(fiberId);
+		}else
+		{
+			res=publicStaticMap.getCans().get(fiberId);
+		}
 		// logger.info(JsonUtils.serialize(this.content));
 		List<PairResult> result = new ArrayList<>();
 //System.out.println("-------------------------------------------------");
 		for (byte[] key : content.keySet()) {
-
+//			// 根据canid获取解析规则
 			
-			
-			// 根据canid获取解析规则
-			List<Pair> rules = CanRules.getRuleBeanByCanId(this.protocol.getFiber(), key);
-		
-			// 遍历规则，根据规则查询数据值
+			List<Pair> rules = CanRules.getRuleBeanByCanId(fiberId,isYuebo,res ,key);
+			byte[] content=this.content.get(key);
+//			// 遍历规则，根据规则查询数据值
 			for (Pair bean : rules) {
 				//System.out.println(JsonUtils.serialize(bean));
 				PairResult result2 = new PairResult();
@@ -90,13 +103,12 @@ public class AnlyzeCans implements IAnlyze {
 					result2.setAlias(bean.getAlias());
 					result2.setCode(bean.getCode());
 					result2.setTitle(bean.getTitle());
-					if (publicStaticMap.getFibers().contains(this.protocol.getFiber())) {
+					if (isYuebo) {
 						String hx= Integer.toHexString(Integer.parseInt(bean.getPREREQUISITE_VALUE())).toUpperCase();
 						bean.setCode("0x"+hx);
-						
-					  new A2LArithimetic(bean).setPairValue(this.content.get(key));
+					  new A2LArithimetic(bean).setPairValue(content);
 					} else {
-						ArithimeticFactory.getArithimetic(bean).setPairValue(this.content.get(key));
+						ArithimeticFactory.getArithimetic(bean).setPairValue(content);
 					}
 					result2.setValue(bean.getValue());
 					// logger.info(result2.toString());
@@ -105,7 +117,6 @@ public class AnlyzeCans implements IAnlyze {
 					logger.error("解析错误,数据字典id" + this.protocol.getFiber() + "解析规则" + JsonUtils.serialize(bean) + "内容项："
 							+ ByteUtils.byte2HexStr(this.content.get(key)), ex);
 				}
-
 			}
 		}
 		return result;

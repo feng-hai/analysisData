@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 //import java.util.concurrent.ExecutorService;
 //import java.util.concurrent.Executors;
 import org.apache.hadoop.hbase.client.Put;
@@ -14,22 +17,30 @@ import com.newnetcom.anlyze.anlyze.AnlyzeMain;
 import com.newnetcom.anlyze.beans.ProtocolBean;
 import com.newnetcom.anlyze.beans.RowKeyBean;
 import com.newnetcom.anlyze.beans.publicStaticMap;
+import com.newnetcom.anlyze.config.PropertyResource;
+
 //import com.newnetcom.anlyze.config.PropertyResource;
 import cn.ngsoc.hbase.HBase;
 
 public class AnlyzeDataTask extends Thread {
 	private static final Logger logger = LoggerFactory.getLogger(AnlyzeDataTask.class);
-//	private int  threadNum=Integer.parseInt( PropertyResource.getInstance().getProperties().get("analyThreadNum"));
-	//private ExecutorService executor = Executors.newFixedThreadPool(threadNum);
+	private int  threadNum=Integer.parseInt( PropertyResource.getInstance().getProperties().get("analyThreadNum"));
+	private ExecutorService executor = Executors.newFixedThreadPool(threadNum);
 	private Long lastTime = System.currentTimeMillis();
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
+	private int i=0;
 	@Override
 	public void run() {
 		while (true) {
 			try {
+				if(i++>100000)
+				{
+					i=0;
+					Thread.sleep(1);
+				}
 				ProtocolBean protocol = publicStaticMap.getRawDataQueue().take();
-				saveRaw(protocol);
 				new AnlyzeMain(protocol).run();
+				
 				//executor.submit(new AnlyzeMain(protocol));
 			} catch (InterruptedException e) {
 				logger.error("解析错误-", e);
@@ -125,30 +136,5 @@ public class AnlyzeDataTask extends Thread {
 
 	}
 	
-	List<Put> puts = new ArrayList<>();
-	private void saveRaw(ProtocolBean protocol) {
-		try {
-		long time=	Long.parseLong(protocol.getTIMESTAMP());
-			Put put = new Put(RowKeyBean.makeRowKey(protocol.getUnid(), time));
-			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("DATIME_RX"), Bytes.toBytes(sdf.format(new Date(time))));
-			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"), Bytes.toBytes(protocol.getRAW_OCTETS().toUpperCase()));
-			puts.add(put);
-			Long curentTime = System.currentTimeMillis();
-			if (puts.size() > 5000 || curentTime - lastTime > 60000) {
-				lastTime = curentTime;
-				//long temp = System.currentTimeMillis();
-				if (puts.size() > 0) {
-					List<Put> tempPuts = new ArrayList<>();
-					tempPuts.addAll(puts);
-					HBase.put("CUBE_RAW", tempPuts, false);
-					puts.clear();
-					Thread.sleep(5);
-					//System.out.println(tempPuts.size() + "车辆原始数据" + (System.currentTimeMillis() - temp));
-				}
-			}
-		} catch (Exception e) {
-			logger.error("插入hbase数据库有问题", e);
-		}
-
-	}
+	
 }

@@ -33,7 +33,7 @@ public class MysqlDatabaseA2L implements IDatabase {
 	 * @see com.newnetcom.anlyze.db.interfaces.IDatabase#getRules()
 	 */
 	@Override
-	public Map<String, List<Pair>> getRules() {
+	public Map<String,Map<String,List<Pair>>> getRules() {
 		// TODO Auto-generated method stub
 		// 数据字典和协议族之间的对应关系，
 
@@ -141,7 +141,7 @@ public class MysqlDatabaseA2L implements IDatabase {
 		}
 		
 		//记录数据字典和Can针 ，对应的数据解析方式
-		Map<String, List<Pair>> resultsMap = new HashMap<>();
+		Map<String, Map<String,List<Pair>>> resultsMap = new HashMap<>();
 		for (String key : fiberProtocol.keySet()) {// key 是数据字典id
 			List<String> tempProtocols = fiberProtocol.get(key);
 			for (String protocol : tempProtocols) {
@@ -151,6 +151,7 @@ public class MysqlDatabaseA2L implements IDatabase {
 				{
 					//System.out.println(pairs2.size());
 				}
+				Map<String,List<Pair>> res=new HashMap<>();
 				if (pairs2 != null && pairs2.size() > 0) {
 					for(Pair pair : pairs2)
 					{
@@ -160,7 +161,8 @@ public class MysqlDatabaseA2L implements IDatabase {
 							if (!resultsMap.containsKey(key + "-" + PREREQUISITE_VALUE)) {
 								List<Pair> tempp=new ArrayList<Pair>();
 								tempp.add(pair);
-								resultsMap.put(key + "-" + PREREQUISITE_VALUE, tempp);
+								res.put(PREREQUISITE_VALUE, tempp);
+								//resultsMap.put(key + "-" + PREREQUISITE_VALUE, tempp);
 								
 								if(protocol.equals("67990FA465514125AD5EF96D2484AE05"))
 								{
@@ -170,6 +172,7 @@ public class MysqlDatabaseA2L implements IDatabase {
 							}
 						}
 					}
+					resultsMap.put(key, res);
 				}
 			}
 		}

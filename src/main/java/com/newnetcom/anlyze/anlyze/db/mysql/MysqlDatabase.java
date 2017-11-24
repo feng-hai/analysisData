@@ -30,7 +30,7 @@ public class MysqlDatabase implements IDatabase {
 	 * @see com.newnetcom.anlyze.db.interfaces.IDatabase#getRules()
 	 */
 	@Override
-	public Map<String, List<Pair>> getRules() {
+	public Map<String,Map<String,List<Pair>>> getRules() {
 		// TODO Auto-generated method stub
 		// 数据字典和协议族之间的对应关系，
 
@@ -145,9 +145,10 @@ public class MysqlDatabase implements IDatabase {
 		}
 		
 		//记录数据字典和Can针 ，对应的数据解析方式
-		Map<String, List<Pair>> resultsMap = new HashMap<>();
+		Map<String, Map<String,List<Pair>>> resultsMap = new HashMap<>();
 		for (String key : fiberProtocol.keySet()) {// key 是数据字典id
 			List<String> tempProtocols = fiberProtocol.get(key);
+			Map<String,List<Pair> > res=new HashMap<>();
 			for (String protocol : tempProtocols) {
 				List<Pair> pairs2 = protocolList.get(protocol);
 				if (pairs2 != null && pairs2.size() > 0) {
@@ -170,13 +171,17 @@ public class MysqlDatabase implements IDatabase {
 					byte[] temp = ByteUtils.hexStr2Bytes(canId);
 					temp = ByteUtils.endianChange(temp);
 					String canStr = ByteUtils.byte2HexStr(temp);
+					
 					if (!canStr.isEmpty() && !canStr.equals("00")) {
-						if (!resultsMap.containsKey(key + "-" + canStr)) {
-							resultsMap.put(key + "-" + canStr, pairsTemp);
+						if (!resultsMap.containsKey(canStr)) {
+							res.put(canStr, pairsTemp);
 						}
 					}
+				
 				}
 			}
+			
+			resultsMap.put(key, res);
 		}
 		publicStaticMap.setCans(resultsMap);
 		return resultsMap;
