@@ -1,111 +1,277 @@
-2017-11-18 10:16:48  [ main:4 ] - [ ERROR ]  查询数据库错误
+2017-11-24 00:29:32  [ main:3 ] - [ ERROR ]  查询数据库错误
 java.lang.NullPointerException
 	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
-	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabase.getRules(MysqlDatabase.java:55)
-	at com.newnetcom.anlyze.anlyze.CanRules.<clinit>(CanRules.java:26)
-	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:76)
-	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
-2017-11-18 10:16:48  [ main:14 ] - [ ERROR ]  查询数据库错误
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:220)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
+	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:22)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:51)
+2017-11-24 08:59:29  [ main:0 ] - [ ERROR ]  查询数据库错误
 java.lang.NullPointerException
 	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
-	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabase.getRules(MysqlDatabase.java:66)
-	at com.newnetcom.anlyze.anlyze.CanRules.<clinit>(CanRules.java:26)
-	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:76)
-	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
-2017-11-18 10:16:48  [ main:16 ] - [ ERROR ]  查询数据库错误
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:220)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
+	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:22)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:51)
+2017-11-24 09:18:40  [ main:0 ] - [ INFO ]  104C1992单体电压切断上限:3700-740EB80BF00A0000
+2017-11-24 09:18:44  [ main:3357 ] - [ INFO ]  104C1992单体电压报警下限:3000-740EB80BF00A0000
+2017-11-24 09:18:44  [ main:3589 ] - [ INFO ]  104C1992单体电压切断下限:2800-740EB80BF00A0000
+2017-11-24 09:18:44  [ main:3845 ] - [ INFO ]  104C1992单体电压互差报警:0-740EB80BF00A0000
+2017-11-24 09:18:44  [ main:4065 ] - [ INFO ]  18FF247B单体最高电压:3.46-5A014D014E01791D
+2017-11-24 09:18:44  [ main:4260 ] - [ INFO ]  18FF247B单体最低电压:3.33-5A014D014E01791D
+2017-11-24 09:18:45  [ main:4582 ] - [ INFO ]  18FF247B单体平均电压:3.34-5A014D014E01791D
+2017-11-24 09:18:45  [ main:4765 ] - [ INFO ]  18FF247B单体最高电压单体号:121-5A014D014E01791D
+2017-11-24 09:18:45  [ main:4942 ] - [ INFO ]  18FF247B单体最低电压单体号:29-5A014D014E01791D
+2017-11-24 09:18:45  [ main:5111 ] - [ INFO ]  18FF257B单体最高温度:17-4340421C01000000
+2017-11-24 09:18:46  [ main:5437 ] - [ INFO ]  18FF257B单体最低温度:14-4340421C01000000
+2017-11-24 09:18:46  [ main:5594 ] - [ INFO ]  18FF257B单体平均温度:16-4340421C01000000
+2017-11-24 09:18:48  [ main:7885 ] - [ INFO ]  18FF257B单体最高温度单体号:28-4340421C01000000
+2017-11-24 09:18:48  [ main:7886 ] - [ INFO ]  18FF257B单体最低温度单体号:1-4340421C01000000
+2017-11-24 09:18:48  [ main:7887 ] - [ INFO ]  104C1993温度报警上限:55-5F00AC0DAC0D8101
+2017-11-24 09:18:48  [ main:7891 ] - [ INFO ]  104C1993额定最大充电电流:350.0-5F00AC0DAC0D8101
+2017-11-24 09:18:48  [ main:7892 ] - [ INFO ]  104C1993额定最大放电电流:350.0-5F00AC0DAC0D8101
+2017-11-24 09:18:48  [ main:7892 ] - [ INFO ]  104C1993额定容量:385-5F00AC0DAC0D8101
+2017-11-24 09:18:48  [ main:7893 ] - [ INFO ]  104C1991电池组总电压:562-320210276400420E
+2017-11-24 09:18:48  [ main:7893 ] - [ INFO ]  104C1991电池组Soc:100-320210276400420E
+2017-11-24 09:18:48  [ main:7894 ] - [ INFO ]  104C1991单体电压报警上限:3650-320210276400420E
+2017-11-24 09:18:48  [ main:7897 ] - [ INFO ]  18FF227B电池组欠压报警:0-0000000000000000
+2017-11-24 09:18:48  [ main:7898 ] - [ INFO ]  18FF227B电池组过压报警:0-0000000000000000
+2017-11-24 09:18:48  [ main:7898 ] - [ INFO ]  18FF227B电池组低温报警:0-0000000000000000
+2017-11-24 09:18:48  [ main:7899 ] - [ INFO ]  18FF227B电池组高温报警:0-0000000000000000
+2017-11-24 09:18:48  [ main:7899 ] - [ INFO ]  18FF227BSoc低报警:0-0000000000000000
+2017-11-24 09:18:48  [ main:7900 ] - [ INFO ]  18FF227BSoc高报警:0-0000000000000000
+2017-11-24 09:18:48  [ main:7900 ] - [ INFO ]  18FF227B电池组放电电流报警:0-0000000000000000
+2017-11-24 09:18:48  [ main:7901 ] - [ INFO ]  18FF227B电池组充电电流报警:0-0000000000000000
+2017-11-24 09:18:48  [ main:7901 ] - [ INFO ]  18FF227B电池温差大报警:0-0000000000000000
+2017-11-24 09:18:48  [ main:7902 ] - [ INFO ]  18FF227B单体电压不均报警:0-0000000000000000
+2017-11-24 09:18:48  [ main:7905 ] - [ INFO ]  18FF227B单体电池欠压报警:0-0000000000000000
+2017-11-24 09:18:48  [ main:7906 ] - [ INFO ]  18FF227B单体电池过压报警:0-0000000000000000
+2017-11-24 09:18:48  [ main:7907 ] - [ INFO ]  18FF297B负极绝缘报警:0-0008520852010000
+2017-11-24 09:18:48  [ main:7908 ] - [ INFO ]  18FF297B正极绝缘报警:0-0008520852010000
+2017-11-24 09:18:48  [ main:7909 ] - [ INFO ]  18FF297B正极绝缘阻值:21000-0008520852010000
+2017-11-24 09:18:48  [ main:7909 ] - [ INFO ]  18FF297B负极绝缘阻值:21000-0008520852010000
+2017-11-24 09:18:48  [ main:7910 ] - [ INFO ]  18FF297B单元工作状态:1-0008520852010000
+2017-11-24 09:18:48  [ main:7910 ] - [ INFO ]  18FFA97B充电接触器控制:0-0000000000000000
+2017-11-24 09:18:48  [ main:7911 ] - [ INFO ]  18FFA97B电加热接触器控制:0-0000000000000000
+2017-11-24 09:18:48  [ main:7912 ] - [ INFO ]  18FF217B加热状态:0-11F4151027644C18
+2017-11-24 09:18:48  [ main:7912 ] - [ INFO ]  18FF217B充电连锁状态:1-11F4151027644C18
+2017-11-24 09:18:48  [ main:7912 ] - [ INFO ]  18FF217B内部总线状态:0-11F4151027644C18
+2017-11-24 09:18:48  [ main:7913 ] - [ INFO ]  18FF217BBMS系统工作状态:1-11F4151027644C18
+2017-11-24 09:18:48  [ main:7913 ] - [ INFO ]  18FF217B当前电池组总电压:562.0-11F4151027644C18
+2017-11-24 09:18:48  [ main:7914 ] - [ INFO ]  18FF217B当前电池组总电流:0.0-11F4151027644C18
+2017-11-24 09:18:48  [ main:7914 ] - [ INFO ]  18FF217B当前电池组Soc:100-11F4151027644C18
+2017-11-24 09:18:48  [ main:7915 ] - [ INFO ]  18FF217B电池组最大充电电压 :622.0-11F4151027644C18
+2017-11-24 09:18:48  [ main:7915 ] - [ INFO ]  13CC16B2最高充电电压:622.0-4C18000000A80000
+2017-11-24 09:18:48  [ main:7916 ] - [ INFO ]  13CC16B2实际要求充电电流:0.0-4C18000000A80000
+2017-11-24 09:18:48  [ main:7916 ] - [ INFO ]  13CC16B2控制:0-4C18000000A80000
+2017-11-24 09:18:48  [ main:7916 ] - [ INFO ]  13CC16B2单体数:168-4C18000000A80000
+2017-11-24 09:19:20  [ main:0 ] - [ INFO ]  18FFA97B充电接触器控制:0-0000000000000000
+2017-11-24 09:19:20  [ main:6 ] - [ INFO ]  18FFA97B电加热接触器控制:0-0000000000000000
+2017-11-24 09:19:20  [ main:10 ] - [ INFO ]  13CC16B2最高充电电压:622.0-4C18000000A80000
+2017-11-24 09:19:20  [ main:10 ] - [ INFO ]  13CC16B2实际要求充电电流:0.0-4C18000000A80000
+2017-11-24 09:19:20  [ main:11 ] - [ INFO ]  13CC16B2控制:0-4C18000000A80000
+2017-11-24 09:19:20  [ main:11 ] - [ INFO ]  13CC16B2单体数:168-4C18000000A80000
+2017-11-24 09:19:20  [ main:12 ] - [ INFO ]  18FF247B单体最高电压:3.46-5A014D014E01791D
+2017-11-24 09:19:20  [ main:12 ] - [ INFO ]  18FF247B单体最低电压:3.33-5A014D014E01791D
+2017-11-24 09:19:20  [ main:13 ] - [ INFO ]  18FF247B单体平均电压:3.34-5A014D014E01791D
+2017-11-24 09:19:20  [ main:13 ] - [ INFO ]  18FF247B单体最高电压单体号:121-5A014D014E01791D
+2017-11-24 09:19:20  [ main:14 ] - [ INFO ]  18FF247B单体最低电压单体号:29-5A014D014E01791D
+2017-11-24 09:19:20  [ main:14 ] - [ INFO ]  104C1992单体电压切断上限:3700-740EB80BF00A0000
+2017-11-24 09:19:20  [ main:15 ] - [ INFO ]  104C1992单体电压报警下限:3000-740EB80BF00A0000
+2017-11-24 09:19:20  [ main:16 ] - [ INFO ]  104C1992单体电压切断下限:2800-740EB80BF00A0000
+2017-11-24 09:19:20  [ main:16 ] - [ INFO ]  104C1992单体电压互差报警:0-740EB80BF00A0000
+2017-11-24 09:19:20  [ main:17 ] - [ INFO ]  104C1993温度报警上限:55-5F00AC0DAC0D8101
+2017-11-24 09:19:20  [ main:18 ] - [ INFO ]  104C1993额定最大充电电流:350.0-5F00AC0DAC0D8101
+2017-11-24 09:19:20  [ main:18 ] - [ INFO ]  104C1993额定最大放电电流:350.0-5F00AC0DAC0D8101
+2017-11-24 09:19:20  [ main:19 ] - [ INFO ]  104C1993额定容量:385-5F00AC0DAC0D8101
+2017-11-24 09:19:20  [ main:19 ] - [ INFO ]  18FF227B电池组欠压报警:0-0000000000000000
+2017-11-24 09:19:20  [ main:20 ] - [ INFO ]  18FF227B电池组过压报警:0-0000000000000000
+2017-11-24 09:19:20  [ main:20 ] - [ INFO ]  18FF227B电池组低温报警:0-0000000000000000
+2017-11-24 09:19:20  [ main:21 ] - [ INFO ]  18FF227B电池组高温报警:0-0000000000000000
+2017-11-24 09:19:20  [ main:21 ] - [ INFO ]  18FF227BSoc低报警:0-0000000000000000
+2017-11-24 09:19:20  [ main:22 ] - [ INFO ]  18FF227BSoc高报警:0-0000000000000000
+2017-11-24 09:19:20  [ main:22 ] - [ INFO ]  18FF227B电池组放电电流报警:0-0000000000000000
+2017-11-24 09:19:20  [ main:23 ] - [ INFO ]  18FF227B电池组充电电流报警:0-0000000000000000
+2017-11-24 09:19:20  [ main:23 ] - [ INFO ]  18FF227B电池温差大报警:0-0000000000000000
+2017-11-24 09:19:20  [ main:24 ] - [ INFO ]  18FF227B单体电压不均报警:0-0000000000000000
+2017-11-24 09:19:20  [ main:24 ] - [ INFO ]  18FF227B单体电池欠压报警:0-0000000000000000
+2017-11-24 09:19:20  [ main:25 ] - [ INFO ]  18FF227B单体电池过压报警:0-0000000000000000
+2017-11-24 09:19:20  [ main:26 ] - [ INFO ]  18FF257B单体最高温度:17-4340421C01000000
+2017-11-24 09:19:20  [ main:26 ] - [ INFO ]  18FF257B单体最低温度:14-4340421C01000000
+2017-11-24 09:19:20  [ main:27 ] - [ INFO ]  18FF257B单体平均温度:16-4340421C01000000
+2017-11-24 09:19:20  [ main:28 ] - [ INFO ]  18FF257B单体最高温度单体号:28-4340421C01000000
+2017-11-24 09:19:20  [ main:28 ] - [ INFO ]  18FF257B单体最低温度单体号:1-4340421C01000000
+2017-11-24 09:19:20  [ main:29 ] - [ INFO ]  18FF297B负极绝缘报警:0-0008520852010000
+2017-11-24 09:19:20  [ main:30 ] - [ INFO ]  18FF297B正极绝缘报警:0-0008520852010000
+2017-11-24 09:19:20  [ main:30 ] - [ INFO ]  18FF297B正极绝缘阻值:21000-0008520852010000
+2017-11-24 09:19:20  [ main:31 ] - [ INFO ]  18FF297B负极绝缘阻值:21000-0008520852010000
+2017-11-24 09:19:20  [ main:31 ] - [ INFO ]  18FF297B单元工作状态:1-0008520852010000
+2017-11-24 09:19:20  [ main:32 ] - [ INFO ]  18FF217B加热状态:0-11F4151027644C18
+2017-11-24 09:19:20  [ main:32 ] - [ INFO ]  18FF217B充电连锁状态:1-11F4151027644C18
+2017-11-24 09:19:20  [ main:33 ] - [ INFO ]  18FF217B内部总线状态:0-11F4151027644C18
+2017-11-24 09:19:20  [ main:33 ] - [ INFO ]  18FF217BBMS系统工作状态:1-11F4151027644C18
+2017-11-24 09:19:20  [ main:34 ] - [ INFO ]  18FF217B当前电池组总电压:562.0-11F4151027644C18
+2017-11-24 09:19:20  [ main:34 ] - [ INFO ]  18FF217B当前电池组总电流:0.0-11F4151027644C18
+2017-11-24 09:19:20  [ main:35 ] - [ INFO ]  18FF217B当前电池组Soc:100-11F4151027644C18
+2017-11-24 09:19:20  [ main:36 ] - [ INFO ]  18FF217B电池组最大充电电压 :622.0-11F4151027644C18
+2017-11-24 09:19:20  [ main:36 ] - [ INFO ]  104C1991电池组总电压:562-320210276400420E
+2017-11-24 09:19:20  [ main:36 ] - [ INFO ]  104C1991电池组Soc:100-320210276400420E
+2017-11-24 09:19:20  [ main:37 ] - [ INFO ]  104C1991单体电压报警上限:3650-320210276400420E
+2017-11-24 09:22:01  [ main:0 ] - [ INFO ]  0CF041D0控制模式切换:1-1100000000000000
+2017-11-24 09:22:01  [ main:5 ] - [ INFO ]  0CF041D0电机控制模式:0-1100000000000000
+2017-11-24 09:22:01  [ main:6 ] - [ INFO ]  0CF041D0电机控制状态:1-1100000000000000
+2017-11-24 09:22:01  [ main:6 ] - [ INFO ]  18FFA97B充电接触器控制:0-0000000000000000
+2017-11-24 09:22:01  [ main:7 ] - [ INFO ]  18FFA97B电加热接触器控制:0-0000000000000000
+2017-11-24 09:22:01  [ main:8 ] - [ INFO ]  18FF217B加热状态:0-018B136B2B4C6216
+2017-11-24 09:22:01  [ main:8 ] - [ INFO ]  18FF217B充电连锁状态:0-018B136B2B4C6216
+2017-11-24 09:22:01  [ main:8 ] - [ INFO ]  18FF217B内部总线状态:0-018B136B2B4C6216
+2017-11-24 09:22:01  [ main:9 ] - [ INFO ]  18FF217BBMS系统工作状态:1-018B136B2B4C6216
+2017-11-24 09:22:01  [ main:13 ] - [ INFO ]  18FF217B当前电池组总电压:500.3-018B136B2B4C6216
+2017-11-24 09:22:01  [ main:13 ] - [ INFO ]  18FF217B当前电池组总电流:111.5-018B136B2B4C6216
+2017-11-24 09:22:01  [ main:14 ] - [ INFO ]  18FF217B当前电池组Soc:76-018B136B2B4C6216
+2017-11-24 09:22:01  [ main:15 ] - [ INFO ]  18FF217B电池组最大充电电压 :573.0-018B136B2B4C6216
+2017-11-24 09:22:01  [ main:15 ] - [ INFO ]  1801A79C通讯故障报警:0-010028677D1B01F0
+2017-11-24 09:22:01  [ main:18 ] - [ INFO ]  1801A79C工作状态:1-010028677D1B01F0
+2017-11-24 09:22:01  [ main:20 ] - [ INFO ]  1801A79C硬件故障:0-010028677D1B01F0
+2017-11-24 09:22:01  [ main:21 ] - [ INFO ]  1801A79C输出短路故障:0-010028677D1B01F0
+2017-11-24 09:22:01  [ main:23 ] - [ INFO ]  1801A79C输入欠压故障:0-010028677D1B01F0
+2017-11-24 09:22:01  [ main:23 ] - [ INFO ]  1801A79C输入过压故障:0-010028677D1B01F0
+2017-11-24 09:22:01  [ main:24 ] - [ INFO ]  1801A79C输出欠压故障:0-010028677D1B01F0
+2017-11-24 09:22:01  [ main:25 ] - [ INFO ]  1801A79C输出过压故障:0-010028677D1B01F0
+2017-11-24 09:22:01  [ main:25 ] - [ INFO ]  1801A79C输出过流故障:0-010028677D1B01F0
+2017-11-24 09:22:01  [ main:26 ] - [ INFO ]  1801A79C温度故障:0-010028677D1B01F0
+2017-11-24 09:22:01  [ main:26 ] - [ INFO ]  1801A79C输出电压:27-010028677D1B01F0
+2017-11-24 09:22:01  [ main:27 ] - [ INFO ]  104C1991电池组总电压:500-F40193234C00DE0D
+2017-11-24 09:22:01  [ main:28 ] - [ INFO ]  104C1991电池组Soc:76-F40193234C00DE0D
+2017-11-24 09:22:01  [ main:29 ] - [ INFO ]  104C1991单体电压报警上限:3550-F40193234C00DE0D
+2017-11-24 09:22:01  [ main:29 ] - [ INFO ]  0CFFC9D0变速器挡位:15-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:30 ] - [ INFO ]  0CFFC9D0换档器面板状态:2-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:30 ] - [ INFO ]  0CFFC9D0电机超速状态:0-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:31 ] - [ INFO ]  0CFFC9D0车速超速状态:0-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:31 ] - [ INFO ]  0CFFC9D0高压上电状态:1-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:32 ] - [ INFO ]  0CFFC9D0高压绝缘状态:0-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:32 ] - [ INFO ]  0CFFC9D0整车控制器状态:2-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:33 ] - [ INFO ]  0CFFC9D0车速:63-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:33 ] - [ INFO ]  0CFFC9D0变速器执行器1故障:0-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:34 ] - [ INFO ]  0CFFC9D0变速器传感器2故障:0-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:35 ] - [ INFO ]  0CFFC9D0变速器传感器1故障:0-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:36 ] - [ INFO ]  0CFFC9D0电机转速传感器故障:0-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:37 ] - [ INFO ]  0CFFC9D0变速器传感器故障:0-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:38 ] - [ INFO ]  0CFFC9D0加速踏板传感器故障:0-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:38 ] - [ INFO ]  0CFFC9D0制动踏板传感器故障:0-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:38 ] - [ INFO ]  0CFFC9D0变速器执行器2故障:0-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:39 ] - [ INFO ]  0CFFC9D0加速踏板开度:27-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:39 ] - [ INFO ]  0CFFC9D0制动踏板开度:0-3E0A003F00001B00
+2017-11-24 09:22:01  [ main:39 ] - [ INFO ]  104C1993温度报警上限:55-5F00C409C409F000
+2017-11-24 09:22:01  [ main:40 ] - [ INFO ]  104C1993额定最大充电电流:250.0-5F00C409C409F000
+2017-11-24 09:22:01  [ main:40 ] - [ INFO ]  104C1993额定最大放电电流:250.0-5F00C409C409F000
+2017-11-24 09:22:01  [ main:41 ] - [ INFO ]  104C1993额定容量:240-5F00C409C409F000
+2017-11-24 09:22:01  [ main:41 ] - [ INFO ]  18FB7117右转向:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:41 ] - [ INFO ]  18FB7117左转向:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:42 ] - [ INFO ]  18FB7117刹车灯:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:42 ] - [ INFO ]  18FB7117倒车灯:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:42 ] - [ INFO ]  18FB7117后雾灯:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:43 ] - [ INFO ]  18FB7117前雾灯:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:43 ] - [ INFO ]  18FB7117远光灯:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:44 ] - [ INFO ]  18FB7117近光灯:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:44 ] - [ INFO ]  18FB7117后门开信号:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:44 ] - [ INFO ]  18FB7117前门开信号:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:45 ] - [ INFO ]  18FB7117空档:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:45 ] - [ INFO ]  18FB7117手刹信号:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:46 ] - [ INFO ]  18FB7117厢灯2开关:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:46 ] - [ INFO ]  18FB7117厢灯1开关:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:46 ] - [ INFO ]  18FB7117路牌灯开关:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:47 ] - [ INFO ]  18FB7117喇叭开关:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:47 ] - [ INFO ]  18FB7117小灯开关:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:48 ] - [ INFO ]  18FB7117水位过低信号:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:48 ] - [ INFO ]  18FB7117空滤堵塞报警:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:49 ] - [ INFO ]  18FB7117后舱门开关:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:49 ] - [ INFO ]  18FB7117后应急门开关:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:49 ] - [ INFO ]  18FB7117前应急门开关:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:50 ] - [ INFO ]  18FB7117发动机舱温报警:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:50 ] - [ INFO ]  18FB7117右蹄片磨损报警:1-0000006000C05A08
+2017-11-24 09:22:01  [ main:50 ] - [ INFO ]  18FB7117左蹄片磨损报警:1-0000006000C05A08
+2017-11-24 09:22:01  [ main:50 ] - [ INFO ]  18FB7117缓速器工作:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:50 ] - [ INFO ]  18FB7117ABS工作:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:51 ] - [ INFO ]  18FB7117洗涤器开关:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:51 ] - [ INFO ]  18FB7117雨刮开关:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:51 ] - [ INFO ]  18FB7117司机扇开关:0-0000006000C05A08
+2017-11-24 09:22:01  [ main:52 ] - [ INFO ]  18FB7117里程:54752.0-0000006000C05A08
+2017-11-24 09:22:01  [ main:52 ] - [ INFO ]  18FB7017前气压:710-3FCF000047490038
+2017-11-24 09:22:01  [ main:53 ] - [ INFO ]  18FB7017后气压:730-3FCF000047490038
+2017-11-24 09:22:01  [ main:54 ] - [ INFO ]  18FB7017整车电压:28.0-3FCF000047490038
+2017-11-24 09:22:01  [ main:54 ] - [ INFO ]  18F502F0驱动电机转速:1747-D306A708EF000000
+2017-11-24 09:22:01  [ main:55 ] - [ INFO ]  18F502F0驱动电机转矩:215-D306A708EF000000
+2017-11-24 09:22:01  [ main:56 ] - [ INFO ]  18F502F0驱动电机功率:39-D306A708EF000000
+2017-11-24 09:22:01  [ main:56 ] - [ INFO ]  18F501F0电机温度:34-4A43F40100050000
+2017-11-24 09:22:01  [ main:57 ] - [ INFO ]  18F501F0电机控制器温度:27-4A43F40100050000
+2017-11-24 09:22:01  [ main:57 ] - [ INFO ]  18F501F0母线电压:500-4A43F40100050000
+2017-11-24 09:22:01  [ main:58 ] - [ INFO ]  18F501F0反转状态:0-4A43F40100050000
+2017-11-24 09:22:01  [ main:58 ] - [ INFO ]  18F501F0制动状态:0-4A43F40100050000
+2017-11-24 09:22:01  [ main:58 ] - [ INFO ]  18F501F0驱动状态:1-4A43F40100050000
+2017-11-24 09:22:01  [ main:59 ] - [ INFO ]  18F501F0MCU自检状态:1-4A43F40100050000
+2017-11-24 09:22:01  [ main:59 ] - [ INFO ]  18F501F0MCU故障:0-4A43F40100050000
+2017-11-24 09:22:01  [ main:60 ] - [ INFO ]  18F501F0通讯故障报警:0-4A43F40100050000
+2017-11-24 09:22:01  [ main:60 ] - [ INFO ]  18F501F0电机温度报警:0-4A43F40100050000
+2017-11-24 09:22:01  [ main:60 ] - [ INFO ]  18F501F0电机控制器温度报警:0-4A43F40100050000
+2017-11-24 09:22:01  [ main:61 ] - [ INFO ]  18F501F0短路、过流报警:0-4A43F40100050000
+2017-11-24 09:22:01  [ main:61 ] - [ INFO ]  18F501F0电机欠压报警:0-4A43F40100050000
+2017-11-24 09:22:01  [ main:61 ] - [ INFO ]  18F501F0电机过压报警:0-4A43F40100050000
+2017-11-24 09:22:01  [ main:61 ] - [ INFO ]  18F501F0MCU故障代码:0-4A43F40100050000
+2017-11-24 09:22:01  [ main:62 ] - [ INFO ]  1801A79D电机运行状态:0-00CD002F01EF0000
+2017-11-24 09:22:01  [ main:62 ] - [ INFO ]  1801A79D转子传感器故障:0-00CD002F01EF0000
+2017-11-24 09:22:01  [ main:62 ] - [ INFO ]  1801A79D通讯故障:0-00CD002F01EF0000
+2017-11-24 09:22:01  [ main:62 ] - [ INFO ]  1801A79D电机控制器温度报警:0-00CD002F01EF0000
+2017-11-24 09:22:01  [ main:63 ] - [ INFO ]  1801A79D电机温度报警:0-00CD002F01EF0000
+2017-11-24 09:22:01  [ main:63 ] - [ INFO ]  1801A79D短路、过流故障:0-00CD002F01EF0000
+2017-11-24 09:22:01  [ main:63 ] - [ INFO ]  1801A79D电机功率:5-00CD002F01EF0000
+2017-11-24 09:22:01  [ main:64 ] - [ INFO ]  104C1992单体电压切断上限:3650-420EB80B280A0000
+2017-11-24 09:22:01  [ main:64 ] - [ INFO ]  104C1992单体电压报警下限:3000-420EB80B280A0000
+2017-11-24 09:22:01  [ main:65 ] - [ INFO ]  104C1992单体电压切断下限:2600-420EB80B280A0000
+2017-11-24 09:22:01  [ main:65 ] - [ INFO ]  104C1992单体电压互差报警:0-420EB80B280A0000
+2017-11-24 09:22:01  [ main:66 ] - [ INFO ]  1801A79B电机运行状态:1-40CB003001EA2ED0
+2017-11-24 09:22:01  [ main:66 ] - [ INFO ]  1801A79B转子传感器故障:0-40CB003001EA2ED0
+2017-11-24 09:22:01  [ main:67 ] - [ INFO ]  1801A79B通讯故障:0-40CB003001EA2ED0
+2017-11-24 09:22:01  [ main:67 ] - [ INFO ]  1801A79B电机控制器温度报警:0-40CB003001EA2ED0
+2017-11-24 09:22:01  [ main:67 ] - [ INFO ]  1801A79B电机温度报警:0-40CB003001EA2ED0
+2017-11-24 09:22:01  [ main:68 ] - [ INFO ]  1801A79B短路、过流故障:0-40CB003001EA2ED0
+2017-11-24 09:22:01  [ main:68 ] - [ INFO ]  1801A79B电机功率:3-40CB003001EA2ED0
+2017-11-24 09:22:01  [ main:69 ] - [ INFO ]  18FF297B负极绝缘报警:0-0001520152010000
+2017-11-24 09:22:01  [ main:70 ] - [ INFO ]  18FF297B正极绝缘报警:0-0001520152010000
+2017-11-24 09:22:01  [ main:70 ] - [ INFO ]  18FF297B正极绝缘阻值:20993-0001520152010000
+2017-11-24 09:22:01  [ main:71 ] - [ INFO ]  18FF297B负极绝缘阻值:20993-0001520152010000
+2017-11-24 09:22:01  [ main:71 ] - [ INFO ]  18FF297B单元工作状态:1-0001520152010000
+2017-11-24 09:22:01  [ main:71 ] - [ INFO ]  13CC16B2最高充电电压:573.0-62160000009D0000
+2017-11-24 09:22:01  [ main:72 ] - [ INFO ]  13CC16B2实际要求充电电流:0.0-62160000009D0000
+2017-11-24 09:22:01  [ main:72 ] - [ INFO ]  13CC16B2控制:0-62160000009D0000
+2017-11-24 09:22:01  [ main:74 ] - [ INFO ]  13CC16B2单体数:157-62160000009D0000
+2017-11-24 09:22:01  [ main:77 ] - [ INFO ]  18FF247B单体最高电压:3.21-410138013E013349
+2017-11-24 09:22:01  [ main:78 ] - [ INFO ]  18FF247B单体最低电压:3.12-410138013E013349
+2017-11-24 09:22:01  [ main:78 ] - [ INFO ]  18FF247B单体平均电压:3.18-410138013E013349
+2017-11-24 09:22:01  [ main:79 ] - [ INFO ]  18FF247B单体最高电压单体号:51-410138013E013349
+2017-11-24 09:22:01  [ main:79 ] - [ INFO ]  18FF247B单体最低电压单体号:73-410138013E013349
+2017-11-24 09:22:01  [ main:79 ] - [ INFO ]  0CFFCAD0油泵控制器控制指令:170-AA55AA5500000000
+2017-11-24 09:22:01  [ main:80 ] - [ INFO ]  0CFFCAD0气泵控制器控制指令:85-AA55AA5500000000
+2017-11-24 09:22:01  [ main:80 ] - [ INFO ]  0CFFCAD0DC/DC控制指令:170-AA55AA5500000000
+2017-11-24 09:22:01  [ main:80 ] - [ INFO ]  0CFFCAD0空调变频器控制指令:85-AA55AA5500000000
+2017-11-24 09:22:01  [ main:81 ] - [ INFO ]  18FF227B电池组欠压报警:0-0000000000000000
+2017-11-24 09:22:01  [ main:81 ] - [ INFO ]  18FF227B电池组过压报警:0-0000000000000000
+2017-11-24 09:22:01  [ main:81 ] - [ INFO ]  18FF227B电池组低温报警:0-0000000000000000
+2017-11-24 09:22:01  [ main:88 ] - [ INFO ]  18FF227B电池组高温报警:0-0000000000000000
+2017-11-24 09:22:01  [ main:89 ] - [ INFO ]  18FF227BSoc低报警:0-0000000000000000
+2017-11-24 09:22:01  [ main:89 ] - [ INFO ]  18FF227BSoc高报警:0-0000000000000000
+2017-11-24 09:22:01  [ main:90 ] - [ INFO ]  18FF227B电池组放电电流报警:0-0000000000000000
+2017-11-24 09:22:01  [ main:90 ] - [ INFO ]  18FF227B电池组充电电流报警:0-0000000000000000
+2017-11-24 09:22:01  [ main:91 ] - [ INFO ]  18FF227B电池温差大报警:0-0000000000000000
+2017-11-24 09:22:01  [ main:92 ] - [ INFO ]  18FF227B单体电压不均报警:0-0000000000000000
+2017-11-24 09:22:01  [ main:92 ] - [ INFO ]  18FF227B单体电池欠压报警:0-0000000000000000
+2017-11-24 09:22:01  [ main:92 ] - [ INFO ]  18FF227B单体电池过压报警:0-0000000000000000
+2017-11-24 09:29:48  [ main:2 ] - [ ERROR ]  查询数据库错误
 java.lang.NullPointerException
 	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
-	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabase.getRules(MysqlDatabase.java:77)
-	at com.newnetcom.anlyze.anlyze.CanRules.<clinit>(CanRules.java:26)
-	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:76)
-	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
-2017-11-18 10:18:20  [ main:1 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"qu1aq1i","alias":"null","title":"MCU自检状态","value":"-1","inx":13,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":46,"length":3,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
-java.lang.StringIndexOutOfBoundsException: String index out of range: 9
-	at java.lang.String.substring(String.java:1963)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:57)
-	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
-	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
-2017-11-18 10:18:20  [ main:5 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
-java.lang.StringIndexOutOfBoundsException: String index out of range: 9
-	at java.lang.String.substring(String.java:1963)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:57)
-	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
-	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
-2017-11-18 10:24:03  [ main:2 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"qu1aq1i","alias":"null","title":"MCU自检状态","value":"-1","inx":13,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":46,"length":3,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
-java.lang.StringIndexOutOfBoundsException: String index out of range: 9
-	at java.lang.String.substring(String.java:1963)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:60)
-	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
-	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
-2017-11-18 10:24:03  [ main:6 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
-java.lang.StringIndexOutOfBoundsException: String index out of range: 9
-	at java.lang.String.substring(String.java:1963)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:60)
-	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
-	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
-2017-11-18 10:24:26  [ main:1 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"qu1aq1i","alias":"null","title":"MCU自检状态","value":"-1","inx":13,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":46,"length":3,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
-java.lang.StringIndexOutOfBoundsException: String index out of range: 9
-	at java.lang.String.substring(String.java:1963)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:60)
-	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
-	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
-2017-11-18 10:24:26  [ main:6 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
-java.lang.StringIndexOutOfBoundsException: String index out of range: 9
-	at java.lang.String.substring(String.java:1963)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:60)
-	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
-	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
-2017-11-18 10:24:48  [ main:1 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"qu1aq1i","alias":"null","title":"MCU自检状态","value":"-1","inx":13,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":46,"length":3,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
-java.lang.StringIndexOutOfBoundsException: String index out of range: 9
-	at java.lang.String.substring(String.java:1963)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:60)
-	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
-	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
-2017-11-18 10:31:37  [ main:2 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
-java.lang.ArrayIndexOutOfBoundsException: 8
-	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:54)
-	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
-	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
-2017-11-18 10:40:14  [ main:3 ] - [ ERROR ]  解析错误,数据字典id27A67D545CFF4AE3AD4DF45AB94A7C18解析规则{"code":"sft35yg","alias":"null","title":"MCU故障代码","value":"-1","inx":29,"canid":"18F501F0","protocolId":"1CE579F387B54CC3AA34488F489D15B2","start":57,"length":8,"offset":0.0,"resolving":"1","dataType":"1"}内容项：4B43060200090000
-java.lang.ArrayIndexOutOfBoundsException: 8
-	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:527)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:54)
-	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:85)
-	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:42)
-	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:48)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:55)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:220)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
+	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:22)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:51)

@@ -35,11 +35,17 @@ public class AnlyzeMain implements Runnable {
 		}
 		// System.out.println("解析开始");
 		// 分析协议头部和协议内容
+		//long temp=System.currentTimeMillis();
 		IProtocol protocolD = new DynamicProtocol(protocolType, protocolBean);
+	//	System.out.println("解析头部文件需要时间："+(System.currentTimeMillis()-temp));
 		// System.out.println("解析开始01");
 		DynamicAnlyze anlyze = new DynamicAnlyze(protocolD);
+	//	System.out.println("解析文件需要时间："+(System.currentTimeMillis()-temp));
 		// System.out.println("解析开始02");
-		return protocolD.toResult(anlyze.anlyzeContent());
+		//anlyze.anlyzeContent();
+	return protocolD.toResult(anlyze.anlyzeContent());
+		//return null;
+		
 	}
 
 	@Override

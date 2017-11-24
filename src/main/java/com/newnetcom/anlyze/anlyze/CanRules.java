@@ -3,6 +3,8 @@ package com.newnetcom.anlyze.anlyze;
 import java.util.ArrayList;
 //import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 //import java.util.Map;
@@ -27,21 +29,21 @@ public class CanRules {
 	* @return List<Pair>    返回类型 
 	* @throws 
 	*/
-	public static List<Pair> getRuleBeanByCanId(String dataSet,byte[] canId) {
+	public static List<Pair> getRuleBeanByCanId(String fibeid,Boolean isTrue,Map<String,List<Pair>> rul,byte[] canId) {
 		//System.out.println(ByteUtils.byte2HexStr(canId));
-		List<Pair> rules ;
-		if (publicStaticMap.getFibers().contains(dataSet)) {
+	List<Pair> rules=new ArrayList<>() ;
+		if (isTrue) {
 			int tempInt=ByteUtils.getIntForLarge(canId, 0)&0xffffffff;
 			//String temp =ByteUtils.byte2HexStr(canId);		
-			rules= publicStaticMap.getA2LValues().get(dataSet+"-"+tempInt);
+			rules= rul.get(tempInt);
 			//System.out.println(dataSet+"-"+tempInt);
 			//System.out.println(JsonUtils.serialize( publicStaticMap.getA2LValues()));
 		}else
 		{
-			rules= publicStaticMap.getCans().get(dataSet+"-"+ByteUtils.byte2HexStr(canId));
+			rules= rul.get(ByteUtils.byte2HexStr(canId));
 		}
 		if (rules == null) {
-			logger.debug("错误：数据字典ID："+dataSet+"CanID:"+ByteUtils.byte2HexStr(canId));
+			logger.debug("错误：数据字典ID："+fibeid+"CanID:"+ByteUtils.byte2HexStr(canId));
 			rules = new ArrayList<>();
 		} 	
 		return rules;

@@ -11,8 +11,9 @@ import com.newnetcom.anlyze.beans.Pair;
 public class XMLDatabase implements IDatabase {
 
 	@Override
-	public Map<String, List<Pair>> getRules() {
-		return XMLReaderUtils.readerToCatch();	 
+	public Map<String,Map<String, List<Pair>>>  getRules() {
+		return null;
+		//return XMLReaderUtils.readerToCatch();	 
 	}
 
 }

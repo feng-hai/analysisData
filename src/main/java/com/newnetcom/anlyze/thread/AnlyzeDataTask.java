@@ -24,19 +24,27 @@ import cn.ngsoc.hbase.HBase;
 
 public class AnlyzeDataTask extends Thread {
 	private static final Logger logger = LoggerFactory.getLogger(AnlyzeDataTask.class);
+
      private int  threadNum=Integer.parseInt( PropertyResource.getInstance().getProperties().get("analyThreadNum"));
+
 	private ExecutorService executor = Executors.newFixedThreadPool(threadNum);
 	private Long lastTime = System.currentTimeMillis();
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
+	private int i=0;
 	@Override
 	public void run() {
 		while (true) {
 			try {
+				if(i++>100000)
+				{
+					i=0;
+					Thread.sleep(1);
+				}
 				ProtocolBean protocol = publicStaticMap.getRawDataQueue().take();
-				saveRaw(protocol);
-				long temp=System.currentTimeMillis();
+
 				new AnlyzeMain(protocol).run();
-				System.out.println("解析一条需要秒数："+(System.currentTimeMillis()-temp));
+				
+
 				//executor.submit(new AnlyzeMain(protocol));
 			} catch (InterruptedException e) {
 				logger.error("解析错误-", e);
@@ -132,31 +140,33 @@ public class AnlyzeDataTask extends Thread {
 
 	}
 	
-	List<Put> puts = new ArrayList<>();
-	
-	private void saveRaw(ProtocolBean protocol) {
-		try {
-		long time=	Long.parseLong(protocol.getTIMESTAMP());
-			Put put = new Put(RowKeyBean.makeRowKey(protocol.getUnid(), time));
-			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("DATIME_RX"), Bytes.toBytes(sdf.format(new Date(time))));
-			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"), Bytes.toBytes(protocol.getRAW_OCTETS().toUpperCase()));
-			puts.add(put);
-			Long curentTime = System.currentTimeMillis();
-			if (puts.size() > 5000 || curentTime - lastTime > 60000) {
-				lastTime = curentTime;
-				//long temp = System.currentTimeMillis();
-				if (puts.size() > 0) {
-					List<Put> tempPuts = new ArrayList<>();
-					tempPuts.addAll(puts);
-					HBase.put("CUBE_RAW", tempPuts, false);
-					puts.clear();
-					Thread.sleep(5);
-					//System.out.println(tempPuts.size() + "车辆原始数据" + (System.currentTimeMillis() - temp));
-				}
-			}
-		} catch (Exception e) {
-			logger.error("插入hbase数据库有问题", e);
-		}
 
-	}
+//	List<Put> puts = new ArrayList<>();
+//	
+//	private void saveRaw(ProtocolBean protocol) {
+//		try {
+//		long time=	Long.parseLong(protocol.getTIMESTAMP());
+//			Put put = new Put(RowKeyBean.makeRowKey(protocol.getUnid(), time));
+//			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("DATIME_RX"), Bytes.toBytes(sdf.format(new Date(time))));
+//			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"), Bytes.toBytes(protocol.getRAW_OCTETS().toUpperCase()));
+//			puts.add(put);
+//			Long curentTime = System.currentTimeMillis();
+//			if (puts.size() > 5000 || curentTime - lastTime > 60000) {
+//				lastTime = curentTime;
+//				//long temp = System.currentTimeMillis();
+//				if (puts.size() > 0) {
+//					List<Put> tempPuts = new ArrayList<>();
+//					tempPuts.addAll(puts);
+//					HBase.put("CUBE_RAW", tempPuts, false);
+//					puts.clear();
+//					Thread.sleep(5);
+//					//System.out.println(tempPuts.size() + "车辆原始数据" + (System.currentTimeMillis() - temp));
+//				}
+//			}
+//		} catch (Exception e) {
+//			logger.error("插入hbase数据库有问题", e);
+//		}
+//
+//	}
+
 }
