@@ -31,11 +31,12 @@ public class AnlyzeDataTask extends Thread {
 	private Long lastTime = System.currentTimeMillis();
 	
 	private int i=0;
+
 	@Override
 	public void run() {
 		while (true) {
 			try {
-				if(i++>100000)
+				if(i%100000==0)
 				{
 					i=0;
 					Thread.sleep(1);

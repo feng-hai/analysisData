@@ -38,7 +38,7 @@ public class UpdateHbaseMyTask extends Thread {
 	}
 
 	List<Put> puts = new ArrayList<>();
-	
+    private long hbaseNum=0;
 	private List<VehicleIndex> vehicleIndexs=new ArrayList<>();
 
 	@Override
@@ -48,6 +48,10 @@ public class UpdateHbaseMyTask extends Thread {
 				// logger.info(String.valueOf(i++));
 				ResultBean results = publicStaticMap.getCmdQueue().take();
 				logger.debug("更新hbase个数：" + publicStaticMap.getCmdQueue().size());
+				if(hbaseNum<Long.MAX_VALUE)
+				{
+					hbaseNum++;
+				}
 				try {
 					List<PairResult> pairs = results.getPairs();
 					if (results.getDatetime() == null) {
@@ -70,11 +74,13 @@ public class UpdateHbaseMyTask extends Thread {
 					Long curentTime = System.currentTimeMillis();
 					if (puts.size() > 5000 || curentTime - lastTime > 10000) {
 						lastTime = curentTime;
-						
+						if(publicStaticMap.logStatus)
+						{
+							logger.info("更新hbase数量："+String.valueOf(hbaseNum));
+						}
 						List<Put> tempPuts = new ArrayList<>();
 						tempPuts.addAll(puts);
 						HBase.batchAsyncPut("CUBE_SENSOR", tempPuts, false);
-						
 						//提交索引列表
 						List<VehicleIndex> tempIndexs=new ArrayList<>();
 						tempIndexs.addAll(vehicleIndexs);	

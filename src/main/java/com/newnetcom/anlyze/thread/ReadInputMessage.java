@@ -43,6 +43,8 @@ public class ReadInputMessage extends Thread {
 				System.out.println("stop:停止从kafka中获取数据");
 				System.out.println("start:开始从kafka中获取数据");
 				System.out.println("r:重新加载解析规则");
+				System.out.println("startLog:开启日志");
+				System.out.println("endLog:关闭日志");
 				break;
 			}
 		}

@@ -34,6 +34,7 @@ public class RawDataMyTaskRun extends Thread {
 
     private ExecutorService executor ;
     private long lastTime=0;
+	private long rawHabaseNum=0;
 
 	public RawDataMyTaskRun() {
 		HBaseUtil.init(PropertyResource.getInstance().getProperties().get("zks"));
@@ -45,14 +46,16 @@ public class RawDataMyTaskRun extends Thread {
 	private List<VehicleIndex> vehicleIndexs=new ArrayList<>();
 	private void saveRaw(ProtocolBean protocol) {
 		try {
+			if(rawHabaseNum<Long.MAX_VALUE)
+			{
+				rawHabaseNum++;
+			}
 		long time=	Long.parseLong(protocol.getTIMESTAMP());
 			Put put = new Put(RowKeyBean.makeRowKey(protocol.getUnid(), time));
 			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("DATIME_RX"), Bytes.toBytes(sdf.format(new Date(time))));
 			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"), Bytes.toBytes(protocol.getRAW_OCTETS().toUpperCase()));
 			puts.add(put);
-			
 			vehicleIndexs.add(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
-
 			Long curentTime = System.currentTimeMillis();
 			if (puts.size() > 5000 || curentTime - lastTime > 10000) {
 				lastTime = curentTime;
@@ -62,13 +65,16 @@ public class RawDataMyTaskRun extends Thread {
 					tempPuts.addAll(puts);
 					puts.clear();
 					HBase.put("CUBE_RAW", tempPuts, false);
-					
 					//提交索引列表
 					List<VehicleIndex> tempIndexs=new ArrayList<>();
 					tempIndexs.addAll(vehicleIndexs);	
 					vehicleIndexs.clear();
 					executor.submit(new SubmitIndex("cube_raw","vehicle",tempIndexs));	
-					Thread.sleep(1);
+                   if(publicStaticMap.logStatus)
+                   {
+                	   logger.info(String.valueOf(rawHabaseNum));
+                   } 
+				    Thread.sleep(1);
 					//System.out.println(tempPuts.size() + "车辆原始数据" + (System.currentTimeMillis() - temp));
 				}
 			}

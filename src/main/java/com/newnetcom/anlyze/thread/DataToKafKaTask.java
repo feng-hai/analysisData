@@ -45,7 +45,7 @@ public class DataToKafKaTask extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				if(++count>5000)
+				if((++count)%5000==0)
 				{
 					count=0;
 					Thread.sleep(5);
