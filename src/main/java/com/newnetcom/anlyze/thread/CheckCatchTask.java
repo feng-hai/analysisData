@@ -4,12 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import java.util.TimerTask;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory;
-import com.newnetcom.anlyze.anlyze.db.interfaces.IDatabase;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.config.PropertyResource;
 
