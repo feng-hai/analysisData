@@ -29,11 +29,11 @@ public class Esutil {
 				.put("client.transport.sniff", true)//自动嗅探整个ES集群节点
 				.put("transport.type","netty3")
 				.put("http.type", "netty3")
-				.put("index.refresh_interval", "5s")
+			
 				.build();////每5秒提交一次数据，类似oracle中的commit
 
 		try {
-			client = new PreBuiltTransportClient(settings);
+			client = new  PreBuiltTransportClient(settings);
 			String servers = PropertyResource.getInstance().getProperties().get("index.server");
 			String[] serverIndex = servers.split(",");
 			for (String index : serverIndex) {
