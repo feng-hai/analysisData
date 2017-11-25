@@ -17,6 +17,8 @@ public class publicStaticMap {
 	public  static Boolean stopTag=false;//从kafka中获取数据的开关标识
 	public static  Boolean reloadData=false;//是否重新加载数据
 	
+	public static Boolean logStatus=false;//日志开关
+	
 	private static Map<String,VehicleInfo >vehicles=new ConcurrentHashMap <>();
 	
 	public static Map<String, VehicleInfo> getVehicles() {
