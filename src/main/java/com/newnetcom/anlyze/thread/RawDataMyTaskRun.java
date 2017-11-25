@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.util.Bytes;
@@ -16,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.newnetcom.anlyze.beans.ProtocolBean;
 import com.newnetcom.anlyze.beans.RowKeyBean;
+import com.newnetcom.anlyze.beans.VehicleIndex;
 import com.newnetcom.anlyze.beans.VehicleInfo;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.config.PropertyResource;
@@ -27,15 +30,19 @@ import cn.ngsoc.hbase.util.HBaseUtil;
 public class RawDataMyTaskRun extends Thread {
 
 	private static final Logger logger = LoggerFactory.getLogger(RawDataMyTaskRun.class);
+	private int  threadNum=Integer.parseInt( PropertyResource.getInstance().getProperties().get("indexHistoryThreadNum"));
 
+    private ExecutorService executor ;
     private long lastTime=0;
 
 	public RawDataMyTaskRun() {
 		HBaseUtil.init(PropertyResource.getInstance().getProperties().get("zks"));
 		lastTime = System.currentTimeMillis();
+		executor = Executors.newFixedThreadPool(threadNum);
 	}
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private List<Put> puts = new ArrayList<>();
+	private List<VehicleIndex> vehicleIndexs=new ArrayList<>();
 	private void saveRaw(ProtocolBean protocol) {
 		try {
 		long time=	Long.parseLong(protocol.getTIMESTAMP());
@@ -43,6 +50,9 @@ public class RawDataMyTaskRun extends Thread {
 			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("DATIME_RX"), Bytes.toBytes(sdf.format(new Date(time))));
 			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"), Bytes.toBytes(protocol.getRAW_OCTETS().toUpperCase()));
 			puts.add(put);
+			
+			vehicleIndexs.add(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
+
 			Long curentTime = System.currentTimeMillis();
 			if (puts.size() > 5000 || curentTime - lastTime > 10000) {
 				lastTime = curentTime;
@@ -50,8 +60,14 @@ public class RawDataMyTaskRun extends Thread {
 				if (puts.size() > 0) {
 					List<Put> tempPuts = new ArrayList<>();
 					tempPuts.addAll(puts);
-					HBase.put("CUBE_RAW", tempPuts, false);
 					puts.clear();
+					HBase.put("CUBE_RAW", tempPuts, false);
+					
+					//提交索引列表
+					List<VehicleIndex> tempIndexs=new ArrayList<>();
+					tempIndexs.addAll(vehicleIndexs);	
+					vehicleIndexs.clear();
+					executor.submit(new SubmitIndex("cube_raw","vehicle",tempIndexs));	
 					Thread.sleep(1);
 					//System.out.println(tempPuts.size() + "车辆原始数据" + (System.currentTimeMillis() - temp));
 				}

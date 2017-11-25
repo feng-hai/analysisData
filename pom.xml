@@ -103,11 +103,11 @@
 
 
 		<!-- https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl -->
-		<dependency>
+	<!-- 	<dependency>
 			<groupId>net.sourceforge.jexcelapi</groupId>
 			<artifactId>jxl</artifactId>
 			<version>2.6.12</version>
-		</dependency>
+		</dependency> -->
 
 
 		<dependency>
@@ -162,21 +162,6 @@
       </dependency>  
         
   
-      <dependency>
-          <groupId>org.elasticsearch.client</groupId>
-          <artifactId>x-pack-transport</artifactId>
-          <version>5.6.2</version>
-          <exclusions>
-		      <exclusion>
-		        <groupId>log4j</groupId>
-		        <artifactId>log4j</artifactId>
-		      </exclusion>
-		      <exclusion>
-		        <groupId>org.slf4j</groupId>
-		        <artifactId>slf4j-log4j12</artifactId>
-		      </exclusion>
-		  </exclusions>
-      </dependency>
     	<dependency>  
             <groupId>jstl</groupId>  
             <artifactId>jstl</artifactId>  
@@ -187,18 +172,16 @@
             <artifactId>standard</artifactId>  
             <version>1.1.2</version>  
       </dependency>
+      
+          <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>2.9.1</version>
+    </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
 	</dependencies>
-	  <repositories>
-      <!-- add the elasticsearch repo -->
-        <repository>
-           <id>elasticsearch-releases</id>
-           <url>https://artifacts.elastic.co/maven</url>
-           <releases>
-              <enabled>true</enabled>
-           </releases>
-           <snapshots>
-              <enabled>false</enabled>
-           </snapshots>
-        </repository>
-  </repositories>
 </project>

@@ -2,6 +2,12 @@ package com.newnetcom.anlyze.beans;
 
 public class VehicleIndex {
 	
+	public VehicleIndex(String invhicleUnid,String time)
+	{
+		this.vehicleUnid=invhicleUnid;
+		this.time=time;
+	}
+	
 	private String vehicleUnid;
 	private String time;
 	public String getVehicleUnid() {
