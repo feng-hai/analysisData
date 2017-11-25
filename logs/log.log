@@ -275,3 +275,9 @@ java.lang.NullPointerException
 	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
 	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:22)
 	at com.newnetcom.anlyze.TestApp.main(TestApp.java:51)
+2017-11-24 16:09:06  [ main:0 ] - [ INFO ]  开始提交
+2017-11-24 16:15:53  [ main:0 ] - [ INFO ]  开始提交
+2017-11-24 16:19:35  [ main:0 ] - [ INFO ]  开始提交
+2017-11-24 16:20:05  [ main:0 ] - [ INFO ]  开始提交
+2017-11-24 16:22:33  [ main:0 ] - [ INFO ]  开始提交
+2017-11-24 16:22:38  [ main:4634 ] - [ INFO ]  提交结束
