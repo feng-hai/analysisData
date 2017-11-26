@@ -39,7 +39,15 @@ public class Pair implements Serializable, Comparable<Pair>,Cloneable  {
 	private Integer inx;
 	private String canid;
 	private String protocolId;
+	private String unid;
 	
+	public String getUnid() {
+		return unid;
+	}
+	public void setUnid(String unid) {
+		this.unid = unid;
+	}
+
 	private String ALGORITHM;
 	
 	public String getALGORITHM() {
