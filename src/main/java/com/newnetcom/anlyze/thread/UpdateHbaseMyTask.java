@@ -76,16 +76,17 @@ public class UpdateHbaseMyTask extends Thread {
 						lastTime = curentTime;
 						if(publicStaticMap.logStatus)
 						{
-							logger.info("更新hbase数量："+String.valueOf(hbaseNum));
+							System.out.println("更新hbase数量："+String.valueOf(hbaseNum));
+							//logger.info("更新hbase数量："+String.valueOf(hbaseNum));
 						}
 						List<Put> tempPuts = new ArrayList<>();
 						tempPuts.addAll(puts);
 						HBase.batchAsyncPut("CUBE_SENSOR", tempPuts, false);
 						//提交索引列表
-						List<VehicleIndex> tempIndexs=new ArrayList<>();
-						tempIndexs.addAll(vehicleIndexs);	
-						executor.submit(new SubmitIndex("cube_sensor","vehicle",tempIndexs));
-						
+//						List<VehicleIndex> tempIndexs=new ArrayList<>();
+//						tempIndexs.addAll(vehicleIndexs);	
+//						executor.submit(new SubmitIndex("cube_sensor","vehicle",tempIndexs));
+//						
 						puts.clear();
 						//Thread.sleep(1);
 					}

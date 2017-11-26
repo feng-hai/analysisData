@@ -58,7 +58,7 @@ public class RawDataMyTaskRun extends Thread {
 			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"),
 					Bytes.toBytes(protocol.getRAW_OCTETS().toUpperCase()));
 			puts.add(put);
-			vehicleIndexs.add(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
+			//vehicleIndexs.add(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
 			Long curentTime = System.currentTimeMillis();
 			if (puts.size() > 5000 || curentTime - lastTime > 10000) {
 				lastTime = curentTime;
@@ -69,14 +69,15 @@ public class RawDataMyTaskRun extends Thread {
 					puts.clear();
 					HBase.put("CUBE_RAW", tempPuts, false);
 					// 提交索引列表
-					List<VehicleIndex> tempIndexs = new ArrayList<>();
-					tempIndexs.addAll(vehicleIndexs);
-					vehicleIndexs.clear();
-					executor.submit(new SubmitIndex("cube_raw", "vehicle", tempIndexs));
+				//	List<VehicleIndex> tempIndexs = new ArrayList<>();
+//					tempIndexs.addAll(vehicleIndexs);
+//					vehicleIndexs.clear();
+//					executor.submit(new SubmitIndex("cube_raw", "vehicle", tempIndexs));
 					if (publicStaticMap.logStatus) {
-						logger.info("原始数据插入数据：" + String.valueOf(rawHabaseNum));
+						System.out.println("原始数据插入数据：" + String.valueOf(rawHabaseNum));
+						//logger.info("原始数据插入数据：" + String.valueOf(rawHabaseNum));
 					}
-					Thread.sleep(1);
+					//Thread.sleep(1);
 					// System.out.println(tempPuts.size() + "车辆原始数据" +
 					// (System.currentTimeMillis() - temp));
 				}

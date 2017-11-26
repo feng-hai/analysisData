@@ -111,10 +111,11 @@ public final class KafkaProducerSingleton {
 			public void onCompletion(RecordMetadata recordMetadata, Exception exception) {
 				if (null != exception) {
 					LOGGER.error("kafka发送消息失败:" + exception.getMessage(), exception);
-					retryKakfaMessage(temPMessage, message.getVehicleUnid());
+					//retryKakfaMessage(temPMessage, message.getVehicleUnid());
 				}
 			}
-		});
+		}
+		);
 	}
 
 	/**
