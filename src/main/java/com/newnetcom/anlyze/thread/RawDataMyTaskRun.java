@@ -72,7 +72,7 @@ public class RawDataMyTaskRun extends Thread {
 					executor.submit(new SubmitIndex("cube_raw","vehicle",tempIndexs));	
                    if(publicStaticMap.logStatus)
                    {
-                	   logger.info(String.valueOf(rawHabaseNum));
+                	   logger.info("原始数据插入数据："+String.valueOf(rawHabaseNum));
                    } 
 				    Thread.sleep(1);
 					//System.out.println(tempPuts.size() + "车辆原始数据" + (System.currentTimeMillis() - temp));
