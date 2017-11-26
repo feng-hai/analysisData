@@ -87,7 +87,7 @@ public class UpdateHbaseMyTask extends Thread {
 						executor.submit(new SubmitIndex("cube_sensor","vehicle",tempIndexs));
 						
 						puts.clear();
-						Thread.sleep(1);
+						//Thread.sleep(1);
 					}
 				} catch (Exception ex) {
 					logger.error("更新hbase错误：", ex);

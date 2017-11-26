@@ -45,14 +45,14 @@ public class DataToKafKaTask extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				if((++count)%5000==0)
-				{
-					count=0;
-					Thread.sleep(5);
-				}
+//				if((++count)%5000==0)
+//				{
+//					count=0;
+//					Thread.sleep(5);
+//				}
 				ResultBean message = publicStaticMap.getSendDataQueue().take();
 				logger.debug("插入kafka信息："+message.toString());
-				executor.submit(new HandlerProducer(message));
+				executor.execute(new HandlerProducer(message));
 				// ObjectModelOfKafka temPMessage=new ObjectModelOfKafka();
 				// temPMessage.setDATIME_RX(sdf.format(message.getDatetime()));
 				// temPMessage.setPairs(message.getPairs());

@@ -36,17 +36,10 @@ public class AnlyzeDataTask extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				if(i%100000==0)
-				{
-					i=0;
-					Thread.sleep(1);
-				}
-				ProtocolBean protocol = publicStaticMap.getRawDataQueue().take();
-
-				new AnlyzeMain(protocol).run();
 				
-
-				//executor.submit(new AnlyzeMain(protocol));
+				ProtocolBean protocol = publicStaticMap.getRawDataQueue().take();
+				//new AnlyzeMain(protocol).run();
+				executor.execute(new AnlyzeMain(protocol));
 			} catch (InterruptedException e) {
 				logger.error("解析错误-", e);
 			}

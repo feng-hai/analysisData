@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 //import java.util.Timer;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -55,10 +57,11 @@ public class TestApp {
 		Map<String,String> config=	PropertyResource.getInstance().getProperties();
 		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"A2L");//1获取配置文件的分析类
 		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"CAN");
-//		long temp=System.currentTimeMillis();
+	long temp=System.currentTimeMillis();
+	 ExecutorService executor = Executors.newFixedThreadPool(10);
 //		// timer.schedule(new CheckCatchTask(), new Date(), 10000);
-//		for (int t=0;t<100000;t++)
-//		{
+	for (int t=0;t<100000;t++)
+		{
 //		
 		ProtocolBean protocol = new ProtocolBean();
 		protocol.setFIBER_UNID("27A67D545CFF4AE3AD4DF45AB94A7C18");
@@ -72,9 +75,13 @@ public class TestApp {
 		//CD039E17A8E84137AF6DE1CDC172C274
 		protocol.setUnid("276D8F32B73946BFA2D3CBEAC0C65EC0");
 		protocol.setTIMESTAMP(String.valueOf(new Date().getTime()));
+		
+		//executor.
 		new AnlyzeMain(protocol).run();
-//		}
-	//	System.out.println(System.currentTimeMillis()-temp);
+		
+		//executor.execute(new AnlyzeMain(protocol));
+	}
+		System.out.println(System.currentTimeMillis()-temp);
 		
 		
 //		List<VehicleIndex> vehicleIndexs=new ArrayList<>();
