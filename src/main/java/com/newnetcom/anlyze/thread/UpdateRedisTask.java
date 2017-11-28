@@ -63,9 +63,13 @@ public class UpdateRedisTask extends Thread {
 						long tempTime = System.currentTimeMillis();
 						redis.setKeys(cMap);
 						redis.setKeys(cMap2);
+						if(publicStaticMap.logStatus)
+						{
+						 logger.info("更新redis：" + cMap.size() + "更新时间:" + (System.currentTimeMillis() - tempTime));
+						}
 						Thread.sleep(5);
-						System.out
-								.println("更新redis：" + cMap.size() + "更新时间:" + (System.currentTimeMillis() - tempTime));
+						//System.out
+						//		.println("更新redis：" + cMap.size() + "更新时间:" + (System.currentTimeMillis() - tempTime));
 					}
 				}
 			} catch (Exception ex) {

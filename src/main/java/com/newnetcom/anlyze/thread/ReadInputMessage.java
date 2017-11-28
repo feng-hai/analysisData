@@ -30,11 +30,21 @@ public class ReadInputMessage extends Thread {
 			case "r": {
 				publicStaticMap.reloadData=true;
 				break;
+			}case "startLog":{
+				System.out.println("打开日志");
+				publicStaticMap.logStatus=true;
+				break;
+			}case "endLog":{
+				System.out.println("关闭日志");
+				publicStaticMap.logStatus=false;
+				break;
 			}
 			default:
 				System.out.println("stop:停止从kafka中获取数据");
 				System.out.println("start:开始从kafka中获取数据");
 				System.out.println("r:重新加载解析规则");
+				System.out.println("startLog:开启日志");
+				System.out.println("endLog:关闭日志");
 				break;
 			}
 		}

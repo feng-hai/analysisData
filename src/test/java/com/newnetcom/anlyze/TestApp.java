@@ -1,8 +1,12 @@
 package com.newnetcom.anlyze;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 //import java.util.Timer;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -13,7 +17,10 @@ import java.util.Map;
 import com.newnetcom.anlyze.anlyze.AnlyzeMain;
 import com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory;
 import com.newnetcom.anlyze.beans.ProtocolBean;
+import com.newnetcom.anlyze.beans.VehicleIndex;
 import com.newnetcom.anlyze.config.PropertyResource;
+
+import cn.ngsoc.hbase.util.pages.Esutil;
 //import com.newnetcom.anlyze.thread.AnlyzeDataTask;
 //import com.newnetcom.anlyze.thread.CheckCatchTask;
 //import com.newnetcom.anlyze.thread.DataToKafKaTask;
@@ -46,15 +53,16 @@ public class TestApp {
 		// sendDataTask.setDaemon(true);
 		// sendDataTask.start();
 		//
-		// Timer timer = new Timer();
+//		// Timer timer = new Timer();
 		Map<String,String> config=	PropertyResource.getInstance().getProperties();
 		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"A2L");//1获取配置文件的分析类
 		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"CAN");
-		long temp=System.currentTimeMillis();
-		// timer.schedule(new CheckCatchTask(), new Date(), 10000);
-		for (int t=0;t<100000;t++)
+	long temp=System.currentTimeMillis();
+	 ExecutorService executor = Executors.newFixedThreadPool(10);
+//		// timer.schedule(new CheckCatchTask(), new Date(), 10000);
+	for (int t=0;t<100000;t++)
 		{
-		
+//		
 		ProtocolBean protocol = new ProtocolBean();
 		protocol.setFIBER_UNID("27A67D545CFF4AE3AD4DF45AB94A7C18");
 		//098E11E36A024692A257DB72306137FF
@@ -67,9 +75,19 @@ public class TestApp {
 		//CD039E17A8E84137AF6DE1CDC172C274
 		protocol.setUnid("276D8F32B73946BFA2D3CBEAC0C65EC0");
 		protocol.setTIMESTAMP(String.valueOf(new Date().getTime()));
+		
+		//executor.
 		new AnlyzeMain(protocol).run();
-		}
+		
+		//executor.execute(new AnlyzeMain(protocol));
+	}
 		System.out.println(System.currentTimeMillis()-temp);
+		
+		
+//		List<VehicleIndex> vehicleIndexs=new ArrayList<>();
+//		VehicleIndex temp=new VehicleIndex("ee",String.valueOf(new Date().getTime()));
+//		vehicleIndexs.add(temp);
+//		Esutil.addIndex("tst", "type", vehicleIndexs);
 
 	}
 }

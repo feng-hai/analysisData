@@ -12,23 +12,26 @@ import com.newnetcom.anlyze.utils.ByteUtils;
 import com.newnetcom.anlyze.utils.JsonUtils;
 import com.newnetcom.anlyze.utils.StrFormat;
 
-public class BitArithimetic implements ILoadData {
+public class BitArithimeticForBig implements ILoadData {
 	private Pair bean;
-	private static final Logger logger = LoggerFactory.getLogger(BitArithimetic.class);
+	private static final Logger logger = LoggerFactory.getLogger(BitArithimeticForBig.class);
 
-	public BitArithimetic(Pair inbean) {
+	public BitArithimeticForBig(Pair inbean) {
 		this.bean = inbean;
 	}
 
 	@Override
 	public void setPairValue(byte[] content) {
+		
+		
+		content = ByteUtils.endianChange(content);// 大小段转换，转为大端模式 = ByteUtils.endianChange(tBytes);// 大小段转换，转为小端模式
 		int startByteIndex = bean.getStart() / 8;
 
 		int bitIndex = bean.getStart() % 8;
 		boolean isNum = bean.getResolving().matches("[0-9]+");
 		if (bean.getLength() + bitIndex <= 8) {
 
-			Byte tByte = content[startByteIndex];
+			Byte tByte = content[8-startByteIndex-1];
 			String bitStr = ByteUtils.byte2bitsByIndex(tByte, (byte) bitIndex, (byte) bean.getLength());
 			if (!isNum) {
 				int num = ByteUtils.getNum(bean.getResolving());
@@ -56,9 +59,9 @@ public class BitArithimetic implements ILoadData {
 				logger.debug("规则不对，超出范围："+JsonUtils.serialize(bean));
 				return ;	
 			}
-			byte[] tBytes = ByteUtils.getSubBytes(content, startByteIndex, byteLength);
-			// 默认是大端模式
-			tBytes = ByteUtils.endianChange(tBytes);// 大小段转换，转为小端模式
+			byte[] tBytes = ByteUtils.getSubBytes(content, 8-startByteIndex-byteLength, byteLength);
+			
+			
 			String bitStr = ByteUtils.binary(tBytes, 2);
 			bitStr = StrFormat.addZeroForLeftNum(bitStr, byteLength * 8);
 			String bitResult = bitStr.substring(bitIndex, bitIndex + bean.getLength());

@@ -16,13 +16,12 @@ import com.newnetcom.anlyze.protocols.IProtocol;
 public class AnlyzeMain implements Runnable {
 
 	private ProtocolBean protocolBean;
-	
-	public AnlyzeMain(ProtocolBean inprotocolBeans)
-	{
-		this.protocolBean=inprotocolBeans;
+
+	public AnlyzeMain(ProtocolBean inprotocolBeans) {
+		this.protocolBean = inprotocolBeans;
 	}
-	
-	private   ResultBean getResults(ProtocolBean protocolBean) {
+
+	private ResultBean getResults(ProtocolBean protocolBean) {
 		ProtocolTypeEnum protocolType = ProtocolTypeEnum.P3G;
 
 		if (protocolBean.getProto_unid().equals("CD039E17A8E84137AF6DE1CDC172C274")) {
@@ -35,17 +34,17 @@ public class AnlyzeMain implements Runnable {
 		}
 		// System.out.println("解析开始");
 		// 分析协议头部和协议内容
-		//long temp=System.currentTimeMillis();
+		// long temp=System.currentTimeMillis();
 		IProtocol protocolD = new DynamicProtocol(protocolType, protocolBean);
-	//	System.out.println("解析头部文件需要时间："+(System.currentTimeMillis()-temp));
+		// System.out.println("解析头部文件需要时间："+(System.currentTimeMillis()-temp));
 		// System.out.println("解析开始01");
 		DynamicAnlyze anlyze = new DynamicAnlyze(protocolD);
-	//	System.out.println("解析文件需要时间："+(System.currentTimeMillis()-temp));
+		// System.out.println("解析文件需要时间："+(System.currentTimeMillis()-temp));
 		// System.out.println("解析开始02");
-		//anlyze.anlyzeContent();
-	return protocolD.toResult(anlyze.anlyzeContent());
-		//return null;
-		
+		// anlyze.anlyzeContent();
+		return protocolD.toResult(anlyze.anlyzeContent());
+		// return null;
+
 	}
 
 	@Override

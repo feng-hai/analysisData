@@ -13,12 +13,12 @@ import com.newnetcom.anlyze.anlyze.db.mysql.utils.SingletonJDBC;
 import com.newnetcom.anlyze.beans.Pair;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.utils.ByteUtils;
-public class MysqlDatabase implements IDatabase {
+public class MysqlDatabaseBig2 implements IDatabase {
 
-	private static final Logger logger = LoggerFactory.getLogger(MysqlDatabase.class);
+	private static final Logger logger = LoggerFactory.getLogger(MysqlDatabaseBig2.class);
 
 	
-	public MysqlDatabase()
+	public MysqlDatabaseBig2()
 	{
 		getRules();
 	}
@@ -83,7 +83,7 @@ public class MysqlDatabase implements IDatabase {
 		
 		
 		//所有协议项数据
-		String protocolSql = "select * from (SELECT p.PREREQUISITE_HEX , f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0)d  ";
+		String protocolSql = "select * from (SELECT p.PREREQUISITE_HEX , f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0)d";
 
 		List<Map<String, Object>> resultsProtocol = null;
 		try {
@@ -153,7 +153,7 @@ public class MysqlDatabase implements IDatabase {
 				List<Pair> pairs2 = protocolList.get(protocol);
 				if (pairs2 != null && pairs2.size() > 0) {
 					Collections.sort(pairs2);
-					int inxTemp = 0;
+					//int inxTemp = 0;
 					String canId = pairs2.get(0).getCanid();
 					
 //					if(canId.equals("18FF8F03"))
@@ -163,8 +163,8 @@ public class MysqlDatabase implements IDatabase {
 					List<Pair> pairsTemp=new ArrayList<>(); 
 					for (Pair pair : pairs2) {
 						Pair temp=pair.clone();
-						temp.setStart(inxTemp + pair.getStart());
-						inxTemp = temp.getStart() + pair.getLength();
+						//temp.setStart(inxTemp + pair.getStart());
+						//inxTemp = temp.getStart() + pair.getLength();
 						pairsTemp.add(temp);
 						//System.out.println(JsonUtils.serialize(temp));
 					}

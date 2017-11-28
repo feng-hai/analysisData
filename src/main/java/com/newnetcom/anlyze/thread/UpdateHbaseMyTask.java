@@ -2,6 +2,9 @@ package com.newnetcom.anlyze.thread;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import org.apache.hadoop.hbase.client.Put;
 import org.apache.hadoop.hbase.util.Bytes;
 import org.slf4j.Logger;
@@ -9,17 +12,24 @@ import org.slf4j.LoggerFactory;
 import com.newnetcom.anlyze.beans.PairResult;
 import com.newnetcom.anlyze.beans.ResultBean;
 import com.newnetcom.anlyze.beans.RowKeyBean;
+import com.newnetcom.anlyze.beans.VehicleIndex;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 //import com.newnetcom.anlyze.utils.JsonUtils;
 import com.newnetcom.anlyze.config.PropertyResource;
 import com.newnetcom.anlyze.utils.JsonUtils;
 import cn.ngsoc.hbase.HBase;
 import cn.ngsoc.hbase.util.HBaseUtil;
+import cn.ngsoc.hbase.util.pages.Esutil;
+
 
 public class UpdateHbaseMyTask extends Thread {
 
 	private static final Logger logger = LoggerFactory.getLogger(UpdateHbaseMyTask.class);
 	private Long lastTime;
+	
+	 private int  threadNum=Integer.parseInt( PropertyResource.getInstance().getProperties().get("indexHistoryThreadNum"));
+
+     private ExecutorService executor = Executors.newFixedThreadPool(threadNum);
 
 	public UpdateHbaseMyTask() {
 		// loadData();PropertyResource.getInstance().getProperties().get("zks")
@@ -28,6 +38,8 @@ public class UpdateHbaseMyTask extends Thread {
 	}
 
 	List<Put> puts = new ArrayList<>();
+    private long hbaseNum=0;
+	private List<VehicleIndex> vehicleIndexs=new ArrayList<>();
 
 	@Override
 	public void run() {
@@ -36,12 +48,17 @@ public class UpdateHbaseMyTask extends Thread {
 				// logger.info(String.valueOf(i++));
 				ResultBean results = publicStaticMap.getCmdQueue().take();
 				logger.debug("更新hbase个数：" + publicStaticMap.getCmdQueue().size());
+				if(hbaseNum<Long.MAX_VALUE)
+				{
+					hbaseNum++;
+				}
 				try {
 					List<PairResult> pairs = results.getPairs();
 					if (results.getDatetime() == null) {
 						logger.debug(JsonUtils.serialize(results));
 						continue;
 					}
+					vehicleIndexs.add(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())));
 					Put put = new Put(RowKeyBean.makeRowKey(results.getVehicleUnid(), results.getDatetime().getTime()));
 					for (PairResult pair : pairs) {
 						put.addColumn(Bytes.toBytes("CUBE"),
@@ -57,11 +74,21 @@ public class UpdateHbaseMyTask extends Thread {
 					Long curentTime = System.currentTimeMillis();
 					if (puts.size() > 5000 || curentTime - lastTime > 10000) {
 						lastTime = curentTime;
+						if(publicStaticMap.logStatus)
+						{
+							System.out.println("更新hbase数量："+String.valueOf(hbaseNum));
+							//logger.info("更新hbase数量："+String.valueOf(hbaseNum));
+						}
 						List<Put> tempPuts = new ArrayList<>();
 						tempPuts.addAll(puts);
 						HBase.batchAsyncPut("CUBE_SENSOR", tempPuts, false);
+						//提交索引列表
+//						List<VehicleIndex> tempIndexs=new ArrayList<>();
+//						tempIndexs.addAll(vehicleIndexs);	
+//						executor.submit(new SubmitIndex("cube_sensor","vehicle",tempIndexs));
+//						
 						puts.clear();
-						Thread.sleep(5);
+						//Thread.sleep(1);
 					}
 				} catch (Exception ex) {
 					logger.error("更新hbase错误：", ex);

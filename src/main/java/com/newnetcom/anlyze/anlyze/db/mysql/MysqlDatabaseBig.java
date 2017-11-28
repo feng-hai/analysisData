@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.newnetcom.anlyze.anlyze.db.interfaces.IDatabase;
@@ -13,13 +15,16 @@ import com.newnetcom.anlyze.anlyze.db.mysql.utils.SingletonJDBC;
 import com.newnetcom.anlyze.beans.Pair;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.utils.ByteUtils;
-public class MysqlDatabase implements IDatabase {
+public class MysqlDatabaseBig implements IDatabase {
 
-	private static final Logger logger = LoggerFactory.getLogger(MysqlDatabase.class);
+	private static final Logger logger = LoggerFactory.getLogger(MysqlDatabaseBig.class);
 
+	JdbcUtils jdbcUtils ;
 	
-	public MysqlDatabase()
+	public MysqlDatabaseBig()
 	{
+		jdbcUtils = SingletonJDBC.getJDBC();
+		jdbcUtils.getConnection();
 		getRules();
 	}
 	/*
@@ -38,8 +43,7 @@ public class MysqlDatabase implements IDatabase {
 		// 数据字典和对应协议族集合
 		// 获取全部协议
 
-		JdbcUtils jdbcUtils = SingletonJDBC.getJDBC();
-		jdbcUtils.getConnection();
+		
 
 		List<Object> params = new ArrayList<Object>();
 		// params.add("90A62ABEA6DB415D93D17DD31FBD5A1B");
@@ -83,7 +87,7 @@ public class MysqlDatabase implements IDatabase {
 		
 		
 		//所有协议项数据
-		String protocolSql = "select * from (SELECT p.PREREQUISITE_HEX , f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0)d  ";
+		String protocolSql = "select * from (SELECT f.aiid UNID, p.PREREQUISITE_HEX , f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0)d  ";
 
 		List<Map<String, Object>> resultsProtocol = null;
 		try {
@@ -111,6 +115,7 @@ public class MysqlDatabase implements IDatabase {
 		Map<String, List<Pair>> protocolList = new HashMap<>();// 协议id,解析规则集合
 		for (Map<String, Object> entity : resultsProtocol) {
 			Pair pair = new Pair();
+			pair.setUnid(entity.get("UNID").toString());
 			pair.setAlias(entity.get("ALIAS").toString());
 			pair.setCode(entity.get("CODE").toString());
 			if (!entity.get("BIT_LENGTH").toString().isEmpty()
@@ -214,5 +219,62 @@ public class MysqlDatabase implements IDatabase {
 			}
 		}
 	}
+	
+	public  void setUnid(){
+		Map<String,Map<String,List<Pair>>> temp =getRules();
+		
+		for (Entry<String, Map<String, List<Pair>>> entry: temp.entrySet())
+		{
+			  String key =entry.getKey();
+			  Map<String, List<Pair>> values=entry.getValue();
+			  for (Entry<String, List<Pair>> evaluesntry: values.entrySet())
+			  {
+				  String keys =evaluesntry.getKey();
+				  List<Pair> pairs=evaluesntry.getValue();
+				  
+				  for(Pair pair:pairs)
+				  {
+					  int start=pair.getStart();
+					  int num =start/8;
+					  int model=start%8;
+					  if(model!=0)
+					  {
+						  pair.setStart(num*8+(7-model));
+					  }else
+					  {
+						  pair.setStart(num*8);
+					  }
+					  update(pair);
+					  try {
+						Thread.sleep(1);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				  }
+			  }
+			  
+		}
+	}
+	
+	
+	public void update (Pair pair)
+	{
+	
+		String sqlFamilys = "update cube.PDA_FIELD set  BIT_OFFSET= "+pair.getStart()+" where aiid ="+pair.getUnid();
+		
+		System.out.println(sqlFamilys);
+		try {
+			List<Object> params = new ArrayList<Object>();
+		    jdbcUtils.updateByPreparedStatement(sqlFamilys, params);
+			// logger.info(JsonUtils.serialize(resultsfamily));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.error("查询数据库错误",e);
+		}
+
+	}
+	
+	
 
 }
