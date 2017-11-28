@@ -62,9 +62,9 @@ public final class KafkaProducerSingleton {
 				HashMap<String, String> config = PropertyResource.getInstance().getProperties();
 				Properties props = new Properties();
 				props.put("bootstrap.servers", config.get("kafka.server"));
-				//props.put("acks", "1");
+				props.put("acks", "0");
 				//props.put("retries", 0);
-				props.put("producer.type","async"); 
+				//props.put("producer.type","async"); 
 				props.put("batch.size", 16384);
 				props.put("linger.ms", 10);
 				props.put("buffer.memory", 33554432);

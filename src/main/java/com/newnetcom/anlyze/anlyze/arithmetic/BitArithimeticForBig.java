@@ -25,8 +25,8 @@ public class BitArithimeticForBig implements ILoadData {
 		
 		
 		content = ByteUtils.endianChange(content);// 大小段转换，转为大端模式 = ByteUtils.endianChange(tBytes);// 大小段转换，转为小端模式
+		bean.setStart(bean.getStart()+bean.getLength()-1);
 		int startByteIndex = bean.getStart() / 8;
-
 		int bitIndex = bean.getStart() % 8;
 		boolean isNum = bean.getResolving().matches("[0-9]+");
 		if (bean.getLength() + bitIndex <= 8) {
@@ -85,6 +85,6 @@ public class BitArithimeticForBig implements ILoadData {
 				}
 			}
 		}
-		//logger.info(this.bean.getCanid()+this.bean.getTitle()+":"+bean.getStart()+"-"+bean.getLength()+":"+this.bean.getValue()+"-"+ByteUtils.byte2HexStr(content));
+		logger.info(this.bean.getCanid()+this.bean.getTitle()+":"+bean.getStart()+"-"+bean.getLength()+":"+this.bean.getValue()+"-"+ByteUtils.byte2HexStr(content));
 	}
 }

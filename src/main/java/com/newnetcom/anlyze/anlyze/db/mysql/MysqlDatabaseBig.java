@@ -237,12 +237,13 @@ public class MysqlDatabaseBig implements IDatabase {
 					  int start=pair.getStart();
 					  int num =start/8;
 					  int model=start%8;
-					  if(model!=0)
+					  if(model==0&&pair.getLength()%8==0)
 					  {
-						  pair.setStart(num*8+(7-model));
+                        pair.setStart(num*8);
 					  }else
 					  {
-						  pair.setStart(num*8);
+						  pair.setStart(num*8+(7-model)-pair.getLength()+1);
+						  
 					  }
 					  update(pair);
 					  try {
