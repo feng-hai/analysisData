@@ -94,6 +94,7 @@ public class AnlyzeCans implements IAnlyze {
 //			// 根据canid获取解析规则
 			
 			List<Pair> rules = CanRules.getRuleBeanByCanId(fiberId,isYuebo,res ,key);
+			
 			byte[] content=this.content.get(key);
 //			// 遍历规则，根据规则查询数据值
 			for (Pair bean : rules) {

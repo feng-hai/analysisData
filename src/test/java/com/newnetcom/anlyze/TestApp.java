@@ -60,7 +60,7 @@ public class TestApp {
 	long temp=System.currentTimeMillis();
 	 ExecutorService executor = Executors.newFixedThreadPool(10);
 //		// timer.schedule(new CheckCatchTask(), new Date(), 10000);
-	for (int t=0;t<100000;t++)
+	for (int t=0;t<1;t++)
 		{
 //		
 		ProtocolBean protocol = new ProtocolBean();

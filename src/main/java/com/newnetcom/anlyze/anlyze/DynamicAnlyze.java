@@ -18,7 +18,8 @@ public class DynamicAnlyze implements IAnlyze {
 			anlyze=new AnlyzeCans(inProtocol.getContent(),this.protocol);
 			break;
 		}default:{
-			anlyze=new AnlyzeProtocolBody(inProtocol.getContent());
+			anlyze=new AnlyzeCans(inProtocol.getContent(),this.protocol);
+			//anlyze=new AnlyzeProtocolBody(inProtocol.getContent());
 		}
 		}
 	}

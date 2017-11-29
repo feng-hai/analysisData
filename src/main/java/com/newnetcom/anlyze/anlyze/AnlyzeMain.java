@@ -1,10 +1,15 @@
 package com.newnetcom.anlyze.anlyze;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.newnetcom.anlyze.beans.ProtocolBean;
 import com.newnetcom.anlyze.beans.ResultBean;
 import com.newnetcom.anlyze.enums.ProtocolTypeEnum;
 import com.newnetcom.anlyze.protocols.DynamicProtocol;
 import com.newnetcom.anlyze.protocols.IProtocol;
+import com.newnetcom.anlyze.thread.AnlyzeDataTask;
+import com.newnetcom.anlyze.utils.JsonUtils;
 
 /**
  * 
@@ -14,7 +19,7 @@ import com.newnetcom.anlyze.protocols.IProtocol;
  * @version
  */
 public class AnlyzeMain implements Runnable {
-
+	private static final Logger logger = LoggerFactory.getLogger(AnlyzeDataTask.class);
 	private ProtocolBean protocolBean;
 
 	public AnlyzeMain(ProtocolBean inprotocolBeans) {
@@ -31,19 +36,32 @@ public class AnlyzeMain implements Runnable {
 			// return null;
 		} else if (protocolBean.getProto_unid().equals("EF039E17A8E84137AF6DE1CDC172C274")) {
 			protocolType = ProtocolTypeEnum.PGB;
+		} else {
+			return null;
 		}
-		// System.out.println("解析开始");
-		// 分析协议头部和协议内容
-		// long temp=System.currentTimeMillis();
-		IProtocol protocolD = new DynamicProtocol(protocolType, protocolBean);
-		// System.out.println("解析头部文件需要时间："+(System.currentTimeMillis()-temp));
-		// System.out.println("解析开始01");
-		DynamicAnlyze anlyze = new DynamicAnlyze(protocolD);
-		// System.out.println("解析文件需要时间："+(System.currentTimeMillis()-temp));
-		// System.out.println("解析开始02");
-		// anlyze.anlyzeContent();
-		return protocolD.toResult(anlyze.anlyzeContent());
-		// return null;
+
+		try {
+			// System.out.println("解析开始");
+			// 分析协议头部和协议内容
+			// long temp=System.currentTimeMillis();
+			IProtocol protocolD = new DynamicProtocol(protocolType, protocolBean);
+			// System.out.println("解析头部文件需要时间："+(System.currentTimeMillis()-temp));
+			// System.out.println("解析开始01");
+			DynamicAnlyze anlyze = new DynamicAnlyze(protocolD);
+			// System.out.println("解析文件需要时间："+(System.currentTimeMillis()-temp));
+			// System.out.println("解析开始02");
+			// System.out.println( JsonUtils.serialize(anlyze.anlyzeContent()));
+			if(protocolD.getContent()!=null)
+			{
+				return protocolD.toResult(anlyze.anlyzeContent());
+			}else
+			{
+				logger.debug(JsonUtils.serialize(protocolD));
+			}
+		} catch (Exception ex) {
+			logger.error("错误", ex);
+		}
+		return null;
 
 	}
 

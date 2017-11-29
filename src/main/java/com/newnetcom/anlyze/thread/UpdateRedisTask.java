@@ -22,6 +22,7 @@ public class UpdateRedisTask extends Thread {
 	Map<String, Map<String, String>> contentsMap = new ConcurrentHashMap<>();
 	Map<String, Map<String, String>> contentsMapVehicle = new ConcurrentHashMap<>();
 	private long lastTime;
+
 	public UpdateRedisTask() {
 		redis = new RedisUtils();
 		lastTime = System.currentTimeMillis();
@@ -45,9 +46,10 @@ public class UpdateRedisTask extends Thread {
 						pairsMap2.put(pair.getAlias(), pair.getValue());
 					}
 				}
-				VehicleInfo info=publicStaticMap.getVehicles().get(results.getVehicleUnid());
-				pairsMap2.put("domain_unid",info.getDomain_unid());
-				pairsMap2.put("fiber_unid",info.getFIBER_UNID());
+				// VehicleInfo
+				// info=publicStaticMap.getVehicles().get(results.getVehicleUnid());
+				// pairsMap2.put("domain_unid",info.getDomain_unid());
+				// pairsMap2.put("fiber_unid",info.getFIBER_UNID());
 				contentsMapVehicle.put(pre + results.getVehicleUnid(), pairsMap2);
 				contentsMap.put(snapshot + results.getVehicleUnid(), pairsMap);
 				long current = System.currentTimeMillis();
@@ -63,13 +65,14 @@ public class UpdateRedisTask extends Thread {
 						long tempTime = System.currentTimeMillis();
 						redis.setKeys(cMap);
 						redis.setKeys(cMap2);
-						if(publicStaticMap.logStatus)
-						{
-						 logger.info("更新redis：" + cMap.size() + "更新时间:" + (System.currentTimeMillis() - tempTime));
+						if (publicStaticMap.logStatus) {
+							System.out.println(
+									"更新redis：" + cMap.size() + "更新时间:" + (System.currentTimeMillis() - tempTime));
 						}
 						Thread.sleep(5);
-						//System.out
-						//		.println("更新redis：" + cMap.size() + "更新时间:" + (System.currentTimeMillis() - tempTime));
+						// System.out
+						// .println("更新redis：" + cMap.size() + "更新时间:" +
+						// (System.currentTimeMillis() - tempTime));
 					}
 				}
 			} catch (Exception ex) {

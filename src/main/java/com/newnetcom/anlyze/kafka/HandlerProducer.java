@@ -17,7 +17,7 @@ public class HandlerProducer implements Runnable {
 	public void run() {
 		KafkaProducerSingleton kafkaProducerSingleton = KafkaProducerSingleton.getInstance();
 		HashMap<String, String> config = PropertyResource.getInstance().getProperties();
-		kafkaProducerSingleton.init(config.get("kafka.pairs"), 3);
+		kafkaProducerSingleton.init(config.get("kafka.pairs"), 1);
 		//System.out.println("当前线程:" + Thread.currentThread().getName() + ",获取的kafka实例:" + kafkaProducerSingleton);
 		kafkaProducerSingleton.sendKafkaMessage(message);
 	}

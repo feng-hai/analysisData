@@ -40,7 +40,12 @@ public class CanRules {
 			//System.out.println(JsonUtils.serialize( publicStaticMap.getA2LValues()));
 		}else
 		{
-			rules= rul.get(ByteUtils.byte2HexStr(canId));
+			if(rul!=null)
+			{
+				rules= rul.get(ByteUtils.byte2HexStr(canId));
+			}else{
+				logger.debug("当前数据字典没有解析规则"+"错误：数据字典ID："+fibeid+"CanID:"+ByteUtils.byte2HexStr(canId));
+			}
 		}
 		if (rules == null) {
 			logger.debug("错误：数据字典ID："+fibeid+"CanID:"+ByteUtils.byte2HexStr(canId));
