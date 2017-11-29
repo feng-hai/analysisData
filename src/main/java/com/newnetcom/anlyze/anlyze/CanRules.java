@@ -35,7 +35,7 @@ public class CanRules {
 		if (isTrue) {
 			int tempInt=ByteUtils.getIntForLarge(canId, 0)&0xffffffff;
 			//String temp =ByteUtils.byte2HexStr(canId);		
-			rules= rul.get(tempInt);
+			rules= rul.get(String.valueOf(tempInt));
 			//System.out.println(dataSet+"-"+tempInt);
 			//System.out.println(JsonUtils.serialize( publicStaticMap.getA2LValues()));
 		}else
