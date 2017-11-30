@@ -77,7 +77,7 @@ public class RawDataMyTaskRun extends Thread {
 						System.out.println("原始数据插入数据：" + String.valueOf(rawHabaseNum));
 						//logger.info("原始数据插入数据：" + String.valueOf(rawHabaseNum));
 					}
-					//Thread.sleep(1);
+					Thread.sleep(1);
 					// System.out.println(tempPuts.size() + "车辆原始数据" +
 					// (System.currentTimeMillis() - temp));
 				}
@@ -150,7 +150,7 @@ public class RawDataMyTaskRun extends Thread {
 
 					publicStaticMap.getRawDataQueue().put(temp);
 
-					if (publicStaticMap.getRawDataQueue().size() > 100000) {
+					if (publicStaticMap.getRawDataQueue().size() > 10000) {
 						Thread.sleep(1000);// 一分钟后重新启动kafka
 					}
 				}
