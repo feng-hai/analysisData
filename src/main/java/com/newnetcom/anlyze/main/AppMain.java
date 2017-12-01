@@ -56,9 +56,9 @@ public class AppMain {
 		sendDataA.setDaemon(true);
 		sendDataA.start();
 		
-		AnlyzeDataTaskRun an=new AnlyzeDataTaskRun();
-		an.setDaemon(true);
-		an.start();
+//		AnlyzeDataTaskRun an=new AnlyzeDataTaskRun();
+//		an.setDaemon(true);
+//		an.start();
 		logger.info("开启kafka线程");
 		
 		RawDataMyTaskRun sendData2 = new RawDataMyTaskRun();

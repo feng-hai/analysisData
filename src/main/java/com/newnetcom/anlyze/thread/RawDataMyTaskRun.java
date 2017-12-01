@@ -147,11 +147,12 @@ public class RawDataMyTaskRun extends Thread {
 						}
 					}
 					saveRaw(temp);
-
-					publicStaticMap.getRawDataQueue().put(temp);
-
 					if (publicStaticMap.getRawDataQueue().size() > 10000) {
 						Thread.sleep(1000);// 一分钟后重新启动kafka
+						publicStaticMap.getRawDataQueue().put(temp);
+					}else
+					{
+						publicStaticMap.getRawDataQueue().put(temp);
 					}
 				}
 			} catch (Exception ex) {

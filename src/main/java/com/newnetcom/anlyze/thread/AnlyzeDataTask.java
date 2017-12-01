@@ -39,8 +39,12 @@ public class AnlyzeDataTask extends Thread {
 //					i=0;
 //					Thread.sleep(1);
 //				}
-				ProtocolBean protocol = publicStaticMap.getRawDataQueue().take();
-			    new AnlyzeMain(protocol).run();
+				ProtocolBean protocol = publicStaticMap.getRawDataQueue().take();	
+				AnlyzeMain anlyze= new AnlyzeMain(protocol);
+				anlyze.run();
+				anlyze=null;
+				protocol=null;
+				
 				
 				//executor.submit(new AnlyzeMain(protocol));
 			} catch (InterruptedException e) {

@@ -39,7 +39,7 @@ public class UpdateHbaseMyTask extends Thread {
 
 	List<Put> puts = new ArrayList<>();
     private long hbaseNum=0;
-	private List<VehicleIndex> vehicleIndexs=new ArrayList<>();
+	//private List<VehicleIndex> vehicleIndexs=new ArrayList<>();
 
 	@Override
 	public void run() {
@@ -58,7 +58,7 @@ public class UpdateHbaseMyTask extends Thread {
 						logger.debug(JsonUtils.serialize(results));
 						continue;
 					}
-					vehicleIndexs.add(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())));
+					//vehicleIndexs.add(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())));
 					Put put = new Put(RowKeyBean.makeRowKey(results.getVehicleUnid(), results.getDatetime().getTime()));
 					for (PairResult pair : pairs) {
 						put.addColumn(Bytes.toBytes("CUBE"),
@@ -72,7 +72,7 @@ public class UpdateHbaseMyTask extends Thread {
 						// logger.error("没有数据项："+JsonUtils.serialize(results));
 					}
 					Long curentTime = System.currentTimeMillis();
-					if (puts.size() > 5000 || curentTime - lastTime > 10000) {
+					if (puts.size() > 5000 || curentTime - lastTime > 1000) {
 						lastTime = curentTime;
 						if(publicStaticMap.logStatus)
 						{

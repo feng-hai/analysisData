@@ -53,7 +53,7 @@ public class UpdateRedisTask extends Thread {
 				contentsMapVehicle.put(pre + results.getVehicleUnid(), pairsMap2);
 				contentsMap.put(snapshot + results.getVehicleUnid(), pairsMap);
 				long current = System.currentTimeMillis();
-				if (contentsMap.size() > 5000 || current - lastTime > 10000) {
+				if (contentsMap.size() > 5000 || current - lastTime > 2000) {
 					lastTime = current;
 					if (contentsMap.size() > 2) {
 						Map<String, Map<String, String>> cMap = new HashMap<>();
