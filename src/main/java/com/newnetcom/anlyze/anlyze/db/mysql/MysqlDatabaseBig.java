@@ -188,7 +188,10 @@ public class MysqlDatabaseBig implements IDatabase {
 			
 			resultsMap.put(key, res);
 		}
+		if(resultsMap.size()>0)
+		{
 		publicStaticMap.setCans(resultsMap);
+		}
 		return resultsMap;
 	}
 

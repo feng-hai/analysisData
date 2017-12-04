@@ -176,8 +176,10 @@ public class MysqlDatabaseA2L implements IDatabase {
 				}
 			}
 		}
-		
+		if(resultsMap.size()>0)
+		{
 		publicStaticMap.setA2LValues(resultsMap);
+		}
 		return resultsMap;
 	}
 

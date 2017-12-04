@@ -183,7 +183,10 @@ public class MysqlDatabaseBig2 implements IDatabase {
 			
 			resultsMap.put(key, res);
 		}
+		if(resultsMap.size()>0)
+		{
 		publicStaticMap.setCans(resultsMap);
+		}
 		return resultsMap;
 	}
 
