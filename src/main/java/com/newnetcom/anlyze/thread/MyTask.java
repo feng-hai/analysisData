@@ -101,7 +101,10 @@ public class MyTask extends TimerTask {
 					vehicles.put(vi.getUNID(), vi);
 				}
 			}
-			publicStaticMap.setVehicles(vehicles);
+			if(vehicles.size()>0)
+			{
+			   publicStaticMap.setVehicles(vehicles);
+			}
 			logger.info("数据库加载成功，加载数据的个数为：{}", publicStaticMap.getVehicles().size() / 3);
 		} catch (Exception e) {
 			e.printStackTrace();

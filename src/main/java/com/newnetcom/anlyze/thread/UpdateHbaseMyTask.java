@@ -27,9 +27,9 @@ public class UpdateHbaseMyTask extends Thread {
 	private static final Logger logger = LoggerFactory.getLogger(UpdateHbaseMyTask.class);
 	private Long lastTime;
 	
-	 private int  threadNum=Integer.parseInt( PropertyResource.getInstance().getProperties().get("indexHistoryThreadNum"));
+	 //private int  threadNum=Integer.parseInt( PropertyResource.getInstance().getProperties().get("indexHistoryThreadNum"));
 
-     private ExecutorService executor = Executors.newFixedThreadPool(threadNum);
+   //  private ExecutorService executor = Executors.newFixedThreadPool(threadNum);
 
 	public UpdateHbaseMyTask() {
 		// loadData();PropertyResource.getInstance().getProperties().get("zks")
@@ -72,7 +72,7 @@ public class UpdateHbaseMyTask extends Thread {
 						// logger.error("没有数据项："+JsonUtils.serialize(results));
 					}
 					Long curentTime = System.currentTimeMillis();
-					if (puts.size() > 5000 || curentTime - lastTime > 1000) {
+					if (puts.size() > 5000 || curentTime - lastTime > 5000) {
 						lastTime = curentTime;
 						if(publicStaticMap.logStatus)
 						{

@@ -33,19 +33,19 @@ public class RawDataMyTaskRun extends Thread {
 	private int threadNum = Integer
 			.parseInt(PropertyResource.getInstance().getProperties().get("indexHistoryThreadNum"));
 
-	private ExecutorService executor;
+	//private ExecutorService executor;
 	private long lastTime = 0;
 	private long rawHabaseNum = 0;
 
 	public RawDataMyTaskRun() {
 		HBaseUtil.init(PropertyResource.getInstance().getProperties().get("zks"));
 		lastTime = System.currentTimeMillis();
-		executor = Executors.newFixedThreadPool(threadNum);
+		//executor = Executors.newFixedThreadPool(threadNum);
 	}
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private List<Put> puts = new ArrayList<>();
-	private List<VehicleIndex> vehicleIndexs = new ArrayList<>();
+	//private List<VehicleIndex> vehicleIndexs = new ArrayList<>();
 
 	private void saveRaw(ProtocolBean protocol) {
 		try {
@@ -147,7 +147,7 @@ public class RawDataMyTaskRun extends Thread {
 						}
 					}
 					saveRaw(temp);
-					if (publicStaticMap.getRawDataQueue().size() > 10000) {
+					if (publicStaticMap.getRawDataQueue().size() > 5000) {
 						Thread.sleep(1000);// 一分钟后重新启动kafka
 						publicStaticMap.getRawDataQueue().put(temp);
 					}else

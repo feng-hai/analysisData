@@ -50,7 +50,7 @@ public class DataToKafKaTask extends Thread {
 //					count=0;
 //					Thread.sleep(1000);
 //				}
-				if(publicStaticMap.getSendDataQueue().size()>10000)
+				if(publicStaticMap.getSendDataQueue().size()>2000)
 				{
 					publicStaticMap.getSendDataQueue().clear();
 				}
