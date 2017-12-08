@@ -68,6 +68,7 @@ public class RawDataMyTaskRun extends Thread {
 					tempPuts.addAll(puts);
 					puts.clear();
 					HBase.put("CUBE_RAW", tempPuts, false);
+					tempPuts=null;
 					// 提交索引列表
 				//	List<VehicleIndex> tempIndexs = new ArrayList<>();
 //					tempIndexs.addAll(vehicleIndexs);

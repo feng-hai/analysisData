@@ -259,6 +259,8 @@ public class Protocol3G implements IProtocol {
 			beanList.add(new PairResult("ENTITY_UNID", "ENTITY_UNID", "车辆唯一标识", rb.getVehicleUnid()));
 			// beanList.add(new Pair("","","",rb.getKey()));
 			rb.setPairs(beanList);
+			
+			
 			publicStaticMap.getCmdQueue().put(rb);// 用于更新hbase
 
 			publicStaticMap.getRedisQueue().put(rb);// 用于更新redis

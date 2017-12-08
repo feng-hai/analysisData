@@ -71,6 +71,7 @@ public class UpdateHbaseMyTask extends Thread {
 					} else {
 						// logger.error("没有数据项："+JsonUtils.serialize(results));
 					}
+					pairs=null;
 					Long curentTime = System.currentTimeMillis();
 					if (puts.size() > 5000 || curentTime - lastTime > 5000) {
 						lastTime = curentTime;
@@ -81,13 +82,15 @@ public class UpdateHbaseMyTask extends Thread {
 						}
 						List<Put> tempPuts = new ArrayList<>();
 						tempPuts.addAll(puts);
+						puts.clear();
 						HBase.batchAsyncPut("CUBE_SENSOR", tempPuts, false);
+						tempPuts=null;
 						//提交索引列表
 //						List<VehicleIndex> tempIndexs=new ArrayList<>();
 //						tempIndexs.addAll(vehicleIndexs);	
 //						executor.submit(new SubmitIndex("cube_sensor","vehicle",tempIndexs));
 //						
-						puts.clear();
+						
 						Thread.sleep(1);
 					}
 				} catch (Exception ex) {

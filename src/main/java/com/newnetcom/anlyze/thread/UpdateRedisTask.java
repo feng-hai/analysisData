@@ -69,6 +69,8 @@ public class UpdateRedisTask extends Thread {
 							System.out.println(
 									"更新redis：" + cMap.size() + "更新时间:" + (System.currentTimeMillis() - tempTime));
 						}
+						cMap=null;
+						cMap2=null;
 						Thread.sleep(5);
 						// System.out
 						// .println("更新redis：" + cMap.size() + "更新时间:" +
