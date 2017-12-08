@@ -184,9 +184,9 @@ public class MysqlDatabaseA2L implements IDatabase {
 	}
 
 	List<Map<String, Object>> temp = new ArrayList<>();
-	static Map<String, List<String>> fiberProtocol = new HashMap<>();
+	Map<String, List<String>> fiberProtocol = new HashMap<>();
 
-	private static void familys(String parentId, List<Map<String, Object>> familys, String fiberId) {
+	private  void familys(String parentId, List<Map<String, Object>> familys, String fiberId) {
 		for (Map<String, Object> entity : familys) {
 			Object supers = entity.get("SUPER_PROTO_FAMILY_UNID");
 			Object familyId = entity.get("UNID");
