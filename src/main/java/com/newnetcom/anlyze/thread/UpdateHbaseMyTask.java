@@ -16,6 +16,7 @@ import com.newnetcom.anlyze.beans.VehicleIndex;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 //import com.newnetcom.anlyze.utils.JsonUtils;
 import com.newnetcom.anlyze.config.PropertyResource;
+import com.newnetcom.anlyze.index.SensorIndex;
 import com.newnetcom.anlyze.utils.JsonUtils;
 import cn.ngsoc.hbase.HBase;
 import cn.ngsoc.hbase.util.HBaseUtil;
@@ -58,6 +59,7 @@ public class UpdateHbaseMyTask extends Thread {
 						logger.debug(JsonUtils.serialize(results));
 						continue;
 					}
+					SensorIndex.setValue(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())));
 					//vehicleIndexs.add(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())));
 					Put put = new Put(RowKeyBean.makeRowKey(results.getVehicleUnid(), results.getDatetime().getTime()));
 					for (PairResult pair : pairs) {
@@ -80,11 +82,13 @@ public class UpdateHbaseMyTask extends Thread {
 							System.out.println("更新hbase数量："+String.valueOf(hbaseNum));
 							//logger.info("更新hbase数量："+String.valueOf(hbaseNum));
 						}
-						List<Put> tempPuts = new ArrayList<>();
-						tempPuts.addAll(puts);
-						puts.clear();
-						HBase.batchAsyncPut("CUBE_SENSOR", tempPuts, false);
-						tempPuts=null;
+						synchronized (puts) {
+							List<Put> tempPuts = new ArrayList<>();
+							tempPuts.addAll(puts);
+							puts.clear();
+							HBase.batchAsyncPut("CUBE_SENSOR", tempPuts, false);
+							tempPuts=null;
+						}
 						//提交索引列表
 //						List<VehicleIndex> tempIndexs=new ArrayList<>();
 //						tempIndexs.addAll(vehicleIndexs);	
