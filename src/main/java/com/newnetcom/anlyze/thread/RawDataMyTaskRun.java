@@ -22,6 +22,7 @@ import com.newnetcom.anlyze.beans.VehicleIndex;
 import com.newnetcom.anlyze.beans.VehicleInfo;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.config.PropertyResource;
+import com.newnetcom.anlyze.index.RawIndex;
 import com.newnetcom.anlyze.utils.JsonUtils;
 
 import cn.ngsoc.hbase.HBase;
@@ -30,8 +31,8 @@ import cn.ngsoc.hbase.util.HBaseUtil;
 public class RawDataMyTaskRun extends Thread {
 
 	private static final Logger logger = LoggerFactory.getLogger(RawDataMyTaskRun.class);
-	private int threadNum = Integer
-			.parseInt(PropertyResource.getInstance().getProperties().get("indexHistoryThreadNum"));
+//	private int threadNum = Integer
+//			.parseInt(PropertyResource.getInstance().getProperties().get("indexHistoryThreadNum"));
 
 	//private ExecutorService executor;
 	private long lastTime = 0;
@@ -58,22 +59,25 @@ public class RawDataMyTaskRun extends Thread {
 			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"),
 					Bytes.toBytes(protocol.getRAW_OCTETS().toUpperCase()));
 			puts.add(put);
+			RawIndex.setValue(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
 			//vehicleIndexs.add(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
 			Long curentTime = System.currentTimeMillis();
 			if (puts.size() > 5000 || curentTime - lastTime > 10000) {
 				lastTime = curentTime;
 				// long temp = System.currentTimeMillis();
 				if (puts.size() > 0) {
-					List<Put> tempPuts = new ArrayList<>();
-					tempPuts.addAll(puts);
-					puts.clear();
-					HBase.put("CUBE_RAW", tempPuts, false);
-					tempPuts=null;
+					synchronized (puts) {
+						List<Put> tempPuts = new ArrayList<>();
+						tempPuts.addAll(puts);
+						puts.clear();
+						HBase.put("CUBE_RAW", tempPuts, false);
+						tempPuts=null;
+					}
 					// 提交索引列表
 				//	List<VehicleIndex> tempIndexs = new ArrayList<>();
 //					tempIndexs.addAll(vehicleIndexs);
 //					vehicleIndexs.clear();
-//					executor.submit(new SubmitIndex("cube_raw", "vehicle", tempIndexs));
+				//executor.submit(new SubmitIndex("cube_raw", "vehicle", tempIndexs));
 					if (publicStaticMap.logStatus) {
 						System.out.println("原始数据插入数据：" + String.valueOf(rawHabaseNum));
 						//logger.info("原始数据插入数据：" + String.valueOf(rawHabaseNum));
