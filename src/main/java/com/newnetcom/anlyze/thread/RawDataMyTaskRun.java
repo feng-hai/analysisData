@@ -37,6 +37,8 @@ public class RawDataMyTaskRun extends Thread {
 	//private ExecutorService executor;
 	private long lastTime = 0;
 	private long rawHabaseNum = 0;
+	
+	private String isIndex=PropertyResource.getInstance().getProperties().get("isIndex");
 
 	public RawDataMyTaskRun() {
 		HBaseUtil.init(PropertyResource.getInstance().getProperties().get("zks"));
@@ -59,7 +61,10 @@ public class RawDataMyTaskRun extends Thread {
 			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"),
 					Bytes.toBytes(protocol.getRAW_OCTETS().toUpperCase()));
 			puts.add(put);
-			RawIndex.setValue(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
+			if(isIndex.equals("true"))
+			{
+				RawIndex.setValue(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
+			}
 			//vehicleIndexs.add(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
 			Long curentTime = System.currentTimeMillis();
 			if (puts.size() > 5000 || curentTime - lastTime > 10000) {

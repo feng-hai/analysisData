@@ -37,7 +37,7 @@ public class UpdateHbaseMyTask extends Thread {
 		HBaseUtil.init(PropertyResource.getInstance().getProperties().get("zks"));
 		lastTime = System.currentTimeMillis();
 	}
-
+	private String isIndex=PropertyResource.getInstance().getProperties().get("isIndex");
 	List<Put> puts = new ArrayList<>();
     private long hbaseNum=0;
 	//private List<VehicleIndex> vehicleIndexs=new ArrayList<>();
@@ -59,8 +59,11 @@ public class UpdateHbaseMyTask extends Thread {
 						logger.debug(JsonUtils.serialize(results));
 						continue;
 					}
+					if(isIndex.equals("true"))
+					{
 					SensorIndex.setValue(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())));
-					//vehicleIndexs.add(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())));
+				
+					}//vehicleIndexs.add(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())));
 					Put put = new Put(RowKeyBean.makeRowKey(results.getVehicleUnid(), results.getDatetime().getTime()));
 					for (PairResult pair : pairs) {
 						put.addColumn(Bytes.toBytes("CUBE"),
