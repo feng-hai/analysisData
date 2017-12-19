@@ -47,8 +47,8 @@ public class AppMain {
 	   }
 		
 		
-		Timer timer2 = new Timer();
-		timer2.schedule(new MyTask(), new Date(), 60000*60);
+		//Timer timer2 = new Timer();
+		//timer2.schedule(new MyTask(), new Date(), 60000*60);
 		// TODO Auto-generated method stub
 		
 		logger.info("开启分析线程");
