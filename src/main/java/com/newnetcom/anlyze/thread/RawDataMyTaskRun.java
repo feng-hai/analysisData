@@ -47,6 +47,7 @@ public class RawDataMyTaskRun extends Thread {
 	}
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private SimpleDateFormat tableFormat = new SimpleDateFormat("yyyyMM");
 	private List<Put> puts = new ArrayList<>();
 	//private List<VehicleIndex> vehicleIndexs = new ArrayList<>();
 
@@ -75,7 +76,7 @@ public class RawDataMyTaskRun extends Thread {
 						List<Put> tempPuts = new ArrayList<>();
 						tempPuts.addAll(puts);
 						puts.clear();
-						HBase.put("CUBE_RAW", tempPuts, false);
+						HBase.put("CUBE_RAW_"+tableFormat.format(new Date(time)), tempPuts, false);
 						tempPuts=null;
 					}
 					// 提交索引列表
