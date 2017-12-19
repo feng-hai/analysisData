@@ -1,6 +1,8 @@
 package com.newnetcom.anlyze.thread;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -26,6 +28,7 @@ import cn.ngsoc.hbase.util.pages.Esutil;
 public class UpdateHbaseMyTask extends Thread {
 
 	private static final Logger logger = LoggerFactory.getLogger(UpdateHbaseMyTask.class);
+	private SimpleDateFormat tableFormat = new SimpleDateFormat("yyyyMM");
 	private Long lastTime;
 	
 	 //private int  threadNum=Integer.parseInt( PropertyResource.getInstance().getProperties().get("indexHistoryThreadNum"));
@@ -55,6 +58,11 @@ public class UpdateHbaseMyTask extends Thread {
 				}
 				try {
 					List<PairResult> pairs = results.getPairs();
+				Date tableDate=	results.getDatetime();
+				if(tableDate==null)
+				{
+					tableDate=new Date();
+				}
 					if (results.getDatetime() == null) {
 						logger.debug(JsonUtils.serialize(results));
 						continue;
@@ -89,7 +97,8 @@ public class UpdateHbaseMyTask extends Thread {
 							List<Put> tempPuts = new ArrayList<>();
 							tempPuts.addAll(puts);
 							puts.clear();
-							HBase.batchAsyncPut("CUBE_SENSOR", tempPuts, false);
+							
+							HBase.batchAsyncPut("CUBE_SENSOR_"+tableFormat.format(tableDate), tempPuts, false);
 							tempPuts=null;
 						}
 						//提交索引列表
