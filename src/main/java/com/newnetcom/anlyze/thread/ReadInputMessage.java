@@ -1,5 +1,7 @@
 package com.newnetcom.anlyze.thread;
 import java.util.Scanner;
+
+import com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseBig;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 public class ReadInputMessage extends Thread {
 	@SuppressWarnings("resource")
@@ -38,6 +40,12 @@ public class ReadInputMessage extends Thread {
 				System.out.println("关闭日志");
 				publicStaticMap.logStatus=false;
 				break;
+			}case "updateDB-f":
+			{
+				System.out.println("修改数据配置");
+				MysqlDatabaseBig big=new MysqlDatabaseBig();
+				big.setUnid();
+				System.out.println("修改数据完成");
 			}
 			default:
 				System.out.println("stop:停止从kafka中获取数据");
