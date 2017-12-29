@@ -47,9 +47,11 @@ public class AppMain {
 	   }
 		
 		
-		//Timer timer2 = new Timer();
-		//timer2.schedule(new MyTask(), new Date(), 60000*60);
+		Timer timer2 = new Timer();
+		timer2.schedule(new MyTask(), new Date(), 60000*60);
 		// TODO Auto-generated method stub
+	   
+	   
 		
 		logger.info("开启分析线程");
 		AnlyzeDataTask sendDataA = new AnlyzeDataTask();
@@ -72,10 +74,11 @@ public class AppMain {
 		sendData.start();
 	
 		
-		
+		logger.info("开启更新redis线程");
 		UpdateRedisTask sendDataRedis = new UpdateRedisTask();
 		sendDataRedis.setDaemon(true);
 		sendDataRedis.start(); 
+		logger.info("开启写kafka数据");
 		DataToKafKaTask sendDataTask = new DataToKafKaTask();
 		sendDataTask.setDaemon(true);
 		

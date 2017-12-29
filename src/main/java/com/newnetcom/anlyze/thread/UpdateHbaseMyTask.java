@@ -28,7 +28,7 @@ import cn.ngsoc.hbase.util.pages.Esutil;
 public class UpdateHbaseMyTask extends Thread {
 
 	private static final Logger logger = LoggerFactory.getLogger(UpdateHbaseMyTask.class);
-	private SimpleDateFormat tableFormat = new SimpleDateFormat("yyyyMM");
+	private SimpleDateFormat tableFormat = new SimpleDateFormat("yyyy");
 	private Long lastTime;
 	
 	 //private int  threadNum=Integer.parseInt( PropertyResource.getInstance().getProperties().get("indexHistoryThreadNum"));
@@ -67,9 +67,10 @@ public class UpdateHbaseMyTask extends Thread {
 						logger.debug(JsonUtils.serialize(results));
 						continue;
 					}
+					String tableName="CUBE_SENSOR_"+tableFormat.format(tableDate);
 					if(isIndex.equals("true"))
 					{
-					SensorIndex.setValue(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())));
+					SensorIndex.setValue(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())),tableName);
 				
 					}//vehicleIndexs.add(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())));
 					Put put = new Put(RowKeyBean.makeRowKey(results.getVehicleUnid(), results.getDatetime().getTime()));
@@ -98,7 +99,7 @@ public class UpdateHbaseMyTask extends Thread {
 							tempPuts.addAll(puts);
 							puts.clear();
 							
-							HBase.batchAsyncPut("CUBE_SENSOR_"+tableFormat.format(tableDate), tempPuts, false);
+							HBase.batchAsyncPut(tableName, tempPuts, false);
 							tempPuts=null;
 						}
 						//提交索引列表

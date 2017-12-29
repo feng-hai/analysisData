@@ -38,16 +38,17 @@ public class RawDataMyTaskRun extends Thread {
 	private long lastTime = 0;
 	private long rawHabaseNum = 0;
 	
-	private String isIndex=PropertyResource.getInstance().getProperties().get("isIndex");
+	private String isIndex;
 
 	public RawDataMyTaskRun() {
 		HBaseUtil.init(PropertyResource.getInstance().getProperties().get("zks"));
 		lastTime = System.currentTimeMillis();
+		isIndex=PropertyResource.getInstance().getProperties().get("isIndex");
 		//executor = Executors.newFixedThreadPool(threadNum);
 	}
 
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	private SimpleDateFormat tableFormat = new SimpleDateFormat("yyyyMM");
+	private SimpleDateFormat tableFormat = new SimpleDateFormat("yyyy");
 	private List<Put> puts = new ArrayList<>();
 	//private List<VehicleIndex> vehicleIndexs = new ArrayList<>();
 
@@ -62,28 +63,29 @@ public class RawDataMyTaskRun extends Thread {
 			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"),
 					Bytes.toBytes(protocol.getRAW_OCTETS().toUpperCase()));
 			puts.add(put);
-			if(isIndex.equals("true"))
+			String tableName="CUBE_RAW_"+tableFormat.format(new Date(time));
+			if(isIndex!=null&&!isIndex.isEmpty()&&isIndex.equals("true"))
 			{
-				RawIndex.setValue(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
+				RawIndex.setValue(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()),tableName);
 			}
 			//vehicleIndexs.add(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
 			Long curentTime = System.currentTimeMillis();
+			//logger.info("01");
 			if (puts.size() > 5000 || curentTime - lastTime > 10000) {
 				lastTime = curentTime;
 				// long temp = System.currentTimeMillis();
 				if (puts.size() > 0) {
-					synchronized (puts) {
+					//logger.info("02");
+					//synchronized (puts) {
 						List<Put> tempPuts = new ArrayList<>();
 						tempPuts.addAll(puts);
 						puts.clear();
-						HBase.put("CUBE_RAW_"+tableFormat.format(new Date(time)), tempPuts, false);
+						//logger.info(tableFormat.format(new Date(time)));
+						HBase.put(tableName, tempPuts, false);
 						tempPuts=null;
-					}
+					//}
 					// 提交索引列表
-				//	List<VehicleIndex> tempIndexs = new ArrayList<>();
-//					tempIndexs.addAll(vehicleIndexs);
-//					vehicleIndexs.clear();
-				//executor.submit(new SubmitIndex("cube_raw", "vehicle", tempIndexs));
+
 					if (publicStaticMap.logStatus) {
 						System.out.println("原始数据插入数据：" + String.valueOf(rawHabaseNum));
 						//logger.info("原始数据插入数据：" + String.valueOf(rawHabaseNum));
@@ -104,6 +106,8 @@ public class RawDataMyTaskRun extends Thread {
 	@Override
 	public void run() {
 
+		
+		
 		Properties props = new Properties();
 		props.put("bootstrap.servers", PropertyResource.getInstance().getProperties().get("kafka.server"));
 		props.put("group.id", PropertyResource.getInstance().getProperties().get("kafka.groupID"));
@@ -115,6 +119,7 @@ public class RawDataMyTaskRun extends Thread {
 		props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 		@SuppressWarnings("resource")
 		KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
+		logger.info(PropertyResource.getInstance().getProperties().get("kafka.sourcecodeTopic"));
 		consumer.subscribe(Arrays.asList(PropertyResource.getInstance().getProperties().get("kafka.sourcecodeTopic")));
 		while (true) {
 			if (publicStaticMap.stopTag)// 如果关闭
@@ -142,22 +147,25 @@ public class RawDataMyTaskRun extends Thread {
 				ConsumerRecords<String, String> records = consumer.poll(100);
 				for (ConsumerRecord<String, String> record : records) {
 					String sentence = record.value();
+					//logger.info("获取kafka中的值");
 					sentence = sentence.replace("DEVICE_ID", "device_ID").replace("TIMESTAMP", "timestamp")
 							.replace("IP4", "ip4").replace("raw_octets", "raw_OCTETS");
 					ProtocolBean temp = JsonUtils.deserialize(sentence, ProtocolBean.class);
-
+				
 					if (publicStaticMap.getVehicles().size() == 0) {
 						Thread.sleep(5000);
 						continue;
 					}
-
+					//logger.info("获取kafka中的值-01");
 					if (temp.getFIBER_UNID() == null || temp.getFIBER_UNID().isEmpty()) {
 						VehicleInfo info = publicStaticMap.getVehicles().get(temp.getUnid());
 						if (info != null) {
 							temp.setFIBER_UNID(info.getFIBER_UNID());
 						}
 					}
+					//logger.info("获取kafka中的值-02");
 					saveRaw(temp);
+					//logger.info("获取kafka中的值-03");
 					if (publicStaticMap.getRawDataQueue().size() > 5000) {
 						Thread.sleep(1000);// 一分钟后重新启动kafka
 						publicStaticMap.getRawDataQueue().put(temp);

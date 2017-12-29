@@ -20,7 +20,7 @@ public class Esutil {
 	
 	private static final Logger logger=LoggerFactory.getLogger(Esutil.class);
 
-	
+	private static int max=0;
 	public static TransportClient getClient() {
 		if (client != null) {
 			return client;
@@ -65,22 +65,22 @@ public class Esutil {
 	 */
 	public static void addIndex(String index, String type, List<VehicleIndex> vehicles) {
 		try {
-			logger.info("开始提交");
+			//logger.info("开始提交");
 			BulkRequestBuilder bulkRequest = getClient().prepareBulk();
-			int max=0;
+		
 			for (VehicleIndex vehicle : vehicles) {
 				HashMap<String, Object> hashMap = new HashMap<String, Object>();
 				hashMap.put("id", vehicle.getVehicleUnid());
 				hashMap.put("time", vehicle.getTime());
 				bulkRequest.add(getClient().prepareIndex(index, type)
 						.setId(vehicle.getVehicleUnid() + "-" + vehicle.getTime()).setSource(hashMap));
-				if(max%1000==0);
+				if(max++%100==0);
 				{
 					bulkRequest.execute().actionGet();
 				}
 			}
 			bulkRequest.execute().actionGet();
-			logger.info("开始结束"+max);
+			//logger.info("开始结束"+max);
 		} catch (Exception ex) {
 			logger.error("插入所有错误",ex);
 			client = null;
