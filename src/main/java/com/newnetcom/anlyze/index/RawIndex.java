@@ -19,8 +19,10 @@ public class RawIndex {
 	}
 	
 	public synchronized static void setValue(VehicleIndex vi, String tablename) {
+		   
 			vehiclesIndex.add(vi);
-			if (vehiclesIndex.size() > 100) {
+			if (vehiclesIndex.size() > 1000) {
+				
 				new SubmitIndex(tablename, "vehicle", vehiclesIndex).run();;
 				vehiclesIndex.clear();
 			}

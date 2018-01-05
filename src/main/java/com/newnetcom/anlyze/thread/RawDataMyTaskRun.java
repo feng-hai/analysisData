@@ -66,7 +66,8 @@ public class RawDataMyTaskRun extends Thread {
 			String tableName="CUBE_RAW_"+tableFormat.format(new Date(time));
 			if(isIndex!=null&&!isIndex.isEmpty()&&isIndex.equals("true"))
 			{
-				RawIndex.setValue(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()),tableName);
+				
+				//RawIndex.setValue(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()),tableName);
 			}
 			//vehicleIndexs.add(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
 			Long curentTime = System.currentTimeMillis();
