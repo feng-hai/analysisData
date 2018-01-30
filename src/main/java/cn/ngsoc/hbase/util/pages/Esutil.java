@@ -33,25 +33,26 @@ public class Esutil {
 				.build();////每5秒提交一次数据，类似oracle中的commit
 
 		try {
-			client = new  PreBuiltTransportClient(settings);
-			String servers = PropertyResource.getInstance().getProperties().get("index.server");
-			String[] serverIndex = servers.split(",");
-			for (String index : serverIndex) {
-				client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(index), 9300));
-			}
-			// client = new PreBuiltTransportClient( settings
-			// ).addTransportAddress( new
-			// InetSocketTransportAddress(
-			// InetAddress.getByName( "192.168.1.21" ),9300 )
-			// ).addTransportAddress( new
-			// InetSocketTransportAddress(
-			// InetAddress.getByName( "192.168.1.22" ),9300 )
-			// ).addTransportAddress( new
-			// InetSocketTransportAddress(
-			// InetAddress.getByName( "192.168.1.23" ),9300 )
-			// ).addTransportAddress( new
-			// InetSocketTransportAddress(
-			// InetAddress.getByName( "192.168.1.24" ), 9300 ) );
+//			client = new  PreBuiltTransportClient(settings);
+//			String servers = PropertyResource.getInstance().getProperties().get("index.server");
+//			String[] serverIndex = servers.split(",");
+//			for (String index : serverIndex) {
+//				
+//				client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName(index), 9300));
+//			}
+			 client = new PreBuiltTransportClient( settings
+			 ).addTransportAddress( new
+			 InetSocketTransportAddress(
+			 InetAddress.getByName( "192.168.1.21" ),9300 )
+			 ).addTransportAddress( new
+			 InetSocketTransportAddress(
+			 InetAddress.getByName( "192.168.1.22" ),9300 )
+			 ).addTransportAddress( new
+			 InetSocketTransportAddress(
+			 InetAddress.getByName( "192.168.1.23" ),9300 )
+			 ).addTransportAddress( new
+			 InetSocketTransportAddress(
+			 InetAddress.getByName( "192.168.1.24" ), 9300 ) );
 		} catch (Exception e) {
 			//e.printStackTrac();
 			logger.error("连接索引错误",e);
@@ -66,7 +67,7 @@ public class Esutil {
 	public static void addIndex(String index, String type, List<VehicleIndex> vehicles) {
 		try {
 			
-		long start=System.currentTimeMillis();
+		//long start=System.currentTimeMillis();
 			//logger.info("开始提交");
 			BulkRequestBuilder bulkRequest = getClient().prepareBulk();
 		
@@ -76,13 +77,13 @@ public class Esutil {
 				hashMap.put("time", vehicle.getTime());
 				bulkRequest.add(getClient().prepareIndex(index, type)
 						.setId(vehicle.getVehicleUnid() + "-" + vehicle.getTime()).setSource(hashMap));
-				if(max++%1000==0);
-				{
-					bulkRequest.execute().actionGet();
-				}
+//				if(max++%1000==0);
+//				{
+//					bulkRequest.execute().actionGet();
+//				}
 			}
 			bulkRequest.execute().actionGet();
-			System.out.println("完成时间"+(System.currentTimeMillis()-start));
+			//System.out.println("完成时间"+(System.currentTimeMillis()-start));
 			//logger.info("开始结束"+max);
 		} catch (Exception ex) {
 			logger.error("插入所有错误",ex);

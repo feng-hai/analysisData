@@ -29,6 +29,7 @@ public class AppMain {
 		
 		
 		Map<String,String> config=	PropertyResource.getInstance().getProperties();
+		
 		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"A2L");//1获取配置文件的分析类
 		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"CAN");
 		

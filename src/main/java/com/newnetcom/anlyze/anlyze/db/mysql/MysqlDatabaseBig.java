@@ -15,18 +15,20 @@ import com.newnetcom.anlyze.anlyze.db.mysql.utils.SingletonJDBC;
 import com.newnetcom.anlyze.beans.Pair;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.utils.ByteUtils;
+import com.newnetcom.anlyze.utils.JsonUtils;
+
 public class MysqlDatabaseBig implements IDatabase {
 
 	private static final Logger logger = LoggerFactory.getLogger(MysqlDatabaseBig.class);
 
-	JdbcUtils jdbcUtils ;
-	
-	public MysqlDatabaseBig()
-	{
+	JdbcUtils jdbcUtils;
+
+	public MysqlDatabaseBig() {
 		jdbcUtils = SingletonJDBC.getJDBC();
 		jdbcUtils.getConnection();
 		getRules();
 	}
+
 	/*
 	 * (非 Javadoc) <p>Title: getRules</p> <p>Description: </p>
 	 * 
@@ -35,15 +37,13 @@ public class MysqlDatabaseBig implements IDatabase {
 	 * @see com.newnetcom.anlyze.db.interfaces.IDatabase#getRules()
 	 */
 	@Override
-	public Map<String,Map<String,List<Pair>>> getRules() {
+	public Map<String, Map<String, List<Pair>>> getRules() {
 		// TODO Auto-generated method stub
 		// 数据字典和协议族之间的对应关系，
 
 		// 获取全部协议族
 		// 数据字典和对应协议族集合
 		// 获取全部协议
-
-		
 
 		List<Object> params = new ArrayList<Object>();
 		// params.add("90A62ABEA6DB415D93D17DD31FBD5A1B");
@@ -57,8 +57,7 @@ public class MysqlDatabaseBig implements IDatabase {
 		// e.printStackTrace();
 		// }
 
-		
-		//查询数据字典和协议族的根的关系
+		// 查询数据字典和协议族的根的关系
 		List<Map<String, Object>> resultsForfiberandfamily = null;
 		String sqlProtocolFamilyandFiber = "select * from (SELECT f.unid fiberId, fs.unid familyId  FROM cube.BIG_FIBER f"
 				+ " inner join cube.BIG_FIBER_PROTOCOL_FAMILY_MAP fm on f.unid=fm.FIBER_UNID and f.FLAG_DEL=0 and fm.FLAG_DEL=0 "
@@ -68,11 +67,10 @@ public class MysqlDatabaseBig implements IDatabase {
 			// logger.info(JsonUtils.serialize(resultsForfiberandfamily));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			logger.error("查询数据库错误",e);
+			logger.error("查询数据库错误", e);
 		}
 
-		
-		//所有协议族数据
+		// 所有协议族数据
 		String sqlFamilys = "SELECT fm.unid,fm.super_proto_family_unid,pm.PROTO_UNID  FROM cube.PDA_PROTOCOL_FAMILY fm "
 				+ "left join cube.PDA_PFP_MAP pm on fm.unid=pm.PROTO_FAMILY_UNID and pm.FLAG_DEL=0 where fm.FLAG_DEL=0";
 		List<Map<String, Object>> resultsfamily = null;
@@ -81,13 +79,11 @@ public class MysqlDatabaseBig implements IDatabase {
 			// logger.info(JsonUtils.serialize(resultsfamily));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			logger.error("查询数据库错误",e);
+			logger.error("查询数据库错误", e);
 		}
 
-		
-		
-		//所有协议项数据
-		String protocolSql = "select * from (SELECT f.aiid UNID, p.PREREQUISITE_HEX , f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0)d  ";
+		// 所有协议项数据
+		String protocolSql = "select * from (SELECT f.aiid UNID, p.PREREQUISITE_HEX , f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0)d  order by inx";
 
 		List<Map<String, Object>> resultsProtocol = null;
 		try {
@@ -95,11 +91,10 @@ public class MysqlDatabaseBig implements IDatabase {
 			// logger.info(JsonUtils.serialize(resultsProtocol));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			logger.error("查询数据库错误",e);
+			logger.error("查询数据库错误", e);
 		}
 
-		
-		//更加数据字典和协议族，遍历数据字典对应的所有协议族谢协议
+		// 更加数据字典和协议族，遍历数据字典对应的所有协议族谢协议
 		for (Map<String, Object> entity : resultsForfiberandfamily) {
 			Object fiberid = entity.get("fiberId");
 			Object familyId = entity.get("familyId");
@@ -107,10 +102,8 @@ public class MysqlDatabaseBig implements IDatabase {
 				familys(familyId.toString(), resultsfamily, fiberid.toString());
 			}
 		}
-		
-		
-		
-		//对所有的协议进行整理，整理协议对应的协议项内容
+
+		// 对所有的协议进行整理，整理协议对应的协议项内容
 		List<Pair> pairs = new ArrayList<>();
 		Map<String, List<Pair>> protocolList = new HashMap<>();// 协议id,解析规则集合
 		for (Map<String, Object> entity : resultsProtocol) {
@@ -148,57 +141,56 @@ public class MysqlDatabaseBig implements IDatabase {
 				protocolList.put(pair.getProtocolId(), pairs);
 			}
 		}
-		
-		//记录数据字典和Can针 ，对应的数据解析方式
-		Map<String, Map<String,List<Pair>>> resultsMap = new HashMap<>();
+
+		// 记录数据字典和Can针 ，对应的数据解析方式
+		Map<String, Map<String, List<Pair>>> resultsMap = new HashMap<>();
 		for (String key : fiberProtocol.keySet()) {// key 是数据字典id
 			List<String> tempProtocols = fiberProtocol.get(key);
-			Map<String,List<Pair> > res=new HashMap<>();
+			Map<String, List<Pair>> res = new HashMap<>();
 			for (String protocol : tempProtocols) {
 				List<Pair> pairs2 = protocolList.get(protocol);
 				if (pairs2 != null && pairs2.size() > 0) {
-					Collections.sort(pairs2);
+					// Collections.sort(pairs2);
 					int inxTemp = 0;
 					String canId = pairs2.get(0).getCanid();
-					
-//					if(canId.equals("18FF8F03"))
-//					{
-//						System.out.println(canId);
-//					}
-					List<Pair> pairsTemp=new ArrayList<>(); 
+
+					// if(canId.equals("18FF8F03"))
+					// {
+					// System.out.println(canId);
+					// }
+					List<Pair> pairsTemp = new ArrayList<>();
 					for (Pair pair : pairs2) {
-						Pair temp=pair.clone();
+						Pair temp = pair.clone();
 						temp.setStart(inxTemp + pair.getStart());
 						inxTemp = temp.getStart() + pair.getLength();
 						pairsTemp.add(temp);
-						//System.out.println(JsonUtils.serialize(temp));
+						// System.out.println(JsonUtils.serialize(temp));
 					}
 					byte[] temp = ByteUtils.hexStr2Bytes(canId);
 					temp = ByteUtils.endianChange(temp);
 					String canStr = ByteUtils.byte2HexStr(temp);
-					
+
 					if (!canStr.isEmpty() && !canStr.equals("00")) {
 						if (!resultsMap.containsKey(canStr)) {
 							res.put(canStr, pairsTemp);
 						}
 					}
-				
+
 				}
 			}
-			
+
 			resultsMap.put(key, res);
 		}
-		if(resultsMap.size()>0)
-		{
-		publicStaticMap.setCans(resultsMap);
+		if (resultsMap.size() > 0) {
+			publicStaticMap.setCans(resultsMap);
 		}
 		return resultsMap;
 	}
 
 	List<Map<String, Object>> temp = new ArrayList<>();
-	 Map<String, List<String>> fiberProtocol = new HashMap<>();
+	Map<String, List<String>> fiberProtocol = new HashMap<>();
 
-	private  void familys(String parentId, List<Map<String, Object>> familys, String fiberId) {
+	private void familys(String parentId, List<Map<String, Object>> familys, String fiberId) {
 		for (Map<String, Object> entity : familys) {
 			Object supers = entity.get("SUPER_PROTO_FAMILY_UNID");
 			Object familyId = entity.get("UNID");
@@ -222,62 +214,74 @@ public class MysqlDatabaseBig implements IDatabase {
 			}
 		}
 	}
-	
-	public  void setUnid(){
-		Map<String,Map<String,List<Pair>>> temp =getRules();
-		
-		for (Entry<String, Map<String, List<Pair>>> entry: temp.entrySet())
-		{
-			  String key =entry.getKey();
-			  Map<String, List<Pair>> values=entry.getValue();
-			  for (Entry<String, List<Pair>> evaluesntry: values.entrySet())
-			  {
-				  String keys =evaluesntry.getKey();
-				  List<Pair> pairs=evaluesntry.getValue();
-				  
-				  for(Pair pair:pairs)
-				  {
-					  int start=pair.getStart();
-					  int num =start/8;
-					  int model=start%8;
-					  if(model!=0)
-					  {
-						  pair.setStart(num*8+(7-model));
-					  }else
-					  {
-						  pair.setStart(num*8);
-					  }
-					  update(pair);
-					  try {
+
+	public void setUnid() {
+		Map<String, Map<String, List<Pair>>> temp = getRules();
+
+		for (Entry<String, Map<String, List<Pair>>> entry : temp.entrySet()) {
+			String key = entry.getKey();
+			Map<String, List<Pair>> values = entry.getValue();
+			for (Entry<String, List<Pair>> evaluesntry : values.entrySet()) {
+				String keys = evaluesntry.getKey();
+				// if(keys.equals(""))
+				// {
+				// logger.info("");
+				// }
+				List<Pair> pairs = evaluesntry.getValue();
+
+				for (Pair pair : pairs) {
+					if (pair.getProtocolId().equals("F7001ED5673A4017A57DA638570A3DE5")) {
+						logger.info(JsonUtils.serialize(pair));
+					}
+					int start = pair.getStart();
+					int num = start / 8;
+					int model = start % 8;
+					if (model == 0) {
+						if (start != 0) {
+							pair.setStart(num * 8);
+						} else if (pair.getLength() % 8 != 0) {
+							if (pair.getLength() < 7) {
+								pair.setStart(7 - pair.getLength() + 1);
+							} else {
+								pair.setStart(7);
+							}
+						} else {
+							pair.setStart(0);
+						}
+
+					} else {
+
+						pair.setStart(num * 8 + (7 - model) - pair.getLength() + 1);
+
+					}
+					update(pair);
+					try {
 						Thread.sleep(1);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				  }
-			  }
-			  
+				}
+			}
+
 		}
 	}
-	
-	
-	public void update (Pair pair)
-	{
-	
-		String sqlFamilys = "update cube.PDA_FIELD set  BIT_OFFSET= "+pair.getStart()+" where aiid ="+pair.getUnid();
-		
+
+	public void update(Pair pair) {
+
+		String sqlFamilys = "update cube.PDA_FIELD set  BIT_OFFSET= " + pair.getStart() + " where aiid ="
+				+ pair.getUnid();
+
 		System.out.println(sqlFamilys);
 		try {
 			List<Object> params = new ArrayList<Object>();
-		    jdbcUtils.updateByPreparedStatement(sqlFamilys, params);
+			jdbcUtils.updateByPreparedStatement(sqlFamilys, params);
 			// logger.info(JsonUtils.serialize(resultsfamily));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			logger.error("查询数据库错误",e);
+			logger.error("查询数据库错误", e);
 		}
 
 	}
-	
-	
 
 }

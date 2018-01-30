@@ -70,7 +70,7 @@ public class UpdateHbaseMyTask extends Thread {
 					String tableName="CUBE_SENSOR_"+tableFormat.format(tableDate);
 					if(isIndex.equals("true"))
 					{
-					//SensorIndex.setValue(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())),tableName);
+					  SensorIndex.setValue(new VehicleIndex(results.getVehicleUnid(), results.getDatetime().getTime()),tableName.toLowerCase());
 				
 					}//vehicleIndexs.add(new VehicleIndex(results.getVehicleUnid(), String.valueOf(results.getDatetime().getTime())));
 					Put put = new Put(RowKeyBean.makeRowKey(results.getVehicleUnid(), results.getDatetime().getTime()));

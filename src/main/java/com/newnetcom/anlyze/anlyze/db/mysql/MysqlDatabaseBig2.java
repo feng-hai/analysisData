@@ -83,7 +83,7 @@ public class MysqlDatabaseBig2 implements IDatabase {
 		
 		
 		//所有协议项数据
-		String protocolSql = "select * from (SELECT p.PREREQUISITE_HEX , f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0)d";
+		String protocolSql = "select * from (SELECT p.PREREQUISITE_HEX , f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0 )d order by inx";
 
 		List<Map<String, Object>> resultsProtocol = null;
 		try {

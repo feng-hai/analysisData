@@ -217,6 +217,10 @@ public class ByteUtils {
 				| ((bb[index + 3] & 0xff) << 0)));
 	}
 	
+	public static int getThreeByteForLarger(byte[] bb, int index) {
+		return (int) (( ((bb[index + 0] & 0xff) << 16) | ((bb[index + 1] & 0xff) << 8)
+				| ((bb[index + 2] & 0xff) << 0)));
+	}
 	/** 
 	* @Title: getThreeByte 
 	* @Description: TODO(这里用一句话描述这个方法的作用) 
@@ -627,6 +631,16 @@ public class ByteUtils {
 	*/
 	public static byte bit2byte(String bString) {
 		byte result = 0;
+		for (int i = bString.length() - 1, j = 0; i >= 0; i--, j++) {
+			result += (Byte.parseByte(bString.charAt(i) + "") * Math.pow(2, j));
+		}
+		return result;
+	}
+	
+	
+	public static long bit2long(String bString)
+	{
+		long result = 0;
 		for (int i = bString.length() - 1, j = 0; i >= 0; i--, j++) {
 			result += (Byte.parseByte(bString.charAt(i) + "") * Math.pow(2, j));
 		}

@@ -44,7 +44,7 @@ public class ByteArithimeticForBig implements ILoadData {
 				break;
 			case 3:
 				bean.setValue(String
-						.valueOf(ByteUtils.formatDouble((ByteUtils.getThreeByte(content, 8-startByteIndex-3)) * resolving + bean.getOffset(),nums)));
+						.valueOf(ByteUtils.formatDouble((ByteUtils.getThreeByteForLarger(content, 8-startByteIndex-3)) * resolving + bean.getOffset(),nums)));
 				break;
 			case 4:
 				bean.setValue(
@@ -63,7 +63,7 @@ public class ByteArithimeticForBig implements ILoadData {
 				break;
 			case 3:
 				bean.setValue(String
-						.valueOf((ByteUtils.getThreeByte(content, 8-startByteIndex-3)) * resolving + (int)bean.getOffset()));
+						.valueOf((ByteUtils.getThreeByteForLarger(content, 8-startByteIndex-3)) * resolving + (int)bean.getOffset()));
 				break;
 			case 4:
 				bean.setValue(
