@@ -130,7 +130,7 @@ public class Protocol02E8For3G {
 			byte[] key = ByteUtils.getSubBytes(this.contents, i * 15+28+2, 4);
 			byte[] value = ByteUtils.getSubBytes(this.contents,i * 15+28+2+4+1,8);
 			
-			System.out.println(ByteUtils.byte2HexStr(key)+":"+ByteUtils.byte2HexStr(value)+":"+i);
+		//	System.out.println(ByteUtils.byte2HexStr(key)+":"+ByteUtils.byte2HexStr(value)+":"+i);
 			cans.put(key, value);
 		}
 	}
