@@ -42,7 +42,7 @@ public class Protocol0705For808 {
 	/** 
 	* @Fields canNum : TODO(用一句话描述这个变量表示什么) 
 	*/ 
-	private short canNum;// CAN数据包个数
+	private int canNum;// CAN数据包个数
 	
 	private Date canTime;
 	/** 

@@ -33,7 +33,7 @@ public class CanRules {
 		//System.out.println(ByteUtils.byte2HexStr(canId));
 	List<Pair> rules=new ArrayList<>() ;
 		if (isTrue) {
-			int tempInt=ByteUtils.getIntForLarge(canId, 0)&0xffffffff;
+			long tempInt=ByteUtils.getIntForLarge(canId, 0)&0xffffffff;
 			//String temp =ByteUtils.byte2HexStr(canId);		
 			rules= rul.get(String.valueOf(tempInt));
 			//System.out.println(dataSet+"-"+tempInt);

@@ -42,7 +42,7 @@ public class Protocol02E8For3G {
 	/** 
 	* @Fields packageIndex : TODO(用一句话描述这个变量表示什么) 
 	*/ 
-	private int packageIndex;// 上报数据包信号
+	private long packageIndex;// 上报数据包信号
 	/** 
 	* @Fields lng : TODO(用一句话描述这个变量表示什么) 
 	*/ 
@@ -252,7 +252,7 @@ public class Protocol02E8For3G {
 	* @return int    返回类型 
 	* @throws 
 	*/
-	public int getPackageIndex() {
+	public long getPackageIndex() {
 		return packageIndex;
 	}
 

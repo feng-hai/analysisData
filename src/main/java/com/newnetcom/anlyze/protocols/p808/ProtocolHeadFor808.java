@@ -23,7 +23,7 @@ public class ProtocolHeadFor808 {
 	}
 
 	private byte startTag = (byte) 0x7E;
-	private short commondId;
+	private int commondId;
 	/**
 	 * @Fields hold : 2位保留
 	 */
@@ -57,16 +57,16 @@ public class ProtocolHeadFor808 {
 	/** 
 	* @Fields serial : 消息流水号 
 	*/ 
-	private short serial;
+	private int serial;
 	
 	/** 
 	* @Fields sumPackage :消息总包数 
 	*/ 
-	private short sumPackage;
+	private int sumPackage;
 	/** 
 	* @Fields packageNo : 包序号
 	*/ 
-	private short packageNo;
+	private int packageNo;
 	
 	/** 
 	* @Fields headLength : 包头长度
@@ -110,7 +110,7 @@ public class ProtocolHeadFor808 {
 	public void setStartTag(byte startTag) {
 		this.startTag = startTag;
 	}
-	public short getCommondId() {
+	public int getCommondId() {
 		return commondId;
 	}
 	public void setCommondId(short commondId) {
@@ -146,19 +146,19 @@ public class ProtocolHeadFor808 {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public short getSerial() {
+	public int getSerial() {
 		return serial;
 	}
 	public void setSerial(short serial) {
 		this.serial = serial;
 	}
-	public short getSumPackage() {
+	public int getSumPackage() {
 		return sumPackage;
 	}
 	public void setSumPackage(short sumPackage) {
 		this.sumPackage = sumPackage;
 	}
-	public short getPackageNo() {
+	public int getPackageNo() {
 		return packageNo;
 	}
 	public void setPackageNo(short packageNo) {

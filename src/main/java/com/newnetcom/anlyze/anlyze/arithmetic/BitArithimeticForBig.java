@@ -110,7 +110,7 @@ public class BitArithimeticForBig implements ILoadData {
 //				}
 //			}
 //		}
-	//	logger.info(this.bean.getCanid()+this.bean.getTitle()+":"+bean.getStart()+"-"+bean.getLength()+":"+this.bean.getValue()+"-"+ByteUtils.byte2HexStr(content)+"--"+bitStr);
+		logger.info(this.bean.getCanid()+this.bean.getTitle()+":"+bean.getStart()+"-"+bean.getLength()+":"+this.bean.getValue()+"-"+ByteUtils.byte2HexStr(content)+"--"+bitStr);
 	}
 	
 	/**

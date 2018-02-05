@@ -181,8 +181,8 @@ public class ByteUtils {
 	 *            第几位开始取
 	 * @return
 	 */
-	public static short getShortForLarge(byte[] b, int index) {
-		return (short) (((b[index + 0] << 8) | b[index + 1] & 0xff));
+	public static int getShortForLarge(byte[] b, int index) {
+		return (int) (((b[index + 0] << 8) | b[index + 1] & 0xff))&0xffff;
 	}
 
 	/**
@@ -207,19 +207,19 @@ public class ByteUtils {
 	 *            第几位开�?
 	 * @return
 	 */
-	public static int getInt(byte[] bb, int index) {
-		return (int) ((((bb[index + 3] & 0xff) << 24) | ((bb[index + 2] & 0xff) << 16) | ((bb[index + 1] & 0xff) << 8)
-				| ((bb[index + 0] & 0xff) << 0)));
+	public static long getInt(byte[] bb, int index) {
+		return (long) ((((bb[index + 3] & 0xff) << 24) | ((bb[index + 2] & 0xff) << 16) | ((bb[index + 1] & 0xff) << 8)
+				| ((bb[index + 0] & 0xff) << 0)))&0xffffffff;
 	}
 	
-	public static int getIntForLarge(byte[] bb, int index) {
-		return (int) ((((bb[index + 0] & 0xff) << 24) | ((bb[index + 1] & 0xff) << 16) | ((bb[index + 2] & 0xff) << 8)
-				| ((bb[index + 3] & 0xff) << 0)));
+	public static long getIntForLarge(byte[] bb, int index) {
+		return (long) ((((bb[index + 0] & 0xff) << 24) | ((bb[index + 1] & 0xff) << 16) | ((bb[index + 2] & 0xff) << 8)
+				| ((bb[index + 3] & 0xff) << 0)))&0xffffffff;
 	}
 	
 	public static int getThreeByteForLarger(byte[] bb, int index) {
 		return (int) (( ((bb[index + 0] & 0xff) << 16) | ((bb[index + 1] & 0xff) << 8)
-				| ((bb[index + 2] & 0xff) << 0)));
+				| ((bb[index + 2] & 0xff) << 0)))&0xffffff;
 	}
 	/** 
 	* @Title: getThreeByte 
@@ -232,7 +232,7 @@ public class ByteUtils {
 	*/
 	public static int getThreeByte(byte[] bb, int index) {
 		return (int) (( ((bb[index + 2] & 0xff) << 16) | ((bb[index + 1] & 0xff) << 8)
-				| ((bb[index + 0] & 0xff) << 0)));
+				| ((bb[index + 0] & 0xff) << 0)))&0xffffff;
 	}
 
 	/**
