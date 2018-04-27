@@ -68,6 +68,6 @@ public class ByteArithimetic implements ILoadData {
 			}
 		}
 		
-		//logger.info(this.bean.getCanid()+this.bean.getTitle()+":"+bean.getStart()+"-"+bean.getLength()+":"+this.bean.getValue()+"-"+ByteUtils.byte2HexStr(content));
+		//logger.info(this.bean.getCanid()+this.bean.getTitle()+":"+bean.getStart()+"-"+bean.getLength()+":"+this.bean.getValue()+"-"+ByteUtils.byte2HexStr(content)+"-"+this.bean.getCode());
 	}
 }

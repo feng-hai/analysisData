@@ -1,16 +1,8 @@
-2018-01-22 11:42:42  [ main:2 ] - [ ERROR ]  查询数据库错误
+2018-03-26 15:07:08  [ main:1 ] - [ ERROR ]  查询数据库错误
 java.lang.NullPointerException
 	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
 	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:222)
 	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
 	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
-	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:30)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:58)
-2018-01-22 17:55:21  [ main:4 ] - [ ERROR ]  查询数据库错误
-java.lang.NullPointerException
-	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
-	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:222)
-	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
-	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
-	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:30)
+	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:22)
 	at com.newnetcom.anlyze.TestApp.main(TestApp.java:58)
