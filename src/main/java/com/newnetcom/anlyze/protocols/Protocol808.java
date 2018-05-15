@@ -168,8 +168,8 @@ public class Protocol808 implements IProtocol {
 			beanList.add(new PairResult("ENTITY_UNID","ENTITY_UNID","车辆唯一标识",rb.getVehicleUnid()));
 			rb.setPairs(beanList);
 			publicStaticMap.getCmdQueue().put(rb);
-			publicStaticMap.getRedisQueue().put(rb);// 用于更新redis
-			publicStaticMap.getSendDataQueue().put(rb);// 用于发送kafka数据
+			////publicStaticMap.getRedisQueue().put(rb);// 用于更新redis
+			//publicStaticMap.getSendDataQueue().put(rb);// 用于发送kafka数据
 			// if (publicStaticMap.getSendDataQueue().size() > 100000) {
 			// logger.error("kafka更新异常");
 			// publicStaticMap.getSendDataQueue().clear();

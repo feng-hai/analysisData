@@ -263,9 +263,9 @@ public class Protocol3G implements IProtocol {
 			
 			publicStaticMap.getCmdQueue().put(rb);// 用于更新hbase
 
-			publicStaticMap.getRedisQueue().put(rb);// 用于更新redis
+			//publicStaticMap.getRedisQueue().put(rb);// 用于更新redis
 
-			publicStaticMap.getSendDataQueue().put(rb);// 用于发送kafka数据
+			//publicStaticMap.getSendDataQueue().put(rb);// 用于发送kafka数据
 			// System.out.println("解析05-1");
 
 			// if (publicStaticMap.getSendDataQueue().size() > 100000) {

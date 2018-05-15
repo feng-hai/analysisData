@@ -74,15 +74,15 @@ public class AppMain {
 		sendData.start();
 	
 		
-		logger.info("开启更新redis线程");
-		UpdateRedisTask sendDataRedis = new UpdateRedisTask();
-		sendDataRedis.setDaemon(true);
-		sendDataRedis.start(); 
-		logger.info("开启写kafka数据");
-		DataToKafKaTask sendDataTask = new DataToKafKaTask();
-		sendDataTask.setDaemon(true);
-		
-		sendDataTask.start();
+//		logger.info("开启更新redis线程");
+//		UpdateRedisTask sendDataRedis = new UpdateRedisTask();
+//		sendDataRedis.setDaemon(true);
+//		sendDataRedis.start(); 
+//		logger.info("开启写kafka数据");
+//		DataToKafKaTask sendDataTask = new DataToKafKaTask();
+//		sendDataTask.setDaemon(true);
+//		
+//		sendDataTask.start();
 		
 		
 		
