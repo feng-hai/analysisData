@@ -52,54 +52,54 @@ public class RawDataMyTaskRun extends Thread {
 	private List<Put> puts = new ArrayList<>();
 	//private List<VehicleIndex> vehicleIndexs = new ArrayList<>();
 
-	private void saveRaw(ProtocolBean protocol) {
-		try {
-			if (rawHabaseNum < Long.MAX_VALUE) {
-				rawHabaseNum++;
-			}
-			long time = Long.parseLong(protocol.getTIMESTAMP());
-			Put put = new Put(RowKeyBean.makeRowKey(protocol.getUnid(), time));
-			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("DATIME_RX"), Bytes.toBytes(sdf.format(new Date(time))));
-			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"),
-					Bytes.toBytes(protocol.getRAW_OCTETS().toUpperCase()));
-			puts.add(put);
-			String tableName="CUBE_RAW_"+tableFormat.format(new Date(time));
-			if(isIndex!=null&&!isIndex.isEmpty()&&isIndex.equals("true"))
-			{
-				RawIndex.setValue(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()),tableName);
-			}
-			//vehicleIndexs.add(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
-			Long curentTime = System.currentTimeMillis();
-			//logger.info("01");
-			if (puts.size() > 5000 || curentTime - lastTime > 10000) {
-				lastTime = curentTime;
-				// long temp = System.currentTimeMillis();
-				if (puts.size() > 0) {
-					//logger.info("02");
-					//synchronized (puts) {
-						List<Put> tempPuts = new ArrayList<>();
-						tempPuts.addAll(puts);
-						puts.clear();
-						//logger.info(tableFormat.format(new Date(time)));
-						HBase.put(tableName, tempPuts, false);
-						tempPuts=null;
-					//}
-					// 提交索引列表
-
-					if (publicStaticMap.logStatus) {
-						System.out.println("原始数据插入数据：" + String.valueOf(rawHabaseNum));
-						//logger.info("原始数据插入数据：" + String.valueOf(rawHabaseNum));
-					}
-					Thread.sleep(1);
-					// System.out.println(tempPuts.size() + "车辆原始数据" +
-					// (System.currentTimeMillis() - temp));
-				}
-			}
-		} catch (Exception e) {
-			logger.error("插入hbase数据库有问题", e);
-		}
-
-	}
+//	private void saveRaw(ProtocolBean protocol) {
+//		try {
+//			if (rawHabaseNum < Long.MAX_VALUE) {
+//				rawHabaseNum++;
+//			}
+//			long time = Long.parseLong(protocol.getTIMESTAMP());
+//			Put put = new Put(RowKeyBean.makeRowKey(protocol.getUnid(), time));
+//			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("DATIME_RX"), Bytes.toBytes(sdf.format(new Date(time))));
+//			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"),
+//					Bytes.toBytes(protocol.getRAW_OCTETS().toUpperCase()));
+//			puts.add(put);
+//			String tableName="CUBE_RAW_"+tableFormat.format(new Date(time));
+//			if(isIndex!=null&&!isIndex.isEmpty()&&isIndex.equals("true"))
+//			{
+//				RawIndex.setValue(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()),tableName);
+//			}
+//			//vehicleIndexs.add(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
+//			Long curentTime = System.currentTimeMillis();
+//			//logger.info("01");
+//			if (puts.size() > 5000 || curentTime - lastTime > 10000) {
+//				lastTime = curentTime;
+//				// long temp = System.currentTimeMillis();
+//				if (puts.size() > 0) {
+//					//logger.info("02");
+//					//synchronized (puts) {
+//						List<Put> tempPuts = new ArrayList<>();
+//						tempPuts.addAll(puts);
+//						puts.clear();
+//						//logger.info(tableFormat.format(new Date(time)));
+//						HBase.put(tableName, tempPuts, false);
+//						tempPuts=null;
+//					//}
+//					// 提交索引列表
+//
+//					if (publicStaticMap.logStatus) {
+//						System.out.println("原始数据插入数据：" + String.valueOf(rawHabaseNum));
+//						//logger.info("原始数据插入数据：" + String.valueOf(rawHabaseNum));
+//					}
+//					Thread.sleep(1);
+//					// System.out.println(tempPuts.size() + "车辆原始数据" +
+//					// (System.currentTimeMillis() - temp));
+//				}
+//			}
+//		} catch (Exception e) {
+//			logger.error("插入hbase数据库有问题", e);
+//		}
+//
+//	}
 
 	private long lock = 0;
 
@@ -164,7 +164,7 @@ public class RawDataMyTaskRun extends Thread {
 						}
 					}
 					//logger.info("获取kafka中的值-02");
-					saveRaw(temp);
+					//saveRaw(temp);//保存原始数据
 					//logger.info("获取kafka中的值-03");
 					if (publicStaticMap.getRawDataQueue().size() > 5000) {
 						Thread.sleep(1000);// 一分钟后重新启动kafka

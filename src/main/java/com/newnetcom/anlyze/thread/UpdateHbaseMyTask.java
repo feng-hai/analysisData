@@ -12,12 +12,14 @@ import org.apache.hadoop.hbase.util.Bytes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.newnetcom.anlyze.beans.PairResult;
+import com.newnetcom.anlyze.beans.ProtocolBean;
 import com.newnetcom.anlyze.beans.ResultBean;
 import com.newnetcom.anlyze.beans.RowKeyBean;
 import com.newnetcom.anlyze.beans.VehicleIndex;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 //import com.newnetcom.anlyze.utils.JsonUtils;
 import com.newnetcom.anlyze.config.PropertyResource;
+import com.newnetcom.anlyze.index.RawIndex;
 import com.newnetcom.anlyze.index.SensorIndex;
 import com.newnetcom.anlyze.utils.JsonUtils;
 import cn.ngsoc.hbase.HBase;
@@ -30,7 +32,7 @@ public class UpdateHbaseMyTask extends Thread {
 	private static final Logger logger = LoggerFactory.getLogger(UpdateHbaseMyTask.class);
 	private SimpleDateFormat tableFormat = new SimpleDateFormat("yyyy");
 	private Long lastTime;
-	
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	 //private int  threadNum=Integer.parseInt( PropertyResource.getInstance().getProperties().get("indexHistoryThreadNum"));
 
    //  private ExecutorService executor = Executors.newFixedThreadPool(threadNum);
@@ -44,7 +46,53 @@ public class UpdateHbaseMyTask extends Thread {
 	List<Put> puts = new ArrayList<>();
     private long hbaseNum=0;
 	//private List<VehicleIndex> vehicleIndexs=new ArrayList<>();
+    private void saveRaw(ResultBean results ) {
+		try {
+			
+			long time =  results.getDatetime().getTime() ;
+			Put put = new Put(RowKeyBean.makeRowKey(results.getVehicleUnid(), time));
+			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("DATIME_RX"), Bytes.toBytes(sdf.format(results.getDatetime())));
+			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("CUTIME_RX"), Bytes.toBytes(sdf.format(new Date(time))));
+			put.addColumn(Bytes.toBytes("CUBE"), Bytes.toBytes("RAW_OCTETS"),
+					Bytes.toBytes(results.getContent().toUpperCase()));
+			puts.add(put);
+			String tableName="CUBE_RAW_"+tableFormat.format(new Date(time));
+			if(isIndex!=null&&!isIndex.isEmpty()&&isIndex.equals("true"))
+			{
+				RawIndex.setValue(new VehicleIndex(results.getVehicleUnid(), String.valueOf(time)),tableName);
+			}
+			//vehicleIndexs.add(new VehicleIndex(protocol.getUnid(), protocol.getTIMESTAMP()));
+			Long curentTime = System.currentTimeMillis();
+			//logger.info("01");
+			if (puts.size() > 5000 || curentTime - lastTime > 10000) {
+				lastTime = curentTime;
+				// long temp = System.currentTimeMillis();
+				if (puts.size() > 0) {
+					//logger.info("02");
+					//synchronized (puts) {
+						List<Put> tempPuts = new ArrayList<>();
+						tempPuts.addAll(puts);
+						puts.clear();
+						//logger.info(tableFormat.format(new Date(time)));
+						HBase.put(tableName, tempPuts, false);
+						tempPuts=null;
+					//}
+					// 提交索引列表
 
+//					if (publicStaticMap.logStatus) {
+//						System.out.println("原始数据插入数据：" + String.valueOf(rawHabaseNum));
+//						//logger.info("原始数据插入数据：" + String.valueOf(rawHabaseNum));
+//					}
+//					Thread.sleep(1);
+					// System.out.println(tempPuts.size() + "车辆原始数据" +
+					// (System.currentTimeMillis() - temp));
+				}
+			}
+		} catch (Exception e) {
+			logger.error("插入hbase数据库有问题", e);
+		}
+
+	}
 	@Override
 	public void run() {
 		while (true) {
@@ -55,7 +103,13 @@ public class UpdateHbaseMyTask extends Thread {
 				if(hbaseNum<Long.MAX_VALUE)
 				{
 					hbaseNum++;
+				}else
+				{
+					hbaseNum=0;
 				}
+				
+				//存储原始码流数据
+				saveRaw(results);
 				try {
 					List<PairResult> pairs = results.getPairs();
 				Date tableDate=	results.getDatetime();
