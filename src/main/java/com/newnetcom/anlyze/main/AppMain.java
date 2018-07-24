@@ -35,13 +35,13 @@ public class AppMain {
 		
 	   while(true)
 	   {
-		   if(publicStaticMap.getCans().size()>0&&publicStaticMap.getA2LValues().size()>0)
-		   {
-			   break;
-		   }
-		   try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
+	   if(publicStaticMap.getCans().size()>0&&publicStaticMap.getA2LValues().size()>0)
+	   {
+		   break;
+	   }
+	   try {
+		Thread.sleep(1000);
+	   } catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

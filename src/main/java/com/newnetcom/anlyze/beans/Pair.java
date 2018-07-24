@@ -20,16 +20,13 @@ import com.newnetcom.anlyze.utils.JsonUtils;
  * @date 2016年9月24日 下午4:18:53
  *
  */
-/**   
-*    
-* 项目名称：com.newnetcom.anlyze   
-* 类名称：Pair   
-* 类描述：   
-* 创建人：FH   
-* 创建时间：2017年11月21日 下午6:48:09   
-* @version        
-*/
-public class Pair implements Serializable, Comparable<Pair>,Cloneable  {
+/**
+ * 
+ * 项目名称：com.newnetcom.anlyze 类名称：Pair 类描述： 创建人：FH 创建时间：2017年11月21日 下午6:48:09
+ * 
+ * @version
+ */
+public class Pair implements Serializable, Comparable<Pair>, Cloneable {
 
 	private static final long serialVersionUID = 8418206139459599885L;
 	private String code = "";
@@ -40,41 +37,73 @@ public class Pair implements Serializable, Comparable<Pair>,Cloneable  {
 	private String canid;
 	private String protocolId;
 	private String unid;
+	private int start;
+
+	private int length;
+
+	private double offset;
+
+	private String resolving;
+
+	private String dataType = "1";
 	
+	private Boolean byteOrder=true;
+	
+	/**
+	 * @return the byteOrder
+	 */
+	public Boolean getByteOrder() {
+		return byteOrder;
+	}
+
+	/**
+	 * @param byteOrder the byteOrder to set
+	 */
+	public void setByteOrder(Boolean byteOrder) {
+		this.byteOrder = byteOrder;
+	}
+
+	
+
 	public String getUnid() {
 		return unid;
 	}
+
 	public void setUnid(String unid) {
 		this.unid = unid;
 	}
 
 	private String ALGORITHM;
-	
+
 	public String getALGORITHM() {
 		return ALGORITHM;
 	}
+
 	public void setALGORITHM(String aLGORITHM) {
 		ALGORITHM = aLGORITHM;
 	}
 
-	/** 
-	* @Fields PREREQUISITE_VALUE : 数据地址10进制
-	*/ 
+	/**
+	 * @Fields PREREQUISITE_VALUE : 数据地址10进制
+	 */
 	private String PREREQUISITE_VALUE;
+
 	public String getPREREQUISITE_VALUE() {
 		return PREREQUISITE_VALUE;
 	}
+
 	public void setPREREQUISITE_VALUE(String pREREQUISITE_VALUE) {
 		PREREQUISITE_VALUE = pREREQUISITE_VALUE;
 	}
-	public Pair()
-	{}
-	public Pair(String code,String alias,String title ,String value)
-	{
-		this.code=code;
-		this.alias=alias;
-		this.title=title;
-		this.value=value;
+
+	public Pair() {
+	}
+
+	public Pair(String code, String alias, String title, String value) {
+		this.code = code;
+		this.alias = alias;
+		this.title = title;
+		this.value = value;
 	}
 
 	public String getProtocolId() {
@@ -100,16 +129,6 @@ public class Pair implements Serializable, Comparable<Pair>,Cloneable  {
 	public void setInx(Integer inx) {
 		this.inx = inx;
 	}
-
-	private int start;
-	
-	private int length;
-	
-	private double offset;
-
-	private String resolving;
-
-	private String dataType = "1";
 
 	public int getStart() {
 		return start;
@@ -222,15 +241,15 @@ public class Pair implements Serializable, Comparable<Pair>,Cloneable  {
 		// TODO Auto-generated method stub
 		return this.getInx().compareTo(o.getInx());
 	}
-	
-	 @Override  
-	    public Pair clone() {  
-	        Pair stu = null;  
-	        try{  
-	            stu = (Pair)super.clone();  
-	        }catch(CloneNotSupportedException e) {  
-	            e.printStackTrace();  
-	        }  
-	        return stu;  
-	    }  
+
+	@Override
+	public Pair clone() {
+		Pair stu = null;
+		try {
+			stu = (Pair) super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return stu;
+	}
 }

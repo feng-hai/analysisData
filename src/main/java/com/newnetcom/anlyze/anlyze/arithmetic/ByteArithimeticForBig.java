@@ -31,6 +31,8 @@ public class ByteArithimeticForBig implements ILoadData {
 		}
 		
 		boolean isNum = bean.getResolving().matches("[0-9]+");
+		
+		if (this.bean.getByteOrder()) {
 		if (!isNum) {
 			float resolving = Float.parseFloat(bean.getResolving());
 			int nums=ByteUtils.getNum(bean.getResolving());
@@ -69,6 +71,48 @@ public class ByteArithimeticForBig implements ILoadData {
 				bean.setValue(
 						String.valueOf((ByteUtils.getIntForLarge(content, 8-startByteIndex-4)) * resolving + (int)bean.getOffset()));
 				break;
+			}
+		}
+		}else{
+			if (!isNum) {
+				float resolving = Float.parseFloat(bean.getResolving());
+				int nums=ByteUtils.getNum(bean.getResolving());
+				switch (num) {
+				case 1:
+					bean.setValue(String.valueOf(ByteUtils.formatDouble((content[8-startByteIndex-1]&0xff) * resolving + bean.getOffset(),nums)));
+					break;
+				case 2:
+					bean.setValue(
+							String.valueOf(ByteUtils.formatDouble((ByteUtils.getShort(content, 8-startByteIndex-2)) * resolving + bean.getOffset(),nums)));
+					break;
+				case 3:
+					bean.setValue(String
+							.valueOf(ByteUtils.formatDouble((ByteUtils.getThreeByte(content, 8-startByteIndex-3)) * resolving + bean.getOffset(),nums)));
+					break;
+				case 4:
+					bean.setValue(
+							String.valueOf(ByteUtils.formatDouble((ByteUtils.getInt(content, 8-startByteIndex-4)) * resolving + bean.getOffset(),nums)));
+					break;
+				}
+			} else {
+				int resolving = Integer.parseInt(bean.getResolving());
+				switch (num) {
+				case 1:
+					bean.setValue(String.valueOf((content[8-startByteIndex-1]&0xff) * resolving + (int)bean.getOffset()));
+					break;
+				case 2:
+					bean.setValue(
+							String.valueOf((ByteUtils.getShort(content, 8-startByteIndex-2)) * resolving + (int)bean.getOffset()));
+					break;
+				case 3:
+					bean.setValue(String
+							.valueOf((ByteUtils.getThreeByte(content, 8-startByteIndex-3)) * resolving + (int)bean.getOffset()));
+					break;
+				case 4:
+					bean.setValue(
+							String.valueOf((ByteUtils.getInt(content, 8-startByteIndex-4)) * resolving + (int)bean.getOffset()));
+					break;
+				}
 			}
 		}
 		

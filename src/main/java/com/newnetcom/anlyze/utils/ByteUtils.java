@@ -266,6 +266,21 @@ public class ByteUtils {
 				| (((long) bb[index + 3] & 0xff) << 24) | (((long) bb[index + 2] & 0xff) << 16)
 				| (((long) bb[index + 1] & 0xff) << 8) | (((long) bb[index + 0] & 0xff) << 0));
 	}
+	
+	/**
+	 * 通过byte数组取到long 大端模式
+	 * 
+	 * 
+	 * @param index
+	 * @return
+	 */
+	public static long getLongForLarge(byte[] bb, int index) {
+		return ((((long) bb[index + 0] & 0xff) << 56) | (((long) bb[index + 1] & 0xff) << 48)
+				| (((long) bb[index +2] & 0xff) << 40) | (((long) bb[index + 3] & 0xff) << 32)
+				| (((long) bb[index + 4] & 0xff) << 24) | (((long) bb[index + 5] & 0xff) << 16)
+				| (((long) bb[index + 6] & 0xff) << 8) | (((long) bb[index + 7] & 0xff) << 0));
+	}
+
 
 	/**
 	 * 字符到字节转�?

@@ -20,7 +20,7 @@ public class ProtocolBean implements Serializable {
 	private String cellphone;// 电话号码
 	private String IP4;// IPv4地址
 	private String flag_transmit = "false";// 转发标志
-	private String FIBER_UNID;
+	private String FIBER_UNID;//数据字典id
 	private String domain_unid;//分组标识
 	
 	

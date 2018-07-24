@@ -83,7 +83,7 @@ public class MysqlDatabase implements IDatabase {
 		
 		
 		//所有协议项数据
-		String protocolSql = "select * from (SELECT p.PREREQUISITE_HEX , f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0)d  ";
+		String protocolSql = "select * from (SELECT p.PREREQUISITE_HEX ,f.BYTE_ORDER, f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0)d  ";
 
 		List<Map<String, Object>> resultsProtocol = null;
 		try {
@@ -113,6 +113,7 @@ public class MysqlDatabase implements IDatabase {
 			Pair pair = new Pair();
 			pair.setAlias(entity.get("ALIAS").toString());
 			pair.setCode(entity.get("CODE").toString());
+			pair.setByteOrder(entity.get("BYTE_ORDER").toString().equals("true"));
 			if (!entity.get("BIT_LENGTH").toString().isEmpty()
 					&& entity.get("BIT_LENGTH").toString().matches("[0-9]+")) {
 				pair.setLength(Integer.parseInt(entity.get("BIT_LENGTH").toString()));
@@ -132,6 +133,8 @@ public class MysqlDatabase implements IDatabase {
 			if (!entity.get("INX").toString().isEmpty() && entity.get("INX").toString().matches("[0-9]+")) {
 				pair.setInx(Integer.parseInt(entity.get("INX").toString()));
 			}
+			
+			
 			pair.setProtocolId(entity.get("PROTO_UNID").toString());
 			if (protocolList.containsKey(pair.getProtocolId())) {
 				pairs = protocolList.get(pair.getProtocolId());

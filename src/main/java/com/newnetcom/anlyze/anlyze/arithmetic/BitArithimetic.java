@@ -41,20 +41,19 @@ public class BitArithimetic implements ILoadData {
 
 		} else {
 			int byteLength = 2;
-			
+
 			int length = bean.getLength() / 8;
 			if (length >= 1) {
 				byteLength += length - 1;
 			}
 			int lastIndex = bean.getLength() % 8;
-			
+
 			if (lastIndex + bitIndex > 8) {
 				byteLength++;
 			}
-			if(startByteIndex+byteLength>8)
-			{
-				logger.debug("规则不对，超出范围："+JsonUtils.serialize(bean));
-				return ;	
+			if (startByteIndex + byteLength > 8) {
+				logger.debug("规则不对，超出范围：" + JsonUtils.serialize(bean));
+				return;
 			}
 			byte[] tBytes = ByteUtils.getSubBytes(content, startByteIndex, byteLength);
 			// 默认是大端模式
@@ -62,26 +61,58 @@ public class BitArithimetic implements ILoadData {
 			String bitStr = ByteUtils.binary(tBytes, 2);
 			bitStr = StrFormat.addZeroForLeftNum(bitStr, byteLength * 8);
 			String bitResult = bitStr.substring(bitIndex, bitIndex + bean.getLength());
-			if (!isNum) {
-				float resolving = Float.parseFloat(bean.getResolving());
-				int num = ByteUtils.getNum(bean.getResolving());
-				if (byteLength <= 4) {
-					bean.setValue(String.valueOf(ByteUtils
-							.formatDouble((Integer.parseInt(bitResult, 2)) * resolving + bean.getOffset(), num)));
+			if (this.bean.getByteOrder()) {
+				if (!isNum) {
+					float resolving = Float.parseFloat(bean.getResolving());
+					int num = ByteUtils.getNum(bean.getResolving());
+
+					if (byteLength <= 4) {
+						bean.setValue(String.valueOf(ByteUtils
+								.formatDouble((Integer.parseInt(bitResult, 2)) * resolving + bean.getOffset(), num)));
+					} else {
+						bean.setValue(String.valueOf(ByteUtils
+								.formatDouble((Long.parseLong(bitResult, 2)) * resolving + bean.getOffset(), num)));
+					}
 				} else {
-					bean.setValue(String.valueOf(ByteUtils
-							.formatDouble((Long.parseLong(bitResult, 2)) * resolving + bean.getOffset(), num)));
+					int resolving = Integer.parseInt(bean.getResolving());
+					if (byteLength <= 4) {
+						bean.setValue(
+								String.valueOf((Integer.parseInt(bitResult, 2)) * resolving + (int) bean.getOffset()));
+					} else {
+						bean.setValue(
+								String.valueOf((Long.parseLong(bitResult, 2)) * resolving + (long) bean.getOffset()));
+					}
 				}
-			} else {
-				int resolving = Integer.parseInt(bean.getResolving());
-				if (byteLength <= 4) {
-					bean.setValue(
-							String.valueOf((Integer.parseInt(bitResult, 2)) * resolving + (int) bean.getOffset()));
+			}else{
+				
+				if (!isNum) {
+					float resolving = Float.parseFloat(bean.getResolving());
+					int num = ByteUtils.getNum(bean.getResolving());
+					
+					if (byteLength <= 4) {
+						Integer i =Integer.parseInt(bitResult, 2);	
+						bean.setValue(String.valueOf(ByteUtils
+								.formatDouble((ByteUtils.getIntForLarge(i.toString().getBytes(),0)) * resolving + bean.getOffset(), num)));
+					} else {
+						Long i =Long.parseLong(bitResult, 2);	
+						bean.setValue(String.valueOf(ByteUtils
+								.formatDouble((ByteUtils.getLongForLarge(i.toString().getBytes(),0)) * resolving + bean.getOffset(), num)));
+					}
 				} else {
-					bean.setValue(String.valueOf((Long.parseLong(bitResult, 2)) * resolving + (long) bean.getOffset()));
+					int resolving = Integer.parseInt(bean.getResolving());
+					if (byteLength <= 4) {
+						Integer i =Integer.parseInt(bitResult, 2);	
+						bean.setValue(
+								String.valueOf((ByteUtils.getIntForLarge(i.toString().getBytes(),0) * resolving + (int) bean.getOffset())));
+					} else {
+						Long i =Long.parseLong(bitResult, 2);	
+						bean.setValue(
+								String.valueOf((ByteUtils.getLongForLarge(i.toString().getBytes(),0)) * resolving + (long) bean.getOffset()));
+					}
 				}
+				
 			}
 		}
-		//logger.info(this.bean.getCanid()+this.bean.getTitle()+":"+bean.getStart()+"-"+bean.getLength()+":"+this.bean.getValue()+"-"+ByteUtils.byte2HexStr(content)+"-"+this.bean.getCode());
+		// logger.info(this.bean.getCanid()+this.bean.getTitle()+":"+bean.getStart()+"-"+bean.getLength()+":"+this.bean.getValue()+"-"+ByteUtils.byte2HexStr(content)+"-"+this.bean.getCode());
 	}
 }

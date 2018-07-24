@@ -27,6 +27,8 @@ public class ByteArithimetic implements ILoadData {
 			logger.debug("解析规则有问题："+JsonUtils.serialize(bean));
 		}
 		boolean isNum = bean.getResolving().matches("[0-9]+");
+		
+		if (this.bean.getByteOrder()) {
 		if (!isNum) {
 			float resolving = Float.parseFloat(bean.getResolving());
 			int nums=ByteUtils.getNum(bean.getResolving());
@@ -67,7 +69,50 @@ public class ByteArithimetic implements ILoadData {
 				break;
 			}
 		}
+		}else
+		{
+			if (!isNum) {
+				float resolving = Float.parseFloat(bean.getResolving());
+				int nums=ByteUtils.getNum(bean.getResolving());
+				switch (num) {
+				case 1:
+					bean.setValue(String.valueOf(ByteUtils.formatDouble((content[startByteIndex]&0xff) * resolving + bean.getOffset(),nums)));
+					break;
+				case 2:
+					bean.setValue(
+							String.valueOf(ByteUtils.formatDouble((ByteUtils.getShortForLarge(content, startByteIndex)) * resolving + bean.getOffset(),nums)));
+					break;
+				case 3:
+					bean.setValue(String
+							.valueOf(ByteUtils.formatDouble((ByteUtils.getThreeByteForLarger(content, startByteIndex)) * resolving + bean.getOffset(),nums)));
+					break;
+				case 4:
+					bean.setValue(
+							String.valueOf(ByteUtils.formatDouble((ByteUtils.getIntForLarge(content, startByteIndex)) * resolving + bean.getOffset(),nums)));
+					break;
+				}
+			} else {
+				int resolving = Integer.parseInt(bean.getResolving());
+				switch (num) {
+				case 1:
+					bean.setValue(String.valueOf((content[startByteIndex]&0xff) * resolving + (int)bean.getOffset()));
+					break;
+				case 2:
+					bean.setValue(
+							String.valueOf((ByteUtils.getShortForLarge(content, startByteIndex)) * resolving + (int)bean.getOffset()));
+					break;
+				case 3:
+					bean.setValue(String
+							.valueOf((ByteUtils.getThreeByteForLarger(content, startByteIndex)) * resolving + (int)bean.getOffset()));
+					break;
+				case 4:
+					bean.setValue(
+							String.valueOf((ByteUtils.getIntForLarge(content, startByteIndex)) * resolving + (int)bean.getOffset()));
+					break;
+				}
+			}
+		}
 		
-		//logger.info(this.bean.getCanid()+this.bean.getTitle()+":"+bean.getStart()+"-"+bean.getLength()+":"+this.bean.getValue()+"-"+ByteUtils.byte2HexStr(content)+"-"+this.bean.getCode());
+		//logger.info(this.bean.getByteOrder()+"-"+this.bean.getCanid()+this.bean.getTitle()+":"+bean.getStart()+"-"+bean.getLength()+":"+this.bean.getValue()+"-"+ByteUtils.byte2HexStr(content)+"-"+this.bean.getCode());
 	}
 }
