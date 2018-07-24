@@ -221,6 +221,36 @@ public class ByteUtils {
 		return (int) (( ((bb[index + 0] & 0xff) << 16) | ((bb[index + 1] & 0xff) << 8)
 				| ((bb[index + 2] & 0xff) << 0)))&0xffffff;
 	}
+	
+	 /** 
+     * int整数转换为4字节的byte数组 
+     *  
+     * @param i  整数 
+     * @return byte数组 
+     */  
+    public static byte[] intToByte4(int i) {  
+        byte[] targets = new byte[4];  
+        targets[3] = (byte) (i & 0xFF);  
+        targets[2] = (byte) (i >> 8 & 0xFF);  
+        targets[1] = (byte) (i >> 16 & 0xFF);  
+        targets[0] = (byte) (i >> 24 & 0xFF);  
+        return targets;  
+    } 
+    /** 
+     * long整数转换为8字节的byte数组 
+     *  
+     * @param lo  long整数 
+     * @return byte数组 
+     */  
+    public static byte[] longToByte8(long lo) {  
+        byte[] targets = new byte[8];  
+        for (int i = 0; i < 8; i++) {  
+            int offset = (targets.length - 1 - i) * 8;  
+            targets[i] = (byte) ((lo >>> offset) & 0xFF);  
+        }  
+        return targets;  
+    }
+
 	/** 
 	* @Title: getThreeByte 
 	* @Description: TODO(这里用一句话描述这个方法的作用) 

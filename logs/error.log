@@ -1,8 +1,45 @@
-2018-03-26 15:07:08  [ main:1 ] - [ ERROR ]  查询数据库错误
-java.lang.NullPointerException
-	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
-	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:222)
-	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
-	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
-	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:22)
-	at com.newnetcom.anlyze.TestApp.main(TestApp.java:58)
+2018-07-24 10:03:24  [ main:0 ] - [ ERROR ]  解析错误,数据字典idEDE273FE4EB343EFB19C3C083C938455解析规则{"code":"bn10er9","alias":"null","title":"max_Temperature_point_position（最高温度位置）","value":"-1","inx":3,"canid":"18FF05F3","protocolId":"024A65D1EAA54C0B8EAB3DFB6745FA9B","unid":null,"start":18,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：100CF10425100B10
+java.lang.ArrayIndexOutOfBoundsException: 2
+	at com.newnetcom.anlyze.utils.ByteUtils.getIntForLarge(ByteUtils.java:216)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:106)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-07-24 10:03:24  [ main:10 ] - [ ERROR ]  解析错误,数据字典idEDE273FE4EB343EFB19C3C083C938455解析规则{"code":"jbu919b","alias":"null","title":"Compile info_Year","value":"-1","inx":5,"canid":"18FF05F3","protocolId":"024A65D1EAA54C0B8EAB3DFB6745FA9B","unid":null,"start":34,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：100CF10425100B10
+java.lang.ArrayIndexOutOfBoundsException: 2
+	at com.newnetcom.anlyze.utils.ByteUtils.getIntForLarge(ByteUtils.java:216)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:106)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-07-24 10:03:24  [ main:11 ] - [ ERROR ]  解析错误,数据字典idEDE273FE4EB343EFB19C3C083C938455解析规则{"code":"ebpk9v7","alias":"null","title":"Compile info_Mon","value":"-1","inx":6,"canid":"18FF05F3","protocolId":"024A65D1EAA54C0B8EAB3DFB6745FA9B","unid":null,"start":42,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：100CF10425100B10
+java.lang.ArrayIndexOutOfBoundsException: 2
+	at com.newnetcom.anlyze.utils.ByteUtils.getIntForLarge(ByteUtils.java:216)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:106)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-07-24 10:03:24  [ main:16 ] - [ ERROR ]  解析错误,数据字典idEDE273FE4EB343EFB19C3C083C938455解析规则{"code":"ul80hjo","alias":"null","title":"Compile info_Day","value":"-1","inx":7,"canid":"18FF05F3","protocolId":"024A65D1EAA54C0B8EAB3DFB6745FA9B","unid":null,"start":50,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：100CF10425100B10
+java.lang.ArrayIndexOutOfBoundsException: 2
+	at com.newnetcom.anlyze.utils.ByteUtils.getIntForLarge(ByteUtils.java:216)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:106)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-07-24 10:10:25  [ main:3 ] - [ ERROR ]  解析错误,数据字典idEDE273FE4EB343EFB19C3C083C938455解析规则{"code":"bn10er9","alias":"null","title":"max_Temperature_point_position（最高温度位置）","value":"-1","inx":3,"canid":"18FF05F3","protocolId":"024A65D1EAA54C0B8EAB3DFB6745FA9B","unid":null,"start":18,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"algorithm":null,"prerequisite_VALUE":null}内容项：100CF10425100B10
+java.lang.ArrayIndexOutOfBoundsException: 2
+	at com.newnetcom.anlyze.utils.ByteUtils.getIntForLarge(ByteUtils.java:216)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:106)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)

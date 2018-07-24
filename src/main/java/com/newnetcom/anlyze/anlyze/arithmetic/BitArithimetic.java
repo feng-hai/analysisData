@@ -92,27 +92,27 @@ public class BitArithimetic implements ILoadData {
 					if (byteLength <= 4) {
 						Integer i =Integer.parseInt(bitResult, 2);	
 						bean.setValue(String.valueOf(ByteUtils
-								.formatDouble((ByteUtils.getIntForLarge(i.toString().getBytes(),0)) * resolving + bean.getOffset(), num)));
+								.formatDouble((ByteUtils.getIntForLarge(ByteUtils.intToByte4(i),0)) * resolving + bean.getOffset(), num)));
 					} else {
 						Long i =Long.parseLong(bitResult, 2);	
 						bean.setValue(String.valueOf(ByteUtils
-								.formatDouble((ByteUtils.getLongForLarge(i.toString().getBytes(),0)) * resolving + bean.getOffset(), num)));
+								.formatDouble((ByteUtils.getLongForLarge(ByteUtils.longToByte8(i),0)) * resolving + bean.getOffset(), num)));
 					}
 				} else {
 					int resolving = Integer.parseInt(bean.getResolving());
 					if (byteLength <= 4) {
 						Integer i =Integer.parseInt(bitResult, 2);	
 						bean.setValue(
-								String.valueOf((ByteUtils.getIntForLarge(i.toString().getBytes(),0) * resolving + (int) bean.getOffset())));
+								String.valueOf((ByteUtils.getIntForLarge(ByteUtils.intToByte4(i),0) * resolving + (int) bean.getOffset())));
 					} else {
 						Long i =Long.parseLong(bitResult, 2);	
 						bean.setValue(
-								String.valueOf((ByteUtils.getLongForLarge(i.toString().getBytes(),0)) * resolving + (long) bean.getOffset()));
+								String.valueOf((ByteUtils.getLongForLarge(ByteUtils.longToByte8(i),0)) * resolving + (long) bean.getOffset()));
 					}
 				}
 				
 			}
 		}
-		// logger.info(this.bean.getCanid()+this.bean.getTitle()+":"+bean.getStart()+"-"+bean.getLength()+":"+this.bean.getValue()+"-"+ByteUtils.byte2HexStr(content)+"-"+this.bean.getCode());
+		 //logger.info(this.bean.getCanid()+this.bean.getTitle()+":"+bean.getStart()+"-"+bean.getLength()+":"+this.bean.getValue()+"-"+ByteUtils.byte2HexStr(content)+"-"+this.bean.getCode());
 	}
 }
