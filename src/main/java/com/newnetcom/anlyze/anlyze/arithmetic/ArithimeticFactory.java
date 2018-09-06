@@ -11,9 +11,10 @@ public class ArithimeticFactory {
 	public static ILoadData getArithimetic(Pair bean) {
 		int dataType = Integer.parseInt(config.get("databaseType"));
 		int bitIndex = bean.getStart() % 8;
-		int num = bean.getLength() / 8;
+		int num = bean.getLength() % 8;
+		
 
-		if (bitIndex > 0 || num == 0) {// 判断 是否按位计算
+		if (bitIndex > 0 || num > 0) {// 判断 是否按位计算
 			if (dataType == 3) {
 				return new BitArithimeticForBig(bean);
 			} else {

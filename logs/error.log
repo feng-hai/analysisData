@@ -1,43 +1,349 @@
-2018-07-24 10:03:24  [ main:0 ] - [ ERROR ]  解析错误,数据字典idEDE273FE4EB343EFB19C3C083C938455解析规则{"code":"bn10er9","alias":"null","title":"max_Temperature_point_position（最高温度位置）","value":"-1","inx":3,"canid":"18FF05F3","protocolId":"024A65D1EAA54C0B8EAB3DFB6745FA9B","unid":null,"start":18,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：100CF10425100B10
-java.lang.ArrayIndexOutOfBoundsException: 2
-	at com.newnetcom.anlyze.utils.ByteUtils.getIntForLarge(ByteUtils.java:216)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:106)
+2018-08-31 10:26:54  [ main:1 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"fegy435","alias":"VOLTAGE_TOTAL","title":"总电压","value":"-1","inx":3,"canid":"181428EF","protocolId":"F683678493B24237AF0D99D654244A3B","unid":null,"start":64,"length":16,"offset":0.0,"resolving":"0.1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：87C565461419005B
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.utils.ByteUtils.getShortForLarge(ByteUtils.java:185)
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:83)
 	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
 	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
 	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
 	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
 	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
-2018-07-24 10:03:24  [ main:10 ] - [ ERROR ]  解析错误,数据字典idEDE273FE4EB343EFB19C3C083C938455解析规则{"code":"jbu919b","alias":"null","title":"Compile info_Year","value":"-1","inx":5,"canid":"18FF05F3","protocolId":"024A65D1EAA54C0B8EAB3DFB6745FA9B","unid":null,"start":34,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：100CF10425100B10
-java.lang.ArrayIndexOutOfBoundsException: 2
-	at com.newnetcom.anlyze.utils.ByteUtils.getIntForLarge(ByteUtils.java:216)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:106)
+2018-08-31 10:26:54  [ main:15 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"hkgh5ye","alias":"null","title":" DCDC电流","value":"-1","inx":6,"canid":"18FF03EA","protocolId":"DA10C5C3AF9D4B8FBFAC2B3E5AB50529","unid":null,"start":88,"length":16,"offset":-1600.0,"resolving":"0.05","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：05898228826D7E51
+java.lang.ArrayIndexOutOfBoundsException: 12
+	at com.newnetcom.anlyze.utils.ByteUtils.getShort(ByteUtils.java:173)
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:41)
 	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
 	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
 	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
 	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
 	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
-2018-07-24 10:03:24  [ main:11 ] - [ ERROR ]  解析错误,数据字典idEDE273FE4EB343EFB19C3C083C938455解析规则{"code":"ebpk9v7","alias":"null","title":"Compile info_Mon","value":"-1","inx":6,"canid":"18FF05F3","protocolId":"024A65D1EAA54C0B8EAB3DFB6745FA9B","unid":null,"start":42,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：100CF10425100B10
-java.lang.ArrayIndexOutOfBoundsException: 2
-	at com.newnetcom.anlyze.utils.ByteUtils.getIntForLarge(ByteUtils.java:216)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:106)
+2018-08-31 10:26:54  [ main:17 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"wzh5c5i","alias":"null","title":"DCDC功率","value":"-1","inx":7,"canid":"18FF03EA","protocolId":"DA10C5C3AF9D4B8FBFAC2B3E5AB50529","unid":null,"start":144,"length":16,"offset":-160.0,"resolving":"0.005","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：05898228826D7E51
+java.lang.ArrayIndexOutOfBoundsException: 19
+	at com.newnetcom.anlyze.utils.ByteUtils.getShort(ByteUtils.java:173)
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:41)
 	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
 	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
 	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
 	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
 	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
-2018-07-24 10:03:24  [ main:16 ] - [ ERROR ]  解析错误,数据字典idEDE273FE4EB343EFB19C3C083C938455解析规则{"code":"ul80hjo","alias":"null","title":"Compile info_Day","value":"-1","inx":7,"canid":"18FF05F3","protocolId":"024A65D1EAA54C0B8EAB3DFB6745FA9B","unid":null,"start":50,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：100CF10425100B10
-java.lang.ArrayIndexOutOfBoundsException: 2
-	at com.newnetcom.anlyze.utils.ByteUtils.getIntForLarge(ByteUtils.java:216)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:106)
+2018-08-31 10:26:54  [ main:22 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"imax59p","alias":"null","title":"DCDC温度","value":"-1","inx":8,"canid":"18FF03EA","protocolId":"DA10C5C3AF9D4B8FBFAC2B3E5AB50529","unid":null,"start":216,"length":8,"offset":-40.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：05898228826D7E51
+java.lang.ArrayIndexOutOfBoundsException: 27
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
 	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
 	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
 	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
 	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
 	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
-2018-07-24 10:10:25  [ main:3 ] - [ ERROR ]  解析错误,数据字典idEDE273FE4EB343EFB19C3C083C938455解析规则{"code":"bn10er9","alias":"null","title":"max_Temperature_point_position（最高温度位置）","value":"-1","inx":3,"canid":"18FF05F3","protocolId":"024A65D1EAA54C0B8EAB3DFB6745FA9B","unid":null,"start":18,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"algorithm":null,"prerequisite_VALUE":null}内容项：100CF10425100B10
-java.lang.ArrayIndexOutOfBoundsException: 2
-	at com.newnetcom.anlyze.utils.ByteUtils.getIntForLarge(ByteUtils.java:216)
-	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:106)
+2018-08-31 10:26:54  [ main:23 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"onexoo3","alias":"HYDROGEN_MAX_DENSITY","title":"氢气最高浓度","value":"-1","inx":3,"canid":"18CAEFA5","protocolId":"670019BD218E491EA3CCAD8996C9899A","unid":null,"start":64,"length":8,"offset":0.0,"resolving":"200","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：13030701053A0002
+java.lang.ArrayIndexOutOfBoundsException: 8
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:25 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"qz9mico","alias":"HYDROGEN_MAX_DENSITY_SENSOR_ID","title":"氢气最高浓度传感器代号","value":"-1","inx":4,"canid":"18CAEFA5","protocolId":"670019BD218E491EA3CCAD8996C9899A","unid":null,"start":104,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：13030701053A0002
+java.lang.ArrayIndexOutOfBoundsException: 13
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:37 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"pass48m","alias":"HYDROGEN_MAX_PRESSURE","title":"氢气最高压力","value":"-1","inx":5,"canid":"18CAEFA5","protocolId":"670019BD218E491EA3CCAD8996C9899A","unid":null,"start":152,"length":10,"offset":0.0,"resolving":"0.1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：13030701053A0002
+java.lang.ArrayIndexOutOfBoundsException: 19
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:37)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:39 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"pvgi862","alias":"null","title":"后舱门状态1","value":"-1","inx":6,"canid":"180AEF28","protocolId":"20340B1C51E8400095396A75999881F1","unid":null,"start":134,"length":2,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：00FA00D400000000
+java.lang.ArrayIndexOutOfBoundsException: 16
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:31)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:40 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"smo4ycx","alias":"null","title":"后舱门状态2","value":"-1","inx":7,"canid":"180AEF28","protocolId":"20340B1C51E8400095396A75999881F1","unid":null,"start":196,"length":2,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：00FA00D400000000
+java.lang.ArrayIndexOutOfBoundsException: 24
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:31)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:41 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"ej2nqg8","alias":"STATE_VEHICLE","title":"车辆状态","value":"-1","inx":4,"canid":"18F520EF","protocolId":"F6D09932F1D44038B812B6F35F484BAE","unid":null,"start":86,"length":2,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：440001000704235B
+java.lang.ArrayIndexOutOfBoundsException: 10
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:31)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:42 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"esq92vl","alias":"MODE_DRIVE","title":"运行模式","value":"-1","inx":5,"canid":"18F520EF","protocolId":"F6D09932F1D44038B812B6F35F484BAE","unid":null,"start":122,"length":5,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：440001000704235B
+java.lang.ArrayIndexOutOfBoundsException: 15
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:31)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:44 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"mj0agu2","alias":"null","title":" 风扇4功率","value":"-1","inx":4,"canid":"18FF00A7","protocolId":"D4EE5A9F1E654F6998CE665753F03256","unid":null,"start":72,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：0000000050500000
+java.lang.ArrayIndexOutOfBoundsException: 9
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:45 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"khlsjcn","alias":"null","title":" 风扇5功率","value":"-1","inx":5,"canid":"18FF00A7","protocolId":"D4EE5A9F1E654F6998CE665753F03256","unid":null,"start":112,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：0000000050500000
+java.lang.ArrayIndexOutOfBoundsException: 14
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:46 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"hcpq98a","alias":"null","title":" 风扇6功率","value":"-1","inx":6,"canid":"18FF00A7","protocolId":"D4EE5A9F1E654F6998CE665753F03256","unid":null,"start":160,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：0000000050500000
+java.lang.ArrayIndexOutOfBoundsException: 20
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:51 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"su2mefv","alias":"","title":"最低温度探针子系统代号","value":"-1","inx":3,"canid":"18FF15F3","protocolId":"634334CC209A4F53B250F7D437658588","unid":null,"start":72,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：644A48230C01FFFF
+java.lang.ArrayIndexOutOfBoundsException: 9
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:52 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"dwx2a18","alias":"","title":"最高温度探针单体代号","value":"-1","inx":4,"canid":"18FF15F3","protocolId":"634334CC209A4F53B250F7D437658588","unid":null,"start":120,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：644A48230C01FFFF
+java.lang.ArrayIndexOutOfBoundsException: 15
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:55 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"krp8cty","alias":"MODULE_TEMP_MIN_ID","title":"最低温度子系统号","value":"-1","inx":5,"canid":"18FF15F3","protocolId":"634334CC209A4F53B250F7D437658588","unid":null,"start":160,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：644A48230C01FFFF
+java.lang.ArrayIndexOutOfBoundsException: 20
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:56 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"iktytn8","alias":"MODULE_TEMP_MAX_ID","title":"最高温度子系统号","value":"-1","inx":6,"canid":"18FF15F3","protocolId":"634334CC209A4F53B250F7D437658588","unid":null,"start":208,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：644A48230C01FFFF
+java.lang.ArrayIndexOutOfBoundsException: 26
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:59 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"cjvyi9q","alias":"MODULE_VOL_MIN_ID","title":"最高电压电池单体代号","value":"-1","inx":4,"canid":"18FF11F3","protocolId":"EBEB439236E44B8A86D197C6555A7F46","unid":null,"start":104,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：B4B310650B7BD28C
+java.lang.ArrayIndexOutOfBoundsException: 13
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:61 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"ssfhcl0","alias":"null","title":"最低电压电池子系统号","value":"-1","inx":5,"canid":"18FF11F3","protocolId":"EBEB439236E44B8A86D197C6555A7F46","unid":null,"start":144,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：B4B310650B7BD28C
+java.lang.ArrayIndexOutOfBoundsException: 18
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:64 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"uyzxhcn","alias":"MODULE_VOL_MAX_ID","title":"最高电压电池子系统号","value":"-1","inx":6,"canid":"18FF11F3","protocolId":"EBEB439236E44B8A86D197C6555A7F46","unid":null,"start":192,"length":8,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：B4B310650B7BD28C
+java.lang.ArrayIndexOutOfBoundsException: 24
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:65 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"jbym1vz","alias":"null","title":"2#高压DCDC状态","value":"-1","inx":2,"canid":"18C1EFA5","protocolId":"34387EBF55454284B13A3C8973D5895E","unid":null,"start":116,"length":2,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：03B6003C05C00805
+java.lang.ArrayIndexOutOfBoundsException: 14
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:31)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:69 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"rl6vov8","alias":"null","title":" 电机水箱进口温度","value":"-1","inx":4,"canid":"18FF01A7","protocolId":"93FC40C44D8C42C5A96CE47389B6FA36","unid":null,"start":72,"length":8,"offset":-40.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：5B00005150015452
+java.lang.ArrayIndexOutOfBoundsException: 9
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:70 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"xgvwwxt","alias":"null","title":" 电机水箱出口温度","value":"-1","inx":5,"canid":"18FF01A7","protocolId":"93FC40C44D8C42C5A96CE47389B6FA36","unid":null,"start":112,"length":8,"offset":-40.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：5B00005150015452
+java.lang.ArrayIndexOutOfBoundsException: 14
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:71 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"anu5xu0","alias":"null","title":" 环境温度","value":"-1","inx":6,"canid":"18FF01A7","protocolId":"93FC40C44D8C42C5A96CE47389B6FA36","unid":null,"start":160,"length":8,"offset":-40.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：5B00005150015452
+java.lang.ArrayIndexOutOfBoundsException: 20
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:75 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"gx60edp","alias":"null","title":" BMS电池模块电压3","value":"-1","inx":4,"canid":"1C1500F3","protocolId":"008B70DB08EA440A84A8E95427FF1841","unid":null,"start":72,"length":8,"offset":0.0,"resolving":"0.02","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：13B4B4B3B4B4B4B4
+java.lang.ArrayIndexOutOfBoundsException: 9
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:37)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:76 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"ovqb8rg","alias":"null","title":" BMS电池模块电压4","value":"-1","inx":5,"canid":"1C1500F3","protocolId":"008B70DB08EA440A84A8E95427FF1841","unid":null,"start":112,"length":8,"offset":0.0,"resolving":"0.02","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：13B4B4B3B4B4B4B4
+java.lang.ArrayIndexOutOfBoundsException: 14
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:37)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:77 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"sp43w9a","alias":"null","title":" BMS电池模块电压5","value":"-1","inx":6,"canid":"1C1500F3","protocolId":"008B70DB08EA440A84A8E95427FF1841","unid":null,"start":160,"length":8,"offset":0.0,"resolving":"0.02","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：13B4B4B3B4B4B4B4
+java.lang.ArrayIndexOutOfBoundsException: 20
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:37)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:78 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"vp7vcpd","alias":"null","title":" BMS电池模块电压6","value":"-1","inx":7,"canid":"1C1500F3","protocolId":"008B70DB08EA440A84A8E95427FF1841","unid":null,"start":216,"length":8,"offset":0.0,"resolving":"0.02","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：13B4B4B3B4B4B4B4
+java.lang.ArrayIndexOutOfBoundsException: 27
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:37)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:79 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"mrqv6oi","alias":"null","title":" BMS电池模块电压7","value":"-1","inx":8,"canid":"1C1500F3","protocolId":"008B70DB08EA440A84A8E95427FF1841","unid":null,"start":280,"length":8,"offset":0.0,"resolving":"0.02","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：13B4B4B3B4B4B4B4
+java.lang.ArrayIndexOutOfBoundsException: 35
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:37)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:80 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"ucf3kdp","alias":"null","title":" BMS电池模块温度3","value":"-1","inx":4,"canid":"1C1600F3","protocolId":"4AA38A958BFF4FFBBE3BC29A6C1E0CF6","unid":null,"start":72,"length":8,"offset":-40.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：014A494949494949
+java.lang.ArrayIndexOutOfBoundsException: 9
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:81 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"ykz283n","alias":"null","title":" BMS电池模块温度4","value":"-1","inx":5,"canid":"1C1600F3","protocolId":"4AA38A958BFF4FFBBE3BC29A6C1E0CF6","unid":null,"start":112,"length":8,"offset":-40.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：014A494949494949
+java.lang.ArrayIndexOutOfBoundsException: 14
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:82 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"aegtf0t","alias":"null","title":" BMS电池模块温度5","value":"-1","inx":6,"canid":"1C1600F3","protocolId":"4AA38A958BFF4FFBBE3BC29A6C1E0CF6","unid":null,"start":160,"length":8,"offset":-40.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：014A494949494949
+java.lang.ArrayIndexOutOfBoundsException: 20
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:83 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"mhoa415","alias":"null","title":" BMS电池模块温度6","value":"-1","inx":7,"canid":"1C1600F3","protocolId":"4AA38A958BFF4FFBBE3BC29A6C1E0CF6","unid":null,"start":216,"length":8,"offset":-40.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：014A494949494949
+java.lang.ArrayIndexOutOfBoundsException: 27
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:85 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"uq2vji2","alias":"null","title":" BMS电池模块温度7","value":"-1","inx":8,"canid":"1C1600F3","protocolId":"4AA38A958BFF4FFBBE3BC29A6C1E0CF6","unid":null,"start":280,"length":8,"offset":-40.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：014A494949494949
+java.lang.ArrayIndexOutOfBoundsException: 35
+	at com.newnetcom.anlyze.anlyze.arithmetic.ByteArithimetic.setPairValue(ByteArithimetic.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 10:26:54  [ main:86 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"aquli9d","alias":"STATE_CHARING","title":"充电状态","value":"-1","inx":2,"canid":"18FF16F3","protocolId":"C3DCA445D4984DCAAAEAA18DF310C28F","unid":null,"start":98,"length":3,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":true,"prerequisite_VALUE":null,"algorithm":null}内容项：05903F00861C04FF
+java.lang.ArrayIndexOutOfBoundsException: 12
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimetic.setPairValue(BitArithimetic.java:31)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-08-31 13:32:48  [ main:3 ] - [ ERROR ]  查询数据库错误
+java.lang.NullPointerException
+	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:222)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
+	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:39)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:58)
+2018-09-06 09:48:49  [ main:4 ] - [ ERROR ]  查询数据库错误
+java.lang.NullPointerException
+	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:222)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
+	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:39)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:58)
+2018-09-06 15:29:45  [ main:2 ] - [ ERROR ]  查询数据库错误
+java.lang.NullPointerException
+	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:222)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
+	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:39)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:58)
+2018-09-06 15:48:50  [ main:362 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"ben5fly","alias":"null","title":"1#高压DC/DC状态","value":"-1","inx":1,"canid":"18C1EFA5","protocolId":"34387EBF55454284B13A3C8973D5895E","unid":null,"start":56,"length":2,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：03B6003E05C00805
+java.lang.ArrayIndexOutOfBoundsException: 1
+	at com.newnetcom.anlyze.utils.ByteUtils.getLongForLarge(ByteUtils.java:308)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimeticForBig.setPairValue(BitArithimeticForBig.java:68)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-09-06 15:48:50  [ main:365 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"jbym1vz","alias":"null","title":"2#高压DCDC状态","value":"-1","inx":2,"canid":"18C1EFA5","protocolId":"34387EBF55454284B13A3C8973D5895E","unid":null,"start":58,"length":2,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：03B6003E05C00805
+java.lang.ArrayIndexOutOfBoundsException: 1
+	at com.newnetcom.anlyze.utils.ByteUtils.getLongForLarge(ByteUtils.java:308)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimeticForBig.setPairValue(BitArithimeticForBig.java:68)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-09-06 15:50:29  [ main:0 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"ben5fly","alias":"null","title":"1#高压DC/DC状态","value":"-1","inx":1,"canid":"18C1EFA5","protocolId":"34387EBF55454284B13A3C8973D5895E","unid":null,"start":56,"length":2,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：03B6003E05C00805
+java.lang.ArrayIndexOutOfBoundsException: 1
+	at com.newnetcom.anlyze.utils.ByteUtils.getLongForLarge(ByteUtils.java:308)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimeticForBig.setPairValue(BitArithimeticForBig.java:68)
+	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
+	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:71)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:90)
+2018-09-06 15:50:29  [ main:6 ] - [ ERROR ]  解析错误,数据字典idE95B2CC4448F48349817DFB38773DDA3解析规则{"code":"jbym1vz","alias":"null","title":"2#高压DCDC状态","value":"-1","inx":2,"canid":"18C1EFA5","protocolId":"34387EBF55454284B13A3C8973D5895E","unid":null,"start":58,"length":2,"offset":0.0,"resolving":"1","dataType":"1","byteOrder":false,"prerequisite_VALUE":null,"algorithm":null}内容项：03B6003E05C00805
+java.lang.ArrayIndexOutOfBoundsException: 1
+	at com.newnetcom.anlyze.utils.ByteUtils.getLongForLarge(ByteUtils.java:308)
+	at com.newnetcom.anlyze.anlyze.arithmetic.BitArithimeticForBig.setPairValue(BitArithimeticForBig.java:68)
 	at com.newnetcom.anlyze.anlyze.AnlyzeCans.anlyzeContent(AnlyzeCans.java:112)
 	at com.newnetcom.anlyze.anlyze.DynamicAnlyze.anlyzeContent(DynamicAnlyze.java:29)
 	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:56)

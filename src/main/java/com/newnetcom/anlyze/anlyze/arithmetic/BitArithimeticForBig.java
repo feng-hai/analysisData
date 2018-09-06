@@ -38,36 +38,27 @@ public class BitArithimeticForBig implements ILoadData {
 		String bitResult = bitStr.substring(index - bean.getLength() + 1, index + 1);
 
 		ByteUtils.bit2byte(bitResult);
-		if (this.bean.getByteOrder()) {
-			if (!isNum) {
-				float resolving = Float.parseFloat(bean.getResolving());
-				int num = ByteUtils.getNum(bean.getResolving());
-				bean.setValue(String.valueOf(
-						ByteUtils.formatDouble((Long.parseLong(bitResult, 2)) * resolving + bean.getOffset(), num)));
+		if (!this.bean.getByteOrder()) {
+			bitResult = new StringBuffer(bitResult).reverse().toString();
+		}
+		if (!isNum) {
+			float resolving = Float.parseFloat(bean.getResolving());
+			int num = ByteUtils.getNum(bean.getResolving());
+			bean.setValue(String.valueOf(
+					ByteUtils.formatDouble((Long.parseLong(bitResult, 2)) * resolving + bean.getOffset(), num)));
 
-			} else {
-				int resolving = Integer.parseInt(bean.getResolving());
-
-				bean.setValue(String.valueOf((Long.parseLong(bitResult, 2)) * resolving + (long) bean.getOffset()));
-
-			}
 		} else {
-			if (!isNum) {
-				float resolving = Float.parseFloat(bean.getResolving());
-				int num = ByteUtils.getNum(bean.getResolving());
-				Long i = Long.parseLong(bitResult, 2);
-				bean.setValue(String.valueOf(ByteUtils.formatDouble(
-						(ByteUtils.getLongForLarge(i.toString().getBytes(), 0)) * resolving + bean.getOffset(), num)));
+			int resolving = Integer.parseInt(bean.getResolving());
 
-			} else {
-				int resolving = Integer.parseInt(bean.getResolving());
-				Long i = Long.parseLong(bitResult, 2);
-				bean.setValue(String.valueOf(
-						(ByteUtils.getLongForLarge(i.toString().getBytes(), 0)) * resolving + (long) bean.getOffset()));
-
-			}
+			bean.setValue(String.valueOf((Long.parseLong(bitResult, 2)) * resolving + (long) bean.getOffset()));
 
 		}
+
+		//
+		// if(this.bean.getCanid().equals("0CFF0209"))
+		// {
+		// System.out.println("打印");
+		// }
 		// if (bean.getLength() + bitIndex <= 8) {//判断是否跨字节
 		//
 		// Byte tByte = content[8-startByteIndex-1];

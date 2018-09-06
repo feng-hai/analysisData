@@ -23,6 +23,12 @@ public class ByteArithimeticForBig implements ILoadData {
 		// int bitIndex = bean.getStart() % 8;
 		int num = bean.getLength() / 8;
 		
+//		
+//		if(this.bean.getCanid().equals("0CFF0209"))
+//		{
+//			System.out.println("打印");
+//		}
+		
 		content = ByteUtils.endianChange(content);// 大小段转换，转为大端模式 = ByteUtils.endianChange(tBytes);// 大小段转换，转为小端模式
 		
 		if(startByteIndex+num>8)

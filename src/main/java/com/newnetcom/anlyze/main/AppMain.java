@@ -29,6 +29,7 @@ public class AppMain {
 		
 		
 		Map<String,String> config=	PropertyResource.getInstance().getProperties();
+		logger.info("数据库连接"+config.get("MYSQLURL"));
 		
 		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"A2L");//1获取配置文件的分析类
 		DatabaseFactory.getDB(Integer.parseInt(config.get("databaseType")),"CAN");

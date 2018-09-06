@@ -159,10 +159,10 @@ public class MysqlDatabase implements IDatabase {
 					int inxTemp = 0;
 					String canId = pairs2.get(0).getCanid();
 					
-//					if(canId.equals("18FF8F03"))
-//					{
-//						System.out.println(canId);
-//					}
+					if(canId.equals("0CFF0109"))
+					{
+						System.out.println(canId+":"+pairs2.get(0).getTitle());
+					}
 					List<Pair> pairsTemp=new ArrayList<>(); 
 					for (Pair pair : pairs2) {
 						Pair temp=pair.clone();

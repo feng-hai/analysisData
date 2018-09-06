@@ -13,6 +13,7 @@ import com.newnetcom.anlyze.anlyze.db.mysql.utils.SingletonJDBC;
 import com.newnetcom.anlyze.beans.Pair;
 import com.newnetcom.anlyze.beans.publicStaticMap;
 import com.newnetcom.anlyze.utils.ByteUtils;
+import com.newnetcom.anlyze.utils.StrFormat;
 public class MysqlDatabaseBig2 implements IDatabase {
 
 	private static final Logger logger = LoggerFactory.getLogger(MysqlDatabaseBig2.class);
@@ -83,7 +84,7 @@ public class MysqlDatabaseBig2 implements IDatabase {
 		
 		
 		//所有协议项数据
-		String protocolSql = "select * from (SELECT p.PREREQUISITE_HEX , f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0 )d order by inx";
+		String protocolSql = "select * from (SELECT p.PREREQUISITE_HEX ,f.BYTE_ORDER,f.ALIAS,f.CODE,f.BIT_LENGTH,f.OFFSET, CAST(f.WEIGHT AS CHAR(8)) WEIGHT ,f.BIT_OFFSET,f.TITLE,f.INX,f.PROTO_UNID,f.PREREQUISITE_VALUE FROM cube.PDA_FIELD  f inner join cube.PDA_PFP_MAP p on p.PROTO_UNID=f.proto_unid and f.FLAG_DEL=0 and p.FLAG_DEL =0 )d order by inx";
 
 		List<Map<String, Object>> resultsProtocol = null;
 		try {
@@ -113,6 +114,7 @@ public class MysqlDatabaseBig2 implements IDatabase {
 			Pair pair = new Pair();
 			pair.setAlias(entity.get("ALIAS").toString());
 			pair.setCode(entity.get("CODE").toString());
+			pair.setByteOrder(entity.get("BYTE_ORDER").toString().equals("true"));
 			if (!entity.get("BIT_LENGTH").toString().isEmpty()
 					&& entity.get("BIT_LENGTH").toString().matches("[0-9]+")) {
 				pair.setLength(Integer.parseInt(entity.get("BIT_LENGTH").toString()));
@@ -147,6 +149,9 @@ public class MysqlDatabaseBig2 implements IDatabase {
 		//记录数据字典和Can针 ，对应的数据解析方式
 		Map<String, Map<String,List<Pair>>> resultsMap = new HashMap<>();
 		for (String key : fiberProtocol.keySet()) {// key 是数据字典id
+			
+			
+			
 			List<String> tempProtocols = fiberProtocol.get(key);
 			Map<String,List<Pair> > res=new HashMap<>();
 			for (String protocol : tempProtocols) {
@@ -155,6 +160,8 @@ public class MysqlDatabaseBig2 implements IDatabase {
 					Collections.sort(pairs2);
 					//int inxTemp = 0;
 					String canId = pairs2.get(0).getCanid();
+					canId =StrFormat.addZeroForLeftNum(canId, 8);
+					
 					
 //					if(canId.equals("18FF8F03"))
 //					{
@@ -163,6 +170,11 @@ public class MysqlDatabaseBig2 implements IDatabase {
 					List<Pair> pairsTemp=new ArrayList<>(); 
 					for (Pair pair : pairs2) {
 						Pair temp=pair.clone();
+						
+						//if(key.equals("E95B2CC4448F48349817DFB38773DDA3"))
+						{
+						//	System.out.println(canId+":"+temp.getTitle());
+						}
 						//temp.setStart(inxTemp + pair.getStart());
 						//inxTemp = temp.getStart() + pair.getLength();
 						pairsTemp.add(temp);
