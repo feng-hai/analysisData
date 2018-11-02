@@ -6,9 +6,9 @@ import java.util.TreeSet;
 
 enum RandCodeEnum {
 	/**
-	 * 混合字符�?
+	 * 混合字符�?
 	 */
-	ALL_CHAR("0123456789abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), // 去除小写的l和o这个两个不容易区分的字符�?
+	ALL_CHAR("0123456789abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), // 去除小写的l和o这个两个不容易区分的字符�?
 	/**
 	 * 字符
 	 */
@@ -32,7 +32,7 @@ enum RandCodeEnum {
 	HBASE_CHAR("123456789ABCDEF");
 	
 	/**
-	 * 待生成的字符�?
+	 * 待生成的字符�?
 	 */
 	private String charStr;
 
@@ -63,17 +63,17 @@ enum RandCodeEnum {
 		while ((tss = ts.size()) < pNum) {
 			if (!only) {
 				for (int i = 1; i <= b; i++) {
-					ts.add(RandCodeEnum.HBASE_CHAR.generateStr(i));
+					ts.add(RandCodeEnum.NUMBER_CHAR.generateStr(i));
 				}
 			} else {
-				ts.add(RandCodeEnum.HBASE_CHAR.generateStr(b));
+				ts.add(RandCodeEnum.NUMBER_CHAR.generateStr(b));
 			}
 		}
 		return ts.toArray(new String[tss]);
 	}
 	
 	public static void main(String[] args) {
-		String[] hbaseKeys = RandCodeEnum.HBASE_CHAR.getHbaseKeys(240,2,false);
+		String[] hbaseKeys = RandCodeEnum.NUMBER_CHAR.getHbaseKeys(240,6,true);
 		for (String s : hbaseKeys) {
 			System.out.println(s);
 		}

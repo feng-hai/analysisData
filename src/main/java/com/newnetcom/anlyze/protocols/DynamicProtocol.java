@@ -45,18 +45,22 @@ public class DynamicProtocol implements IProtocol {
 		// this.content=protocolBean.getContent();
 
 		switch (protocolType) {
-		case P3G: {
-			protocol = new Protocol3G(protocolBean);
-			break;
-		}
-		case P808: {
-			protocol = new Protocol808(protocolBean);
-			break;
-		}
-		case PGB: {
-			protocol = new ProtocolGB();
-			break;
-		}
+			case P3G: {
+				protocol = new Protocol3G(protocolBean);
+				break;
+			}
+			case P808: {
+				protocol = new Protocol808(protocolBean);
+				break;
+			}
+			case PGB: {
+				protocol = new ProtocolGB();
+				break;
+			}
+			case  YUCHAI:{
+				protocol=new ProtocolYUCHAI(protocolBean);
+				break;
+			}
 		}
 	}
 

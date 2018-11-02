@@ -217,6 +217,12 @@ public class ByteUtils {
 				| ((bb[index + 3] & 0xff) << 0)));
 	}
 	
+	public static double getDu(byte[] bb,int index){
+	
+		return bb[0]+(bb[1]+(getThreeByte(bb,2))/100000)/60;
+		
+	}
+	
 	/** 
 	* @Title: getThreeByte 
 	* @Description: TODO(这里用一句话描述这个方法的作用) 

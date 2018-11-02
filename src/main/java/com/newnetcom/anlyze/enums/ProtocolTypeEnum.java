@@ -1,7 +1,8 @@
 package com.newnetcom.anlyze.enums;
 
 public enum ProtocolTypeEnum {
-    P3G //Æó±ê3G
-   ,PGB //("¹ú±êÐ­Òé",2)
-   ,P808//("808Ð­Òé",3);
+    P3G //ï¿½ï¿½ï¿½3G
+   ,PGB //("ï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½",2)
+   ,P808//("808Ð­ï¿½ï¿½",3);
+   ,YUCHAI
 }
