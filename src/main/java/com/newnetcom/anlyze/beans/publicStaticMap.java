@@ -20,12 +20,27 @@ public class publicStaticMap {
 	public static Boolean logStatus=true;//日志开关
 	
 	private static Map<String,VehicleInfo >vehicles=new ConcurrentHashMap <>();
-	
+
 	public static Map<String, VehicleInfo> getVehicles() {
 		return vehicles;
 	}
 	public static void setVehicles(Map<String, VehicleInfo> vehicles) {
 		publicStaticMap.vehicles = vehicles;
+	}
+	
+	//保存最后一次位置
+	private static Map<String,LocalInfo >lastLocal=new ConcurrentHashMap <>();
+	/**
+	 * @return the lastLocal
+	 */
+	public static Map<String, LocalInfo> getLastLocal() {
+		return lastLocal;
+	}
+	/**
+	 * @param lastLocal the lastLocal to set
+	 */
+	public static void setLastLocal(Map<String, LocalInfo> lastLocal) {
+		publicStaticMap.lastLocal = lastLocal;
 	}
 
 	/** 

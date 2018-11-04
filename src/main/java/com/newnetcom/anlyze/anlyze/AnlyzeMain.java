@@ -36,10 +36,12 @@ public class AnlyzeMain implements Runnable {
 			// return null;
 		} else if (protocolBean.getProto_unid().equals("EF039E17A8E84137AF6DE1CDC172C274")) {
 			protocolType = ProtocolTypeEnum.PGB;
-		} else {
+		}else if (protocolBean.getProto_unid().equals("B443F9C7E040405488364860E9AFF945")) {
+			protocolType = ProtocolTypeEnum.YUCHAI;
+		}
+		else {
 			return null;
 		}
-
 		try {
 			// System.out.println("解析开始");
 			// 分析协议头部和协议内容

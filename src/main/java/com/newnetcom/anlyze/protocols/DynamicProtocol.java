@@ -57,6 +57,10 @@ public class DynamicProtocol implements IProtocol {
 			protocol = new ProtocolGB();
 			break;
 		}
+		case YUCHAI: {
+			protocol = new ProtocolYUCHAI(protocolBean);
+			break;
+		}
 		}
 	}
 

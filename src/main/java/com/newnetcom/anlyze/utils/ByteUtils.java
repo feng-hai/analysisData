@@ -788,5 +788,20 @@ public class ByteUtils {
   		ioBuffer.flip(); 
   	    return ioBuffer.array();	
   	}
+  	
+  	/** 
+  	* @Title: getDu 
+  	* @Description: TODO(经度纬度度分秒转换为度) 
+  	* @param @param bb
+  	* @param @param index
+  	* @param @return    设定文件 
+  	* @return double    返回类型 
+  	* @throws 
+  	*/
+  	public static double getDu(byte[] bb,int index){
+  		
+		return bb[0]+(bb[1]+(getThreeByte(bb,2))/100000)/60;
+		
+	}
 
 }
