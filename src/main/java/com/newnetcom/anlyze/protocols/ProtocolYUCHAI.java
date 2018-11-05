@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.newnetcom.anlyze.beans.LocalInfo;
 import com.newnetcom.anlyze.beans.PairResult;
 import com.newnetcom.anlyze.beans.ProtocolBean;
@@ -85,6 +84,9 @@ public class ProtocolYUCHAI implements IProtocol {
 				vehcleInfo = new ProtocolForYuchai(this.content);
 			} else if ((int) 0xA6 == head.getTerminalCommandId() && head.getTerminalCommandLength() > 0) {
 				cte = CommandTypeEnum.CA6;
+				vehcleInfo = new ProtocolForYuchai(this.content);
+			} else if ((int) 0xA0 == head.getTerminalCommandId() && head.getTerminalCommandLength() > 0) {
+				cte = CommandTypeEnum.CA0;
 				vehcleInfo = new ProtocolForYuchai(this.content);
 			} else if ((int) 0x50 == head.getTerminalCommandId() && head.getTerminalCommandLength() > 0) {
 				cte = CommandTypeEnum.C50;
@@ -284,8 +286,9 @@ public class ProtocolYUCHAI implements IProtocol {
 			} else if (cte == CommandTypeEnum.CA6) {
 				List<PairResult> tempPairs = contentA6(rb);
 				beanList.addAll(tempPairs);
-			} else if (cte == CommandTypeEnum.C50) {
-
+			} else if (cte == CommandTypeEnum.CA0) {
+				List<PairResult> tempPairs = contentA0(rb);
+				beanList.addAll(tempPairs);
 			}
 			rb.setPairs(beanList);
 			publicStaticMap.getCmdQueue().put(rb);// 用于更新hbase
@@ -374,6 +377,17 @@ public class ProtocolYUCHAI implements IProtocol {
 	private List<PairResult> contentA5(ResultBean rb) {
 		List<PairResult> tempPairs =content(rb);
 		tempPairs.add(new PairResult("COMMANDTYPE", "COMMANDTYPE", "命令类型", "A5"));
+		return tempPairs;
+
+	}
+	
+	/**
+	 * @Title: contentA5 @Description: TODO(解析A5) @param 设定文件 @return void
+	 *         返回类型 @throws
+	 */
+	private List<PairResult> contentA0(ResultBean rb) {
+		List<PairResult> tempPairs =content(rb);
+		tempPairs.add(new PairResult("COMMANDTYPE", "COMMANDTYPE", "命令类型", "A0"));
 		return tempPairs;
 
 	}
