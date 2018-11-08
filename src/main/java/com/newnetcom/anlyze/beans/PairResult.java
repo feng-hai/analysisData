@@ -22,6 +22,15 @@ import com.newnetcom.anlyze.utils.JsonUtils;
  * @date 2016年9月24日 下午4:18:53
  *
  */
+/**   
+*    
+* 项目名称：com.newnetcom.anlyze   
+* 类名称：PairResult   
+* 类描述：   
+* 创建人：FH   
+* 创建时间：2018年11月8日 下午4:22:52   
+* @version        
+*/
 public class PairResult implements Serializable {
 
 	private static final long serialVersionUID = 8418206139459599885L;
@@ -33,6 +42,14 @@ public class PairResult implements Serializable {
 	{
 		
 	}
+	/** 
+	* <p>Title: </p> 
+	* <p>Description: </p> 
+	* @param code
+	* @param alias
+	* @param title
+	* @param value 
+	*/
 	public PairResult(String code,String alias,String title ,String value)
 	{
 		this.code=code;

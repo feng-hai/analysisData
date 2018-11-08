@@ -26,11 +26,11 @@ public class ProtocolHeadForGB {
 
 	private void anlyze() {
 		startTag = "2323";
-		commandTag=this.contents[2];
-		answerTag=this.contents[3];
+		commandTag=this.contents[2]&0xff;
+		answerTag=this.contents[3]&0xff;
 		vin=ByteUtils.bytesToAsciiString(this.contents, 4, 17);
-		encrypt=this.contents[21];
-		dataLength=ByteUtils.getShort(this.contents, 22);
+		encrypt=this.contents[21]&0xff;
+		dataLength=ByteUtils.getShortForLarge(this.contents, 22);
 //		terminalCommandId = ByteUtils.getShort(this.contents, 1);
 //		terminalCommandLength = ByteUtils.getShort(this.contents, 3);
 //		canId = ByteUtils.getShort(this.contents, 5);
@@ -46,10 +46,10 @@ public class ProtocolHeadForGB {
 	*/ 
 	private String startTag;
 	
-	private byte commandTag;
-	private byte answerTag;
+	private int commandTag;
+	private int answerTag;
 	private String vin;
-	private byte  encrypt;
+	private int  encrypt;
 	private int dataLength;
 	public String getStartTag() {
 		return startTag;
@@ -59,19 +59,19 @@ public class ProtocolHeadForGB {
 		this.startTag = startTag;
 	}
 
-	public byte getCommandTag() {
+	public int getCommandTag() {
 		return commandTag;
 	}
 
-	public void setCommandTag(byte commandTag) {
+	public void setCommandTag(int commandTag) {
 		this.commandTag = commandTag;
 	}
 
-	public byte getAnswerTag() {
+	public int getAnswerTag() {
 		return answerTag;
 	}
 
-	public void setAnswerTag(byte answerTag) {
+	public void setAnswerTag(int answerTag) {
 		this.answerTag = answerTag;
 	}
 
@@ -83,11 +83,11 @@ public class ProtocolHeadForGB {
 		this.vin = vin;
 	}
 
-	public byte getEncrypt() {
+	public int getEncrypt() {
 		return encrypt;
 	}
 
-	public void setEncrypt(byte encrypt) {
+	public void setEncrypt(int encrypt) {
 		this.encrypt = encrypt;
 	}
 

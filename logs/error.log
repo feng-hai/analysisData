@@ -501,3 +501,92 @@ java.lang.NullPointerException
 	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
 	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:39)
 	at com.newnetcom.anlyze.TestApp.main(TestApp.java:60)
+2018-11-08 21:09:01  [ main:1 ] - [ ERROR ]  ProtocolGB解析出错232302FE4C534644313332573145433030323735380101CB120B080F1428010103FF0000001BF5D1175C249F32FF0000000000020101FFFF4E204E20FF0000271004FF05D900000500073DC27001DC57450601020C8001010C8001020001010007000000000000000000080101175C249F00A80001A80C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800901010018000000000000000000000000000000000000000000000000E8
+java.lang.ArrayIndexOutOfBoundsException: 459
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:615)
+	at com.newnetcom.anlyze.protocols.pgb.Protocol02ForGB.anlyze(Protocol02ForGB.java:32)
+	at com.newnetcom.anlyze.protocols.pgb.Protocol02ForGB.<init>(Protocol02ForGB.java:15)
+	at com.newnetcom.anlyze.protocols.ProtocolGB.<init>(ProtocolGB.java:64)
+	at com.newnetcom.anlyze.protocols.DynamicProtocol.<init>(DynamicProtocol.java:57)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:49)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:73)
+	at com.newnetcom.anlyze.TestApp.testGB(TestApp.java:139)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:37)
+2018-11-08 21:09:46  [ main:44425 ] - [ ERROR ]  错误
+java.lang.NullPointerException
+	at com.newnetcom.anlyze.protocols.ProtocolGB.toResult(ProtocolGB.java:140)
+	at com.newnetcom.anlyze.protocols.DynamicProtocol.toResult(DynamicProtocol.java:120)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:58)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:73)
+	at com.newnetcom.anlyze.TestApp.testGB(TestApp.java:139)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:37)
+2018-11-08 21:11:44  [ main:2 ] - [ ERROR ]  ProtocolGB解析出错232302FE4C534644313332573145433030323735380101CB120B080F1428010103FF0000001BF5D1175C249F32FF0000000000020101FFFF4E204E20FF0000271004FF05D900000500073DC27001DC57450601020C8001010C8001020001010007000000000000000000080101175C249F00A80001A80C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800C800901010018000000000000000000000000000000000000000000000000E8
+java.lang.ArrayIndexOutOfBoundsException: 459
+	at com.newnetcom.anlyze.utils.ByteUtils.getSubBytes(ByteUtils.java:615)
+	at com.newnetcom.anlyze.protocols.pgb.Protocol02ForGB.anlyze(Protocol02ForGB.java:32)
+	at com.newnetcom.anlyze.protocols.pgb.Protocol02ForGB.<init>(Protocol02ForGB.java:15)
+	at com.newnetcom.anlyze.protocols.ProtocolGB.<init>(ProtocolGB.java:64)
+	at com.newnetcom.anlyze.protocols.DynamicProtocol.<init>(DynamicProtocol.java:57)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:49)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:73)
+	at com.newnetcom.anlyze.TestApp.testGB(TestApp.java:139)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:37)
+2018-11-08 21:13:10  [ main:3 ] - [ ERROR ]  查询数据库错误
+java.lang.NullPointerException
+	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:222)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
+	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:39)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:61)
+2018-11-08 21:22:49  [ main:3 ] - [ ERROR ]  查询数据库错误
+java.lang.NullPointerException
+	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:222)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
+	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:39)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:61)
+2018-11-08 21:55:13  [ main:2 ] - [ ERROR ]  查询数据库错误
+java.lang.NullPointerException
+	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:222)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
+	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:39)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:61)
+2018-11-08 21:58:36  [ main:3 ] - [ ERROR ]  查询数据库错误
+java.lang.NullPointerException
+	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:222)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
+	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:39)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:61)
+2018-11-08 22:28:53  [ main:2 ] - [ ERROR ]  ProtocolGB解析出错232302FE4C53464430333230344A43303031353738010201120B08151A140101030100FA0003B9541734267A55010E19640000020101014E5B824E0067173427100500073CC50701DBDDB20601B00CF801010CE401193B010137070000000000000000000801011734267C00B40001B40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CE40CF80CE40CE40CE40CE4090101003C3738383837383738383837383738383837383738383837373B3B3A3A3A3A3737383837383737383837383A3A3A3A3A3B3839393939393A3A393A3A399E
+java.lang.NullPointerException
+	at java.util.ArrayList.addAll(ArrayList.java:577)
+	at com.newnetcom.anlyze.protocols.pgb.Protocol02ForGB.anlyze(Protocol02ForGB.java:73)
+	at com.newnetcom.anlyze.protocols.pgb.Protocol02ForGB.<init>(Protocol02ForGB.java:15)
+	at com.newnetcom.anlyze.protocols.ProtocolGB.<init>(ProtocolGB.java:64)
+	at com.newnetcom.anlyze.protocols.DynamicProtocol.<init>(DynamicProtocol.java:57)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:49)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:73)
+	at com.newnetcom.anlyze.TestApp.testGB(TestApp.java:139)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:37)
+2018-11-08 22:29:00  [ main:6570 ] - [ ERROR ]  错误
+java.lang.NullPointerException
+	at com.newnetcom.anlyze.protocols.ProtocolGB.toResult(ProtocolGB.java:140)
+	at com.newnetcom.anlyze.protocols.DynamicProtocol.toResult(DynamicProtocol.java:120)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.getResults(AnlyzeMain.java:58)
+	at com.newnetcom.anlyze.anlyze.AnlyzeMain.run(AnlyzeMain.java:73)
+	at com.newnetcom.anlyze.TestApp.testGB(TestApp.java:139)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:37)
+2018-11-08 22:29:04  [ main:10743 ] - [ ERROR ]  查询数据库错误
+java.lang.NullPointerException
+	at com.newnetcom.anlyze.anlyze.db.mysql.utils.JdbcUtils.findModeResult(JdbcUtils.java:167)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.LoadYueboData(MysqlDatabaseA2L.java:222)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.getRules(MysqlDatabaseA2L.java:45)
+	at com.newnetcom.anlyze.anlyze.db.mysql.MysqlDatabaseA2L.<init>(MysqlDatabaseA2L.java:26)
+	at com.newnetcom.anlyze.anlyze.db.factory.DatabaseFactory.getDB(DatabaseFactory.java:39)
+	at com.newnetcom.anlyze.TestApp.main(TestApp.java:61)
