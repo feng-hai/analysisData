@@ -37,8 +37,7 @@ public class ProtocolYUCHAI implements IProtocol {
 	 * @Fields content : TODO(用一句话描述这个变量表示什么)
 	 */
 	private byte[] content;
-	
-	
+
 	/**
 	 * @Fields head : TODO(用一句话描述这个变量表示什么)
 	 */
@@ -179,12 +178,13 @@ public class ProtocolYUCHAI implements IProtocol {
 		this.content = content;
 	}
 
-	/* (非 Javadoc) 
-	* <p>Title: getContent</p> 
-	* <p>Description:解析CAN针和CAN内容对应关系 </p> 
-	* @return 
-	* @see com.newnetcom.anlyze.protocols.IProtocol#getContent() 
-	*/
+	/*
+	 * (非 Javadoc) <p>Title: getContent</p> <p>Description:解析CAN针和CAN内容对应关系 </p>
+	 * 
+	 * @return
+	 * 
+	 * @see com.newnetcom.anlyze.protocols.IProtocol#getContent()
+	 */
 	@Override
 	public Map<byte[], byte[]> getContent() {
 
@@ -237,57 +237,18 @@ public class ProtocolYUCHAI implements IProtocol {
 			rb.setKey(this.protocolBean.getDEVICE_ID());
 			rb.setSystemDate(new Date());
 
-			// if (this.vehcleInfo != null) {
-			// rb.setDatetime(this.vehcleInfo.getLocal().getDate());
-			// rb.setLat(this.vehcleInfo.getLocal().getLat());
-			// rb.setLng(this.vehcleInfo.getLocal().getLng());
-			// rb.setDirection(this.vehcleInfo.getLocal().getDirection());
-			// if (rb.getDatetime() != null) {
-			// beanList.add(new PairResult("DATIME_VS", "DATIME_VS", "参数采集的时间",
-			// sdf.format(this.vehcleInfo.getLocal().getDate())));
-			// }
-			//
-			// }
-
-			// if (this.vehcleInfo != null) {
-			// rb.setDatetime(this.vehcleInfo.getLocal().getDate());
-			// rb.setLat(this.vehcleInfo.getLocal().getLat());
-			// rb.setLng(this.vehcleInfo.getLocal().getLng());
-			// rb.setSystemDate(new Date());
-			// rb.setAcc(this.vehcleInfo.getLocal().getAcc());
-			// rb.setLocationState(this.vehcleInfo.getLocal().getLocationState());
-			// // rb.setDistance(this.gpsInfo.getDistance());
-			// rb.setDirection(this.vehcleInfo.getLocal().getDirection());
-			// rb.setElectricityStatus(this.vehcleInfo.getLocal().getElectricityStatus());
-			// // rb.setGpsStatus(this.gpsInfo.getGpsStatus());
-			// // rb.sethVersion(this.gpsInfo.gethVersion());
-			// // rb.setsVersion(this.gpsInfo.getsVersion());
-			// // rb.setStarNum(this.gpsInfo.getStarNum());
-			// if (rb.getDatetime() != null) {
-			// beanList.add(new PairResult("DATIME_GPS", "DATIME_GPS", "GPS时间",
-			// sdf.format(rb.getDatetime())));
-			// }
-			// beanList.add(new PairResult("SPEED_GPS", "SPEED_GPS", "GPS速度",
-			// String.valueOf(this.vehcleInfo.getLocal().getSpeed())));
-			// // beanList.add(new PairResult("ALT", "ALT", "高度",
-			// // String.valueOf(this.gpsInfo.getHeight())));
-			// beanList.add(new PairResult("BEARING", "BEARING", "方向角",
-			// String.valueOf(rb.getDirection())));
-			// // beanList.add(new PairResult("VERSION_HW", "VERSION_HW",
-			// // "硬件版本", String.valueOf(rb.gethVersion())));
-			// // beanList.add(new PairResult("VERSION_FW", "VERSION_FW",
-			// // "软件版本", String.valueOf(rb.getsVersion())));
-			// // beanList.add(new PairResult("MILEAGE_GPS", "MILEAGE_GPS",
-			// // "gps里程", String.valueOf(rb.getDistance())));
-			// }
 			if (cte == CommandTypeEnum.CA5) {
 				List<PairResult> tempPairs = contentA5(rb);
+				if(tempPairs!=null)
 				beanList.addAll(tempPairs);
 			} else if (cte == CommandTypeEnum.CA6) {
+			
 				List<PairResult> tempPairs = contentA6(rb);
+				if(tempPairs!=null)
 				beanList.addAll(tempPairs);
 			} else if (cte == CommandTypeEnum.CA0) {
 				List<PairResult> tempPairs = contentA0(rb);
+				if(tempPairs!=null)
 				beanList.addAll(tempPairs);
 			}
 			rb.setPairs(beanList);
@@ -300,12 +261,9 @@ public class ProtocolYUCHAI implements IProtocol {
 		return rb;
 	}
 
-	
-	
-	private List<PairResult>  content(ResultBean rb)
-	{
+	private List<PairResult> content(ResultBean rb) {
 		List<PairResult> tempPairs = new ArrayList<PairResult>();
-	    LocalInfo localInfo=publicStaticMap.getLastLocal().get(rb.getVehicleUnid());
+		LocalInfo localInfo = publicStaticMap.getLastLocal().get(rb.getVehicleUnid());
 		tempPairs.add(new PairResult("localstate", "localstate", "定位状态",
 				String.valueOf(this.vehcleInfo.getLocal().getLocationState())));
 		tempPairs.add(new PairResult("LatDi", "LatDi", "东经或西经", String.valueOf(this.vehcleInfo.getLocal().getLatDi())));
@@ -315,14 +273,14 @@ public class ProtocolYUCHAI implements IProtocol {
 		if (rb.getLng() != null && rb.getLat() != null) {
 			tempPairs.add(new PairResult("LON", "LON", "经度", String.valueOf(this.vehcleInfo.getLocal().getLng())));
 			tempPairs.add(new PairResult("LAT", "LAT", "维度", String.valueOf(this.vehcleInfo.getLocal().getLat())));
-			
+
 			localInfo.setLng(this.vehcleInfo.getLocal().getLng());
 			localInfo.setLat(this.vehcleInfo.getLocal().getLat());
 			PointDouble pd = new PointDouble(this.vehcleInfo.getLocal().getLng(), this.vehcleInfo.getLocal().getLat());
 			if (pd != null) {
 				try {
 					PointDouble en = Wars2Wgs.s2c(pd);
-					
+
 					if (en != null) {
 						localInfo.setLng(en.x);
 						localInfo.setLat(en.y);
@@ -370,24 +328,31 @@ public class ProtocolYUCHAI implements IProtocol {
 				String.valueOf(this.vehcleInfo.getVehicle().getElectricPowerLow())));
 		return tempPairs;
 	}
+
 	/**
 	 * @Title: contentA5 @Description: TODO(解析A5) @param 设定文件 @return void
 	 *         返回类型 @throws
 	 */
 	private List<PairResult> contentA5(ResultBean rb) {
-		List<PairResult> tempPairs =content(rb);
+		List<PairResult> tempPairs = content(rb);
+		if(tempPairs!=null)
+		{
 		tempPairs.add(new PairResult("COMMANDTYPE", "COMMANDTYPE", "命令类型", "A5"));
+		}
 		return tempPairs;
 
 	}
-	
+
 	/**
 	 * @Title: contentA5 @Description: TODO(解析A5) @param 设定文件 @return void
 	 *         返回类型 @throws
 	 */
 	private List<PairResult> contentA0(ResultBean rb) {
-		List<PairResult> tempPairs =content(rb);
+		List<PairResult> tempPairs = content(rb);
+		if(tempPairs!=null)
+		{
 		tempPairs.add(new PairResult("COMMANDTYPE", "COMMANDTYPE", "命令类型", "A0"));
+		}
 		return tempPairs;
 
 	}
@@ -397,8 +362,11 @@ public class ProtocolYUCHAI implements IProtocol {
 	 *         返回类型 @throws
 	 */
 	private List<PairResult> contentA6(ResultBean rb) {
-		List<PairResult> tempPairs =content(rb);
+		List<PairResult> tempPairs = content(rb);
+		if(tempPairs!=null)
+		{
 		tempPairs.add(new PairResult("COMMANDTYPE", "COMMANDTYPE", "命令类型", "A6"));
+		}
 		return tempPairs;
 	}
 

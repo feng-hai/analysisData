@@ -24,7 +24,7 @@ public class ProtocolHeadForYuchai {
 
 	private void anlyze() {
 		startTag = "7b";
-		terminalCommandId = this.contents[1];// ByteUtils.getShort(this.msg, 1);//
+		terminalCommandId = this.contents[1]&0xff;// ByteUtils.getShort(this.msg, 1);//
 		terminalCommandLength = ByteUtils.getShortForLarge(this.contents, 5);
 	}
 

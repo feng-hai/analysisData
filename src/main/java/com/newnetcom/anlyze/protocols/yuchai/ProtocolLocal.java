@@ -21,36 +21,36 @@ public class ProtocolLocal {
 		}
 	}
 	
-private byte lngDi;
+private int lngDi;
 /**
  * @return the lngDi
  */
-public byte getLngDi() {
+public int getLngDi() {
 	return lngDi;
 }
 
 /**
  * @param lngDi the lngDi to set
  */
-public void setLngDi(byte lngDi) {
+public void setLngDi(int lngDi) {
 	this.lngDi = lngDi;
 }
 
 /**
  * @return the latDi
  */
-public byte getLatDi() {
+public int getLatDi() {
 	return latDi;
 }
 
 /**
  * @param latDi the latDi to set
  */
-public void setLatDi(byte latDi) {
+public void setLatDi(int latDi) {
 	this.latDi = latDi;
 }
 
-private byte latDi;
+private int latDi;
 
 	/**
 	 * @Fields lng : 经度4个字节
@@ -93,23 +93,23 @@ private byte latDi;
 	/**
 	 * @Fields acc :ACC状态 B0
 	 */
-	private byte acc;
+	private int acc;
 	/**
 	 * @Fields locationState : 定位状态B1
 	 */
-	private byte locationState;
+	private int locationState;
 	/**
 	 * @Fields starNum :卫星个数B5-B2 4位
 	 */
-	private byte starNum;
+	private int starNum;
 	/**
 	 * @Fields gpsStatus : GPS模块正常， =1 模块异常 B6
 	 */
-	private byte gpsStatus;
+	private int gpsStatus;
 	/**
 	 * @Fields electricityStatus : B7 供电状态 0=外电供电；1=电池供电；
 	 */
-	private byte electricityStatus;
+	private int electricityStatus;
 
 	public double getLng() {
 		return lng;
@@ -183,15 +183,15 @@ private byte latDi;
 		this.date = date;
 	}
 
-	public byte getAcc() {
+	public int getAcc() {
 		return acc;
 	}
 
-	public void setAcc(byte acc) {
+	public void setAcc(int acc) {
 		this.acc = acc;
 	}
 
-	public byte getLocationState() {
+	public int getLocationState() {
 		return locationState;
 	}
 
@@ -199,23 +199,23 @@ private byte latDi;
 		this.locationState = locationState;
 	}
 
-	public byte getStarNum() {
+	public int getStarNum() {
 		return starNum;
 	}
 
-	public void setStarNum(byte starNum) {
+	public void setStarNum(int starNum) {
 		this.starNum = starNum;
 	}
 
-	public byte getGpsStatus() {
+	public int getGpsStatus() {
 		return gpsStatus;
 	}
 
-	public void setGpsStatus(byte gpsStatus) {
+	public void setGpsStatus(int gpsStatus) {
 		this.gpsStatus = gpsStatus;
 	}
 
-	public byte getElectricityStatus() {
+	public int getElectricityStatus() {
 		return electricityStatus;
 	}
 
@@ -225,15 +225,15 @@ private byte latDi;
 
 	private void anlyze() {
 		byte local=this.contents[0];
-		this.locationState=(byte)(local&0x80);
-		this.lngDi=(byte)(local&0x01);//0是东经 1是西经
-		this.latDi=(byte)(local&0x02);//0是北纬 1是南纬
-		date = ByteUtils.BytesTodateForSecond(this.contents, 1);
+		this.locationState=(0xff&(local&0x80))==128?1:0;
+		this.lngDi=(0xff&(local&0x01));//0是东经 1是西经
+		this.latDi=(0xff&(local&0x02))==2?1:0;//0是北纬 1是南纬
+		date = ByteUtils.BytesTodateForSecondForNotUTC(this.contents, 1);
 		lng = ByteUtils.getDu(this.contents, 7);//经度
-		lat = ByteUtils.getDu(this.contents, 13);//维度
-		speed =  (ByteUtils.getShort(this.contents,18) +(this.contents[20]&0xff)/100)*1.852 ;//Km/h
+		lat = ByteUtils.getDu(this.contents, 12);//维度
+		speed =  (ByteUtils.getShortForLarge(this.contents,17) +(this.contents[19]&0xff)/100.0) ;//Km/h
 		
-		direction = ByteUtils.getShort(this.contents,21);
+		direction = ByteUtils.getShortForLarge(this.contents,20);
 	//	direction = ByteUtils.getShort(this.contents, 13);
 //		distance = (float) (ByteUtils.getInt(this.contents, 15) / 500.0);
 //		hVersion = ByteUtils.getShort(this.contents, 19);

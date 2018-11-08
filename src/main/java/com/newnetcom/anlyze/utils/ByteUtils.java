@@ -136,6 +136,30 @@ public class ByteUtils {
 		return c.getTime();
 	}
 	
+	/** 
+	* @Title: BytesTodateForSecond 小段模式
+	* @Description: TODO(这里用一句话描述这个方法的作用) 
+	* @param @param d
+	* @param @param startIndex
+	* @param @return
+	* @param @throws NullPointerException    设定文件 
+	* @return Date    返回类型 
+	* @throws 
+	*/
+	public static Date BytesTodateForSecondForNotUTC(byte[] d, int startIndex) throws NullPointerException {
+		if (d == null) {
+			throw new NullPointerException("Null Date value.");
+		}
+		Calendar c = Calendar.getInstance();
+		int year = (int) d[startIndex] + 2000;
+		int month = (int) d[startIndex + 1]-1;
+		int date = (int) d[startIndex + 2];
+		int hourOfDay = (int) d[startIndex + 3];
+		int minute = (int) d[startIndex + 4];
+		int second = (int) d[startIndex + 5];
+		c.set(year, month, date, hourOfDay, minute, second);
+		return c.getTime();
+	}
 	/**
 	 * 转换short为byte
 	 * 
@@ -799,8 +823,12 @@ public class ByteUtils {
   	* @throws 
   	*/
   	public static double getDu(byte[] bb,int index){
+  		int du=bb[0+index]&0xff;
+  		int fen=(bb[1+index]&0xff);
+  		int fenP=getThreeByteForLarger(bb,2+index);
+  		double duAll=du+(fen+fenP/1000000.0)/60.0;
   		
-		return bb[0]+(bb[1]+(getThreeByte(bb,2))/100000)/60;
+		return duAll;
 		
 	}
 
