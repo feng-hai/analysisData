@@ -61,7 +61,7 @@ public class ProtocolGB implements IProtocol {
 				protocol101 = new Protocol01ForGB(this.content);
 			} else if ((int) 0x02 == head.getCommandTag() && head.getCommandTag() > 0) {
 				cte = CommandTypeEnum.C02;
-				protocol102 = new Protocol02ForGB(ByteUtils.getSubBytes(this.content, 24, head.getDataLength()));
+				protocol102 = new Protocol02ForGB(ByteUtils.getSubBytes(this.content, 24, head.getDataLength()),protocolBean.getUnid());
 			} 
 //			else if ((int) 0xA0 == head.getTerminalCommandId() && head.getTerminalCommandLength() > 0) {
 //				cte = CommandTypeEnum.CA0;

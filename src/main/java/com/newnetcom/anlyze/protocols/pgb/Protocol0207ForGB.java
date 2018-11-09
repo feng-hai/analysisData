@@ -13,7 +13,7 @@ public class Protocol0207ForGB implements IProtocol02ForGB{
 		// TODO Auto-generated method stub
 		List<PairResult> tempPairs = new ArrayList<PairResult>();
 		tempPairs.add(new PairResult("lastHightAlarm","lastHightAlarm","最高报警等级",String.valueOf(this.lastHightAlarm)));
-		tempPairs.addAll(this.getResults());
+		tempPairs.addAll(alarm.getResults());
 		return tempPairs;
 	}
 	private byte[] content;
