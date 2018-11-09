@@ -33,8 +33,8 @@ public class Protocol0204ForGB implements IProtocol02ForGB {
 
 	private void anlye() {
 		this.engineStatus = this.content[0] & 0xff;
-		this.engineSpeed = ByteUtils.getShort(this.content, 1);
-		this.enginefuelRate = ByteUtils.getShort(this.content, 3) / 100.0;
+		this.engineSpeed = ByteUtils.getShortForLarge(this.content, 1);
+		this.enginefuelRate = ByteUtils.getShortForLarge(this.content, 3) / 100.0;
 
 	}
 

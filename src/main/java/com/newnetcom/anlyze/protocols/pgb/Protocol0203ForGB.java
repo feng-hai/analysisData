@@ -37,18 +37,18 @@ public class Protocol0203ForGB implements IProtocol02ForGB {
      }
      
      private void anlye(){
-    	 this.fuelVoltage=ByteUtils.getShort(this.content, 0)/10.0;
-    	 this.fuelElectricity=ByteUtils.getShort(this.content, 2)/10.0;
-    	 this.fuelConsumptionRate=ByteUtils.getShort(this.content, 4)/100.0;
-    	 this.fuelTotalProbes=ByteUtils.getShort(this.content, 6);
+    	 this.fuelVoltage=ByteUtils.getShortForLarge(this.content, 0)/10.0;
+    	 this.fuelElectricity=ByteUtils.getShortForLarge(this.content, 2)/10.0;
+    	 this.fuelConsumptionRate=ByteUtils.getShortForLarge(this.content, 4)/100.0;
+    	 this.fuelTotalProbes=ByteUtils.getShortForLarge(this.content, 6);
     	 for(int i=0;i<this.fuelTotalProbes;i++){
-    		 this.fuelProbesValue.add(this.content[i+7]&0xff-40);
+    		 this.fuelProbesValue.add((this.content[i+7]&0xff)-40);
     	 }
-    	 this.hydrogenTem=ByteUtils.getShort(this.content, this.fuelTotalProbes+7);
+    	 this.hydrogenTem=ByteUtils.getShortForLarge(this.content, this.fuelTotalProbes+7);
     	 this.hydrogenTemNo=this.content[this.fuelTotalProbes+9]&0xff;
-    	 this.hydrogenConcentration=ByteUtils.getShort(this.content, this.fuelTotalProbes+10);
+    	 this.hydrogenConcentration=ByteUtils.getShortForLarge(this.content, this.fuelTotalProbes+10);
     	 this.hydrogenConcentrationNo=this.content[this.fuelTotalProbes+12];
-    	 this.hydrogenPressure=ByteUtils.getShort(this.content, this.fuelTotalProbes+13);
+    	 this.hydrogenPressure=ByteUtils.getShortForLarge(this.content, this.fuelTotalProbes+13);
     	 this.hydrogenPressureNo=this.content[this.fuelTotalProbes+15]&0xff;
     	 this.highDCDCStatus=this.content[this.fuelTotalProbes+16]&0xff;
     	 
